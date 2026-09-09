@@ -1,0 +1,22 @@
+.divider {
+  display: flex;
+  max-width: 1230px;
+  height: 4px;
+  margin: auto;
+}
+
+.divider-accent {
+  width: 50%;
+  background: var(--color-text-highlight);
+}
+
+.divider-line {
+  flex: 1;
+  background: var(--color-primary);
+}
+
+@media (max-width: 640px) {
+  .divider-accent {
+    width: 40%;
+  }
+}
