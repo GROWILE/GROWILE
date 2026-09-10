@@ -1,27 +1,28 @@
-import Divider from './Components/Divider'
-import FAQ from './Components/FAQ'
-import Footer from './Components/Footer'
-import Hero from './Components/Hero'
-import MissionVision from './Components/MissionVision'
-import Navbar from './Components/Navbar'
-import Products from './Components/Products-card'
+import { useEffect } from "react";
+import { Routes, Route, useLocation } from "react-router-dom";
+import Home from "./Pages/Home";
+import About from "./Pages/About";
 
-function App() {
+function ScrollToTop() {
+  const { pathname } = useLocation();
 
-  return (
-     <>
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
 
-      <Navbar />
-      <Hero />
-      <Divider />
-      <Products />
-      <MissionVision />
-      <Divider />
-      <FAQ />
-      <Footer />
-
-     </>
-  )
+  return null;
 }
 
-export default App
+function App() {
+  return (
+    <>
+      <ScrollToTop />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+      </Routes>
+    </>
+  );
+}
+
+export default App;

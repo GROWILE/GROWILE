@@ -1,17 +1,24 @@
 import "./Footer.css";
+import { Link } from "react-router-dom";
 
 const footerColumns = [
   {
     title: "Products",
-    links: ["FINANCE", "INVOICE"],
+    links: [
+      { label: "Finance", href: "#" },
+      { label: "Invoice", href: "#" },
+    ],
   },
-  {
+  /* {
     title: "Resources",
-    links: ["FAQ", "Help Center"],
-  },
+    links: [
+      { label: "FAQ", href: "#" },
+      { label: "Help Center", href: "#" },
+    ],
+  }, */
   {
     title: "Company",
-    links: ["About Us", "Our Story", "Contact"],
+    links: [{ label: "About Us", href: "/about" }],
   },
 ];
 
@@ -21,7 +28,7 @@ const socialLinks = [
   { label: "YT", href: "#" },
   { label: "IN", href: "#" },
   { label: "IG", href: "#" },
-];
+]; 
 
 const legalLinks = [
   "Terms and Conditions",
@@ -44,12 +51,12 @@ export default function Footer() {
       <div className="footer-columns">
         {footerColumns.map((column) => (
           <div key={column.title} className="footer-column">
-            <h3 className="footer-column-title">{column.title}</h3>
+           <h3 className="footer-column-title">{column.title}</h3>
             <ul className="footer-column-links">
               {column.links.map((link) => (
-                <li key={link}>
-                  <a href="#">{link}</a>
-                </li>
+              <li key={link.label}>
+              <Link to={link.href}>{link.label}</Link>
+              </li>
               ))}
             </ul>
           </div>

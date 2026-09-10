@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useState } from "react";
 import "./Navbar.css";
 import logo from "../assets/growile-logo.png";
@@ -28,12 +29,9 @@ export default function Navbar() {
         </button>
 
         <nav className={`navbar-links ${isMenuOpen ? "open" : ""}`}>
-          <a href="#home" className="navbar-link" onClick={() => setIsMenuOpen(false)}>
-            Home
-          </a>
-          <a href="#about" className="navbar-link" onClick={() => setIsMenuOpen(false)}>
-            About
-          </a>
+          <Link to="/" className="navbar-link" onClick={() => setIsMenuOpen(false)}>
+             Home
+          </Link>
 
           <div
             className="navbar-dropdown"
@@ -63,9 +61,10 @@ export default function Navbar() {
             )}
           </div>
 
-          <a href="#contact" className="navbar-link" onClick={() => setIsMenuOpen(false)}>
-            Contact
-          </a>
+          <Link to="/about" className="navbar-link" onClick={() => setIsMenuOpen(false)}>
+             About
+          </Link>
+
         </nav>
       </div>
     </header>

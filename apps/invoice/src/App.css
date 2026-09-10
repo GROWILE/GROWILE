@@ -1,0 +1,46 @@
+.invoice-app {
+	--color-primary: #000000;
+  --color-secondary: #ffffff;
+  --color-accent: #FD5F03;
+  --color-text-highlight: #007ACC;
+	min-height: 100vh;
+	background: var(--color-secondary);
+}
+
+.invoice-options {
+	max-width: 760px;
+	margin: 0 auto;
+	padding: 18px 24px 76px;
+	text-align: center;
+}
+
+.invoice-options-kicker {
+	color: var(--color-accent);
+	font-size: 13px;
+	font-weight: 800;
+	letter-spacing: 1.5px;
+	margin: 0 0 10px;
+}
+
+.invoice-options h2 {
+	color: var(--color-primary);
+	font-size: 36px;
+	margin: 0 0 12px;
+}
+
+.invoice-options > p:last-child {
+	color: #555;
+	font-size: 17px;
+	margin: 0;
+}
+
+@media (max-width: 640px) {
+	.invoice-options {
+		padding: 4px 20px 56px;
+	}
+
+	.invoice-options h2 {
+		font-size: 30px;
+	}
+}
+

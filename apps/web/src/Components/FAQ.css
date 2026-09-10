@@ -5,7 +5,7 @@
 }
 
 .faq-heading {
-  font-size: 32px;
+  font-size: 36px;
   font-weight: 700;
   color: var(--color-primary);
   text-align: center;
@@ -62,8 +62,19 @@
   margin: 16px 0 0;
 }
 
-@media (max-width: 640px) {
+/* Tablet */
+
+@media (max-width: 900px) {
   .faq-heading {
-    font-size: 26px;
+    font-size: 30px;
   }
 }
+
+/* Mobile */
+
+@media (max-width: 600px) {
+  .faq-heading {
+    font-size: 24px;
+  }
+}
+
