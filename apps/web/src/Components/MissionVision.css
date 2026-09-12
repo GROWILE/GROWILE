@@ -48,8 +48,30 @@
   margin: 0;
 }
 
-@media (max-width: 640px) {
+@media (max-width: 900px) {
+  .mission-vision {
+    padding: 36px 24px 80px;
+  }
+
+  .mission-vision-grid {
+    gap: 48px;
+  }
+
+  .mission-vision-card {
+    padding: 28px;
+  }
+}
+
+@media (max-width: 600px) {
+  .mission-vision {
+    padding: 32px 20px 64px;
+  }
+
   .mission-vision-grid {
     grid-template-columns: 1fr;
+  }
+
+  .mission-vision-card {
+    padding: 22px;
   }
 }

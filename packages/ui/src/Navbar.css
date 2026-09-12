@@ -1,7 +1,24 @@
 
 .navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
   width: 100%;
   background: var(--color-primary);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.12);
+}
+
+.navbar + .hero {
+  padding-top: 172px;
+}
+
+.navbar + main .hero {
+  padding-top: 172px;
+}
+
+.navbar + .about-hero {
+  padding-top: 180px;
 }
 
 .navbar-container {
@@ -94,7 +111,16 @@
   background: var(--color-text-highlight);
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 900px) {
+  .navbar + .hero,
+  .navbar + main .hero {
+    padding-top: 156px;
+  }
+
+  .navbar + .about-hero {
+    padding-top: 164px;
+  }
+
   .navbar-container {
     padding: 20px 24px;
   }
@@ -112,7 +138,16 @@
   }
 }
 
-@media (max-width: 700px) {
+@media (max-width: 600px) {
+  .navbar + .hero,
+  .navbar + main .hero {
+    padding-top: 128px;
+  }
+
+  .navbar + .about-hero {
+    padding-top: 128px;
+  }
+
   .navbar-container {
     position: relative;
     padding: 16px;

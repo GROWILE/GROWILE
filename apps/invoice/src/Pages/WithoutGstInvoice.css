@@ -1,98 +1,489 @@
+/* ============================================
+   SECTION WRAPPER
+   ============================================ */
+
 .invoice-form-section {
-  background: #f7f4ef;
-  padding: 76px 24px 84px;
+  background: var(--color-secondary);
+  padding: 100px 24px 100px;
 }
+
 .invoice-form-heading {
-  max-width: 1100px;
-  margin: 0 auto 32px;
+  max-width: 900px;
+  margin: 0 auto 40px;
+  text-align: center;
 }
+
 .invoice-form-kicker {
-  color: var(--color-accent);
-  font-size: 13px;
+  color: var(--color-text-highlight);
+  font-size: 16px;
   font-weight: 800;
   letter-spacing: 1.5px;
-  margin: 0 0 10px;
-}
-.invoice-form-heading h2 {
-  color: var(--color-primary);
-  font-size: 40px;
+  text-transform: uppercase;
   margin: 0 0 12px;
 }
+
+.invoice-form-heading h2 {
+  color: var(--color-primary);
+  font-size: 36px;
+  font-weight: 700;
+  margin: 0 0 14px;
+}
+
 .invoice-form-heading > p:last-child {
-  color: #555;
+  color: var(--color-primary);
+  opacity: 0.8;
   margin: 0;
-  font-size: 17px;
+  font-size: 18px;
+  line-height: 1.6;
 }
+
+/* ============================================
+   FORM CONTAINER
+   ============================================ */
+
 .invoice-form {
-  max-width: 1100px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 32px;
-  background: #fff;
-  border: 1px solid #eadfd2;
+  padding: 36px;
+  background: var(--color-text-highlight);
+  border: 1px solid #eee;
+  border-radius: 1px;
 }
+
+/* ============================================
+   ERROR MESSAGE
+   ============================================ */
+
+.invoice-form-error {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin: 0 0 22px;
+  padding: 12px 14px;
+  border-left: 4px solid var(--color-accent);
+  background: #fff7ed;
+  color: #111;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.45;
+  border-radius: 4px;
+}
+
+.invoice-form-error::before {
+  content: "!";
+  display: inline-grid;
+  width: 20px;
+  height: 20px;
+  flex: 0 0 20px;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--color-accent);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+/* ============================================
+   LOGO UPLOAD
+   ============================================ */
+
+.invoice-form-logo-row {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 28px;
+}
+
+.invoice-logo-field {
+  max-width: none;
+  cursor: pointer;
+}
+
+.invoice-logo-field input[type="file"] {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.invoice-logo-card {
+  width: 200px;
+  min-height: 130px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 1px dashed #ddd;
+  border-radius: 8px;
+  background: var(--color-secondary);
+  color: var(--color-primary);
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.invoice-logo-card:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+.invoice-logo-plus {
+  font-size: 28px;
+  font-weight: 300;
+  line-height: 1;
+}
+
+.invoice-logo-preview {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  padding: 6px;
+  background-color: var(--color-secondary);
+}
+
+/* ============================================
+   FROM / TO / INVOICE NUMBER / DATE GRID
+   ============================================ */
+
 .invoice-form-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 22px;
+  gap: 50px;
 }
+
+/* Shared label + input/textarea styling.
+   overflow-wrap / word-break / white-space keep long typed text
+   wrapping inside the box instead of spilling outside it. */
+
 .invoice-form label {
   display: flex;
   flex-direction: column;
   gap: 8px;
+  max-width: 100%;
   color: var(--color-primary);
-  font-size: 14px;
+  font-size: 18px;
   font-weight: 700;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  white-space: pre-wrap;
+  height: auto;
 }
+
 .invoice-form input,
 .invoice-form textarea {
+  box-sizing: border-box;
   width: 100%;
-  border: 1px solid #d8d1c8;
-  border-radius: 1px;
+  max-width: 100%;
+  min-width: 0;
+  border: 1px solid #ddd;
+  border-radius: 4px;
   padding: 13px 14px;
+  font-size: 14px;
   color: var(--color-primary);
-  background: #fff;
+  background: var(--color-secondary);
   outline: none;
   resize: vertical;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  white-space: pre-wrap;
+  height: auto;
+  transition: border-color 0.2s ease;
 }
+
 .invoice-form input:focus,
 .invoice-form textarea:focus {
   border-color: var(--color-accent);
 }
-.invoice-form-full {
+
+.invoice-form input:invalid:not(:placeholder-shown),
+.invoice-form textarea:invalid:not(:placeholder-shown) {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 2px rgba(240, 119, 15, 0.16);
+}
+
+/* ============================================
+   PAYMENT INFO
+   ============================================ */
+
+.invoice-payment-info  {
   margin-top: 22px;
 }
-.invoice-form-amounts {
-  max-width: 50%;
-  margin-top: 22px;
+
+.invoice-payment-info textarea {
+  font-size: 16px;
+  font-weight: 600;
 }
+
+/* ============================================
+   ITEMS TABLE
+   ============================================ */
+
+.invoice-items {
+  margin-top: 28px;
+}
+
+.invoice-items-heading {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(100px, 0.7fr) minmax(140px, 1fr);
+  gap: 18px;
+  padding: 13px 16px;
+  border-radius: 8px;
+  background: #0a0a0a;
+  color: var(--color-secondary);
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.invoice-items-heading h3 {
+  grid-column: 1;
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.invoice-items-heading span {
+  grid-column: 3;
+  text-align: right;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.invoice-item-row {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(100px, 0.7fr) minmax(140px, 1fr);
+  gap: 18px;
+  padding: 18px 0;
+  border-top: 1px solid #eee;
+}
+
+.invoice-add-item {
+  margin-top: 18px;
+  border: 1px solid var(--color-secondary);
+  background-color: var(--color-secondary);
+  color: var(--color-primary);
+  padding: 12px 18px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.invoice-add-item:hover {
+  background: var(--color-accent);
+  color: var(--color-secondary);
+}
+
+.invoice-add-item span {
+  margin-left: 8px;
+}
+
+/* ============================================
+   TOTAL ROW
+   ============================================ */
+
+.invoice-total {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 28px;
+  margin-top: 28px;
+  padding-top: 20px;
+  border-top: 2px solid var(--color-primary);
+  color: var(--color-primary);
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.invoice-total strong {
+  border: 1px solid #ddd;
+  background: var(--color-secondary);
+  padding: 12px 16px;
+  border-radius: 4px;
+  min-width: 140px;
+  text-align: right;
+  font-size: 22px;
+  color: var(--color-accent);
+}
+
+/* ============================================
+   SUBMIT BUTTON
+   ============================================ */
+
 .invoice-form-button {
   margin-top: 30px;
   border: 0;
+  border-radius: 1px;
   background: var(--color-accent);
   color: #fff;
-  padding: 15px 24px;
+  padding: 16px 28px;
+  font-size: 16px;
   font-weight: 800;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
   cursor: pointer;
+  transition: opacity 0.2s ease;
 }
+
+.invoice-form-button:hover {
+  background-color: var(--color-secondary);
+  color: var(--color-accent);
+  opacity: 0.9;
+}
+
 .invoice-form-button span {
   margin-left: 8px;
 }
-.invoice-form-button:hover {
-  background: var(--color-primary);
+
+/* ============================================
+   SWITCH TO GST INVOICE LINK
+   ============================================ */
+
+.invoice-switch-button {
+  display: block;
+  max-width: 900px;
+  margin: 40px auto 0;
+  text-align: right;
+  color: var(--color-secondary);
+  font-size: 16px;
+  font-weight: 700;
+  text-decoration: none;
 }
-@media (max-width: 640px) {
+
+
+
+/* ============================================
+   RESPONSIVE — TABLET (≤900px)
+   ============================================ */
+
+@media (max-width: 900px) {
+  .invoice-form-section {
+    padding: 64px 24px 72px;
+  }
+
+  .invoice-form-heading h2 {
+    font-size: 28px;
+  }
+
+  .invoice-form {
+    padding: 28px;
+  }
+
+  .invoice-item-row {
+    gap: 14px;
+  }
+
+  .invoice-form-grid {
+    gap: 18px;
+  }
+}
+
+/* ============================================
+   RESPONSIVE — MOBILE (≤600px)
+   ============================================ */
+
+@media (max-width: 600px) {
   .invoice-form-section {
     padding: 56px 16px;
   }
+
   .invoice-form-heading h2 {
-    font-size: 32px;
+    font-size: 26px;
   }
+
   .invoice-form {
     padding: 22px 18px;
   }
-  .invoice-form-grid,
-  .invoice-form-amounts {
+
+  .invoice-form-heading > p:last-child {
+    font-size: 15px;
+  }
+
+  .invoice-form-logo-row {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .invoice-logo-card {
+    width: 180px;
+    min-height: 116px;
+  }
+
+  .invoice-form-grid {
     grid-template-columns: 1fr;
+  }
+
+  .invoice-form-button {
+    padding: 14px 22px;
+  }
+
+  .invoice-item-row {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .invoice-item-row label:first-child {
+    grid-column: 1 / -1;
+  }
+
+  .invoice-items-heading {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .invoice-items-heading span {
+    grid-column: 2;
+  }
+
+  .invoice-total {
+    justify-content: space-between;
+  }
+
+  .invoice-total strong {
+    min-width: auto;
+  }
+
+  .invoice-switch-button {
+    text-align: left;
+  }
+}
+
+/* ============================================
+   PRINT VIEW (used when generating/previewing PDF)
+   ============================================ */
+
+@media print {
+  .navbar,
+  .invoice-form-heading,
+  .invoice-switch-button,
+  .invoice-add-item,
+  .invoice-form-button,
+  .ad-space,
+  .how-to-use,
+  .faq,
+  .footer {
+    display: none !important;
+  }
+
+  .invoice-form-section {
+    padding: 0;
+    background: var(--color-secondary);
+  }
+
+  .invoice-form {
     max-width: none;
+    border: 0;
+    padding: 0;
+  }
+
+  .invoice-form input,
+  .invoice-form textarea,
+  .invoice-form select {
+    border: 0;
+    padding: 0;
   }
 }

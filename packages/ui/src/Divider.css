@@ -15,8 +15,18 @@
   background: var(--color-primary);
 }
 
-@media (max-width: 640px) {
+@media (max-width: 900px) {
+  .divider {
+    max-width: calc(100% - 48px);
+  }
+}
+
+@media (max-width: 600px) {
   .divider-accent {
     width: 40%;
+  }
+
+  .divider {
+    max-width: calc(100% - 40px);
   }
 }

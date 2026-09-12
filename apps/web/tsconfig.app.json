@@ -22,5 +22,5 @@
     "erasableSyntaxOnly": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src"]
+  "include": ["src", "../../packages/ui/src/Footer.tsx", "../../packages/ui/src/FAQ.tsx", "../../packages/ui/src/Divider.tsx", "../../packages/ui/src/AdSpace.tsx", "../../packages/ui/src/Products-card.tsx", "../../packages/ui/src/Navbar.tsx"]
 }

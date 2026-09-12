@@ -1,8 +1,4 @@
 .invoice-app {
-	--color-primary: #000000;
-  --color-secondary: #ffffff;
-  --color-accent: #FD5F03;
-  --color-text-highlight: #007ACC;
 	min-height: 100vh;
 	background: var(--color-secondary);
 }
@@ -15,7 +11,7 @@
 }
 
 .invoice-options-kicker {
-	color: var(--color-accent);
+	color: var(--color-text-highlight);
 	font-size: 13px;
 	font-weight: 800;
 	letter-spacing: 1.5px;
@@ -34,13 +30,98 @@
 	margin: 0;
 }
 
-@media (max-width: 640px) {
+.invoice-switch-button {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	margin: 28px auto 0;
+	background: var(--color-text-highlight);
+	color: var(--color-secondary);
+	padding: 14px 22px;
+	font-size: 14px;
+	font-weight: 800;
+	letter-spacing: 0.4px;
+	text-decoration: none;
+}
+
+.invoice-switch-button:hover {
+	background: var(--color-primary);
+}
+
+.invoice-switch-button span {
+	transition: transform 0.2s ease;
+}
+
+.invoice-switch-button:hover span {
+	transform: translateX(3px);
+}
+
+.invoice-form-section,
+.gst-invoice-section {
+	text-align: left;
+}
+
+.invoice-form-with-ad {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) 260px;
+	align-items: start;
+	gap: 28px;
+	max-width: 1300px;
+	margin: 0 auto;
+}
+
+.invoice-form-with-ad .invoice-form {
+	width: 100%;
+	max-width: none;
+}
+
+.invoice-form-with-ad > .ad-space {
+	width: 100%;
+	min-height: 650px;
+	margin: 100px 0 0;
+}
+
+.invoice-form-section .invoice-switch-button,
+.gst-invoice-section .invoice-switch-button {
+	display: flex;
+	width: fit-content;
+}
+
+@media (max-width: 900px) {
+	.invoice-form-with-ad {
+		grid-template-columns: 1fr;
+	}
+
+	.invoice-form-with-ad > .ad-space {
+		min-height: 112px;
+	}
+
+	.invoice-options {
+		padding: 16px 24px 64px;
+	}
+
+	.invoice-options h2 {
+		font-size: 32px;
+	}
+}
+
+@media (max-width: 600px) {
 	.invoice-options {
 		padding: 4px 20px 56px;
 	}
 
 	.invoice-options h2 {
 		font-size: 30px;
+	}
+
+	.invoice-options > p:last-child {
+		font-size: 16px;
+	}
+
+	.invoice-switch-button {
+		width: 100%;
+		justify-content: center;
+		text-align: center;
 	}
 }
 

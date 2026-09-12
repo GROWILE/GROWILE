@@ -65,16 +65,38 @@
 /* Tablet */
 
 @media (max-width: 900px) {
+  .faq {
+    padding: 36px 24px 80px;
+  }
+
   .faq-heading {
-    font-size: 30px;
+    font-size: 32px;
+    margin: 32px;
+  }
+
+  .faq-item {
+    padding: 18px 20px;
   }
 }
 
 /* Mobile */
 
 @media (max-width: 600px) {
+  .faq {
+    padding: 32px 20px 64px;
+  }
+
   .faq-heading {
-    font-size: 24px;
+    font-size: 28px;
+    margin: 28px 0;
+  }
+
+  .faq-question {
+    font-size: 15px;
+  }
+
+  .faq-answer {
+    font-size: 14px;
   }
 }
 

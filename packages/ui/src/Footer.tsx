@@ -1,5 +1,4 @@
 import "./Footer.css";
-import { Link } from "react-router-dom";
 
 const footerColumns = [
   {
@@ -55,7 +54,7 @@ export default function Footer() {
             <ul className="footer-column-links">
               {column.links.map((link) => (
               <li key={link.label}>
-              <Link to={link.href}>{link.label}</Link>
+              <a href={link.href}>{link.label}</a>
               </li>
               ))}
             </ul>

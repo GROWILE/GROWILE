@@ -1,7 +1,7 @@
 import "./About.css";
-import Navbar from "../Components/Navbar";
-import Footer from "../Components/Footer";
-import Divider from "../Components/Divider";
+import Navbar from "../../../../packages/ui/src/Navbar";
+import Footer from "../../../../packages/ui/src/Footer";
+import Divider from "../../../../packages/ui/src/Divider";
 
 const values = [
   {
@@ -36,7 +36,18 @@ const approach = [
 export default function About() {
   return (
     <>
-      <Navbar />
+      <Navbar
+        logoAlt="Growile"
+        home={{ label: "Home", href: "/" }}
+        products={{
+          label: "Products",
+          items: [
+            { label: "Finance", href: "#finance" },
+            { label: "Invoice", href: "#invoice" },
+          ],
+        }}
+        about={{ label: "About", href: "/about" }}
+      />
 
       <section className="about-hero">
         <h1 className="about-title">About Growile</h1>

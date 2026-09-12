@@ -4,19 +4,161 @@
 .gst-invoice-form {
   border-color: #cbd8e5;
 }
+
+.gst-logo-row {
+  margin-bottom: 28px;
+}
+
+.gst-logo-row .invoice-logo-field {
+  cursor: pointer;
+}
+
+.gst-logo-row .invoice-logo-field input[type="file"] {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.gst-logo-row .invoice-logo-card {
+  width: 200px;
+  min-height: 130px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 1px dashed #ddd;
+  border-radius: 8px;
+  background: var(--color-secondary);
+  color: var(--color-primary);
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.gst-logo-row .invoice-logo-plus {
+  font-size: 28px;
+  font-weight: 300;
+  line-height: 1;
+}
+
+.gst-logo-row .invoice-logo-preview {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  padding: 6px;
+}
+
+.gst-field-section {
+  margin-top: 20px;
+  padding-top: 12px;
+  border-top: 1px solid #eee;
+}
+
+.gst-field-section:first-child {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: 0;
+}
+
+.gst-field-section  {
+  margin: 0 0 18px;
+  color: var(--color-primary);
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: 0.4px;
+}
+
+h3 {
+  margin: 0 0 18px;
+  color: var(--color-secondary);
+  font-size: 18px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.gst-item-row {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(90px, 0.7fr) minmax(120px, 0.9fr) minmax(140px, 1fr);
+  gap: 18px;
+  padding: 14px 0;
+  border-top: 1px solid #eee;
+}
+
+.gst-item-row input[readonly] {
+  background: var(--color-secondary);
+  color: #555;
+}
+
+.gst-field-section input[readonly] {
+  background: var(--color-secondary);
+  color: #555;
+}
+
+.gst-field-section select {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 13px 14px;
+  color: var(--color-primary);
+  background: var(--color-secondary);
+  outline: none;
+}
+
+.gst-field-section select:focus {
+  border-color: var(--color-accent);
+}
+
 .gst-invoice-form select {
   width: 100%;
   border: 1px solid #d8d1c8;
   border-radius: 1px;
   padding: 13px 14px;
   color: var(--color-primary);
-  background: #fff;
+  background: var(--color-secondary);
 }
 .gst-invoice-form select:focus {
   outline: 1px solid var(--color-accent);
 }
-@media (max-width: 640px) {
+@media (max-width: 900px) {
+  .gst-invoice-section {
+    padding: 64px 24px 72px;
+  }
+
+  .gst-item-row {
+    gap: 14px;
+  }
+}
+
+@media (max-width: 600px) {
   .gst-invoice-section {
     padding: 56px 16px;
+  }
+
+  .gst-logo-row {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .gst-logo-row .invoice-logo-card {
+    width: 180px;
+    min-height: 116px;
+  }
+
+  .gst-item-row {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .gst-item-row label:first-child,
+  .gst-item-row label:last-child {
+    grid-column: 1 / -1;
   }
 }
