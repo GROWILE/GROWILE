@@ -13,6 +13,16 @@ import Products from '../../../../packages/ui/src/Products-card'
 type InvoicePageVariant = "without-gst" | "gst";
 
 function getPageVariant(): InvoicePageVariant {
+  const pathname = window.location.pathname;
+
+  if (pathname.endsWith("/gst-invoice")) {
+    return "gst";
+  }
+
+  if (pathname.endsWith("/without-gst-invoice")) {
+    return "without-gst";
+  }
+
   const gstHashes = new Set(["#gst-invoice-page", "#gst-invoice"]);
   const withoutGstHashes = new Set(["#without-gst-invoice-page", "#without-gst-invoice"]);
 
@@ -29,9 +39,13 @@ function getPageVariant(): InvoicePageVariant {
 
 export default function InvoicePage() {
   const [variant, setVariant] = useState<InvoicePageVariant>(getPageVariant);
-  const invoiceHomeHref = window.location.pathname.startsWith("/invoice")
+  const isEmbeddedInvoice = window.location.pathname.startsWith("/invoice");
+  const invoiceBaseHref = isEmbeddedInvoice ? "/invoice" : "";
+  const invoiceHomeHref = isEmbeddedInvoice
     ? "/invoice"
     : "/";
+  const gstInvoiceHref = `${invoiceBaseHref}/gst-invoice`;
+  const withoutGstInvoiceHref = `${invoiceBaseHref}/without-gst-invoice`;
 
   useEffect(() => {
     const handleHashChange = () => setVariant(getPageVariant());
@@ -72,8 +86,8 @@ export default function InvoicePage() {
         tools={{
           label: "Tools",
           items: [
-            { label: "Non-GST Invoice", href: "#without-gst-invoice-page" },
-            { label: "GST Invoice", href: "#gst-invoice-page" },
+            { label: "Non-GST Invoice", href: withoutGstInvoiceHref },
+            { label: "GST Invoice", href: gstInvoiceHref },
           ],
         }}
       />
@@ -83,7 +97,7 @@ export default function InvoicePage() {
           title="Professional invoices, built for your business."
           subtitle="Create clean, accurate invoices in minutes. Choose the format that suits your business and keep every payment moving forward."
           ctaText="Create an Invoice"
-          ctaHref={isGstPage ? "#gst-invoice" : "#without-gst-invoice"}
+          ctaHref={isGstPage ? gstInvoiceHref : withoutGstInvoiceHref}
         />
         <Divider />
         <section className="invoice-options" id="invoice-options">

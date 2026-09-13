@@ -100,6 +100,9 @@ function wrapPdfText(pdf: jsPDF, text: string, maxWidth: number, maxCharsPerLine
 // ---------- Component ----------
 
 export default function WithoutGstInvoice() {
+  const gstInvoiceHref = window.location.pathname.startsWith("/invoice")
+    ? "/invoice/gst-invoice"
+    : "/gst-invoice";
   const [logoUrl, setLogoUrl] = useState("");
   const [from, setFrom] = useState("");
   const [to, setTo] = useState("");
@@ -514,7 +517,7 @@ export default function WithoutGstInvoice() {
         <AdSpace />
       </div>
 
-      <a className="invoice-switch-button" href="#gst-invoice">
+      <a className="invoice-switch-button" href={gstInvoiceHref}>
         SWITCH TO GST INVOICE <span>&gt;</span>
       </a>
     </section>

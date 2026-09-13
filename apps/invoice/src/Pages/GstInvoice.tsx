@@ -94,6 +94,9 @@ function isValidEmail(value: string) {
 // ---------- Component ----------
 
 export default function GstInvoice() {
+  const withoutGstInvoiceHref = window.location.pathname.startsWith("/invoice")
+    ? "/invoice/without-gst-invoice"
+    : "/without-gst-invoice";
 
   // ---- Logo ----
 
@@ -685,7 +688,7 @@ export default function GstInvoice() {
         <AdSpace />
       </div>
 
-      <a className="invoice-switch-button" href="#without-gst-invoice">
+      <a className="invoice-switch-button" href={withoutGstInvoiceHref}>
         CREATE A WITHOUT GST INVOICE <span>&gt;</span>
       </a>
     </section>

@@ -2,5 +2,15 @@
   "framework": "vite",
   "buildCommand": "pnpm build",
   "outputDirectory": "dist",
-  "installCommand": "cd ../.. && pnpm install --frozen-lockfile --ignore-scripts"
+  "installCommand": "cd ../.. && pnpm install --frozen-lockfile --ignore-scripts",
+  "rewrites": [
+    {
+      "source": "/gst-invoice",
+      "destination": "/"
+    },
+    {
+      "source": "/without-gst-invoice",
+      "destination": "/"
+    }
+  ]
 }
