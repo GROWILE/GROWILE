@@ -17,8 +17,5 @@
     }
   },
   "packageManager": "pnpm@12.3.4",
-  "type": "module",
-  "pnpm": {
-    "onlyBuiltDependencies": ["core-js"]
-  }
+  "type": "module"
 }
