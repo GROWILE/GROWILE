@@ -29,6 +29,9 @@ function getPageVariant(): InvoicePageVariant {
 
 export default function InvoicePage() {
   const [variant, setVariant] = useState<InvoicePageVariant>(getPageVariant);
+  const invoiceHomeHref = window.location.pathname.startsWith("/invoice")
+    ? "/invoice"
+    : "/";
 
   useEffect(() => {
     const handleHashChange = () => setVariant(getPageVariant());
@@ -58,12 +61,12 @@ export default function InvoicePage() {
       <Navbar
         logoAlt="Growile"
         logoSrc={invoiceLogo}
-        home={{ label: "Home", href: "/" }}
+        home={{ label: "Home", href: invoiceHomeHref }}
         products={{
           label: "Products",
           items: [
             { label: "Finance", href: "#finance" },
-            { label: "Invoice", href: "/" },
+            { label: "Invoice", href: invoiceHomeHref },
           ],
         }}
         tools={{
@@ -113,7 +116,7 @@ export default function InvoicePage() {
           ]}
         />
       </main>
-      <Footer invoiceHref="/" />
+      <Footer invoiceHref={invoiceHomeHref} />
     </div>
   );
 }
