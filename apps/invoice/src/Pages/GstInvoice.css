@@ -72,7 +72,7 @@
   letter-spacing: 0.4px;
 }
 
-h3 {
+.gst-invoice-section h3 {
   margin: 0 0 18px;
   color: var(--color-secondary);
   font-size: 18px;
