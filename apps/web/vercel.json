@@ -1,6 +1,21 @@
 {
+  "$schema": "https://openapi.vercel.sh/vercel.json",
   "framework": "vite",
   "installCommand": "pnpm install --frozen-lockfile --ignore-scripts",
   "buildCommand": "pnpm build",
-  "outputDirectory": "dist"
+  "outputDirectory": "dist",
+  "rewrites": [
+    {
+      "source": "/invoice",
+      "destination": "https://growile-invoice.vercel.app/"
+    },
+    {
+      "source": "/invoice/:path*",
+      "destination": "https://growile-invoice.vercel.app/:path*"
+    },
+    {
+      "source": "/invoice-assets/:path*",
+      "destination": "https://growile-invoice.vercel.app/invoice-assets/:path*"
+    }
+  ]
 }
