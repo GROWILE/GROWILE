@@ -21,7 +21,7 @@ const products: Product[] = [
     href: "/invoice",
     buttonLabel: "Create Invoice",
     description: "Professional invoicing that keeps your billing clear and moving.",
-    tags: ["Automation"],
+    tags: ["NON-GST", "GST"],
   },
 ];
 

@@ -10,6 +10,7 @@ import invoiceLogo from "../../../../packages/ui/assets/growile-logo (1).svg";
 import GstInvoice from "./GstInvoice.tsx";
 import WithoutGstInvoice from "./WithoutGstInvoice";
 import Products from '../../../../packages/ui/src/Products-card'
+import PageMeta from "../../../../packages/ui/src/PageMeta";
 
 type InvoicePageVariant = "without-gst" | "gst";
 
@@ -71,6 +72,12 @@ export default function InvoicePage() {
 
   const isGstPage = variant === "gst";
   const invoiceFormId = isGstPage ? "gst-invoice" : "without-gst-invoice";
+  const pageTitle = isGstPage 
+  ? "Free GST Invoice Creator India | Growile" 
+  : "Free Invoice Creator (Non-GST) | Growile";
+  const pageDescription = isGstPage
+  ? "Generate professional GST invoices instantly for your business. Use Growile's free online invoice creator to calculate taxes and download PDFs."
+  : "Create clean, professional non-GST bills and estimates instantly. Use Growile's free invoice creator to format and download your bills in seconds.";
 
   const scrollToInvoiceForm = (event: MouseEvent<HTMLAnchorElement>) => {
     event.preventDefault();
@@ -82,6 +89,11 @@ export default function InvoicePage() {
 
   return (
     <div className="invoice-app">
+      <PageMeta
+        title={pageTitle}
+        description={pageDescription}
+        canonicalPath={window.location.pathname}
+      />
       <Navbar
         logoAlt="Growile"
         logoSrc={invoiceLogo}
@@ -106,7 +118,7 @@ export default function InvoicePage() {
           kicker="GROWILE INVOICE"
           title="Professional invoices, built for your business."
           subtitle="Create clean, accurate invoices in minutes. Choose the format that suits your business and keep every payment moving forward."
-          ctaText="Create an Invoice"
+          ctaText="Create Free Invoice"
           ctaHref={isGstPage ? gstInvoiceHref : withoutGstInvoiceHref}
           onCtaClick={scrollToInvoiceForm}
         />
