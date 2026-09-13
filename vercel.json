@@ -13,6 +13,10 @@
     {
       "source": "/invoice/:path*",
       "destination": "https://growile-invoice.vercel.app/:path*"
+    },
+    {
+      "source": "/invoice-assets/:path*",
+      "destination": "https://growile-invoice.vercel.app/invoice-assets/:path*"
     }
   ]
 

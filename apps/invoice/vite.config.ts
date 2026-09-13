@@ -4,7 +4,10 @@ import { defineConfig } from 'vite'
 export default defineConfig({
   plugins: [react()],
 
-  base: '/invoice/',
+  base: '/',
+  build: {
+    assetsDir: 'invoice-assets',
+  },
 
   server: {
     watch: {
