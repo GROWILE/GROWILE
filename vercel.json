@@ -2,5 +2,18 @@
   "framework": "vite",
   "installCommand": "pnpm install --frozen-lockfile --ignore-scripts",
   "buildCommand": "pnpm --filter @growile/web build",
-  "outputDirectory": "apps/web/dist"
+  "outputDirectory": "apps/web/dist",
+
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "rewrites": [
+    {
+      "source": "/invoice",
+      "destination": "https://growile-invoice.vercel.app/"
+    },
+    {
+      "source": "/invoice/:path*",
+      "destination": "https://growile-invoice.vercel.app/:path*"
+    }
+  ]
+
 }
