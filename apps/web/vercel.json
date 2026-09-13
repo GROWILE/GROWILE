@@ -1,6 +1,6 @@
 {
   "framework": "vite",
   "installCommand": "pnpm install --frozen-lockfile --ignore-scripts",
-  "buildCommand": "pnpm --filter @growile/web build",
-  "outputDirectory": "apps/web/dist"
+  "buildCommand": "pnpm build",
+  "outputDirectory": "dist"
 }
