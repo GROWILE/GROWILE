@@ -20,7 +20,7 @@ function Home() {
           label: "Products",
           items: [
             { label: "Finance", href: "#finance" },
-            { label: "Invoice", href: "#invoice" },
+            { label: "Invoice", href: "/invoice" },
           ],
         }}
         about={{ label: "About", href: "/about" }}
