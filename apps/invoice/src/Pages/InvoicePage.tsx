@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import type { MouseEvent } from "react";
 import Divider from "../../../../packages/ui/src/Divider";
 import FAQ from "@growile/ui/src/FAQ";
 import Footer from "../../../../packages/ui/src/Footer";
@@ -69,6 +70,15 @@ export default function InvoicePage() {
   }, [variant]);
 
   const isGstPage = variant === "gst";
+  const invoiceFormId = isGstPage ? "gst-invoice" : "without-gst-invoice";
+
+  const scrollToInvoiceForm = (event: MouseEvent<HTMLAnchorElement>) => {
+    event.preventDefault();
+    document.getElementById(invoiceFormId)?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  };
 
   return (
     <div className="invoice-app">
@@ -98,6 +108,7 @@ export default function InvoicePage() {
           subtitle="Create clean, accurate invoices in minutes. Choose the format that suits your business and keep every payment moving forward."
           ctaText="Create an Invoice"
           ctaHref={isGstPage ? gstInvoiceHref : withoutGstInvoiceHref}
+          onCtaClick={scrollToInvoiceForm}
         />
         <Divider />
         <section className="invoice-options" id="invoice-options">
