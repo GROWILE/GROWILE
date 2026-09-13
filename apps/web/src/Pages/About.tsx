@@ -2,6 +2,7 @@ import "./About.css";
 import Navbar from "../../../../packages/ui/src/Navbar";
 import Footer from "../../../../packages/ui/src/Footer";
 import Divider from "../../../../packages/ui/src/Divider";
+import webLogo from "../../../../packages/ui/assets/growile-invoice-logo.svg";
 
 const values = [
   {
@@ -38,6 +39,7 @@ export default function About() {
     <>
       <Navbar
         logoAlt="Growile"
+        logoSrc={webLogo}
         home={{ label: "Home", href: "/" }}
         products={{
           label: "Products",

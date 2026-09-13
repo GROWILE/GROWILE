@@ -98,6 +98,11 @@
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
 }
 
+.navbar-dropdown:last-child .navbar-dropdown-menu {
+  left: auto;
+  right: 0;
+}
+
 .navbar-dropdown-item {
   display: block;
   padding: 12px 18px;
@@ -224,7 +229,9 @@
 
   .navbar-dropdown-menu {
     position: static;
+    left: auto;
     margin: 0 auto 6px;
+    right: auto;
     width: min(100%, 240px);
   }
 }

@@ -7,6 +7,10 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "rewrites": [
     {
+      "source": "/about",
+      "destination": "/"
+    },
+    {
       "source": "/invoice",
       "destination": "https://growile-invoice.vercel.app/"
     },
@@ -17,6 +21,10 @@
     {
       "source": "/invoice-assets/:path*",
       "destination": "https://growile-invoice.vercel.app/invoice-assets/:path*"
+    },
+    {
+      "source": "/growile-fevi-icon.png",
+      "destination": "https://growile-invoice.vercel.app/growile-fevi-icon.png"
     }
   ]
 

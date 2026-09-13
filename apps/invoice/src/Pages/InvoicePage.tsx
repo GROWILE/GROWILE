@@ -5,6 +5,7 @@ import Footer from "../../../../packages/ui/src/Footer";
 import Hero from "../../../../packages/ui/src/Hero";
 import HowToUse from "@growile/ui/src/HowToUse";
 import Navbar from "../../../../packages/ui/src/Navbar";
+import invoiceLogo from "../../../../packages/ui/assets/growile-logo (1).svg";
 import GstInvoice from "./GstInvoice.tsx";
 import WithoutGstInvoice from "./WithoutGstInvoice";
 import Products from '../../../../packages/ui/src/Products-card'
@@ -56,6 +57,7 @@ export default function InvoicePage() {
     <div className="invoice-app">
       <Navbar
         logoAlt="Growile"
+        logoSrc={invoiceLogo}
         home={{ label: "Home", href: "/" }}
         products={{
           label: "Products",

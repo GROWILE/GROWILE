@@ -1,6 +1,5 @@
 import { useState } from "react";
 import "./Navbar.css";
-import logo from "../assets/growile-logo.png";
 
 type NavbarLink = {
   label: string;
@@ -9,6 +8,7 @@ type NavbarLink = {
 
 type NavbarProps = {
   logoAlt: string;
+  logoSrc: string;
   home: NavbarLink;
   products: {
     label: string;
@@ -74,7 +74,7 @@ function NavbarDropdown({
   );
 }
 
-export default function Navbar({ logoAlt, home, products, tools, about }: NavbarProps) {
+export default function Navbar({ logoAlt, logoSrc, home, products, tools, about }: NavbarProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [pinnedDropdown, setPinnedDropdown] = useState<string | null>(null);
@@ -111,7 +111,7 @@ export default function Navbar({ logoAlt, home, products, tools, about }: Navbar
     <header className="navbar">
       <div className="navbar-container">
         <a href={home.href} className="navbar-logo">
-          <img src={logo} alt={logoAlt} />
+          <img src={logoSrc} alt={logoAlt} />
         </a>
 
         <button
