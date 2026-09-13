@@ -18,7 +18,7 @@ type NavbarProps = {
     label: string;
     items: NavbarLink[];
   };
-  about: NavbarLink;
+  about?: NavbarLink;
 };
 
 type NavbarDropdownProps = {
@@ -110,7 +110,7 @@ export default function Navbar({ logoAlt, home, products, tools, about }: Navbar
   return (
     <header className="navbar">
       <div className="navbar-container">
-        <a href="/" className="navbar-logo">
+        <a href={home.href} className="navbar-logo">
           <img src={logo} alt={logoAlt} />
         </a>
 
@@ -153,9 +153,11 @@ export default function Navbar({ logoAlt, home, products, tools, about }: Navbar
             />
           )}
 
-           <a href={about.href} className="navbar-link" onClick={() => setIsMenuOpen(false)}>
-             {about.label}
-           </a>
+          {about && (
+            <a href={about.href} className="navbar-link" onClick={() => setIsMenuOpen(false)}>
+              {about.label}
+            </a>
+          )}
 
         </nav>
       </div>

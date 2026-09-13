@@ -1,11 +1,16 @@
 import "./Footer.css";
 
-const footerColumns = [
+type FooterProps = {
+  invoiceHref?: string;
+};
+
+function createFooterColumns(invoiceHref: string) {
+  return [
   {
     title: "Products",
     links: [
       { label: "Finance", href: "#" },
-      { label: "Invoice", href: "/invoice" },
+      { label: "Invoice", href: invoiceHref },
     ],
   },
   /* {
@@ -19,7 +24,8 @@ const footerColumns = [
     title: "Company",
     links: [{ label: "About Us", href: "/about" }],
   },
-];
+  ];
+}
 
 const socialLinks = [
   { label: "X", href: "#" },
@@ -34,7 +40,9 @@ const legalLinks = [
   "Privacy Policy",
 ];
 
-export default function Footer() {
+export default function Footer({ invoiceHref = "/invoice" }: FooterProps) {
+  const footerColumns = createFooterColumns(invoiceHref);
+
   return (
     <footer className="footer">
       <div className="footer-cta">

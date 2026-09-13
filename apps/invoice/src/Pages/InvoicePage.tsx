@@ -71,7 +71,6 @@ export default function InvoicePage() {
             { label: "GST Invoice", href: "#gst-invoice-page" },
           ],
         }}
-        about={{ label: "About", href: "/about" }}
       />
       <main id={isGstPage ? "gst-invoice-page" : "without-gst-invoice-page"}>
         <Hero
@@ -112,7 +111,7 @@ export default function InvoicePage() {
           ]}
         />
       </main>
-      <Footer />
+      <Footer invoiceHref="/" />
     </div>
   );
 }
