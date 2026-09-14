@@ -13,7 +13,7 @@ function createFooterColumns(invoiceHref: string) {
   {
     title: "Products",
     links: [
-      { label: "Finance", href: "#" },
+      { label: "Finance", href: "/finance" },
       { label: "Invoice", href: invoiceHref },
     ],
   },

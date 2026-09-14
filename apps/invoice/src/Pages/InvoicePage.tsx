@@ -103,7 +103,7 @@ export default function InvoicePage() {
         products={{
           label: "Products",
           items: [
-            { label: "Finance", href: "#finance" },
+            { label: "Finance", href: "/finance" },
             { label: "Invoice", href: invoiceHomeHref },
           ],
         }}
