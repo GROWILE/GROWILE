@@ -24,6 +24,10 @@ const pageMetadata = {
     title: "Privacy Policy for Growile",
     description: "Read the Growile Privacy Policy to understand how we collect, protect, and use your information across our tools.",
   },
+  "/finance": {
+    title: "Finance - Coming Soon | Growile",
+    description: "Our Finance product is currently in active development. We are building a simpler, smarter experience for tracking and managing financial tasks."
+  },
 } as const;
 
 const defaultMetadata = {
