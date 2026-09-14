@@ -49,6 +49,7 @@ export default function InvoicePage() {
   const gstInvoiceHref = `${invoiceBaseHref}/gst-invoice`;
   const withoutGstInvoiceHref = `${invoiceBaseHref}/without-gst-invoice`;
   const termsHref = `${invoiceBaseHref}/terms-and-conditions`;
+  const privacyHref = `${invoiceBaseHref}/privacy-policy`;
 
   useEffect(() => {
     const handleHashChange = () => setVariant(getPageVariant());
@@ -154,7 +155,12 @@ export default function InvoicePage() {
           ]}
         />
       </main>
-      <Footer invoiceHref={invoiceHomeHref} termsHref={termsHref} showAdSpace />
+      <Footer
+        invoiceHref={invoiceHomeHref}
+        termsHref={termsHref}
+        privacyHref={privacyHref}
+        showAdSpace
+      />
     </div>
   );
 }

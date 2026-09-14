@@ -514,7 +514,7 @@ export default function WithoutGstInvoice() {
           DOWNLOAD INVOICE <span>&gt;</span>
         </button>
       </form>
-        <AdSpace />
+        <AdSpace variant="vertical" />
       </div>
 
       <a className="invoice-switch-button" href={gstInvoiceHref}>

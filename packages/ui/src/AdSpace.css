@@ -1,18 +1,15 @@
 .ad-space {
-  width: min(100% - 48px, 1100px);
-  min-height: 126px;
-  margin: 0 auto 42px;
-  border: 1px dashed color-mix(in srgb, var(--color-primary) 24%, transparent);
-  background: color-mix(in srgb, var(--color-primary) 3%, transparent);
   display: grid;
   place-items: center;
+  border: 1px dashed color-mix(in srgb, var(--color-primary) 24%, transparent);
+  background: color-mix(in srgb, var(--color-primary) 3%, transparent);
   position: relative;
 }
 
 .ad-space::before {
   content: "";
   position: absolute;
-  inset: 14px 12px;
+  inset: 10px 12px;
   border: 1px solid color-mix(in srgb, var(--color-primary) 10%, transparent);
 }
 
@@ -26,23 +23,51 @@
   z-index: 1;
 }
 
-.ad-space-compact {
-  min-height: 96px;
-  margin-bottom: 32px;
+.ad-space-banner {
+  position: fixed;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: min(100% - 32px, 1100px);
+  min-height: 86px;
+  margin: 0 auto;
+  z-index: 999;
+  pointer-events: none;
+}
+
+.ad-space-banner.ad-space-compact {
+  min-height: 80px;
+}
+
+.ad-space-vertical {
+  width: 220px;
+  min-height: 520px;
+  margin: 0;
+  align-self: stretch;
+  justify-self: end;
+  pointer-events: none;
 }
 
 @media (max-width: 900px) {
-  .ad-space {
-    width: min(100% - 48px, 1100px);
-    min-height: 110px;
-    margin-bottom: 34px;
+  .ad-space-banner {
+    width: min(100% - 24px, 1100px);
+    min-height: 72px;
+  }
+
+  .ad-space-vertical {
+    width: 180px;
+    min-height: 420px;
   }
 }
 
 @media (max-width: 600px) {
-  .ad-space {
-    width: min(100% - 32px, 1100px);
-    min-height: 88px;
-    margin-bottom: 28px;
+  .ad-space-banner {
+    width: min(100% - 16px, 1100px);
+    min-height: 66px;
+  }
+
+  .ad-space-vertical {
+    width: 140px;
+    min-height: 320px;
   }
 }

@@ -31,13 +31,13 @@ function createFooterColumns(invoiceHref: string) {
   ];
 }
 
-const socialLinks = [
+/* const socialLinks = [
   { label: "X", href: "#" },
   { label: "FB", href: "#" },
   { label: "YT", href: "#" },
   { label: "IN", href: "#" },
   { label: "IG", href: "#" },
-]; 
+]; */
 
 export default function Footer({ invoiceHref = "/invoice", termsHref = "#", privacyHref = "/privacy-policy", showAdSpace = false }: FooterProps) {
   const footerColumns = createFooterColumns(invoiceHref);
@@ -79,7 +79,7 @@ export default function Footer({ invoiceHref = "/invoice", termsHref = "#", priv
         </div>
       </div>
 
-      <div className="footer-social">
+      { /* <div className="footer-social">
         {socialLinks.map((social) => (
           <a
             key={social.label}
@@ -90,7 +90,7 @@ export default function Footer({ invoiceHref = "/invoice", termsHref = "#", priv
             {social.label}
           </a>
         ))}
-      </div>
+      </div> */ }
 
       <div className="footer-legal">
         <a href={termsHref}>Terms and Conditions</a>
