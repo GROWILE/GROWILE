@@ -31,7 +31,7 @@ function Home() {
         title="Digital Innovation, Built for Tomorrow"
         subtitle="We create modern software solutions that combine thoughtful design, powerful technology, and scalable architecture to help businesses move faster, work smarter, and stay ready for what's next."
         ctaText="Explore Products"
-        ctaHref="#products"
+        ctaHref="/products"
       />
       <Divider />
       <Products />

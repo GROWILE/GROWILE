@@ -49,7 +49,7 @@ export default function Footer({ invoiceHref = "/invoice", termsHref = "#", priv
       <div className="footer-cta">
         <h2 className="footer-cta-title">Ready to do your best work?</h2>
         <p className="footer-cta-subtitle">Let's get you started.</p>
-        <a href="#signup" className="footer-cta-button">
+        <a href="/products" className="footer-cta-button">
             EXPLORE OUR PRODUCTS <span className="footer-cta-arrow">&gt;</span>
         </a>
       </div>

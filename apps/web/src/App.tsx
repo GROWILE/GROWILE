@@ -6,7 +6,7 @@ import About from "./Pages/About";
 import TermsOfService from "./Pages/TermsOfService";
 import PrivacyPolicyPage from "./Pages/PrivacyPolicyPage";
 import FinanceComingSoon from "./Pages/FinanceComingSoon";
-
+import ProductsList from './Pages/ProductsList';
 const pageMetadata = {
   "/": {
     title: "Growile - Free Digital Tools Ecosystem for Daily Tasks",
@@ -63,6 +63,7 @@ function App() {
         <Route path="/terms-of-service" element={<TermsOfService />} />
         <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
         <Route path="/finance" element={<FinanceComingSoon />} />
+        <Route path="/products" element={<ProductsList />} />
       </Routes>
     </>
   );

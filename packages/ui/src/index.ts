@@ -9,3 +9,5 @@ export { default as AdSpace } from "./AdSpace";
 export { default as Hero } from "./Hero";
 export { default as HowToUse } from "./HowToUse";
 export { default as PrivacyPolicy } from "./PrivacyPolicy";
+export { default as ProductsPage } from './ProductsPage';
+export type { ProductItem, ProductsPageProps } from './ProductsPage';
