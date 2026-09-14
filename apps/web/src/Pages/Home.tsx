@@ -47,7 +47,7 @@ function Home() {
          ]}
        />
       <Footer termsHref="/terms-of-service" />
-
+        {/* <Footer*/}
      </>
 
   );
