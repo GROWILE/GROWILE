@@ -2,6 +2,7 @@ import "./Footer.css";
 
 type FooterProps = {
   invoiceHref?: string;
+  termsHref?: string;
 };
 
 function createFooterColumns(invoiceHref: string) {
@@ -35,12 +36,7 @@ const socialLinks = [
   { label: "IG", href: "#" },
 ]; 
 
-const legalLinks = [
-  "Terms and Conditions",
-  "Privacy Policy",
-];
-
-export default function Footer({ invoiceHref = "/invoice" }: FooterProps) {
+export default function Footer({ invoiceHref = "/invoice", termsHref = "#" }: FooterProps) {
   const footerColumns = createFooterColumns(invoiceHref);
 
   return (
@@ -92,11 +88,8 @@ export default function Footer({ invoiceHref = "/invoice" }: FooterProps) {
       </div>
 
       <div className="footer-legal">
-        {legalLinks.map((link) => (
-          <a key={link} href="#">
-            {link}
-          </a>
-        ))}
+        <a href={termsHref}>Terms and Conditions</a>
+        <a href="#">Privacy Policy</a>
       </div>
 
       <div className="footer-bottom">

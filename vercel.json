@@ -11,6 +11,10 @@
       "destination": "/"
     },
     {
+      "source": "/terms-of-service",
+      "destination": "/"
+    },
+    {
       "source": "/invoice",
       "destination": "https://growile-invoice.vercel.app/"
     },

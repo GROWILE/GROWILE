@@ -46,7 +46,7 @@ function Home() {
           { question: "Do I need to create an account to use your products?", answer: "No, most of our tools work without an account. Signing up just lets you save your history and preferences." },
          ]}
        />
-      <Footer />
+      <Footer termsHref="/terms-of-service" />
 
      </>
 

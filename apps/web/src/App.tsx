@@ -3,6 +3,7 @@ import { Routes, Route, useLocation } from "react-router-dom";
 import PageMeta from "../../../packages/ui/src/PageMeta";
 import Home from "./Pages/Home";
 import About from "./Pages/About";
+import TermsOfService from "./Pages/TermsOfService";
 
 const pageMetadata = {
   "/": {
@@ -12,6 +13,10 @@ const pageMetadata = {
   "/about": {
     title: "About Growile - Building a Free Digital Tool Ecosystem",
     description: "Discover the vision behind Growile. We are dedicated to simplifying your daily tasks by building a completely free ecosystem of essential digital tools."
+  },
+  "/terms-of-service": {
+    title: "Terms of Service",
+    description: "Read the Terms of Service governing your use of the GROWILE website and tools.",
   },
 } as const;
 
@@ -45,6 +50,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
+        <Route path="/terms-of-service" element={<TermsOfService />} />
       </Routes>
     </>
   );

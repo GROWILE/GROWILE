@@ -130,7 +130,7 @@ export default function About() {
         </ul>
       </section>
 
-      <Footer />
+      <Footer termsHref="/terms-of-service" />
     </>
   );
 }
