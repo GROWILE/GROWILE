@@ -32,6 +32,10 @@
     {
       "source": "/growile-fevi-icon.png",
       "destination": "https://growile-invoice.vercel.app/growile-fevi-icon.png"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
     }
   ]
 }
