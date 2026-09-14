@@ -8,3 +8,4 @@ export { default as ProductsCard } from "./Products-card";
 export { default as AdSpace } from "./AdSpace";
 export { default as Hero } from "./Hero";
 export { default as HowToUse } from "./HowToUse";
+export { default as PrivacyPolicy } from "./PrivacyPolicy";

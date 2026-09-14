@@ -11,6 +11,14 @@
     {
       "source": "/without-gst-invoice",
       "destination": "/"
+    },
+    {
+      "source": "/terms-and-conditions",
+      "destination": "/"
+    },
+    {
+      "source": "/privacy-policy",
+      "destination": "/"
     }
   ]
 }
