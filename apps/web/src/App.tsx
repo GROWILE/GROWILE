@@ -5,6 +5,7 @@ import Home from "./Pages/Home";
 import About from "./Pages/About";
 import TermsOfService from "./Pages/TermsOfService";
 import PrivacyPolicyPage from "./Pages/PrivacyPolicyPage";
+import FinanceComingSoon from "./Pages/FinanceComingSoon";
 
 const pageMetadata = {
   "/": {
@@ -57,6 +58,7 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/terms-of-service" element={<TermsOfService />} />
         <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+        <Route path="/finance" element={<FinanceComingSoon />} />
       </Routes>
     </>
   );

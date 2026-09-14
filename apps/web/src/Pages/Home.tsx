@@ -21,7 +21,7 @@ function Home() {
         products={{
           label: "Products",
           items: [
-            { label: "Finance", href: "#finance" },
+            { label: "Finance", href: "/finance" },
             { label: "Invoice", href: "/invoice" },
           ],
         }}

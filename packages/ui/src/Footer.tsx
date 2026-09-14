@@ -1,9 +1,11 @@
+import AdSpace from "./AdSpace";
 import "./Footer.css";
 
 type FooterProps = {
   invoiceHref?: string;
   termsHref?: string;
   privacyHref?: string;
+  showAdSpace?: boolean;
 };
 
 function createFooterColumns(invoiceHref: string) {
@@ -37,11 +39,13 @@ const socialLinks = [
   { label: "IG", href: "#" },
 ]; 
 
-export default function Footer({ invoiceHref = "/invoice", termsHref = "#", privacyHref = "/privacy-policy" }: FooterProps) {
+export default function Footer({ invoiceHref = "/invoice", termsHref = "#", privacyHref = "/privacy-policy", showAdSpace = false }: FooterProps) {
   const footerColumns = createFooterColumns(invoiceHref);
 
   return (
     <footer className="footer">
+      {showAdSpace && <AdSpace compact className="footer-ad-space" />}
+
       <div className="footer-cta">
         <h2 className="footer-cta-title">Ready to do your best work?</h2>
         <p className="footer-cta-subtitle">Let's get you started.</p>

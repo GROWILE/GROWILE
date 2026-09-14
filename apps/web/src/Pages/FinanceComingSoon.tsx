@@ -1,9 +1,11 @@
-import PrivacyPolicy from "../../../../packages/ui/src/PrivacyPolicy";
+import ComingSoonPage from "../../../../packages/ui/src/ComingSoonPage";
 import webLogo from "../../../../packages/ui/assets/growile-invoice-logo.svg";
 
-export default function PrivacyPolicyPage() {
+export default function FinanceComingSoon() {
   return (
-    <PrivacyPolicy
+    <ComingSoonPage
+      title="Finance"
+      description="Our Finance product is currently in active development. We are building a lighter, smarter experience to simplify everyday finance tasks."
       logoAlt="Growile"
       logoSrc={webLogo}
       home={{ label: "Home", href: "/" }}

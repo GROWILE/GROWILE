@@ -154,7 +154,7 @@ export default function InvoicePage() {
           ]}
         />
       </main>
-      <Footer invoiceHref={invoiceHomeHref} termsHref={termsHref} />
+      <Footer invoiceHref={invoiceHomeHref} termsHref={termsHref} showAdSpace />
     </div>
   );
 }

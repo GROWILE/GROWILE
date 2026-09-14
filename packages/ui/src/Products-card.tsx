@@ -11,10 +11,10 @@ type Product = {
 const products: Product[] = [
   {
     title: "Finance",
-    href: "#finance",
+    href: "/finance",
     buttonLabel: "Explore Finance",
     description: "A simpler way to understand your money and stay in control.",
-    tags: ["Offers"],
+    tags: ["Coming Soon"],
   },
   {
     title: "Invoice",
