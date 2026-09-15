@@ -2,40 +2,41 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 60px 20px;
-  font-family: manrope;
+  font-family: 'Manrope', sans-serif;
 }
 
 .products-page-header {
-  margin-bottom: 40px;
+  margin-bottom: 32px;
 }
 
 .products-page-title {
-  font-size: 32px;
+  font-size: 28px;
   font-weight: 700;
   color: #111827;
   display: flex;
   align-items: center;
   gap: 8px;
+  margin-bottom: 24px;
 }
 
 .products-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, 1fr);
-  gap: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 24px;
 }
 
 .product-card {
   background: #ffffff;
   border: 1px solid #e5e7eb;
-  border-radius: 1px;
-  padding: 30px;
+  border-radius: 16px;
+  padding: 32px;
   display: flex;
   flex-direction: column;
   transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 
 .product-card:hover {
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08);
   transform: translateY(-2px);
 }
 
@@ -43,7 +44,7 @@
   width: 48px;
   height: 48px;
   background-color: #fff0e6;
-  border-radius: 50%;
+  border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -84,16 +85,15 @@
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin-bottom: 24px;
-  padding-bottom: 24px;
-  border-bottom: 1px solid #f3f4f6;
+  margin-bottom: 28px;
+  /* Removed border-bottom divider line to match clean modern card UI */
 }
 
 .product-tag {
   background: #f3f4f6;
   color: #4b5563;
-  font-size: 12px;
-  padding: 4px 12px;
+  font-size: 13px;
+  padding: 6px 14px;
   border-radius: 100px;
   font-weight: 500;
 }
@@ -106,8 +106,8 @@
   background: #f96a1f;
   color: white;
   text-decoration: none;
-  padding: 12px 20px;
-  border-radius: 8px;
+  padding: 14px 20px;
+  border-radius: 10px;
   font-weight: 600;
   font-size: 15px;
   transition: background 0.2s ease;
