@@ -7,10 +7,11 @@ import TermsOfService from "./Pages/TermsOfService";
 import PrivacyPolicyPage from "./Pages/PrivacyPolicyPage";
 import FinanceComingSoon from "./Pages/FinanceComingSoon";
 import ProductsList from './Pages/ProductsList';
+
 const pageMetadata = {
   "/": {
-    title: "Growile - Free Digital Tools Ecosystem for Daily Tasks",
-    description: "Explore Growile, a complete digital ecosystem offering free online tools for your day-to-day needs. Simplify your everyday tasks with our growing platform."
+    title: "Growile | Global Web Tools & Utilities",
+    description: "Discover fast, private web tools built for modern global workflows. No sign-up required, zero data tracking, and 100% browser-secure."
   },
   "/about": {
     title: "About Growile - Building a Free Digital Tool Ecosystem",

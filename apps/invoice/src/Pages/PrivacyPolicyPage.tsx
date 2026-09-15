@@ -14,7 +14,7 @@ export default function PrivacyPolicyPage() {
       products={{
         label: "Products",
         items: [
-          { label: "Finance", href: "#finance" },
+          { label: "Finance", href: "/finance" },
           { label: "Invoice", href: invoiceHomeHref },
         ],
       }}

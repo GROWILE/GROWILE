@@ -47,8 +47,8 @@ export default function Footer({ invoiceHref = "/invoice", termsHref = "#", priv
       {showAdSpace && <AdSpace compact className="footer-ad-space" />}
 
       <div className="footer-cta">
-        <h2 className="footer-cta-title">Ready to do your best work?</h2>
-        <p className="footer-cta-subtitle">Let's get you started.</p>
+        <h2 className="footer-cta-title">Simplify Your Workflow with Growile's Free Toolkit.</h2>
+        <p className="footer-cta-subtitle">Create professional documents instantly with tools designed for speed and global privacy.</p>
         <a href="/products" className="footer-cta-button">
             EXPLORE OUR PRODUCTS <span className="footer-cta-arrow">&gt;</span>
         </a>

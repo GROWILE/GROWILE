@@ -2,6 +2,7 @@ import { useMemo, useState } from "react";
 import type { ChangeEvent, FormEvent } from "react";
 import jsPDF from "jspdf";
 import AdSpace from "../../../../packages/ui/src/AdSpace";
+import DownloadPopup from "../../../../packages/ui/src/DownloadPopup"; 
 import "./GstInvoice.css";
 
 // ---------- Types ----------
@@ -14,8 +15,6 @@ type GstItem = {
 };
 
 // ---------- Constants ----------
-
-// Full currency code list shown in the "Currency" dropdown/datalist.
 
 const currencies = [
   "AED", "AFN", "ALL", "AMD", "ANG", "AOA", "ARS", "AUD", "AWG", "AZN",
@@ -36,13 +35,9 @@ const currencies = [
   "VND", "VUV", "WST", "XAF", "XCD", "XOF", "XPF", "YER", "ZAR", "ZMW", "ZWL",
 ];
 
-// Form starts with a single blank item row.
-
 const initialItems: GstItem[] = [{ id: 1, item: "", quantity: "1", rate: "" }];
 
-// ---------- Small pure helpers (no state, easy to test) ----------
-
-/** Formats a number as "CODE 1,23,456.00" using the selected currency. */
+// ---------- Small pure helpers ----------
 
 function formatMoney(value: number, currency: string) {
   const code = currency.split(" ")[0];
@@ -52,17 +47,12 @@ function formatMoney(value: number, currency: string) {
   })}`;
 }
 
-/** Wraps long text into multiple lines so it fits inside the PDF page width. */
-
 function wrapPdfText(pdf: jsPDF, text: string, maxWidth: number, maxChars = 42) {
   if (!text) return [""];
   const chunks: string[] = [];
   let current = "";
 
   text.split(/\s+/).forEach((word) => {
-
-    // A single very long word (no spaces) gets forcibly split.
-
     if (word.length > maxChars) {
       if (current) chunks.push(current);
       current = "";
@@ -71,7 +61,6 @@ function wrapPdfText(pdf: jsPDF, text: string, maxWidth: number, maxChars = 42) 
       }
       return;
     }
-
     const next = current ? `${current} ${word}` : word;
     if (next.length <= maxChars) {
       current = next;
@@ -85,8 +74,6 @@ function wrapPdfText(pdf: jsPDF, text: string, maxWidth: number, maxChars = 42) 
   return chunks.flatMap((chunk) => pdf.splitTextToSize(chunk, maxWidth));
 }
 
-/** Basic email format check (not a full RFC validation, just enough to catch typos). */
-
 function isValidEmail(value: string) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
 }
@@ -98,12 +85,13 @@ export default function GstInvoice() {
     ? "/invoice/without-gst-invoice"
     : "/without-gst-invoice";
 
-  // ---- Logo ----
+  // 2. Popup open/close state-a track panna pudhu useState
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
 
+  // ---- Logo ----
   const [logoUrl, setLogoUrl] = useState("");
 
   // ---- Business (seller) details ----
-
   const [businessName, setBusinessName] = useState("");
   const [businessAddress, setBusinessAddress] = useState("");
   const [businessTaxNumber, setBusinessTaxNumber] = useState("");
@@ -111,14 +99,12 @@ export default function GstInvoice() {
   const [businessEmail, setBusinessEmail] = useState("");
 
   // ---- Invoice meta ----
-
   const [invoiceNumber, setInvoiceNumber] = useState("");
   const [invoiceDate, setInvoiceDate] = useState("");
   const [dueDate, setDueDate] = useState("");
   const [currency, setCurrency] = useState(currencies[0]);
 
   // ---- Customer (buyer) details ----
-
   const [customerName, setCustomerName] = useState("");
   const [billingAddress, setBillingAddress] = useState("");
   const [customerTaxNumber, setCustomerTaxNumber] = useState("");
@@ -127,7 +113,6 @@ export default function GstInvoice() {
   const [customerPhone, setCustomerPhone] = useState("");
 
   // ---- Items + totals inputs ----
-
   const [items, setItems] = useState(initialItems);
   const [tax, setTax] = useState("");
   const [discount, setDiscount] = useState("");
@@ -135,10 +120,7 @@ export default function GstInvoice() {
 
   const [error, setError] = useState("");
 
-  // ---- Derived values (auto-calculated from the state above) ----
-
-  // Amount per item row = quantity × rate.
-
+  // ---- Derived values ----
   const itemAmounts = useMemo(
     () => items.map((item) => Number(item.quantity || 0) * Number(item.rate || 0)),
     [items],
@@ -151,7 +133,6 @@ export default function GstInvoice() {
   const balanceAmount = Math.max(0, totalAmount - Number(paidAmount || 0));
 
   // ---- Handlers: logo ----
-
   const handleLogoChange = (event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (!file) return;
@@ -162,7 +143,6 @@ export default function GstInvoice() {
   };
 
   // ---- Handlers: items table ----
-
   const updateItem = (id: number, field: keyof GstItem, value: string) => {
     setItems((current) =>
       current.map((entry) => (entry.id === id ? { ...entry, [field]: value } : entry)),
@@ -176,12 +156,8 @@ export default function GstInvoice() {
     ]);
   };
 
-  // ---- Validation (runs before PDF is generated) ----
-
+  // ---- Validation ----
   const validateForm = () => {
-
-    // Every one of these fields (plus Item 1's values) is mandatory.
-
     const requiredValues = [
       businessName,
       businessAddress,
@@ -217,11 +193,10 @@ export default function GstInvoice() {
     if (Number(paidAmount) < 0) {
       return "Paid amount cannot be negative.";
     }
-    return null; // no errors
+    return null; 
   };
 
-  // ---- PDF generation (only runs after validation passes) ----
-
+  // ---- PDF generation ----
   function generatePdf() {
     const pdf = new jsPDF();
     const pageWidth = 210;
@@ -229,12 +204,8 @@ export default function GstInvoice() {
     const contentWidth = pageWidth - margin * 2;
     const currencyCode = currency.split(" ")[0];
 
-    // Outer border
-
     pdf.setDrawColor(230, 230, 230);
     pdf.rect(12, 12, 186, 273);
-
-    // "INVOICE" title + logo
 
     pdf.setFont("helvetica", "bold");
     pdf.setFontSize(24);
@@ -244,13 +215,9 @@ export default function GstInvoice() {
       pdf.addImage(logoUrl, "PNG", pageWidth - margin - 38, 16, 38, 20);
     }
 
-    // Accent divider line under the title
-
     pdf.setDrawColor(240, 119, 15);
     pdf.setLineWidth(1);
     pdf.line(margin, 40, pageWidth - margin, 40);
-
-    // ---- Business / Customer (two columns) ----
 
     let y = 54;
     const businessLines = [businessName, businessAddress, businessTaxNumber, businessPhone, businessEmail].join("\n");
@@ -271,8 +238,6 @@ export default function GstInvoice() {
     pdf.text(customerWrapped, margin + contentWidth / 2, y + 6);
     y += Math.max(businessWrapped.length, customerWrapped.length) * 5 + 15;
 
-    // ---- Invoice number / date / due date / currency (four columns) ----
-
     pdf.setFont("helvetica", "normal");
     pdf.setFontSize(8);
     pdf.setTextColor(140, 140, 140);
@@ -290,8 +255,6 @@ export default function GstInvoice() {
     pdf.text(currencyCode, margin + 158, y);
     y += 16;
 
-    // ---- Payment terms ----
-
     pdf.setFont("helvetica", "normal");
     pdf.setFontSize(8);
     pdf.setTextColor(140, 140, 140);
@@ -301,8 +264,6 @@ export default function GstInvoice() {
     pdf.setTextColor(85, 85, 85);
     pdf.text(wrapPdfText(pdf, paymentTerms, contentWidth, 70), margin, y);
     y += 14;
-
-    // ---- Items table header ----
 
     pdf.setFillColor(10, 10, 10);
     pdf.rect(margin, y, contentWidth, 10, "F");
@@ -314,8 +275,6 @@ export default function GstInvoice() {
     pdf.text("RATE", margin + contentWidth - 57, y + 7);
     pdf.text("AMOUNT", margin + contentWidth - 4, y + 7, { align: "right" });
     y += 16;
-
-    // ---- Items table rows ----
 
     pdf.setFont("helvetica", "normal");
     items.forEach((item, index) => {
@@ -332,8 +291,6 @@ export default function GstInvoice() {
 
       y += Math.max(lines.length, 1) * 6 + 6;
     });
-
-    // ---- Totals block: Subtotal, Tax, Discount, Total, Balance ----
 
     y += 5;
     pdf.setDrawColor(17, 17, 17);
@@ -369,8 +326,6 @@ export default function GstInvoice() {
     pdf.text("Balance amount", margin + contentWidth - 70, y);
     pdf.text(formatMoney(Number(balanceAmount || 0), currencyCode), margin + contentWidth - 4, y, { align: "right" });
 
-    // ---- Footer ----
-
     pdf.setFontSize(8);
     pdf.setTextColor(160, 160, 160);
     pdf.text("Invoice Created by GROWILE INVOICE", margin + contentWidth - 4, 278, { align: "right" });
@@ -388,7 +343,7 @@ export default function GstInvoice() {
       return;
     }
     setError("");
-    generatePdf();
+    setIsPopupOpen(true);
   };
 
   // ---- Render ----
@@ -510,7 +465,6 @@ export default function GstInvoice() {
                 />
               </label>
             </div>
-            {/* Autocomplete list backing the Currency input above */}
             <datalist id="gst-currencies">
               {currencies.map((option) => (
                 <option key={option} value={option} />
@@ -579,7 +533,7 @@ export default function GstInvoice() {
             </div>
           </div>
 
-          {/* Items table — each row is Item / Quantity / Rate / Amount (auto-calculated) */}
+          {/* Items table */}
           <div className="gst-field-section">
             <h3>Items</h3>
             {items.map((entry, index) => (
@@ -615,7 +569,6 @@ export default function GstInvoice() {
                 </label>
                 <label>
                   Amount
-                  {/* Read-only: this is quantity × rate, calculated automatically */}
                   <input value={formatMoney(itemAmounts[index], currency.split(" ")[0])} readOnly />
                 </label>
               </div>
@@ -625,7 +578,7 @@ export default function GstInvoice() {
             </button>
           </div>
 
-          {/* Final totals: Tax %, Discount %, Total (auto), Paid amount, Balance (auto) */}
+          {/* Final totals */}
           <div className="gst-field-section">
             <h3>Final</h3>
             <div className="invoice-form-grid invoice-form-amounts">
@@ -691,6 +644,14 @@ export default function GstInvoice() {
       <a className="invoice-switch-button" href={withoutGstInvoiceHref}>
         CREATE A WITHOUT GST INVOICE <span>&gt;</span>
       </a>
+
+      {/* Download PopUp Component */}
+      <DownloadPopup 
+        isOpen={isPopupOpen} 
+        onClose={() => setIsPopupOpen(false)} 
+        onTriggerDownload={generatePdf} 
+        itemName="GST Invoice" 
+      />
     </section>
   );
 }

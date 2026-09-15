@@ -11,3 +11,5 @@ export { default as HowToUse } from "./HowToUse";
 export { default as PrivacyPolicy } from "./PrivacyPolicy";
 export { default as ProductsPage } from './ProductsPage';
 export type { ProductItem, ProductsPageProps } from './ProductsPage';
+export { default as H2Section } from "./H2Section";
+export { default as DownloadPopup } from './DownloadPopup';

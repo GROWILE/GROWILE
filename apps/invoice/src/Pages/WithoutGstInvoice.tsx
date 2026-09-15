@@ -2,6 +2,7 @@ import { useMemo, useState } from "react";
 import type { ChangeEvent, FormEvent } from "react";
 import jsPDF from "jspdf";
 import AdSpace from "../../../../packages/ui/src/AdSpace";
+import DownloadPopup from "../../../../packages/ui/src/DownloadPopup"; 
 import "./WithoutGstInvoice.css";
 
 // ---------- Types ----------
@@ -13,14 +14,34 @@ type InvoiceItem = {
   amount: string;
 };
 
-// ---------- Field limits (change values here only) ----------
+// ---------- Constants ----------
+const currencies = [
+  "AED", "AFN", "ALL", "AMD", "ANG", "AOA", "ARS", "AUD", "AWG", "AZN",
+  "BAM", "BBD", "BDT", "BGN", "BHD", "BIF", "BMD", "BND", "BOB", "BRL",
+  "BSD", "BTN", "BWP", "BYN", "BZD", "CAD", "CDF", "CHF", "CLP", "CNY",
+  "COP", "CRC", "CUP", "CVE", "CZK", "DJF", "DKK", "DOP", "DZD", "EGP",
+  "ERN", "ETB", "EUR", "FJD", "FKP", "FOK", "GBP", "GEL", "GGP", "GHS",
+  "GIP", "GMD", "GNF", "GTQ", "GYD", "HKD", "HNL", "HRK", "HTG", "HUF",
+  "IDR", "ILS", "IMP", "INR", "IQD", "IRR", "ISK", "JEP", "JMD", "JOD",
+  "JPY", "KES", "KGS", "KHR", "KID", "KMF", "KRW", "KWD", "KYD", "KZT",
+  "LAK", "LBP", "LKR", "LRD", "LSL", "LYD", "MAD", "MDL", "MGA", "MKD",
+  "MMK", "MNT", "MOP", "MRU", "MUR", "MVR", "MWK", "MXN", "MYR", "MZN",
+  "NAD", "NGN", "NIO", "NOK", "NPR", "NZD", "OMR", "PAB", "PEN", "PGK",
+  "PHP", "PKR", "PLN", "PYG", "QAR", "RON", "RSD", "RUB", "RWF", "SAR",
+  "SBD", "SCR", "SDG", "SEK", "SGD", "SHP", "SLE", "SLL", "SOS", "SRD",
+  "SSP", "STN", "SYP", "SZL", "THB", "TJS", "TMT", "TND", "TOP", "TRY",
+  "TTD", "TVD", "TWD", "TZS", "UAH", "UGX", "USD", "UYU", "UZS", "VES",
+  "VND", "VUV", "WST", "XAF", "XCD", "XOF", "XPF", "YER", "ZAR", "ZMW", "ZWL",
+];
+
+// ---------- Field limits ----------
 
 const MAX_FROM_TO_LENGTH = 60;
 const MAX_PAYMENT_INFO_LENGTH = 300;
 const MAX_ITEM_DESCRIPTION_LENGTH = 100;
 const MAX_ITEMS = 10;
 const MAX_QUANTITY = 100000;
-const MAX_AMOUNT = 10000000; // 1 crore
+const MAX_AMOUNT = 10000000; 
 
 const initialItems: InvoiceItem[] = [
   { id: 1, description: "", quantity: "1", amount: "" },
@@ -28,9 +49,8 @@ const initialItems: InvoiceItem[] = [
   { id: 3, description: "", quantity: "1", amount: "" },
 ];
 
-// ---------- Small pure helpers (no state, easy to test) ----------
+// ---------- Small pure helpers ----------
 
-/** Turns raw digits into "DD/MM/YYYY" as the user types. */
 function formatDateInput(value: string) {
   const digits = value.replace(/\D/g, "").slice(0, 8);
   const day = digits.slice(0, 2);
@@ -39,7 +59,6 @@ function formatDateInput(value: string) {
   return [day, month, year].filter(Boolean).join("/");
 }
 
-/** Checks the date is a real calendar date, not just correct format. */
 function isValidDate(value: string) {
   const match = /^(\d{2})\/(\d{2})\/(\d{4})$/.exec(value);
   if (!match) return false;
@@ -60,7 +79,6 @@ function isValidDate(value: string) {
   );
 }
 
-/** Wraps long text into multiple lines so it fits inside the PDF page width. */
 function wrapPdfText(pdf: jsPDF, text: string, maxWidth: number, maxCharsPerLine = 34) {
   if (!text) return [""];
 
@@ -103,6 +121,9 @@ export default function WithoutGstInvoice() {
   const gstInvoiceHref = window.location.pathname.startsWith("/invoice")
     ? "/invoice/gst-invoice"
     : "/gst-invoice";
+
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+
   const [logoUrl, setLogoUrl] = useState("");
   const [from, setFrom] = useState("");
   const [to, setTo] = useState("");
@@ -111,6 +132,9 @@ export default function WithoutGstInvoice() {
   const [paymentInfo, setPaymentInfo] = useState("");
   const [items, setItems] = useState(initialItems);
   const [error, setError] = useState("");
+  
+  // 1. Pudhusa Currency-kku State add panniyirukkom (Default INR)
+  const [currency, setCurrency] = useState("INR");
 
   const total = useMemo(
     () =>
@@ -168,8 +192,8 @@ export default function WithoutGstInvoice() {
     if (paymentInfo.length > MAX_PAYMENT_INFO_LENGTH) {
       return "Payment info can contain a maximum of 300 characters.";
     }
-    if (!from || !to || !invoiceNumber || !isValidDate(date)) {
-      return "Please complete From, To, Invoice number, and Date in DD/MM/YYYY format.";
+    if (!from || !to  || !isValidDate(date)) {
+      return "Please complete From, To and Date in DD/MM/YYYY format.";
     }
 
     const firstItem = items[0];
@@ -188,7 +212,7 @@ export default function WithoutGstInvoice() {
       (item) => Number(item.quantity) > MAX_QUANTITY || Number(item.amount) > MAX_AMOUNT,
     );
     if (invalidItemNumbers) {
-      return `Quantity must be under ${MAX_QUANTITY} and amount must be under ₹${MAX_AMOUNT.toLocaleString("en-IN")}.`;
+      return `Quantity must be under ${MAX_QUANTITY} and amount must be under ${currency} ${MAX_AMOUNT.toLocaleString("en-IN")}.`;
     }
 
     return null;
@@ -290,7 +314,9 @@ export default function WithoutGstInvoice() {
       const descriptionLines = wrapPdfText(pdf, item.description || "-", contentWidth - 80, 46);
       const quantityText = item.quantity || "-";
       const amountValue = Number(item.amount || 0);
-      const amountText = `Rs. ${amountValue.toLocaleString("en-IN", {
+      
+      // 2. PDF-la "Rs." kku bathila dynamic currency pottaachu
+      const amountText = `${currency} ${amountValue.toLocaleString("en-IN", {
         minimumFractionDigits: 2,
         maximumFractionDigits: 2,
       })}`;
@@ -316,7 +342,9 @@ export default function WithoutGstInvoice() {
 
     y += 10;
     const amountX = margin + contentWidth - 4;
-    const totalText = `Rs. ${total.toLocaleString("en-IN", {
+    
+    // 3. Final Total-layum dynamic currency maathiyaachu
+    const totalText = `${currency} ${total.toLocaleString("en-IN", {
       minimumFractionDigits: 2,
       maximumFractionDigits: 2,
     })}`;
@@ -351,7 +379,7 @@ export default function WithoutGstInvoice() {
     }
 
     setError("");
-    generatePdf();
+    setIsPopupOpen(true);
   };
 
   return (
@@ -422,7 +450,26 @@ export default function WithoutGstInvoice() {
               autoComplete="off"
             />
           </label>
+
+          {/* 4. Pudhu Currency Dropdown Inga Add Panni Irukkom */}
+          <label>
+            Currency
+            <input
+              list="without-gst-currencies"
+              value={currency}
+              onChange={(event) => setCurrency(event.target.value.toUpperCase())}
+              placeholder="Type or choose currency"
+              required
+            />
+          </label>
         </div>
+
+        {/* Currency Datalist */}
+        <datalist id="without-gst-currencies">
+          {currencies.map((option) => (
+            <option key={option} value={option} />
+          ))}
+        </datalist>
 
         <label className="invoice-payment-info">
           Payment Info
@@ -501,7 +548,8 @@ export default function WithoutGstInvoice() {
 
         <div className="invoice-total">
           <span>Total</span>
-          <strong>Rs. {total.toFixed(2)}</strong>
+          {/* 5. UI Total-layum dynamic currency maathiyaachu */}
+          <strong>{currency} {total.toFixed(2)}</strong>
         </div>
 
         {error && (
@@ -520,6 +568,13 @@ export default function WithoutGstInvoice() {
       <a className="invoice-switch-button" href={gstInvoiceHref}>
         SWITCH TO GST INVOICE <span>&gt;</span>
       </a>
+       {/* Download PopUp Component */}
+            <DownloadPopup 
+              isOpen={isPopupOpen} 
+              onClose={() => setIsPopupOpen(false)} 
+              onTriggerDownload={generatePdf} 
+              itemName="Non-GST Invoice" 
+            />
     </section>
   );
 }

@@ -1,0 +1,33 @@
+.h2-section {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 60px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.h2-block {
+  text-align: center;
+}
+
+.h2-block-heading {
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin: 0 0 16px;
+}
+
+.h2-block-description {
+  font-size: 18px;
+  line-height: 1.7;
+  color: var(--color-primary);
+  opacity: 0.8;
+  margin: 0;
+}
+
+@media (max-width: 640px) {
+  .h2-block-heading {
+    font-size: 24px;
+  }
+}

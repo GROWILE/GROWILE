@@ -1,5 +1,5 @@
 .hero {
-  max-width: 980px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 92px 24px 72px;
   text-align: center;
@@ -16,7 +16,7 @@
   font-size: 56px;
   line-height: 1.15;
   margin: 0 auto 26px;
-  max-width: 850px;
+  max-width: 1200px;
 }
 .hero-subtitle {
   color: var(--color-primary);
@@ -24,7 +24,7 @@
   font-size: 18px;
   font-weight: 600;
   line-height: 1.6;
-  max-width: 720px;
+  max-width: 1100px;
   margin: 0 auto 36px;
 }
 .hero-cta {

@@ -8,6 +8,28 @@ import Products from '../../../../packages/ui/src/Products-card'
 import webLogo from '../../../../packages/ui/assets/growile-invoice-logo.svg'
 
 
+const mainFaqs = [
+    { question: "Do I need to create an account to use Growile tools?", answer: "No. There is no sign-up, login, or registration required. You can access and use all our tools instantly for free." },
+    { question: "Is my business and financial data secure?", answer: "Yes, 100% secure. We never store your data on our servers. Everything processes locally right inside your web browser." },
+    { question: "Are Growile tools completely free to use?", answer: "Yes, our tools are free. A small, clean brand watermark helps us keep the platform open and free for everyone worldwide." },
+    { question: "Can I use Growile tools for international clients?", answer: "Yes! Our platform supports multi-currency options and global standards, making it ideal for cross-border workflows." },
+    { question: "Is there any usage limit on the tools?", answer: "No limits at all. You can generate, create, and download as many professional files as your business needs." },
+    { question: "What tools are currently available on Growile?", answer: "We currently offer a powerful Free Invoice Generator (GST & Non-GST), with more productivity tools launching soon." }
+  ];
+
+  const mainFaqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": mainFaqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  };
+
 function Home() {
 
   return (
@@ -28,8 +50,8 @@ function Home() {
         about={{ label: "About", href: "/about" }}
       />
       <Hero
-        title="Digital Innovation, Built for Tomorrow"
-        subtitle="We create modern software solutions that combine thoughtful design, powerful technology, and scalable architecture to help businesses move faster, work smarter, and stay ready for what's next."
+        title= "Web tools for the modern global workflow."
+        subtitle="Built for freelancers, creators, and teams who move fast. Growile combines zero-signup accessibility with cross-border flexibility. Generate, create, and manage your work securely in your browser without ever compromising on privacy."
         ctaText="Explore Products"
         ctaHref="/products"
       />
@@ -39,15 +61,18 @@ function Home() {
       <Divider />
       <FAQ
         heading="Frequently Asked Questions"
-        faqs={[
-          { question: "Who are you and what do you do?", answer: "We're a software company building simple, browser-based tools that help people handle everyday digital tasks — without the clutter, cost, or complexity most software comes with." },
-          { question: "Why did you start this company?", answer: "We saw people paying for bloated software full of features they never use, so we set out to build simple tools that just work." },
-          { question: "Are you a new company?", answer: "Yes, we're a newly founded company — but our tools are already live and being actively improved." },
-          { question: "Do I need to create an account to use your products?", answer: "No, most of our tools work without an account. Signing up just lets you save your history and preferences." },
-         ]}
+        faqs={mainFaqs}
+      />
+
+      {/* Google-kku Schema Script */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(mainFaqSchema) }}
        />
-      <Footer termsHref="/terms-of-service" />
-        {/* <Footer*/}
+  
+      <Footer termsHref="/terms-of-service"/>
+
+        
      </>
 
   );

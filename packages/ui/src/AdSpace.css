@@ -36,7 +36,7 @@
 }
 
 .ad-space-banner.ad-space-compact {
-  min-height: 80px;
+  min-height: 100px;
 }
 
 .ad-space-vertical {
@@ -46,6 +46,27 @@
   align-self: stretch;
   justify-self: end;
   pointer-events: none;
+}
+
+/* --- NEW: Close Button Default Styles (Hidden on Desktop) --- */
+.ad-space-close-btn {
+  display: none; /* Desktop-la theriya koodathu */
+  position: absolute;
+  top: -12px; /* Ad box-kku konjam mela */
+  right: 0px; /* Right side-la */
+  width: 24px;
+  height: 24px;
+  background-color: #111827; /* Dark black/gray */
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  z-index: 10;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  /* MUKKIYAM: Parent-la pointer-events: none irukka thala, ithukku auto poodanum */
+  pointer-events: auto; 
 }
 
 @media (max-width: 900px) {
@@ -69,5 +90,12 @@
   .ad-space-vertical {
     width: 140px;
     min-height: 320px;
+  }
+
+  /* --- NEW: Mobile-la mattum Close button-a theiyavaikkirom --- */
+  .ad-space-close-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }

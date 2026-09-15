@@ -1,3 +1,4 @@
+import { useState } from "react";
 import "./AdSpace.css";
 
 type AdSpaceProps = {
@@ -13,6 +14,13 @@ export default function AdSpace({
   className = "",
   variant = "banner",
 }: AdSpaceProps) {
+  
+  // 1. Ad space theriyanuma venama nu track panna state uruvakkkurom
+  const [isVisible, setIsVisible] = useState(true);
+
+  // 2. isVisible "false" aagitta entha UI-um kaattatha nu solrom
+  if (!isVisible) return null;
+
   return (
     <section
       className={[
@@ -25,6 +33,15 @@ export default function AdSpace({
         .join(" ")}
       aria-label="Advertisement space"
     >
+      {/* 3. Close Button (CSS vazhiya mobile-la mattum theriya vaipom) */}
+      <button 
+        className="ad-space-close-btn" 
+        onClick={() => setIsVisible(false)}
+        aria-label="Close Advertisement"
+      >
+        &times;
+      </button>
+
       {label ? <span className="ad-space-label">{label}</span> : null}
     </section>
   );
