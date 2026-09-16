@@ -1,9 +1,7 @@
-import "../../../web/src/Pages/About.css";
+import TermsLayout from "../../../../packages/ui/src/TermsLayout";
 import Divider from "../../../../packages/ui/src/Divider";
-import Footer from "../../../../packages/ui/src/Footer";
-import Navbar from "../../../../packages/ui/src/Navbar";
-import PageMeta from "../../../../packages/ui/src/PageMeta";
 import invoiceLogo from "../../../../packages/ui/assets/growile-logo (1).svg";
+import "../../../web/src/Pages/About.css";
 
 export default function TermsAndConditions() {
   const isEmbeddedInvoice = window.location.pathname.startsWith("/invoice");
@@ -12,40 +10,30 @@ export default function TermsAndConditions() {
   const termsHref = `${invoiceBaseHref}/terms-and-conditions`;
 
   return (
-    <>
-      <PageMeta
-        title="Terms of Service for Growile Invoice | Growile"
-        description="Read the Terms of Service for Growile Invoice, including local data processing, privacy, acceptable use, and user responsibilities."
-        canonicalPath={window.location.pathname}
-      />
-
-      <Navbar
-        logoAlt="Growile"
-        logoSrc={invoiceLogo}
-        home={{ label: "Home", href: invoiceHomeHref }}
-        products={{
-          label: "Products",
-          items: [
-            { label: "Finance", href: "/finance" },
-            { label: "Invoice", href: invoiceHomeHref },
-          ],
-        }}
-        tools={{
-          label: "Tools",
-          items: [
-            { label: "Non-GST Invoice", href: `${invoiceBaseHref}/without-gst-invoice` },
-            { label: "GST Invoice", href: `${invoiceBaseHref}/gst-invoice` },
-          ],
-        }}
-      />
-
-      <section className="about-hero">
-        <h1 className="about-title">Terms of Service for Growile Invoice</h1>
-        <p className="about-description">Last Updated: September 14, 2026</p>
-      </section>
-
-      <Divider />
-
+    <TermsLayout
+      pageTitle="Terms of Service for Growile Invoice | Growile"
+      pageDescription="Read the Terms of Service for Growile Invoice, including local data processing, privacy, acceptable use, and user responsibilities."
+      heroTitle="Terms of Service for Growile Invoice"
+      lastUpdated="September 14, 2026"
+      logoAlt="Growile"
+      logoSrc={invoiceLogo}
+      home={{ label: "Home", href: invoiceHomeHref }}
+      products={{
+        label: "Products",
+        items: [
+          { label: "Finance", href: "/finance" },
+          { label: "Invoice", href: invoiceHomeHref },
+        ],
+      }}
+      tools={{
+        label: "Tools",
+        items: [
+          { label: "Non-GST Invoice", href: `${invoiceBaseHref}/without-gst-invoice` },
+          { label: "GST Invoice", href: `${invoiceBaseHref}/gst-invoice` },
+        ],
+      }}
+      footerTermsHref={termsHref}
+    >
       <section className="about-section">
         <p className="about-text">
           Welcome to Growile Invoice. By using our free invoice generator, you agree
@@ -138,8 +126,6 @@ export default function TermsAndConditions() {
           contact us at: <a href="mailto:growile.groups@gmail.com">growile.groups@gmail.com</a>
         </p>
       </section>
-
-      <Footer invoiceHref={invoiceHomeHref} termsHref={termsHref} />
-    </>
+    </TermsLayout>
   );
 }

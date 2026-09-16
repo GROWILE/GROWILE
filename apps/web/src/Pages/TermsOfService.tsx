@@ -1,8 +1,7 @@
-import "./About.css";
+import TermsLayout from "../../../../packages/ui/src/TermsLayout";
 import Divider from "../../../../packages/ui/src/Divider";
-import Footer from "../../../../packages/ui/src/Footer";
-import Navbar from "../../../../packages/ui/src/Navbar";
 import webLogo from "../../../../packages/ui/assets/growile-invoice-logo.svg";
+import "./About.css";
 
 const acceptableUseItems = [
   "Attempting to disrupt or damage the website or its functionality",
@@ -12,30 +11,23 @@ const acceptableUseItems = [
 
 export default function TermsOfService() {
   return (
-    <>
-      <Navbar
-        logoAlt="Growile"
-        logoSrc={webLogo}
-        home={{ label: "Home", href: "/" }}
-        products={{
-          label: "Products",
-          items: [
-            { label: "Finance", href: "/finance" },
-            { label: "Invoice", href: "/invoice" },
-          ],
-        }}
-        about={{ label: "About", href: "/about" }}
-      />
-
-      <section className="about-hero">
-        <h1 className="about-title">Terms of Service</h1>
-        <p className="about-description">
-          Effective Date: 14/09/2026
-        </p>
-      </section>
-
-      <Divider />
-
+    <TermsLayout
+      pageTitle="Terms of Service | Growile"
+      pageDescription="Read the Growile Terms of Service governing your use of our website, tools, and ecosystem."
+      heroTitle="Terms of Service"
+      lastUpdated="14/09/2026"
+      logoAlt="Growile"
+      logoSrc={webLogo}
+      home={{ label: "Home", href: "/" }}
+      products={{
+        label: "Products",
+        items: [
+          { label: "Finance", href: "/finance" },
+          { label: "Invoice", href: "/invoice" },
+        ],
+      }}
+      about={{ label: "About", href: "/about" }}
+    >
       <section className="about-section">
         <p className="about-text">
           Welcome to GROWILE. These Terms of Service ("Terms") govern your use
@@ -187,8 +179,6 @@ export default function TermsOfService() {
           Email: <a href="mailto:growile.groups@gmail.com">growile.groups@gmail.com</a>
         </p>
       </section>
-
-      <Footer termsHref="/terms-of-service" />
-    </>
+    </TermsLayout>
   );
 }
