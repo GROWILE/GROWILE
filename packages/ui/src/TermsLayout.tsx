@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import type { ReactNode } from "react";
 import Divider from "./Divider";
 import Footer from "./Footer";
 import Navbar from "./Navbar";
