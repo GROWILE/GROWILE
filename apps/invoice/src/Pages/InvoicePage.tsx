@@ -259,7 +259,7 @@ export default function InvoicePage() {
       <PageMeta
         title={pageTitle}
         description={pageDescription}
-        canonicalPath={window.location.pathname}
+        canonicalPath={isGstPage ? "/invoice/gst-invoice" : "/invoice/without-gst-invoice"}
       />
     
         {isGstPage ? (
