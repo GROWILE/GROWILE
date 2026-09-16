@@ -1,5 +1,5 @@
 import ComingSoonPage from "../../../../packages/ui/src/ComingSoonPage";
-import webLogo from "../../../../packages/ui/assets/growile-invoice-logo.svg";
+import webLogo from "../../../../packages/ui/assets/growile-logo.svg"; //Growile-main-logo
 
 export default function FinanceComingSoon() {
   return (
