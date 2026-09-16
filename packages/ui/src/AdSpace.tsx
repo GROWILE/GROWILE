@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./AdSpace.css";
 
 type AdSpaceProps = {
@@ -14,12 +14,22 @@ export default function AdSpace({
   className = "",
   variant = "banner",
 }: AdSpaceProps) {
-  
-  // 1. Ad space theriyanuma venama nu track panna state uruvakkkurom
   const [isVisible, setIsVisible] = useState(true);
 
-  // 2. isVisible "false" aagitta entha UI-um kaattatha nu solrom
+  // AdSense render aagura script push itha run pannum
+  useEffect(() => {
+    try {
+      // @ts-ignore
+      (window.adsbygoogle = window.adsbygoogle || []).push({});
+    } catch (e) {
+      console.error(e);
+    }
+  }, []);
+
   if (!isVisible) return null;
+
+  // Unga AdSense dashboard-la irunthu vantha ad slot ID-a inga podunga
+  const adSlotId = "8215012803"; 
 
   return (
     <section
@@ -33,7 +43,6 @@ export default function AdSpace({
         .join(" ")}
       aria-label="Advertisement space"
     >
-      {/* 3. Close Button (CSS vazhiya mobile-la mattum theriya vaipom) */}
       <button 
         className="ad-space-close-btn" 
         onClick={() => setIsVisible(false)}
@@ -43,6 +52,16 @@ export default function AdSpace({
       </button>
 
       {label ? <span className="ad-space-label">{label}</span> : null}
+
+      {/* 👇 AdSense Ins Tag Inga Irukkum */}
+      <div className="adsense-container">
+        <ins className="adsbygoogle"
+             style={{ display: "block" }}
+             data-ad-client="ca-pub-5065634748295086"
+             data-ad-slot={adSlotId} 
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+      </div>
     </section>
   );
 }

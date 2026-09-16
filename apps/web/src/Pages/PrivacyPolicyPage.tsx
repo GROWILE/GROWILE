@@ -1,5 +1,5 @@
 import PrivacyPolicy from "../../../../packages/ui/src/PrivacyPolicy";
-import webLogo from "../../../../packages/ui/assets/growile-invoice-logo.svg";
+import webLogo from "../../../../packages/ui/assets/growile-logo.svg";
 
 export default function PrivacyPolicyPage() {
   return (

@@ -1,10 +1,14 @@
-import Navbar from '../../../../packages/ui/src/Navbar';
-import Footer from '../../../../packages/ui/src/Footer';
-import ProductsPage from '../../../../packages/ui/src/ProductsPage';
-import webLogo from '../../../../packages/ui/assets/growile-invoice-logo.svg';
+// File: src/pages/ProductsList.tsx (or your products page route file)
+import Navbar from "../../../../packages/ui/src/Navbar";
+import Footer from "../../../../packages/ui/src/Footer";
+import ProductsPage from "../../../../packages/ui/src/ProductsPage";
+import Breadcrumb from "../../../../packages/ui/src/Breadcrumb";
+import BreadcrumbSchema from "../../../../packages/ui/src/BreadcrumbSchema";
+import webLogo from "../../../../packages/ui/assets/growile-logo.svg";
 
 export default function ProductsList() {
   
+  // Future-la innum products add panrathukku inga list-la add pannina pothum!
   const allProducts = [
     {
       id: "finance",
@@ -28,6 +32,15 @@ export default function ProductsList() {
 
   return (
     <>
+      {/* 1. SEO Breadcrumb Schema for Google */}
+      <BreadcrumbSchema
+        items={[
+          { name: "Home", url: "https://growile.com" },
+          { name: "Products", url: "https://growile.com/products" }
+        ]}
+      />
+
+      {/* 2. Global Navbar */}
       <Navbar
         logoAlt="Growile"
         logoSrc={webLogo}
@@ -42,10 +55,25 @@ export default function ProductsList() {
         about={{ label: "About", href: "/about" }}
       />
       
-    
-      <ProductsPage heading="All Products" products={allProducts} />
+      {/* 3. Visual User Breadcrumb (Navbar-kku aduthu) */}
+      <Breadcrumb
+        items={[
+          { label: "Home", href: "/" },
+          { label: "Products", href: "/products" }
+        ]}
+      />
+
+      {/* 4. Reusable Products Grid Page */}
+      <main>
+        <ProductsPage heading="All Products" products={allProducts} />
+      </main>
       
-      <Footer termsHref="/terms-of-service" />
+      {/* 5. Global Footer */}
+      <Footer 
+        invoiceHref="/invoice"
+        termsHref="/terms-of-service" 
+        privacyHref="/privacy-policy" 
+      />
     </>
   );
 }

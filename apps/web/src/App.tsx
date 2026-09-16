@@ -1,12 +1,15 @@
+// File: apps/web/src/App.tsx
 import { useEffect } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import PageMeta from "../../../packages/ui/src/PageMeta";
+
+// Normal Static Imports (No Lazy Loading)
 import Home from "./Pages/Home";
 import About from "./Pages/About";
 import TermsOfService from "./Pages/TermsOfService";
-import PrivacyPolicyPage from "./Pages/PrivacyPolicyPage";
+import PrivacyPolicyPage from "./Pages/PrivacyPolicyPage"; // <-- Ithu ippo sariya import aayirukku
 import FinanceComingSoon from "./Pages/FinanceComingSoon";
-import ProductsList from './Pages/ProductsList';
+import ProductsList from "./Pages/ProductsList";
 
 const pageMetadata = {
   "/": {
@@ -29,6 +32,10 @@ const pageMetadata = {
     title: "Finance - Coming Soon | Growile",
     description: "Our Finance product is currently in active development. We are building a simpler, smarter experience for tracking and managing financial tasks."
   },
+  "/products": {
+    title: "All Products - Growile Suite",
+    description: "Explore Growile's complete suite of free utilities and tools."
+  }
 } as const;
 
 const defaultMetadata = {

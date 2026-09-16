@@ -122,7 +122,7 @@
 
 .product-button {
   align-items: center;
-  background: var(--color-accent);
+  background: var(--color-text-highlight);
   border-radius: 10px;
   color: var(--color-secondary);
   display: flex;
@@ -137,7 +137,7 @@
 
 .product-button:hover {
   background: var(--color-secondary);
-  color : var(--color-accent);
+  color : var(--color-text-highlight);
 }
 
 .product-button:focus-visible {

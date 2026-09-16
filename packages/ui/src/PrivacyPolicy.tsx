@@ -1,7 +1,10 @@
+// File: packages/ui/src/PrivacyPolicy.tsx
 import Divider from "./Divider";
 import Footer from "./Footer";
 import Navbar from "./Navbar";
 import PageMeta from "./PageMeta";
+import Breadcrumb from "./Breadcrumb";          
+import BreadcrumbSchema from "./BreadcrumbSchema";
 
 export type NavbarLink = {
   label: string;
@@ -41,12 +44,22 @@ export default function PrivacyPolicy({
   const pageDescription =
     "Read the Growile Privacy Policy to learn how we collect, protect, and process personal data across our tools and ecosystem.";
 
+  const currentPath = typeof window !== "undefined" ? window.location.pathname : "/privacy-policy";
+  const fullUrl = `https://growile.com${currentPath}`;
+
   return (
     <>
       <PageMeta
         title={pageTitle}
         description={pageDescription}
         canonicalPath={typeof window !== "undefined" ? window.location.pathname : "/"}
+      />
+
+      <BreadcrumbSchema
+        items={[
+          { name: "Home", url: "https://growile.com" },
+          { name: "Privacy Policy", url: fullUrl }
+        ]}
       />
 
       <Navbar
@@ -57,6 +70,16 @@ export default function PrivacyPolicy({
         tools={tools}
         about={about}
       />
+
+      {/* Breadcrumb container with top padding offset so sticky navbar never overlaps text */}
+      <div style={{ paddingTop: "10px" }}>
+        <Breadcrumb
+          items={[
+            { label: home.label, href: home.href },
+            { label: "Privacy Policy", href: currentPath }
+          ]}
+        />
+      </div>
 
       <section className="about-hero">
         <h1 className="about-title">Privacy Policy for Growile</h1>

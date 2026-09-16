@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./Navbar.css";
 
+
 type NavbarLink = {
   label: string;
   href: string;

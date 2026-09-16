@@ -1,6 +1,6 @@
 import TermsLayout from "../../../../packages/ui/src/TermsLayout";
 import Divider from "../../../../packages/ui/src/Divider";
-import invoiceLogo from "../../../../packages/ui/assets/growile-logo (1).svg";
+import invoiceLogo from "../../../../packages/ui/assets/growile-InvoiceGenerator-logo.svg";
 import "../../../web/src/Pages/About.css";
 
 export default function TermsAndConditions() {

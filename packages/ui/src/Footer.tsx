@@ -93,7 +93,7 @@ export default function Footer({ invoiceHref = "/invoice", termsHref = "#", priv
       </div> */ }
 
       <div className="footer-legal">
-        <a href={termsHref}>Terms and Conditions</a>
+        <a href={termsHref}>Terms of Service</a>
         <a href={privacyHref}>Privacy Policy</a>
       </div>
 

@@ -3,6 +3,7 @@ import Divider from "./Divider";
 import Footer from "./Footer";
 import Navbar from "./Navbar";
 import PageMeta from "./PageMeta";
+import Breadcrumb from "./Breadcrumb";
 
 export type NavbarLink = {
   label: string;
@@ -67,6 +68,13 @@ export default function TermsLayout({
         products={products}
         tools={tools}
         about={about}
+      />
+
+      <Breadcrumb
+      items={[
+        { label: home.label, href: home.href },
+        { label: heroTitle, href: "#" }
+      ]}
       />
 
       <section className="about-hero">

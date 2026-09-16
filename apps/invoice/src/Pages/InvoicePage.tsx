@@ -6,12 +6,14 @@ import Footer from "../../../../packages/ui/src/Footer";
 import Hero from "../../../../packages/ui/src/Hero";
 import HowToUse from "@growile/ui/src/HowToUse";
 import Navbar from "../../../../packages/ui/src/Navbar";
-import invoiceLogo from "../../../../packages/ui/assets/growile-logo (1).svg";
+import invoiceLogo from "../../../../packages/ui/assets/growile-InvoiceGenerator-logo.svg";
 import GstInvoice from "./GstInvoice.tsx";
 import WithoutGstInvoice from "./WithoutGstInvoice";
 import Products from '../../../../packages/ui/src/Products-card';
 import PageMeta from "../../../../packages/ui/src/PageMeta";
 import H2Section from "../../../../packages/ui/src/H2Section";
+import Breadcrumb from "../../../../packages/ui/src/Breadcrumb";
+import BreadcrumbSchema from "../../../../packages/ui/src/BreadcrumbSchema";
 
 type InvoicePageVariant = "without-gst" | "gst";
 
@@ -286,6 +288,15 @@ export default function InvoicePage() {
           </>
         )}
       
+        <BreadcrumbSchema
+        items={[
+          { name: "Home", url: "https://growile.com" },
+          { name: "Products", url: "https://growile.com/products" },
+          { name: "Invoice Generator", url: "https://growile.com/invoice" },
+          { name: "GST Invoice", url: "https://growile.com/invoice/gst-invoice" }
+        ]}
+      />
+
       <Navbar
         logoAlt="Growile"
         logoSrc={invoiceLogo}
@@ -305,6 +316,16 @@ export default function InvoicePage() {
           ],
         }}
       />
+
+      <Breadcrumb
+        items={[
+          { label: "Home", href: "/" },
+          { label: "Products", href: "/products" },
+          { label: "Invoice Generator", href: "/invoice" },
+          { label: isGstPage ? "GST Invoice" : "Non-GST Invoice", href: window.location.pathname }
+        ]}
+      />
+
       <main id={isGstPage ? "gst-invoice-page" : "without-gst-invoice-page"}>
         <Hero
           kicker="GROWILE INVOICE"

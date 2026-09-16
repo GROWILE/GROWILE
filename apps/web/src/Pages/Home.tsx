@@ -5,7 +5,7 @@ import Hero from '../../../../packages/ui/src/Hero'
 import MissionVision from '../Components/MissionVision'
 import Navbar from '../../../../packages/ui/src/Navbar'
 import Products from '../../../../packages/ui/src/Products-card'
-import webLogo from '../../../../packages/ui/assets/growile-invoice-logo.svg'
+import webLogo from '../../../../packages/ui/assets/growile-logo.svg'
 
 
 const mainFaqs = [

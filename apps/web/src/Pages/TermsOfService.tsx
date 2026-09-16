@@ -1,6 +1,6 @@
 import TermsLayout from "../../../../packages/ui/src/TermsLayout";
 import Divider from "../../../../packages/ui/src/Divider";
-import webLogo from "../../../../packages/ui/assets/growile-invoice-logo.svg";
+import webLogo from "../../../../packages/ui/assets/growile-logo.svg";
 import "./About.css";
 
 const acceptableUseItems = [

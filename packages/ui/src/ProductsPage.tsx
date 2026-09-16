@@ -1,7 +1,6 @@
 import React from 'react';
 import './ProductsPage.css';
 
-// Product Data Type Definition
 export type ProductItem = {
   id: string;
   suiteLabel: string;
@@ -18,14 +17,10 @@ export type ProductsPageProps = {
   products: ProductItem[];
 };
 
-// Default Icon (Document) fallback
 const DefaultIcon = () => (
-  <svg className="product-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-    <polyline points="14 2 14 8 20 8"></polyline>
-    <line x1="16" y1="13" x2="8" y2="13"></line>
-    <line x1="16" y1="17" x2="8" y2="17"></line>
-    <polyline points="10 9 9 9 8 9"></polyline>
+  <svg className="product-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+    <path d="M7 3.5h7l3 3V20.5H7a2 2 0 0 1-2-2v-13a2 2 0 0 1 2-2Z" />
+    <path d="M14 3.5v4h3M8.5 12h5M8.5 15.5h5" />
   </svg>
 );
 
@@ -34,36 +29,40 @@ export default function ProductsPage({
   products 
 }: ProductsPageProps) {
   return (
-    <div className="products-page-container">
-      <div className="products-page-header">
-        <h2 className="products-page-title">
-          {heading} <span aria-hidden="true">›</span>
-        </h2>
+    <section className="products">
+      <div className="products-heading">
+        <p className="products-kicker">GROWILE SUITE</p>
+        <h2>{heading} &gt;</h2>
       </div>
 
       <div className="products-grid">
         {products.map((product) => (
-          <div key={product.id} className="product-card">
-            <div className="product-icon-wrapper">
+          <article key={product.id} className="product-card">
+            <div className="product-icon-wrap">
               {product.iconSvg ? product.iconSvg : <DefaultIcon />}
             </div>
             
-            <div className="product-suite-label">{product.suiteLabel}</div>
-            <h3 className="product-title">{product.title}</h3>
-            <p className="product-desc">{product.description}</p>
+            <p className="product-context">
+              <span>{product.suiteLabel}</span>
+            </p>
             
-            <div className="product-tags">
+            <h3 className="product-title">{product.title}</h3>
+            <p className="product-description">{product.description}</p>
+            
+            <div className="product-tags" aria-label={`${product.title} features`}>
               {product.tags.map((tag, index) => (
                 <span key={index} className="product-tag">{tag}</span>
               ))}
             </div>
             
-            <a href={product.ctaHref} className="product-cta">
-              {product.ctaLabel} <span aria-hidden="true">→</span>
+            <div className="product-divider" />
+            
+            <a href={product.ctaHref} className="product-button">
+              {product.ctaLabel} <span className="product-arrow" aria-hidden="true">-&gt;</span>
             </a>
-          </div>
+          </article>
         ))}
       </div>
-    </div>
+    </section>
   );
 }

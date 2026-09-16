@@ -1,5 +1,6 @@
 import PrivacyPolicy from "../../../../packages/ui/src/PrivacyPolicy";
-import invoiceLogo from "../../../../packages/ui/assets/growile-logo (1).svg";
+import invoiceLogo from "../../../../packages/ui/assets/growile-InvoiceGenerator-logo.svg";
+
 
 export default function PrivacyPolicyPage() {
   const isEmbeddedInvoice = window.location.pathname.startsWith("/invoice");

@@ -2,7 +2,9 @@ import "./About.css";
 import Navbar from "../../../../packages/ui/src/Navbar";
 import Footer from "../../../../packages/ui/src/Footer";
 import Divider from "../../../../packages/ui/src/Divider";
-import webLogo from "../../../../packages/ui/assets/growile-invoice-logo.svg";
+import webLogo from "../../../../packages/ui/assets/growile-logo.svg";
+import Breadcrumb from "../../../../packages/ui/src/Breadcrumb";
+import BreadcrumbSchema from "../../../../packages/ui/src/BreadcrumbSchema";
 
 const values = [
   {
@@ -37,6 +39,12 @@ const approach = [
 export default function About() {
   return (
     <>
+      <BreadcrumbSchema
+        items={[
+          { name: "Home", url: "https://growile.com" },
+          { name: "About Us", url: "https://growile.com/about" }
+          ]}
+        />
       <Navbar
         logoAlt="Growile"
         logoSrc={webLogo}
@@ -50,6 +58,14 @@ export default function About() {
         }}
         about={{ label: "About", href: "/about" }}
       />
+
+      <Breadcrumb
+        items={[
+          { label: "Home", href: "/" },
+          { label: "About Us", href: "/about" }
+        ]}
+      />
+
 
       <section className="about-hero">
         <h1 className="about-title">About Growile</h1>

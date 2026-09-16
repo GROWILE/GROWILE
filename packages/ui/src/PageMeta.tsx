@@ -7,7 +7,7 @@ type PageMetaProps = {
 };
 
 const siteName = "GROWILE";
-const defaultImage = "/growile-icon.png.png";
+const defaultImage = "/growile-icon.png"; // Fixed extension
 
 function setMeta(name: string, content: string) {
   let element = document.head.querySelector<HTMLMetaElement>(`meta[name="${name}"]`);
@@ -57,7 +57,9 @@ export default function PageMeta({ title, description, canonicalPath = window.lo
     setProperty("og:type", "website");
     setProperty("og:url", new URL(canonicalPath, window.location.origin).href);
     setProperty("og:image", new URL(defaultImage, window.location.origin).href);
-    setMeta("twitter:card", "summary");
+    
+    // Updated to summary_large_image for big social previews
+    setMeta("twitter:card", "summary_large_image");
     setMeta("twitter:title", fullTitle);
     setMeta("twitter:description", description);
     setMeta("twitter:image", new URL(defaultImage, window.location.origin).href);
