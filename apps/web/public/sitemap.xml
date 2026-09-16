@@ -35,6 +35,7 @@
     <changefreq>monthly</changefreq>
   </url>
   <!-- Legal & Policy Pages -->
+  <!-- Legal & Policy Pages -->
   <url>
     <loc>https://growile.com/privacy-policy</loc>
     <priority>0.5</priority>

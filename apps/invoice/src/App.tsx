@@ -1,5 +1,5 @@
 import Home from "./Pages/Home";
-import TermsAndConditions from "./Pages/TermsAndConditions";
+import TermsAndConditions from "./Pages/TermsOfService";
 import PrivacyPolicyPage from "./Pages/PrivacyPolicyPage";
 
 function App() {
