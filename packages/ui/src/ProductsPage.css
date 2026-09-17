@@ -148,3 +148,36 @@
 .product-button:hover .product-arrow {
   transform: translateX(3px);
 }
+
+/* ==========================================
+   📱 MOBILE RESPONSIVE MEDIA QUERY (≤ 768px)
+   ========================================== */
+@media (max-width: 768px) {
+  .products {
+    padding: 48px 16px 64px; /* Mobile-la outer padding-a korachirukken */
+  }
+
+  .products-grid {
+    grid-template-columns: 1fr; /* 2 columns-la irunthu 1 column-a change aagum */
+    gap: 16px;
+  }
+
+  .product-card {
+    padding: 24px; /* Card padding-a mobile-ku etha maari kuraichi irukken */
+    min-height: auto; /* Fixed min-height remove aagi content-ku etha maari adjust aagum */
+  }
+
+  .product-title {
+    font-size: 24px; /* Mobile-la title font size koncham chinna-tha irukkum */
+  }
+
+  .product-description {
+    max-width: 100%; /* Full width-a text stretch aagum */
+    font-size: 15px;
+  }
+
+  .product-tag {
+    font-size: 14px;
+    padding: 6px 12px;
+  }
+}
