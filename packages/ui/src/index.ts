@@ -13,4 +13,11 @@ export { default as ProductsPage } from './ProductsPage';
 export type { ProductItem, ProductsPageProps } from './ProductsPage';
 export { default as H2Section } from "./H2Section";
 export { default as DownloadPopup } from './DownloadPopup';
+export { default as ConfirmPopUp } from './ConfirmPopUp';
+export type { ConfirmPopUpProps } from './ConfirmPopUp';
 export { default as Breadcrumb } from './Breadcrumb'
+export { default as ToolCard } from "./toolsUi/toolCard"
+export { default as FileUploadBox } from "./toolsUi/fileUploadBox"
+export type { FileUploadBoxProps, FileUploadSource } from "./toolsUi/fileUploadBox"
+export { default as ToolsFooter } from "./toolsUi/toolsFooter"
+export type { ToolsFooterCategory, ToolsFooterLink, ToolsFooterProps } from "./toolsUi/toolsFooter"

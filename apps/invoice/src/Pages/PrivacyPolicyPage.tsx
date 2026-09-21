@@ -20,7 +20,7 @@ export default function PrivacyPolicyPage() {
         ],
       }}
       tools={{
-        label: "Tools",
+        label: "All Tools",
         items: [
           { label: "Non-GST Invoice", href: `${invoiceBaseHref}/without-gst-invoice` },
           { label: "GST Invoice", href: `${invoiceBaseHref}/gst-invoice` },

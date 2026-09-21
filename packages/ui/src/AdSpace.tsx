@@ -51,6 +51,7 @@ export default function AdSpace({
         &times;
       </button>
 
+
       {label ? <span className="ad-space-label">{label}</span> : null}
 
       {/* 👇 AdSense Ins Tag Inga Irukkum */}

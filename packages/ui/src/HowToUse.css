@@ -33,7 +33,7 @@
 }
 
 .how-to-use-title {
-  font-size: 20px;
+  font-size: 28px;
   font-weight: 700;
   color: var(--color-secondary);
   margin: 0 0 10px;
@@ -74,6 +74,10 @@
   .how-to-use-heading {
     font-size: 28px;
     margin-bottom: 28px;
+  }
+
+  .how-to-use-title {
+    font-size: 22px;
   }
 
   .how-to-use-steps {

@@ -2,7 +2,7 @@
   padding: 76px 24px 84px;
 }
 .gst-invoice-form {
-  border-color: #cbd8e5;
+  border-color: color-mix(in srgb, var(--color-text-highlight) 20%, var(--color-secondary));
 }
 
 .gst-logo-row {
@@ -29,7 +29,7 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
-  border: 1px dashed #ddd;
+  border: 1px dashed color-mix(in srgb, var(--color-primary) 15%, var(--color-secondary));
   border-radius: 8px;
   background: var(--color-secondary);
   color: var(--color-primary);
@@ -47,7 +47,7 @@
   width: 100px;
   height: 100px;
   object-fit: contain;
-  border: 1px solid #eee;
+  border: 1px solid color-mix(in srgb, var(--color-primary) 8%, var(--color-secondary));
   border-radius: 8px;
   padding: 6px;
 }
@@ -55,7 +55,7 @@
 .gst-field-section {
   margin-top: 20px;
   padding-top: 12px;
-  border-top: 1px solid #eee;
+  border-top: 1px solid color-mix(in srgb, var(--color-primary) 8%, var(--color-secondary));
 }
 
 .gst-field-section:first-child {
@@ -86,17 +86,17 @@
   grid-template-columns: minmax(0, 2fr) minmax(90px, 0.7fr) minmax(120px, 0.9fr) minmax(140px, 1fr);
   gap: 18px;
   padding: 14px 0;
-  border-top: 1px solid #eee;
+  border-top: 1px solid color-mix(in srgb, var(--color-primary) 8%, var(--color-secondary));
 }
 
 .gst-item-row input[readonly] {
   background: var(--color-secondary);
-  color: #555;
+  color: color-mix(in srgb, var(--color-primary) 65%, var(--color-secondary));
 }
 
 .gst-field-section input[readonly] {
   background: var(--color-secondary);
-  color: #555;
+  color: color-mix(in srgb, var(--color-primary) 65%, var(--color-secondary));
 }
 
 .gst-field-section select {
@@ -104,7 +104,7 @@
   width: 100%;
   max-width: 100%;
   min-width: 0;
-  border: 1px solid #ddd;
+  border: 1px solid color-mix(in srgb, var(--color-primary) 15%, var(--color-secondary));
   border-radius: 6px;
   padding: 13px 14px;
   color: var(--color-primary);

@@ -1,0 +1,51 @@
+.jpg-to-pdf-page {
+  background: color-mix(in srgb, var(--color-accent) 3%, var(--color-secondary));
+}
+
+.jpg-to-pdf-upload-section {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 40px 24px 20px;
+}
+
+.jpg-to-pdf-upload-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 220px;
+  gap: 28px;
+  align-items: stretch;
+}
+
+.jpg-to-pdf-upload-box {
+  width: 100%;
+}
+
+.jpg-to-pdf-status {
+  margin: 16px 0 0;
+  color: var(--color-primary);
+  font-size: 15px;
+  text-align: center;
+}
+
+.jpg-to-pdf-error {
+  margin: 16px 0 0;
+  color: var(--color-accent);
+  font-size: 15px;
+  font-weight: 700;
+  text-align: center;
+}
+
+@media (max-width: 900px) {
+  .jpg-to-pdf-upload-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .jpg-to-pdf-upload-layout .ad-space-vertical {
+    display: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .jpg-to-pdf-upload-section {
+    padding: 24px 16px 12px;
+  }
+}

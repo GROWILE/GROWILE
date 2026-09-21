@@ -1,0 +1,63 @@
+@import "../Colors.css";
+
+.tools-footer {
+  width: 100%;
+  border-top: 1px solid color-mix(in srgb, var(--color-primary) 10%, transparent);
+  background: var(--color-secondary);
+}
+
+.tools-footer-inner {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 32px;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 48px 24px 56px;
+}
+
+.tools-footer-category-title {
+  margin: 0 0 18px;
+  color: var(--color-primary);
+  font-size: 26px;
+  font-weight: 700;
+}
+
+@media (max-width: 600px) {
+  .tools-footer-category-title {
+    font-size: 22px;
+  }
+}
+
+.tools-footer-list {
+  display: grid;
+  gap: 11px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tools-footer-list a {
+  color: color-mix(in srgb, var(--color-primary) 62%, transparent);
+  font-size: 18px;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.tools-footer-list a:hover,
+.tools-footer-list a:focus-visible {
+  color: var(--color-accent);
+}
+
+@media (max-width: 900px) {
+  .tools-footer-inner {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  .tools-footer-inner {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 28px 18px;
+    padding: 36px 16px 44px;
+  }
+}

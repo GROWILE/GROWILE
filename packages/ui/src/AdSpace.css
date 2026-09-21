@@ -39,6 +39,21 @@
   min-height: 100px;
 }
 
+.ad-space-banner.footer-bottom-ad-space {
+  min-height: 120px;
+  height: 120px;
+  max-height: 120px;
+  margin-top: 0;
+  overflow: hidden;
+  transition: min-height 0.25s ease;
+}
+
+.ad-space-collapsible.ad-space-collapsed::before,
+.ad-space-collapsible.ad-space-collapsed .adsense-container,
+.ad-space-collapsible.ad-space-collapsed .ad-space-label {
+  display: none;
+}
+
 .ad-space-vertical {
   width: 220px;
   min-height: 520px;
@@ -56,8 +71,8 @@
   right: 0px; /* Right side-la */
   width: 24px;
   height: 24px;
-  background-color: #111827; /* Dark black/gray */
-  color: white;
+  background-color: var(--color-primary);
+  color: var(--color-secondary);
   border: none;
   border-radius: 50%;
   font-size: 18px;
@@ -75,6 +90,12 @@
     min-height: 72px;
   }
 
+  .ad-space-banner.footer-bottom-ad-space {
+    min-height: 105px;
+    height: 105px;
+    max-height: 105px;
+  }
+
   .ad-space-vertical {
     width: 180px;
     min-height: 420px;
@@ -85,6 +106,12 @@
   .ad-space-banner {
     width: min(100% - 16px, 1100px);
     min-height: 66px;
+  }
+
+  .ad-space-banner.footer-bottom-ad-space {
+    min-height: 95px;
+    height: 95px;
+    max-height: 95px;
   }
 
   .ad-space-vertical {

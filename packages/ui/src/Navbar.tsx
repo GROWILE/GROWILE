@@ -1,10 +1,18 @@
 import { useState } from "react";
+import type { ReactNode } from "react";
 import "./Navbar.css";
 
 
 type NavbarLink = {
   label: string;
   href: string;
+  icon?: ReactNode;
+};
+
+type NavbarLinkGroup = {
+  label: string;
+  icon?: ReactNode;
+  items: NavbarLink[];
 };
 
 type NavbarProps = {
@@ -18,6 +26,7 @@ type NavbarProps = {
   tools?: {
     label: string;
     items: NavbarLink[];
+    groups?: NavbarLinkGroup[];
   };
   about?: NavbarLink;
 };
@@ -25,6 +34,7 @@ type NavbarProps = {
 type NavbarDropdownProps = {
   label: string;
   items: NavbarLink[];
+  groups?: NavbarLinkGroup[];
   isOpen: boolean;
   onOpen: () => void;
   onClose: () => void;
@@ -40,7 +50,13 @@ function NavbarDropdown({
   onClose,
   onToggle,
   onItemSelect,
+  groups,
 }: NavbarDropdownProps) {
+  const hasGroups = Boolean(groups?.length);
+  const menuClassName = `navbar-dropdown-menu ${
+    hasGroups || items.length > 10 ? "navbar-dropdown-menu-wide" : ""
+  }`.trim();
+
   return (
     <div
       className="navbar-dropdown"
@@ -58,17 +74,38 @@ function NavbarDropdown({
       </button>
 
       {isOpen && (
-        <div className="navbar-dropdown-menu">
-          {items.map((item) => (
-            <a
-              key={item.label}
-              href={item.href}
-              className="navbar-dropdown-item"
-              onClick={onItemSelect}
-            >
-              {item.label}
-            </a>
-          ))}
+        <div className={menuClassName}>
+          {hasGroups
+            ? groups?.map((group) => (
+                <div className="navbar-dropdown-group" key={group.label}>
+                  <h3 className="navbar-dropdown-group-title">
+                    {group.icon}
+                    {group.label}
+                  </h3>
+                  {group.items.map((item) => (
+                    <a
+                      key={item.label}
+                      href={item.href}
+                      className="navbar-dropdown-item"
+                      onClick={onItemSelect}
+                    >
+                      {item.icon}
+                      {item.label}
+                    </a>
+                  ))}
+                </div>
+              ))
+            : items.map((item) => (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  className="navbar-dropdown-item"
+                  onClick={onItemSelect}
+                >
+                  {item.icon}
+                  {item.label}
+                </a>
+              ))}
         </div>
       )}
     </div>
@@ -151,6 +188,7 @@ export default function Navbar({ logoAlt, logoSrc, home, products, tools, about 
               onClose={() => closeDropdown(tools.label)}
               onToggle={() => toggleDropdown(tools.label)}
               onItemSelect={selectDropdownItem}
+              groups={tools.groups}
             />
           )}
 

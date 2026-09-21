@@ -3,4 +3,13 @@
   --color-secondary: #ffffff;
   --color-accent: #FD5F03;
   --color-text-highlight: #007ACC;
+  --color-tool-blue: #2563EB;
+  --color-tool-orange: #EA580C;
+  --color-tool-green: #16A34A;
+  --color-tool-purple: #9333EA;
+  --color-tool-teal: #0D9488;
+}
+
+body {
+  font-family: 'Manrope', sans-serif;
 }

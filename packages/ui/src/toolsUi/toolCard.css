@@ -1,0 +1,126 @@
+
+.growile-toolcard {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 24px;
+  text-decoration: none;
+  background-color: var(--color-secondary);
+  border: 1px solid color-mix(in srgb, var(--tool-card-color, var(--color-text-highlight)) 70%, transparent);
+  border-radius: 10px;
+  transition: all 0.2s ease-in-out;
+  box-sizing: border-box;
+  height: 100%;
+  overflow: hidden;
+}
+
+.growile-toolcard:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+  border-color: var(--color-text-highlight);
+}
+
+.growile-toolcard-header {
+  margin-bottom: 10px;
+}
+
+.growile-toolcard-icon {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  /* Default Growile Accent Theme */
+  color: var(--color-text-highlight);
+}
+
+.growile-toolcard-icon svg {
+  width: 35px;
+  height: 35px;
+}
+
+.growile-toolcard-content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.growile-toolcard-title {
+  color: var(--color-primary);
+  font-size: 26px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.growile-toolcard-desc {
+  color: color-mix(in srgb, var(--color-primary) 52%, transparent);
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+@media (max-width: 600px) {
+  .growile-toolcard-title {
+    font-size: 22px;
+  }
+
+  .growile-toolcard-desc {
+    font-size: 16px;
+  }
+}
+
+
+/* ==========================================
+   THEME COLORS (Icon & Hover Borders)
+   ========================================== */
+
+/* Blue Theme */
+.growile-toolcard.theme-blue:hover {
+  border-color: var(--color-text-highlight);
+}
+.growile-toolcard.theme-blue { --tool-card-color: var(--color-tool-blue); }
+.growile-toolcard.theme-blue .growile-toolcard-icon {
+  color: var(--color-tool-blue);
+  background-color: color-mix(in srgb, var(--color-tool-blue) 10%, var(--color-secondary));
+}
+
+/* Orange Theme */
+.growile-toolcard.theme-orange:hover {
+  border-color: var(--color-text-highlight);
+}
+.growile-toolcard.theme-orange { --tool-card-color: var(--color-tool-orange); }
+.growile-toolcard.theme-orange .growile-toolcard-icon {
+  color: var(--color-tool-orange);
+  background-color: color-mix(in srgb, var(--color-tool-orange) 10%, var(--color-secondary));
+}
+
+/* Green Theme */
+.growile-toolcard.theme-green:hover {
+  border-color: var(--color-text-highlight);
+}
+.growile-toolcard.theme-green { --tool-card-color: var(--color-tool-green); }
+.growile-toolcard.theme-green .growile-toolcard-icon {
+  color: var(--color-tool-green);
+  background-color: color-mix(in srgb, var(--color-tool-green) 10%, var(--color-secondary));
+}
+
+/* Purple Theme */
+.growile-toolcard.theme-purple:hover {
+  border-color: var(--color-text-highlight);
+}
+.growile-toolcard.theme-purple { --tool-card-color: var(--color-tool-purple); }
+.growile-toolcard.theme-purple .growile-toolcard-icon {
+  color: var(--color-tool-purple);
+  background-color: color-mix(in srgb, var(--color-tool-purple) 10%, var(--color-secondary));
+}
+
+/* Teal Theme */
+.growile-toolcard.theme-teal:hover {
+  border-color: var(--color-text-highlight);
+}
+.growile-toolcard.theme-teal { --tool-card-color: var(--color-tool-teal); }
+.growile-toolcard.theme-teal .growile-toolcard-icon {
+  color: var(--color-tool-teal);
+  background-color: color-mix(in srgb, var(--color-tool-teal) 10%, var(--color-secondary));
+}

@@ -75,6 +75,8 @@ export default function InvoicePage() {
 
   const isGstPage = variant === "gst";
   const invoiceFormId = isGstPage ? "gst-invoice" : "without-gst-invoice";
+  const invoicePageLabel = isGstPage ? "GST Invoice" : "Non-GST Invoice";
+  const invoicePagePath = isGstPage ? gstInvoiceHref : withoutGstInvoiceHref;
 
   // --- Page Meta Tags ---
   const pageTitle = isGstPage 
@@ -293,7 +295,7 @@ export default function InvoicePage() {
           { name: "Home", url: "https://growile.com" },
           { name: "Products", url: "https://growile.com/products" },
           { name: "Invoice Generator", url: "https://growile.com/invoice" },
-          { name: "GST Invoice", url: "https://growile.com/invoice/gst-invoice" }
+          { name: invoicePageLabel, url: `https://growile.com${invoicePagePath}` }
         ]}
       />
 
@@ -309,7 +311,7 @@ export default function InvoicePage() {
           ],
         }}
         tools={{
-          label: "Tools",
+          label: "All Tools",
           items: [
             { label: "Non-GST Invoice", href: withoutGstInvoiceHref },
             { label: "GST Invoice", href: gstInvoiceHref },
@@ -322,7 +324,7 @@ export default function InvoicePage() {
           { label: "Home", href: "/" },
           { label: "Products", href: "/products" },
           { label: "Invoice Generator", href: "/invoice" },
-          { label: isGstPage ? "GST Invoice" : "Non-GST Invoice", href: window.location.pathname }
+          { label: invoicePageLabel, href: invoicePagePath }
         ]}
       />
 

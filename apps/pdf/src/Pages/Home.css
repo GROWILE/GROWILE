@@ -1,0 +1,124 @@
+.all-pdf-tools {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 56px 24px 80px;
+  color: var(--color-primary);
+}
+
+.all-pdf-tools-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.all-pdf-tools-eyebrow {
+  margin: 0 0 8px;
+  color: var(--color-text-highlight);
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.all-pdf-tools h1 {
+  margin: 0;
+  font-size: clamp(30px, 4vw, 44px);
+}
+
+.all-pdf-tools-heading p:last-child {
+  margin: 10px 0 0;
+  color: color-mix(in srgb, var(--color-primary) 58%, transparent);
+}
+
+.all-pdf-tools-search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: min(100%, 380px);
+  padding: 12px 14px;
+  border: 2px solid var(--color-text-highlight);
+  border-radius: 10px;
+  background: var(--color-secondary);
+}
+
+.all-pdf-tools-search input {
+  width: 100%;
+  border: 0;
+  outline: 0;
+  font: inherit;
+}
+
+.all-pdf-tools-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 28px;
+}
+
+.all-pdf-tools-filters button {
+  padding: 9px 16px;
+  border: 1px solid color-mix(in srgb, var(--color-primary) 14%, transparent);
+  border-radius: 999px;
+  background: var(--color-secondary);
+  color: color-mix(in srgb, var(--color-primary) 64%, transparent);
+  cursor: pointer;
+}
+
+.all-pdf-tools-filters button.active,
+.all-pdf-tools-filters button:hover {
+  border-color: var(--color-text-highlight);
+  background: var(--color-text-highlight);
+  color: var(--color-secondary);
+}
+
+.all-pdf-tools-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.all-pdf-tools-grid .growile-toolcard {
+  min-height: 210px;
+}
+
+.all-pdf-tools-empty {
+  padding: 48px 0;
+  color: color-mix(in srgb, var(--color-primary) 58%, transparent);
+  text-align: center;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+
+@media (max-width: 800px) {
+  .all-pdf-tools-heading {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .all-pdf-tools-search {
+    width: auto;
+  }
+
+  .all-pdf-tools-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .all-pdf-tools {
+    padding: 36px 16px 56px;
+  }
+
+  .all-pdf-tools-grid {
+    grid-template-columns: 1fr;
+  }
+}

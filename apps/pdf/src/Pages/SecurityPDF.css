@@ -1,0 +1,36 @@
+.security-pdf-fields {
+  display: grid;
+  gap: 14px;
+  width: min(100%, 560px);
+  margin: 20px auto;
+  padding: 18px;
+  border: 1px solid color-mix(in srgb, var(--color-text-highlight) 30%, transparent);
+  border-radius: 10px;
+  background: var(--color-secondary);
+  box-sizing: border-box;
+}
+
+.security-pdf-fields label {
+  display: grid;
+  gap: 6px;
+  color: var(--color-primary);
+  font-size: 14px;
+  font-weight: 700;
+  text-align: left;
+}
+
+.security-pdf-fields input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 11px 12px;
+  border: 1px solid color-mix(in srgb, var(--color-primary) 25%, transparent);
+  border-radius: 6px;
+  color: var(--color-primary);
+  background: var(--color-secondary);
+  font: inherit;
+}
+
+.security-pdf-fields input:focus {
+  outline: 2px solid color-mix(in srgb, var(--color-text-highlight) 45%, transparent);
+  border-color: var(--color-text-highlight);
+}
