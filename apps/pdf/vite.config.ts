@@ -4,6 +4,9 @@ import path from 'path'
 
 export default defineConfig({
   plugins: [react()],
+  build: {
+    outDir: 'dist'
+  },
   resolve: {
     alias: {
       // 👇 packages/ui-ku kulla irukkura src-a point panrom
