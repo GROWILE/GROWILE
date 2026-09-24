@@ -29,6 +29,14 @@
       "destination": "https://growile-pdf.vercel.app/sitemap.xml"
     },
     {
+      "source": "/pdf/assets/:path*",
+      "destination": "https://growile-pdf.vercel.app/assets/:path*"
+    },
+    {
+      "source": "/pdf/favicon.svg",
+      "destination": "https://growile-pdf.vercel.app/favicon.svg"
+    },
+    {
       "source": "/pdf/:path*",
       "destination": "https://growile-pdf.vercel.app/pdf/:path*"
     },
