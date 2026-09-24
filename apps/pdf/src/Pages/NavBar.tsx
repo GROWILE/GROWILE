@@ -59,12 +59,12 @@ export default function PdfNavBar() {
     <Navbar
       logoAlt="Growile PDF tools"
       logoSrc={pdfLogo}
-      home={{ label: "Home", href: "/" }}
+      home={{ label: "Home", href: "/pdf/" }}
       products={{
         label: "Products",
         items: [
           { label: "Invoice", href: "/invoice" },
-          { label: "PDF", href: "/" },
+          { label: "PDF", href: "/pdf/" },
         ],
       }}
       tools={{ label: "All Tools", items: [], groups: pdfNavToolGroups }}

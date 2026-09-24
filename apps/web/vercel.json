@@ -9,6 +9,11 @@
       "source": "/pdf",
       "destination": "/pdf/",
       "permanent": false
+    },
+    {
+      "source": "/pdf/:path*",
+      "destination": "https://growile-pdf.vercel.app/pdf/:path*",
+      "permanent": false
     }
   ],
   "rewrites": [
