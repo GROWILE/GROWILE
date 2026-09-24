@@ -11,6 +11,8 @@ import HowToUse from "../../../../packages/ui/src/HowToUse";
 import PageMeta from "../../../../packages/ui/src/PageMeta";
 import PdfNavBar from "./NavBar";
 import PdfToolsFooter from "./toolsFooter";
+import PdfIconToolCard from "./IconToolCard";
+import Divider from "../../../../packages/ui/src/Divider";
 import { downloadMergedPdf, mergePdfFiles } from "../Utilities/MergePDFProcessing";
 import "./JPGtoPDF.css";
 
@@ -21,20 +23,64 @@ const steps = [
 ];
 
 const seoBlocks = [
-  { heading: "Merge PDF Files Online", description: "Combine multiple PDF files into one organized document directly in your browser." },
-  { heading: "Keep Your PDF Order", description: "Arrange your uploaded files before merging so the final PDF follows the order you need." },
-  { heading: "Simple PDF Merging", description: "Merge PDFs without installing desktop software or uploading your documents to a server." },
+  {
+    heading: "Combine Multiple PDF Files Online Free",
+    description:
+      "It is effortless to combine multiple PDF files online free with Growile PDF. Just upload your separate documents, and our smart tool will instantly bind them into one single, easy-to-share file.",
+  },
+  {
+    heading: "Merge PDF Files Without Losing Quality",
+    description:
+      "Document clarity is essential. Our platform ensures you merge PDF files without losing quality. Your joined file will maintain the exact crisp text, formatting, and layout of all the original files.",
+  },
+  {
+    heading: "Join PDF Files Together Online Free",
+    description:
+      "The entire process is incredibly smooth. You can join PDF files together online free by simply dropping your documents here. Growile PDF quickly unifies them, delivering your combined file in seconds.",
+  },
 ];
 
 const faqs = [
-  { question: "How do I merge PDF files?", answer: "Upload at least two PDF files, arrange them in the required order, and click Merge PDFs." },
-  { question: "Can I change the order of the PDFs?", answer: "Yes. Drag the selected files or use the move controls to arrange them before merging." },
-  { question: "How many PDF files can I merge?", answer: "You can select up to 50 PDF files in one merge operation." },
-  { question: "Will my PDF files be uploaded to a server?", answer: "No. The merge is processed directly in your browser." },
-  { question: "Will the pages stay in the same order?", answer: "Yes. Each source PDF is added in the order shown in the upload area, with its original page order preserved." },
-  { question: "Is the Merge PDF tool free?", answer: "Yes. You can merge PDF files online with Growile for free." },
-  { question: "Can I merge password-protected PDFs?", answer: "Password-protected or encrypted PDFs cannot be merged unless they can be opened without a password." },
-  { question: "What can I do after merging?", answer: "You can use Growile's other PDF tools to convert, compress, edit, protect, or organize the merged document." },
+  {
+    question: "Is the Growile PDF merger completely free?",
+    answer:
+      "Yes, combining documents with Growile PDF is 100% free. You can merge multiple files into a single document without paying any subscription fees.",
+  },
+  {
+    question: "Can I combine multiple PDF files at once?",
+    answer:
+      "Absolutely! You can easily upload several documents at the same time. Growile PDF will instantly bind all your selected files into one combined PDF.",
+  },
+  {
+    question: "Will the formatting change after merging?",
+    answer:
+      "No, your layout remains safe. Growile PDF ensures you join files without losing quality, keeping your text and original designs perfectly intact.",
+  },
+  {
+    question: "Do I need software to join PDF files?",
+    answer:
+      "No installation is needed. You can easily connect your separate documents into one file directly from your web browser using our Growile PDF tool.",
+  },
+  {
+    question: "Are my uploaded and merged files safe?",
+    answer:
+      "Your privacy is our priority. Growile PDF automatically deletes your original documents and the final combined file from our servers after merging.",
+  },
+  {
+    question: "Does this merging tool work on mobile?",
+    answer:
+      "Yes, Growile PDF is mobile-friendly. You can comfortably combine your business reports or study materials into one file using your smartphone anytime.",
+  },
+  {
+    question: "How fast is the document merging process?",
+    answer:
+      "It is extremely quick! Once you upload your separate documents, Growile PDF instantly binds them and prepares your unified file in just seconds.",
+  },
+  {
+    question: "Is there a limit on how many files I can merge?",
+    answer:
+      "Growile PDF offers a smooth experience for your daily tasks, allowing you to join multiple PDF files together seamlessly without any interruptions.",
+  },
 ];
 
 const faqSchema = {
@@ -94,18 +140,19 @@ export default function MergePDF() {
   return (
     <>
       <PageMeta
-        title="Merge PDF Files Online"
-        description="Merge multiple PDF files into one document online with Growile's browser-based Merge PDF tool."
+        title="Merge PDF Files Online Free - Fast & Secure | Growile PDF"
+        description="Use Growile PDF to merge PDF files online free. Easily combine multiple PDF files into one document without losing quality. Safe, fast, and 100% free tool!"
         canonicalPath="/tools/merge-pdf"
       />
       <PdfNavBar />
       <Hero
         kicker="PDF Organization"
-        title="Merge PDF Files"
-        subtitle="Combine multiple PDF files into one organized document."
+        title="Merge PDF Files Online Free"
+        subtitle="Do you have several documents that need to be in one place? Growile PDF helps you merge PDF files online free in just a few clicks. Whether it is scanning reports or joining invoice pages, our tool seamlessly creates a single, organized file. You do not need to install software or pay hidden fees. Experience fast, secure, and unlimited document merging directly from your web browser today."
         ctaText="Upload PDFs"
         ctaHref="#merge-pdf-upload"
       />
+      <Divider />
       <main className="jpg-to-pdf-page">
         <section className="jpg-to-pdf-upload-section" id="merge-pdf-upload">
           <div className="jpg-to-pdf-upload-layout">
@@ -129,9 +176,22 @@ export default function MergePDF() {
           {mergeMessage && <p className="jpg-to-pdf-status" role="status">{mergeMessage}</p>}
           {mergeError && <p className="jpg-to-pdf-error" role="alert">{mergeError}</p>}
         </section>
+        <section className="pdf-related-tools" aria-labelledby="related-pdf-tools-title">
+          <h2 id="related-pdf-tools-title">More PDF Tools</h2>
+          <div className="pdf-related-tools-grid pdf-related-tools-grid-five">
+            <PdfIconToolCard toolId="compress-pdf" />
+            <PdfIconToolCard toolId="split-pdf" />
+            <PdfIconToolCard toolId="reorder-pdf-pages" />
+            <PdfIconToolCard toolId="delete-pdf-pages" />
+            <PdfIconToolCard toolId="add-page-numbers" />
+          </div>
+        </section>
         <HowToUse heading="How to Merge PDF Files" steps={steps} />
+        <Divider />
         <H2Section blocks={seoBlocks} />
-        <FAQ heading="Merge PDF FAQs" faqs={faqs} />
+        <Divider />
+        <FAQ heading="Frequently Asked Questions (FAQs)" faqs={faqs} />
+        <Divider />
       </main>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(contentSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />

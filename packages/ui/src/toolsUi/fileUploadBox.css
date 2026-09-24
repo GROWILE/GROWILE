@@ -14,7 +14,7 @@
   box-sizing: border-box;
   min-height: 488px;
   padding: 60px clamp(24px, 7vw, 96px);
-  border: 2px dashed color-mix(in srgb, var(--color-text-highlight) 42%, transparent);
+  border: 3px dashed color-mix(in srgb, var(--color-text-highlight) 90%, transparent);
   border-radius: 5px;
   background: var(--color-secondary);
   display: flex;

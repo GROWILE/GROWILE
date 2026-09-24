@@ -1,0 +1,67 @@
+.growile-icon-toolcard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 18px 14px;
+  min-height: 120px;
+  box-sizing: border-box;
+  color: var(--color-primary);
+  text-align: center;
+  text-decoration: none;
+  background-color: var(--color-secondary);
+  border: 1px solid color-mix(in srgb, var(--tool-card-color, var(--color-text-highlight)) 70%, transparent);
+  border-radius: 10px;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out, border-color 0.2s ease-in-out;
+}
+
+.growile-icon-toolcard:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+  border-color: var(--color-text-highlight);
+}
+
+.growile-icon-toolcard-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  color: var(--tool-card-color, var(--color-text-highlight));
+  background-color: color-mix(
+    in srgb,
+    var(--tool-card-color, var(--color-text-highlight)) 10%,
+    var(--color-secondary)
+  );
+  border-radius: 10px;
+}
+
+.growile-icon-toolcard-icon svg {
+  width: 40px;
+  height: 40px;
+}
+
+.growile-icon-toolcard-title {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.growile-icon-toolcard.theme-blue {
+  --tool-card-color: var(--color-tool-blue);
+}
+
+.growile-icon-toolcard.theme-orange {
+  --tool-card-color: var(--color-tool-orange);
+}
+
+.growile-icon-toolcard.theme-green {
+  --tool-card-color: var(--color-tool-green);
+}
+
+.growile-icon-toolcard.theme-purple {
+  --tool-card-color: var(--color-tool-purple);
+}
+
+.growile-icon-toolcard.theme-teal {
+  --tool-card-color: var(--color-tool-teal);
+}

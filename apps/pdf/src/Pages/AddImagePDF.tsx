@@ -12,6 +12,8 @@ import HowToUse from "../../../../packages/ui/src/HowToUse";
 import PageMeta from "../../../../packages/ui/src/PageMeta";
 import PdfNavBar from "./NavBar";
 import PdfToolsFooter from "./toolsFooter";
+import PdfIconToolCard from "./IconToolCard";
+import Divider from "../../../../packages/ui/src/Divider";
 import { addImageToPdf, downloadAddImagePdf, type ImagePlacement } from "../Utilities/AddImagePDFProcessing";
 import "./JPGtoPDF.css";
 import "./EditPDF.css";
@@ -27,15 +29,19 @@ const steps = [
   { number: "3", title: "Download the PDF", description: "Create and download the final PDF with the image on top of the original content." },
 ];
 const seoBlocks = [
-  { heading: "Add Image to PDF Online", description: "Place a JPG, PNG, or WebP image as an overlay on any PDF page." },
-  { heading: "Edit Your Image Overlay", description: "Drag to position, resize from the corner, rotate, or remove the image before downloading." },
+  { heading: "Insert Photo into PDF Online Free", description: "It is extremely easy to insert photo into PDF online free with Growile PDF. Just upload your document, choose your image, and place it anywhere on the page for a clean and professional appearance." },
+  { heading: "Paste Image on PDF Document Online Free", description: "Forgot to add a chart? You can easily paste image on PDF document online free. Our tool lets you drag, resize, and perfectly position your visual elements exactly where they belong in the file." },
+  { heading: "Add Picture to PDF Online Free", description: "The process is incredibly smooth for everyone. You can add picture to PDF online free by simply uploading your file here. Growile PDF seamlessly embeds your graphics, delivering the updated file." },
 ];
 const faqs = [
-  { question: "Is the image inserted into existing PDF text?", answer: "No. The image is added as a new overlay layer above the original PDF content." },
-  { question: "Which image formats are supported?", answer: "JPG, PNG, and WebP images are supported." },
-  { question: "Can I move and resize the image?", answer: "Yes. Drag the image to move it and use the corner handle to resize it." },
-  { question: "Can I apply the image to another page?", answer: "Yes. Use the page arrows to select the page where the overlay should be applied." },
-  { question: "Is my PDF uploaded to a server?", answer: "No. The PDF and image are processed directly in your browser." },
+  { question: "Is the Growile PDF image insertion tool free?", answer: "Yes, attaching pictures with Growile PDF is completely free. You can insert unlimited photos into your files without any hidden fees." },
+  { question: "Can I resize the photo after placing it on the page?", answer: "Absolutely! Once you upload your picture, you can easily drag the corners to resize it and position it perfectly within your document." },
+  { question: "Which picture formats can I upload to my document?", answer: "Our tool supports all popular image formats. You can effortlessly upload and insert JPG, PNG, or GIF files into your documents instantly." },
+  { question: "Do I need software to paste a picture into my file?", answer: "No installation is needed. You can quickly add visual elements directly from your browser using our online Growile PDF platform securely." },
+  { question: "Are my uploaded documents and personal photos safe?", answer: "Your privacy is fully protected. Growile PDF automatically deletes your original file and the inserted pictures from our servers instantly." },
+  { question: "Can I use this tool to create a faded background logo?", answer: <>While you can add logos here, we highly recommend using our <a href="/tools/add-watermark">Add Watermark</a> tool to perfectly fade and center logos across all your pages.</> },
+  { question: "What if my file becomes too large after adding pictures?", answer: <>High-quality photos can increase file size. If your document becomes too heavy, just use our <a href="/tools/compress-pdf">Compress PDF</a> tool to shrink it for sharing.</> },
+  { question: "Does this picture tool work on mobile devices?", answer: "Yes, Growile PDF is mobile-friendly. You can easily select photos from your smartphone gallery and insert them into your files on the go." },
 ];
 
 const initialPlacement: ImagePlacement = { pageIndex: 0, x: 50, y: 50, width: 180, height: 120, rotation: 0 };
@@ -111,6 +117,7 @@ export default function AddImagePDF() {
   };
 
   const handleOverlayPointerDown = (event: React.PointerEvent<HTMLElement>, mode: DragState["mode"]) => {
+    event.preventDefault();
     event.stopPropagation();
     event.currentTarget.setPointerCapture(event.pointerId);
     setDrag({ mode, startX: event.clientX, startY: event.clientY, placement });
@@ -118,6 +125,8 @@ export default function AddImagePDF() {
 
   const handleOverlayPointerMove = (event: React.PointerEvent<HTMLElement>) => {
     if (!drag || !selectedPage) return;
+    event.preventDefault();
+    event.stopPropagation();
     const pageElement = event.currentTarget.closest(".pdf-page-canvas");
     if (!(pageElement instanceof HTMLElement)) return;
     const bounds = pageElement.getBoundingClientRect();
@@ -135,6 +144,8 @@ export default function AddImagePDF() {
   };
 
   const stopDragging = (event: React.PointerEvent<HTMLElement>) => {
+    event.preventDefault();
+    event.stopPropagation();
     if (event.currentTarget.hasPointerCapture(event.pointerId)) event.currentTarget.releasePointerCapture(event.pointerId);
     setDrag(null);
   };
@@ -175,9 +186,10 @@ export default function AddImagePDF() {
   const selectedPage = pages[currentPage];
   return (
     <>
-      <PageMeta title="Add Image to PDF Online" description="Add JPG, PNG, or WebP image overlays to PDF pages online with Growile." canonicalPath="/tools/add-image" />
+      <PageMeta title="Add Image to PDF Online Free Instantly - Easy | Growile PDF" description="Use Growile PDF to add image to PDF online free instantly. Easily insert photos or paste images on documents securely. Fast, unlimited, and 100% free tool!" canonicalPath="/tools/add-image" />
       <PdfNavBar />
-      <Hero kicker="PDF Editing" title="Add Image to PDF" subtitle="Upload an image, then drag, resize, rotate, and place it on top of any PDF page." ctaText="Upload PDF" ctaHref="#add-image-upload" />
+      <Hero kicker="PDF Editing" title="Add Image to PDF Online Free Instantly" subtitle="Do you need to attach a picture to your digital file? Growile PDF helps you add image to PDF online free instantly in just a few clicks. Whether you are inserting a profile photo or placing a diagram in a report, our tool makes it effortless. You do not need to download heavy software or pay any fees. Enjoy fast, secure, and limitless image insertion directly from your web browser right now." ctaText="Upload PDF" ctaHref="#add-image-upload" />
+      <Divider />
       <main className="jpg-to-pdf-page">
         <section className="jpg-to-pdf-upload-section" id="add-image-upload">
           <div className="jpg-to-pdf-upload-layout">
@@ -211,7 +223,7 @@ export default function AddImagePDF() {
                     <button type="button" className="pdf-page-arrow" aria-label="Previous PDF page" disabled={currentPage === 0} onClick={() => setCurrentPage((page) => page - 1)}><ChevronLeft size={24} /></button>
                     {selectedPage && <div className="pdf-page-viewport"><div className="pdf-page-canvas selected" onClick={handlePageClick}>
                       <img src={selectedPage.image} alt={`PDF page ${currentPage + 1}`} />
-                      {imageFiles.map((file, index) => { const item = placements[index]; const preview = imagePreviews[index]; if (!item || !preview || item.pageIndex !== currentPage) return null; const style = { left: `${(item.x / selectedPage.width) * 100}%`, bottom: `${(item.y / selectedPage.height) * 100}%`, width: `${(item.width / selectedPage.width) * 100}%`, height: `${(item.height / selectedPage.height) * 100}%`, transform: `rotate(${item.rotation}deg)` }; return <div className={`pdf-image-overlay ${activeImage === index ? "active" : ""}`} style={style} key={`${file.name}-${index}`} onClick={(event) => { event.stopPropagation(); setActiveImage(index); }} onPointerDown={(event) => { setActiveImage(index); handleOverlayPointerDown(event, "move"); }} onPointerMove={activeImage === index ? handleOverlayPointerMove : undefined} onPointerUp={stopDragging} onPointerCancel={stopDragging}><img src={preview} alt={`Image overlay ${index + 1}`} />{activeImage === index && <><button type="button" className="pdf-image-delete" aria-label="Delete image overlay" onPointerDown={(event) => event.stopPropagation()} onClick={() => { setImageFiles((current) => current.filter((_, currentIndex) => currentIndex !== index)); setImagePreviews((current) => current.filter((_, currentIndex) => currentIndex !== index)); setPlacements((current) => current.filter((_, currentIndex) => currentIndex !== index)); setActiveImage(0); }}><Trash2 size={13} /></button><span className="pdf-image-resize" aria-label="Resize image" onPointerDown={(event) => { setActiveImage(index); handleOverlayPointerDown(event, "resize"); }} /></>}</div>; })}
+                      {imageFiles.map((file, index) => { const item = placements[index]; const preview = imagePreviews[index]; if (!item || !preview || item.pageIndex !== currentPage) return null; const style = { left: `${(item.x / selectedPage.width) * 100}%`, bottom: `${(item.y / selectedPage.height) * 100}%`, width: `${(item.width / selectedPage.width) * 100}%`, height: `${(item.height / selectedPage.height) * 100}%`, transform: `rotate(${item.rotation}deg)` }; return <div className={`pdf-image-overlay ${activeImage === index ? "active" : ""}`} style={style} key={`${file.name}-${index}`} onClick={(event) => { event.stopPropagation(); setActiveImage(index); }} onDoubleClick={(event) => event.preventDefault()} onPointerDown={(event) => { setActiveImage(index); handleOverlayPointerDown(event, "move"); }} onPointerMove={activeImage === index ? handleOverlayPointerMove : undefined} onPointerUp={stopDragging} onPointerCancel={stopDragging}><img src={preview} alt={`Image overlay ${index + 1}`} />{activeImage === index && <><button type="button" className="pdf-image-delete" aria-label="Delete image overlay" onPointerDown={(event) => event.stopPropagation()} onClick={() => { setImageFiles((current) => current.filter((_, currentIndex) => currentIndex !== index)); setImagePreviews((current) => current.filter((_, currentIndex) => currentIndex !== index)); setPlacements((current) => current.filter((_, currentIndex) => currentIndex !== index)); setActiveImage(0); }}><Trash2 size={13} /></button><span className="pdf-image-resize" aria-label="Resize image" onPointerDown={(event) => { setActiveImage(index); handleOverlayPointerDown(event, "resize"); }} /></>}</div>; })}
                       <span className="pdf-page-label">Page {currentPage + 1} of {pages.length}</span>
                     </div></div>}
                     <button type="button" className="pdf-page-arrow" aria-label="Next PDF page" disabled={currentPage === pages.length - 1} onClick={() => setCurrentPage((page) => page + 1)}><ChevronRight size={24} /></button>
@@ -225,11 +237,24 @@ export default function AddImagePDF() {
           {message && <p className="jpg-to-pdf-status" role="status">{message}</p>}
           {error && <p className="jpg-to-pdf-error" role="alert">{error}</p>}
         </section>
+        <section className="pdf-related-tools" aria-labelledby="related-pdf-tools-title">
+          <h2 id="related-pdf-tools-title">More PDF Tools</h2>
+          <div className="pdf-related-tools-grid pdf-related-tools-grid-five">
+            <PdfIconToolCard toolId="add-text" />
+            <PdfIconToolCard toolId="add-signature" />
+            <PdfIconToolCard toolId="add-watermark" />
+            <PdfIconToolCard toolId="compress-pdf" />
+            <PdfIconToolCard toolId="merge-pdf" />
+          </div>
+        </section>
         <HowToUse heading="How to Add an Image to a PDF" steps={steps} />
+        <Divider />
         <H2Section blocks={seoBlocks} />
+        <Divider />
         <FAQ heading="Add Image to PDF FAQs" faqs={faqs} />
+        <Divider />
       </main>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ "@context": "https://schema.org", "@type": "FAQPage", mainEntity: faqs.map((faq) => ({ "@type": "Question", name: faq.question, acceptedAnswer: { "@type": "Answer", text: faq.answer } })) }) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ "@context": "https://schema.org", "@type": "FAQPage", mainEntity: faqs.map((faq) => ({ "@type": "Question", name: faq.question, acceptedAnswer: { "@type": "Answer", text: typeof faq.answer === "string" ? faq.answer : "Use the linked PDF tool for this document task." } })) }) }} />
       <PdfToolsFooter /><Footer /><AdSpace className="footer-bottom-ad-space" />
       <DownloadPopup isOpen={popup} onClose={closePopup} onTriggerDownload={() => { if (pending) downloadAddImagePdf(pending, "image-added.pdf"); }} itemName="PDF with image overlay" />
     </>

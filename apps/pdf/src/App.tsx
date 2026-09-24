@@ -15,6 +15,10 @@ import ProtectPDF from "./Pages/ProtectPDF";
 import UnlockPDF from "./Pages/UnlockPDF";
 import AddTextPDF from "./Pages/AddTextPDF";
 import AddImagePDF from "./Pages/AddImagePDF";
+import HighlightPDF from "./Pages/HighlightPDF";
+import WatermarkPDF from "./Pages/WatermarkPDF";
+import AddPageNumbers from "./Pages/AddPageNumbers";
+import AddSignature from "./Pages/AddSignature";
 
 export default function App() {
   if (window.location.pathname === "/tools/jpg-to-pdf") {
@@ -64,6 +68,18 @@ export default function App() {
   }
   if (window.location.pathname === "/tools/add-image") {
     return <AddImagePDF />;
+  }
+  if (window.location.pathname === "/tools/highlight-pdf") {
+    return <HighlightPDF />;
+  }
+  if (window.location.pathname === "/tools/add-watermark") {
+    return <WatermarkPDF />;
+  }
+  if (window.location.pathname === "/tools/add-page-numbers") {
+    return <AddPageNumbers />;
+  }
+  if (window.location.pathname === "/tools/add-signature" || window.location.pathname === "/tools/sign-pdf") {
+    return <AddSignature />;
   }
   return <Home />;
 }

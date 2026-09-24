@@ -1,9 +1,10 @@
 import { useState } from "react";
+import type { ReactNode } from "react";
 import "./FAQ.css";
 
 type FAQItem = {
   question: string;
-  answer: string;
+  answer: ReactNode;
 };
 
 type FAQProps = {

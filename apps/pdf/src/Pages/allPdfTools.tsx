@@ -100,6 +100,8 @@ export default function AllPdfTools({ tools = allPdfTools }: AllPdfToolsProps) {
           <Search size={18} aria-hidden="true" />
           <span className="sr-only">Search PDF tools</span>
           <input
+            id="pdf-tools-search"
+            name="search"
             type="search"
             value={searchTerm}
             onChange={(event) => setSearchTerm(event.target.value)}

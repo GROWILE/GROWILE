@@ -12,6 +12,8 @@ import HowToUse from "../../../../packages/ui/src/HowToUse";
 import PageMeta from "../../../../packages/ui/src/PageMeta";
 import PdfNavBar from "./NavBar";
 import PdfToolsFooter from "./toolsFooter";
+import PdfIconToolCard from "./IconToolCard";
+import Divider from "../../../../packages/ui/src/Divider";
 import {
   addTextToPdf,
   downloadAddTextPdf,
@@ -53,14 +55,19 @@ const steps = [
   { number: "3", title: "Download the PDF", description: "Create and download the updated document." },
 ];
 const seoBlocks = [
-  { heading: "Add Text to PDF Online", description: "Place custom text on any PDF page with a simple visual editor." },
-  { heading: "Click Anywhere to Place Text", description: "View large PDF page templates side by side, choose your text style, and click the exact location for your text." },
+  { heading: "Insert Text into PDF Online Free", description: "It is incredibly simple to insert text into PDF online free with Growile PDF. Just upload your file, click anywhere on the page, and start typing. Your new words will perfectly blend into the file." },
+  { heading: "Type on PDF Document Online Free", description: "Have a scanned file? You can easily type on PDF document online free. Our intuitive platform lets you place words exactly where you need them, allowing you to update important reports effortlessly." },
+  { heading: "Fill Out PDF Form Online Free", description: "Dealing with digital paperwork? You can seamlessly fill out PDF form online free using our tool. Simply click on the blank fields, type your details, and download your completed document instantly." },
 ];
 const faqs = [
-  { question: "How do I add text to a PDF?", answer: "Upload a PDF, type your text, choose its style, and click the desired location on a page." },
-  { question: "Can I edit the text before downloading?", answer: "Yes. Change the text or toolbar settings and click the page again to move the live text preview." },
-  { question: "Can I add text to any page?", answer: "Yes. Scroll the page editor from left to right and click any PDF page." },
-  { question: "Is my PDF uploaded to a server?", answer: "No. Text is added directly in your browser." },
+  { question: "Is the Growile PDF typing tool completely free?", answer: "Yes, adding words to your files with Growile PDF is 100% free. You can type on unlimited documents without paying any subscription fees." },
+  { question: "Can I change the font style and size of my text?", answer: "Absolutely! Our tool allows you to easily adjust the font family, size, and color of your inserted words to match the original document." },
+  { question: "Can I use this tool to fill out government forms?", answer: "Yes, you can easily click on blank fields and type your information to cleanly fill out official applications or digital paperwork." },
+  { question: "Do I need an app to insert paragraphs into my file?", answer: "No installation is required. You can quickly add text directly from your web browser using our online Growile PDF platform easily." },
+  { question: "Are my uploaded forms and typed documents safe?", answer: "Your data is perfectly safe. Growile PDF automatically deletes your original file and the updated document from our secure servers quickly." },
+  { question: "What if I also need to add my handwritten signature?", answer: <>If your form requires a signature after you type your details, you can easily use our <a href="/tools/add-signature">Add Signature</a> tool to make the document official.</> },
+  { question: "Can I insert a company logo using this specific tool?", answer: <>This tool is strictly for typing words. If you need to attach a picture or logo, please use our <a href="/tools/add-image">Add Image</a> tool for the best results.</> },
+  { question: "Does this typing tool work on mobile smartphones?", answer: "Yes, Growile PDF is mobile-friendly. You can comfortably tap, type, and fill out forms on your Android or iOS device while on the move." },
 ];
 
 const initialPlacement: TextPlacement = {
@@ -171,9 +178,10 @@ export default function AddTextPDF() {
 
   return (
     <>
-      <PageMeta title="Add Text to PDF Online" description="Add custom text to PDF pages online with Growile." canonicalPath="/tools/add-text" />
+      <PageMeta title="Add Text to PDF Document Online Free - Fast | Growile PDF" description="Use Growile PDF to add text to PDF document online free. Easily insert text, type on pages, or fill out PDF forms safely. Fast, secure, and 100% free!" canonicalPath="/tools/add-text" />
       <PdfNavBar />
-      <Hero kicker="PDF Editing" title="Add Text to PDF" subtitle="Type your text, choose a style, and click directly on any PDF page to place it." ctaText="Upload PDF" ctaHref="#add-text-upload" />
+      <Hero kicker="PDF Editing" title="Add Text to PDF Document Online Free" subtitle="Do you need to update a document but cannot edit it? Growile PDF helps you add text to PDF document online free in just seconds. Whether you need to fill forms, type notes, or insert paragraphs, our tool makes it easy. You do not have to install software or pay fees. Enjoy fast, secure, and unlimited typing directly on your files right from your web browser without any complex steps today." ctaText="Upload PDF" ctaHref="#add-text-upload" />
+      <Divider />
       <main className="jpg-to-pdf-page">
         <section className="jpg-to-pdf-upload-section" id="add-text-upload">
           <div className="jpg-to-pdf-upload-layout">
@@ -244,11 +252,24 @@ export default function AddTextPDF() {
           {message && <p className="jpg-to-pdf-status" role="status">{message}</p>}
           {error && <p className="jpg-to-pdf-error" role="alert">{error}</p>}
         </section>
+        <section className="pdf-related-tools" aria-labelledby="related-pdf-tools-title">
+          <h2 id="related-pdf-tools-title">More PDF Tools</h2>
+          <div className="pdf-related-tools-grid pdf-related-tools-grid-five">
+            <PdfIconToolCard toolId="add-signature" />
+            <PdfIconToolCard toolId="add-image" />
+            <PdfIconToolCard toolId="highlight-pdf" />
+            <PdfIconToolCard toolId="add-watermark" />
+            <PdfIconToolCard toolId="compress-pdf" />
+          </div>
+        </section>
         <HowToUse heading="How to Add Text to a PDF" steps={steps} />
+        <Divider />
         <H2Section blocks={seoBlocks} />
+        <Divider />
         <FAQ heading="Add Text to PDF FAQs" faqs={faqs} />
+        <Divider />
       </main>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ "@context": "https://schema.org", "@type": "FAQPage", mainEntity: faqs.map((faq) => ({ "@type": "Question", name: faq.question, acceptedAnswer: { "@type": "Answer", text: faq.answer } })) }) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ "@context": "https://schema.org", "@type": "FAQPage", mainEntity: faqs.map((faq) => ({ "@type": "Question", name: faq.question, acceptedAnswer: { "@type": "Answer", text: typeof faq.answer === "string" ? faq.answer : "Use the linked PDF tool for this document task." } })) }) }} />
       <PdfToolsFooter />
       <Footer />
       <AdSpace className="footer-bottom-ad-space" />

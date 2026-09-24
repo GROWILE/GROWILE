@@ -10,25 +10,27 @@ import HowToUse from "../../../../packages/ui/src/HowToUse";
 import PageMeta from "../../../../packages/ui/src/PageMeta";
 import PdfNavBar from "./NavBar";
 import PdfToolsFooter from "./toolsFooter";
+import PdfIconToolCard from "./IconToolCard";
 import DownloadPopup from "../../../../packages/ui/src/DownloadPopup";
+import Divider from "../../../../packages/ui/src/Divider";
 import { convertJpgFilesToPdf, downloadPdf } from "../Utilities/JPGtoPDFProcessing";
 import "./JPGtoPDF.css";
 
 const seoBlocks = [
   {
-    heading: "Convert JPG Images to PDF Online",
+    heading: "How to Change JPG to PDF Format Online Free",
     description:
-      "Turn one or more JPG images into a single PDF document with Growile's simple online JPG to PDF converter.",
+      "It is very easy to use. Just upload your image files, arrange them in the order you want, and click the convert button. You can change JPG to PDF format online free in seconds with zero hassle.",
   },
   {
-    heading: "Create a PDF from JPG Files",
+    heading: "Convert Multiple JPG to PDF Online Free",
     description:
-      "Upload your JPG files, arrange your images as needed, and create a shareable PDF without installing desktop software.",
+      "Got many photos? No problem. You can convert multiple JPG to PDF online free by uploading them all at once. Our tool will combine all your selected images into one neat PDF document perfectly.",
   },
   {
-    heading: "Simple JPG to PDF Conversion",
+    heading: "Convert JPG to PDF Without Losing Quality",
     description:
-      "Growile keeps image conversion straightforward with a focused workflow designed for documents, photos, and everyday files.",
+      "Worried about blurry images? We ensure that you can convert JPG to PDF without losing quality. The final document will keep the exact colors, sharpness, and details of your original photos.",
   },
 ];
 
@@ -52,43 +54,43 @@ const steps = [
 
 const faqs = [
   {
-    question: "How do I convert JPG to PDF?",
+    question: "Is this JPG to PDF converter free?",
     answer:
-      "Select a JPG image in the upload box, review the selected file, and use the conversion action to create a PDF.",
+      "Yes, the Growile PDF converter is 100% free. You can transform your JPG photos into documents without any hidden fees or subscriptions.",
   },
   {
-    question: "Can I convert multiple JPG images to one PDF?",
+    question: "Can I upload many JPG images at once?",
     answer:
-      "The JPG to PDF tool is designed for converting JPG images into PDF documents. Multiple-image support can be added to the same reusable upload workflow.",
+      "Yes! You can upload multiple JPGs together. Growile PDF will instantly merge all your selected photographs into one organized PDF file.",
   },
   {
-    question: "Can I use this JPG to PDF converter for free?",
+    question: "Will the JPG image quality drop after conversion?",
     answer:
-      "Yes. Growile's PDF tools are available online without requiring a paid desktop application.",
+      "Absolutely not. Growile PDF ensures your original JPG resolution and colors remain perfectly sharp in the final document.",
   },
   {
-    question: "Do I need to install software?",
+    question: "Do I need to install an app to convert JPGs?",
     answer:
-      "No. You can use the converter directly in your browser.",
+      "No installation is required. You can convert JPG files directly in your web browser using Growile PDF on any device.",
   },
   {
-    question: "Which image format does this tool support?",
-    answer: "This tool is intended for JPG and JPEG image files.",
+    question: "Are my uploaded JPG photos safe?",
+    answer: "Yes, your privacy is secure. Growile PDF automatically deletes your uploaded JPG images and the final file from our servers quickly.",
   },
   {
-    question: "Will my JPG image keep its quality?",
+    question: "Does this tool work on mobile for JPG files?",
     answer:
-      "The converter is designed to place your image into a PDF while preserving the original image content.",
+      "Yes, Growile PDF is highly mobile-friendly. You can easily convert your camera photos from your Android or iOS smartphone on the go.",
   },
   {
-    question: "Can I convert a PNG image to PDF?",
+    question: "How fast is the JPG conversion process?",
     answer:
-      "For PNG files, use the PNG to PDF tool from the All PDF Tools list.",
+      "It is incredibly fast! Once you upload your JPG images, Growile PDF generates your new document ready for download in just seconds.",
   },
   {
-    question: "What can I do after creating a PDF?",
+    question: "Is there a watermark on my converted JPGs?",
     answer:
-      "You can use Growile's other tools to compress, merge, edit, protect, or convert the resulting PDF.",
+      "No, Growile PDF never adds watermarks. You get a clean, professional document made from your JPGs, ready to share or print instantly.",
   },
 ];
 
@@ -157,18 +159,20 @@ export default function JPGtoPDF() {
   return (
     <>
       <PageMeta
-        title="JPG to PDF Converter"
-        description="Convert JPG images to PDF online with Growile's simple browser-based JPG to PDF converter."
+        title="Convert JPG to PDF Online Free - High Quality | Growile PDF"
+        description="Convert JPG to PDF online free with our fast tool. Change multiple JPG to PDF format without losing quality. Enjoy safe, unlimited, and easy conversions!"
         canonicalPath="/tools/jpg-to-pdf"
       />
       <PdfNavBar />
       <Hero
         kicker="PDF Conversion"
-        title="JPG to PDF Converter"
-        subtitle="Convert your JPG images into a PDF document quickly and easily."
+        title="Convert JPG to PDF Online Free"
+        subtitle="Looking for a fast way to turn your images into documents? Our tool lets you convert JPG to PDF online free in just a few clicks. Whether it is a single photo or a batch of scanned receipts, you can easily create a single, easy-to-share file. No sign-ups or hidden fees are required. Enjoy unlimited access to high-quality conversions right from your browser. Try it now and save your time!"
         ctaText="Upload JPG"
         ctaHref="#jpg-to-pdf-upload"
       />
+
+      <Divider />
 
       <main className="jpg-to-pdf-page">
         <section className="jpg-to-pdf-upload-section" id="jpg-to-pdf-upload">
@@ -202,9 +206,29 @@ export default function JPGtoPDF() {
           )}
         </section>
 
+        <section className="pdf-related-tools" aria-labelledby="related-pdf-tools-title">
+          <h2 id="related-pdf-tools-title">More PDF Tools</h2>
+          <div className="pdf-related-tools-grid pdf-related-tools-grid-five">
+            <PdfIconToolCard toolId="compress-pdf" />
+            <PdfIconToolCard toolId="merge-pdf" />
+            <PdfIconToolCard toolId="png-to-pdf" />
+            <PdfIconToolCard toolId="pdf-to-jpg" />
+            <PdfIconToolCard toolId="protect-pdf" />
+          </div>
+        </section>
+
         <HowToUse heading="How to Convert JPG to PDF" steps={steps} />
+
+        <Divider />
+
         <H2Section blocks={seoBlocks} />
+
+        <Divider />
+
         <FAQ heading="JPG to PDF FAQs" faqs={faqs} />
+
+        <Divider />
+
       </main>
 
       <script

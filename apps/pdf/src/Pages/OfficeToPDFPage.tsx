@@ -11,6 +11,7 @@ import HowToUse from "../../../../packages/ui/src/HowToUse";
 import PageMeta from "../../../../packages/ui/src/PageMeta";
 import PdfNavBar from "./NavBar";
 import PdfToolsFooter from "./toolsFooter";
+import Divider from "../../../../packages/ui/src/Divider";
 import { convertOfficeToPdf, downloadOfficePdf } from "../Utilities/OfficeToPDFProcessing";
 import "./JPGtoPDF.css";
 
@@ -96,6 +97,7 @@ export default function OfficeToPDFPage({ format, icon }: { format: OfficeFormat
       <PageMeta title={`${current.title} Converter`} description={current.subtitle} canonicalPath={`/tools/${format}-to-pdf`} />
       <PdfNavBar />
       <Hero kicker="PDF Conversion" title={`${current.title} Converter`} subtitle={current.subtitle} ctaText={`Upload ${current.formatLabel}`} ctaHref={`#${format}-to-pdf-upload`} />
+      <Divider />
       <main className="jpg-to-pdf-page">
         <section className="jpg-to-pdf-upload-section" id={`${format}-to-pdf-upload`}>
           <div className="jpg-to-pdf-upload-layout">
@@ -117,8 +119,11 @@ export default function OfficeToPDFPage({ format, icon }: { format: OfficeFormat
           {error && <p className="jpg-to-pdf-error" role="alert">{error}</p>}
         </section>
         <HowToUse heading={`How to Convert ${current.formatLabel} to PDF`} steps={steps} />
+        <Divider />
         <H2Section blocks={blocks} />
+        <Divider />
         <FAQ heading={`${current.formatLabel} to PDF FAQs`} faqs={faqs} />
+        <Divider />
       </main>
       <PdfToolsFooter />
       <Footer />

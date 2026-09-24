@@ -17,6 +17,8 @@ export { default as ConfirmPopUp } from './ConfirmPopUp';
 export type { ConfirmPopUpProps } from './ConfirmPopUp';
 export { default as Breadcrumb } from './Breadcrumb'
 export { default as ToolCard } from "./toolsUi/toolCard"
+export { default as IconToolCard } from "./toolsUi/IconToolCard"
+export type { IconToolCardProps } from "./toolsUi/IconToolCard"
 export { default as FileUploadBox } from "./toolsUi/fileUploadBox"
 export type { FileUploadBoxProps, FileUploadSource } from "./toolsUi/fileUploadBox"
 export { default as ToolsFooter } from "./toolsUi/toolsFooter"

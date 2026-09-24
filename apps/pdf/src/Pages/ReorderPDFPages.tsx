@@ -12,6 +12,8 @@ import HowToUse from "../../../../packages/ui/src/HowToUse";
 import PageMeta from "../../../../packages/ui/src/PageMeta";
 import PdfNavBar from "./NavBar";
 import PdfToolsFooter from "./toolsFooter";
+import PdfIconToolCard from "./IconToolCard";
+import Divider from "../../../../packages/ui/src/Divider";
 import { downloadReorderedPdf, reorderPdfPages } from "../Utilities/ReorderPDFPagesProcessing";
 import "./JPGtoPDF.css";
 import "./SplitPDF.css";
@@ -30,20 +32,72 @@ const steps = [
 ];
 
 const seoBlocks = [
-  { heading: "Reorder PDF Pages Online", description: "Arrange PDF pages in the order you need directly in your browser." },
-  { heading: "Drag or Move Pages", description: "Drag page thumbnails or use the arrow controls above each page to reorder your document." },
-  { heading: "Simple PDF Page Reordering", description: "Reorder PDF pages without installing desktop software or uploading your document to a server." },
+  {
+    heading: "Rearrange PDF Pages Online Free",
+    description:
+      "It is incredibly simple to rearrange PDF pages online free using Growile PDF. Just upload your file, drag and drop the thumbnails into their correct spots, and we will update your document instantly.",
+  },
+  {
+    heading: "Change Order of PDF Pages Online Free",
+    description:
+      "Got your sheets mixed up? You can quickly change order of PDF pages online free. Our tool allows you to shift any page left or right, ensuring your final file flows logically and beautifully.",
+  },
+  {
+    heading: "Sort PDF Pages Online Free",
+    description:
+      "The organizing process is completely stress-free. You can sort PDF pages online free by simply uploading your file here. Growile PDF aligns everything perfectly, delivering your updated file quickly.",
+  },
 ];
 
 const faqs = [
-  { question: "How do I reorder PDF pages?", answer: "Upload one PDF, drag pages into a new order or use the left and right arrows, then click Reorder PDF." },
-  { question: "Can I move pages with arrows?", answer: "Yes. Every page has left and right arrow controls above it for precise positioning." },
-  { question: "Will all pages be included?", answer: "Yes. Reordering keeps every page and changes only its position." },
-  { question: "Can I drag PDF pages?", answer: "Yes. Drag any page thumbnail and drop it where you want it in the preview." },
-  { question: "Can I upload more than one PDF?", answer: "This Reorder PDF Pages tool accepts one PDF file at a time." },
-  { question: "Will my PDF be uploaded to a server?", answer: "No. The reordering is processed directly in your browser." },
-  { question: "Is the Reorder PDF Pages tool free?", answer: "Yes. You can reorder PDF pages online with Growile for free." },
-  { question: "What happens after I click Reorder PDF?", answer: "A new PDF with the arranged page order is created and prepared for download." },
+  {
+    question: "Is the Growile PDF reordering tool free?",
+    answer:
+      "Yes, moving your document sheets with Growile PDF is 100% free. You can easily fix the sequence of any file without paying subscription fees.",
+  },
+  {
+    question: "How do I change the position of my sheets?",
+    answer:
+      "It is very easy! Just upload your file and drag the page thumbnails into your desired spots. Growile PDF handles the rest instantly.",
+  },
+  {
+    question: "Will the content layout change when I shift pages?",
+    answer:
+      "No, your layout is safe. Growile PDF ensures you sort your document without losing quality, keeping the original text and design perfectly.",
+  },
+  {
+    question: "Do I need an app to arrange my document?",
+    answer:
+      "No installation is required. You can quickly shift and align your sheets directly from your web browser using our online Growile PDF tool.",
+  },
+  {
+    question: "Are my uploaded files and new documents secure?",
+    answer:
+      "Your privacy is fully protected. Growile PDF automatically deletes your original file and the newly sorted document from our servers quickly.",
+  },
+  {
+    question: "What if a page is upside down while sorting?",
+    answer: (
+      <>
+        This tool only shifts sequence. If a sheet is sideways or upside down, please use our{" "}
+        <a href="/tools/rotate-pdf">Rotate PDF</a> tool to fix its orientation easily.
+      </>
+    ),
+  },
+  {
+    question: "Can I erase an unwanted sheet while sorting?",
+    answer: (
+      <>
+        This tool strictly moves sheets. If you find a blank or wrong page you want to remove, try using our{" "}
+        <a href="/tools/delete-pdf-pages">Delete PDF Pages</a> tool instead.
+      </>
+    ),
+  },
+  {
+    question: "Does this page sorting tool work on smartphones?",
+    answer:
+      "Yes, Growile PDF is fully optimized for mobile. You can easily drag and drop your report pages into the correct order using your phone.",
+  },
 ];
 
 const faqSchema = {
@@ -52,7 +106,13 @@ const faqSchema = {
   mainEntity: faqs.map((faq) => ({
     "@type": "Question",
     name: faq.question,
-    acceptedAnswer: { "@type": "Answer", text: faq.answer },
+    acceptedAnswer: {
+      "@type": "Answer",
+      text:
+        typeof faq.answer === "string"
+          ? faq.answer
+          : "Use the linked PDF tool for this document task.",
+    },
   })),
 };
 
@@ -135,18 +195,19 @@ export default function ReorderPDFPages() {
   return (
     <>
       <PageMeta
-        title="Reorder PDF Pages Online"
-        description="Rearrange PDF pages online with Growile's browser-based Reorder PDF Pages tool."
+        title="Reorder PDF Pages Online Free - Fast & Easy | Growile PDF"
+        description="Use Growile PDF to reorder PDF pages online free. Easily rearrange, sort, or change the order of your document's pages. Safe, fast, and 100% free tool!"
         canonicalPath="/tools/reorder-pdf-pages"
       />
       <PdfNavBar />
       <Hero
         kicker="PDF Organization"
-        title="Reorder PDF Pages"
-        subtitle="Arrange your PDF pages in the order you need."
+        title="Reorder PDF Pages Online Free"
+        subtitle="Do you need to fix the sequence of your document? Growile PDF helps you reorder PDF pages online free in just a few clicks. Whether you scanned a report backwards or mixed up presentation slides, our smart tool lets you move sheets into the perfect position. You do not need to install complex software or pay any fees. Enjoy fast, secure, and limitless page organization right from your browser."
         ctaText="Upload PDF"
         ctaHref="#reorder-pdf-pages-upload"
       />
+      <Divider />
       <main className="jpg-to-pdf-page">
         <section className="jpg-to-pdf-upload-section" id="reorder-pdf-pages-upload">
           <div className="jpg-to-pdf-upload-layout">
@@ -177,9 +238,22 @@ export default function ReorderPDFPages() {
           {reorderMessage && <p className="jpg-to-pdf-status" role="status">{reorderMessage}</p>}
           {reorderError && <p className="jpg-to-pdf-error" role="alert">{reorderError}</p>}
         </section>
+        <section className="pdf-related-tools" aria-labelledby="related-pdf-tools-title">
+          <h2 id="related-pdf-tools-title">More PDF Tools</h2>
+          <div className="pdf-related-tools-grid pdf-related-tools-grid-five">
+            <PdfIconToolCard toolId="delete-pdf-pages" />
+            <PdfIconToolCard toolId="merge-pdf" />
+            <PdfIconToolCard toolId="rotate-pdf" />
+            <PdfIconToolCard toolId="add-page-numbers" />
+            <PdfIconToolCard toolId="compress-pdf" />
+          </div>
+        </section>
         <HowToUse heading="How to Reorder PDF Pages" steps={steps} />
+        <Divider />
         <H2Section blocks={seoBlocks} />
+        <Divider />
         <FAQ heading="Reorder PDF Pages FAQs" faqs={faqs} />
+        <Divider />
       </main>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(contentSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />

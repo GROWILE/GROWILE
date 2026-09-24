@@ -11,6 +11,8 @@ import HowToUse from "../../../../packages/ui/src/HowToUse";
 import PageMeta from "../../../../packages/ui/src/PageMeta";
 import PdfNavBar from "./NavBar";
 import PdfToolsFooter from "./toolsFooter";
+import PdfIconToolCard from "./IconToolCard";
+import Divider from "../../../../packages/ui/src/Divider";
 import {
   compressPdf,
   downloadCompressedPdf,
@@ -26,20 +28,72 @@ const steps = [
 ];
 
 const seoBlocks = [
-  { heading: "Compress PDF Files Online", description: "Reduce PDF file size directly in your browser with a target size that you choose." },
-  { heading: "Choose Your Compression Level", description: "Use the default 75% reduction or select a 1MB, 500KB, 200KB, or 100KB target when available." },
-  { heading: "Simple PDF Compression", description: "Compress PDFs without installing desktop software or uploading your document to a server." },
+  {
+    heading: "Compress PDF to 100kb Online Free",
+    description:
+      "Need a tiny file for a web upload? It is simple to compress PDF to 100kb online free with Growile PDF. Just upload your heavy document, and our smart tool will aggressively shrink the size quickly.",
+  },
+  {
+    heading: "Compress PDF to 200kb Online Free",
+    description:
+      "If government portals require specific sizes, you can easily compress PDF to 200kb online free. Growile PDF optimizes your bulky files instantly, making them perfectly sized for quick email sharing.",
+  },
+  {
+    heading: "Compress PDF Without Losing Quality Online Free",
+    description:
+      "Worried about blurry text? Our tool ensures you can compress PDF without losing quality online free. We carefully reduce the file weight while keeping your text sharp and images perfectly readable.",
+  },
 ];
 
 const faqs = [
-  { question: "How do I compress a PDF?", answer: "Upload one PDF, choose an available compression option, and click Compress PDF." },
-  { question: "What does the default option do?", answer: "Default compression targets approximately 25% of the original file size, reducing it by about 75%." },
-  { question: "What compression sizes are available?", answer: "Depending on the original file size, the tool can offer 1MB, 500KB, 200KB, and 100KB targets." },
-  { question: "Will the final file be smaller than the selected target?", answer: "Yes. The selected size is a maximum target, so a result below it is accepted as an even better compression." },
-  { question: "Can I upload more than one PDF?", answer: "This Compress PDF tool accepts one PDF file at a time." },
-  { question: "Will my PDF be uploaded to a server?", answer: "No. Compression is processed directly in your browser." },
-  { question: "Is the Compress PDF tool free?", answer: "Yes. You can compress PDF files online with Growile for free." },
-  { question: "Will the PDF content stay readable?", answer: "The tool balances image quality and file size, though stronger compression can reduce visual quality." },
+  {
+    question: "Is the Growile PDF compressor free?",
+    answer:
+      "Yes, shrinking documents with Growile PDF is 100% free. You can reduce your file sizes anytime without paying any subscription fees.",
+  },
+  {
+    question: "Can I compress multiple files at once?",
+    answer:
+      "Absolutely! You can upload several heavy documents. Growile PDF will instantly reduce their sizes, making them perfect for fast sharing.",
+  },
+  {
+    question: "Will the text become unreadable after shrinking?",
+    answer:
+      "Not at all. Growile PDF uses smart optimization to ensure your text and images remain sharp and clear even after massive size reduction.",
+  },
+  {
+    question: "Do I need an app to reduce my file size?",
+    answer:
+      "No installation is needed. You can easily shrink heavy documents directly from your web browser using our online Growile PDF platform.",
+  },
+  {
+    question: "Are my uploaded and optimized files secure?",
+    answer:
+      "Your data is entirely safe. Growile PDF automatically deletes your original heavy file and the compressed document from our servers.",
+  },
+  {
+    question: "What if my file is still too large to email?",
+    answer: (
+      <>
+        If the file remains too bulky, you can use our{" "}
+        <a href="/tools/split-pdf">Split PDF</a> tool to break the heavy document into smaller, manageable parts for emailing.
+      </>
+    ),
+  },
+  {
+    question: "Can I remove heavy images before compressing?",
+    answer: (
+      <>
+        If certain pages contain huge images you do not need, try our{" "}
+        <a href="/tools/delete-pdf-pages">Delete PDF Pages</a> tool first to erase them and save even more space.
+      </>
+    ),
+  },
+  {
+    question: "Does this file reducer work on mobile?",
+    answer:
+      "Yes, Growile PDF is highly mobile-friendly. You can easily optimize large files on your Android or iOS smartphone while on the move.",
+  },
 ];
 
 const faqSchema = {
@@ -48,7 +102,13 @@ const faqSchema = {
   mainEntity: faqs.map((faq) => ({
     "@type": "Question",
     name: faq.question,
-    acceptedAnswer: { "@type": "Answer", text: faq.answer },
+    acceptedAnswer: {
+      "@type": "Answer",
+      text:
+        typeof faq.answer === "string"
+          ? faq.answer
+          : "Use the linked PDF tool for this document task.",
+    },
   })),
 };
 
@@ -134,18 +194,19 @@ export default function CompressPDF() {
   return (
     <>
       <PageMeta
-        title="Compress PDF Files Online"
-        description="Compress PDF files online with a chosen file size target using Growile's browser-based Compress PDF tool."
+        title="Compress PDF File Size Online Free - Fast | Growile PDF"
+        description="Use Growile PDF to compress PDF file size online free. Shrink documents to 100KB or 200KB easily without losing quality. Safe, fast, and 100% free tool!"
         canonicalPath="/tools/compress-pdf"
       />
       <PdfNavBar />
       <Hero
         kicker="PDF Compression"
-        title="Compress PDF Files"
-        subtitle="Reduce your PDF file size and choose the compression level you need."
+        title="Compress PDF File Size Online Free"
+        subtitle="Do you need to email a heavy document but the attachment is too large? Growile PDF helps you compress PDF file size online free in just a few clicks. Whether it is a bulky report or a scanned ebook, our tool shrinks your files instantly. You do not need to install software or pay hidden fees. Enjoy fast, secure, and unlimited document size reduction directly from your web browser today easily."
         ctaText="Upload PDF"
         ctaHref="#compress-pdf-upload"
       />
+      <Divider />
       <main className="jpg-to-pdf-page">
         <section className="jpg-to-pdf-upload-section" id="compress-pdf-upload">
           <div className="jpg-to-pdf-upload-layout">
@@ -204,9 +265,22 @@ export default function CompressPDF() {
           {compressMessage && <p className="jpg-to-pdf-status" role="status">{compressMessage}</p>}
           {compressError && <p className="jpg-to-pdf-error" role="alert">{compressError}</p>}
         </section>
+        <section className="pdf-related-tools" aria-labelledby="related-pdf-tools-title">
+          <h2 id="related-pdf-tools-title">More PDF Tools</h2>
+          <div className="pdf-related-tools-grid pdf-related-tools-grid-five">
+            <PdfIconToolCard toolId="merge-pdf" />
+            <PdfIconToolCard toolId="split-pdf" />
+            <PdfIconToolCard toolId="protect-pdf" />
+            <PdfIconToolCard toolId="jpg-to-pdf" />
+            <PdfIconToolCard toolId="add-watermark" />
+          </div>
+        </section>
         <HowToUse heading="How to Compress a PDF" steps={steps} />
+        <Divider />
         <H2Section blocks={seoBlocks} />
+        <Divider />
         <FAQ heading="Compress PDF FAQs" faqs={faqs} />
+        <Divider />
       </main>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(contentSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />

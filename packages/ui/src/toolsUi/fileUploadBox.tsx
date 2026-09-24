@@ -187,6 +187,7 @@ export default function FileUploadBox({
       <input
         ref={fileInputRef}
         id={inputId}
+        name="file"
         type="file"
         accept={accept}
         multiple={multiple}

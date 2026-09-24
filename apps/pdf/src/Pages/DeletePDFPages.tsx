@@ -12,6 +12,8 @@ import HowToUse from "../../../../packages/ui/src/HowToUse";
 import PageMeta from "../../../../packages/ui/src/PageMeta";
 import PdfNavBar from "./NavBar";
 import PdfToolsFooter from "./toolsFooter";
+import PdfIconToolCard from "./IconToolCard";
+import Divider from "../../../../packages/ui/src/Divider";
 import { deletePdfPages, downloadDeletedPagesPdf } from "../Utilities/DeletePDFPagesProcessing";
 import "./JPGtoPDF.css";
 import "./SplitPDF.css";
@@ -29,20 +31,72 @@ const steps = [
 ];
 
 const seoBlocks = [
-  { heading: "Delete PDF Pages Online", description: "Remove unwanted pages from a PDF and create a new document directly in your browser." },
-  { heading: "Choose the Pages to Remove", description: "Select any pages in the PDF preview, including non-consecutive pages, before deleting them." },
-  { heading: "Simple PDF Page Deletion", description: "Delete PDF pages without installing desktop software or uploading your document to a server." },
+  {
+    heading: "Remove Pages from PDF Document Online Free",
+    description:
+      "It is very simple to remove pages from PDF document online free with Growile PDF. Just upload your file, select the unwanted sheets you want to discard, and we will clean up your document instantly.",
+  },
+  {
+    heading: "Delete Specific Pages from PDF Online Free",
+    description:
+      "Got a few errors in a big file? You can quickly delete specific pages from PDF online free. Simply pick the exact page numbers you do not need, and Growile PDF will permanently erase them for you.",
+  },
+  {
+    heading: "Delete Blank Pages from PDF Online Free",
+    description:
+      "Scanners often leave empty sheets behind. You can effortlessly delete blank pages from PDF online free. Our tool helps you trim down the unnecessary empty spaces to create a neat, professional file.",
+  },
 ];
 
 const faqs = [
-  { question: "How do I delete pages from a PDF?", answer: "Upload one PDF, click the pages you want to remove, and click Delete PDF Pages." },
-  { question: "Can I delete non-consecutive pages?", answer: "Yes. You can select any combination of pages in the preview." },
-  { question: "Can I delete every page?", answer: "No. At least one page must remain in the PDF." },
-  { question: "Will the remaining pages keep their order?", answer: "Yes. The remaining pages stay in their original document order." },
-  { question: "Can I upload more than one PDF?", answer: "This Delete PDF Pages tool accepts one PDF file at a time." },
-  { question: "Will my PDF be uploaded to a server?", answer: "No. The deletion is processed directly in your browser." },
-  { question: "Is the Delete PDF Pages tool free?", answer: "Yes. You can delete PDF pages online with Growile for free." },
-  { question: "What happens after I click Delete PDF Pages?", answer: "A new PDF containing all pages except the selected pages is created and prepared for download." },
+  {
+    question: "Is the Growile PDF page remover tool free?",
+    answer:
+      "Yes, deleting unwanted sheets with Growile PDF is 100% free. You can easily remove pages from your document without paying any subscription fees.",
+  },
+  {
+    question: "Can I delete specific pages from a large file?",
+    answer:
+      "Absolutely! You can easily select and delete specific pages from PDF online free, leaving only the important content in your clean final document.",
+  },
+  {
+    question: "How do I handle empty scanned sheets?",
+    answer:
+      "Our tool makes it simple to delete blank pages from PDF online free. Just select the empty sheets and erase them to keep your file professional.",
+  },
+  {
+    question: "Do I need to install an app to remove pages?",
+    answer:
+      "No installation is required. You can quickly discard unwanted sheets from your document directly using your web browser with our Growile PDF tool.",
+  },
+  {
+    question: "Are my uploaded files and data secure?",
+    answer:
+      "Your privacy is perfectly safe. Growile PDF automatically deletes your original file and the newly cleaned document from our servers permanently.",
+  },
+  {
+    question: "What if I want to keep the selected pages instead?",
+    answer: (
+      <>
+        If you want to pull out and save pages rather than erasing them, please use our{" "}
+        <a href="/tools/extract-pdf-pages">Extract PDF Pages</a> tool to create a new file with chosen sheets.
+      </>
+    ),
+  },
+  {
+    question: "Can I change the order of the remaining pages?",
+    answer: (
+      <>
+        This tool only erases sheets. If you need to rearrange the sequence of your document, we recommend using our{" "}
+        <a href="/tools/reorder-pdf-pages">Reorder PDF Pages</a> tool instead.
+      </>
+    ),
+  },
+  {
+    question: "Does this deletion tool work on my mobile phone?",
+    answer:
+      "Yes, Growile PDF is mobile-friendly. You can easily remove unwanted pages from your reports or invoices using any Android or iOS smartphone today.",
+  },
 ];
 
 const faqSchema = {
@@ -51,7 +105,13 @@ const faqSchema = {
   mainEntity: faqs.map((faq) => ({
     "@type": "Question",
     name: faq.question,
-    acceptedAnswer: { "@type": "Answer", text: faq.answer },
+    acceptedAnswer: {
+      "@type": "Answer",
+      text:
+        typeof faq.answer === "string"
+          ? faq.answer
+          : "Use the linked PDF tool for this document task.",
+    },
   })),
 };
 
@@ -122,18 +182,19 @@ export default function DeletePDFPages() {
   return (
     <>
       <PageMeta
-        title="Delete PDF Pages Online"
-        description="Delete unwanted pages from a PDF online with Growile's browser-based Delete PDF Pages tool."
+        title="Delete Pages From PDF Online Free - Fast | Growile PDF"
+        description="Use Growile PDF to delete pages from PDF online free. Easily remove specific or blank pages from your document. Safe, fast, and 100% free tool!"
         canonicalPath="/tools/delete-pdf-pages"
       />
       <PdfNavBar />
       <Hero
         kicker="PDF Organization"
-        title="Delete PDF Pages"
-        subtitle="Select unwanted pages and create a cleaner PDF document."
+        title="Delete Pages from PDF Online Free"
+        subtitle="Do you have unwanted sheets in your document? Growile PDF helps you delete pages from PDF online free in just a few clicks. Whether you need to remove outdated information or clean up messy scans, our tool makes it incredibly easy. You do not have to install any heavy software or pay hidden fees. Experience fast, secure, and hassle-free page deletion directly from your web browser today."
         ctaText="Upload PDF"
         ctaHref="#delete-pdf-pages-upload"
       />
+      <Divider />
       <main className="jpg-to-pdf-page">
         <section className="jpg-to-pdf-upload-section" id="delete-pdf-pages-upload">
           <div className="jpg-to-pdf-upload-layout">
@@ -165,9 +226,22 @@ export default function DeletePDFPages() {
           {deleteMessage && <p className="jpg-to-pdf-status" role="status">{deleteMessage}</p>}
           {deleteError && <p className="jpg-to-pdf-error" role="alert">{deleteError}</p>}
         </section>
+        <section className="pdf-related-tools" aria-labelledby="related-pdf-tools-title">
+          <h2 id="related-pdf-tools-title">More PDF Tools</h2>
+          <div className="pdf-related-tools-grid pdf-related-tools-grid-five">
+            <PdfIconToolCard toolId="split-pdf" />
+            <PdfIconToolCard toolId="extract-pdf-pages" />
+            <PdfIconToolCard toolId="reorder-pdf-pages" />
+            <PdfIconToolCard toolId="merge-pdf" />
+            <PdfIconToolCard toolId="compress-pdf" />
+          </div>
+        </section>
         <HowToUse heading="How to Delete PDF Pages" steps={steps} />
+        <Divider />
         <H2Section blocks={seoBlocks} />
+        <Divider />
         <FAQ heading="Delete PDF Pages FAQs" faqs={faqs} />
+        <Divider />
       </main>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(contentSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />

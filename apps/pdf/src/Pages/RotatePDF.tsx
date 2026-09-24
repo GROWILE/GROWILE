@@ -12,6 +12,8 @@ import HowToUse from "../../../../packages/ui/src/HowToUse";
 import PageMeta from "../../../../packages/ui/src/PageMeta";
 import PdfNavBar from "./NavBar";
 import PdfToolsFooter from "./toolsFooter";
+import PdfIconToolCard from "./IconToolCard";
+import Divider from "../../../../packages/ui/src/Divider";
 import { downloadRotatedPdf, rotatePdfPages } from "../Utilities/RotatePDFProcessing";
 import "./JPGtoPDF.css";
 import "./SplitPDF.css";
@@ -30,20 +32,72 @@ const steps = [
 ];
 
 const seoBlocks = [
-  { heading: "Rotate PDF Pages Online", description: "Rotate individual PDF pages directly in your browser." },
-  { heading: "Rotate Any Page", description: "Use the rotate button above each page to turn pages independently without changing the rest of the document." },
-  { heading: "Simple PDF Rotation", description: "Rotate PDF pages without installing desktop software or uploading your document to a server." },
+  {
+    heading: "Rotate PDF Permanently Online Free",
+    description:
+      "Unlike simple viewers, our tool lets you rotate PDF permanently online free. Once you flip your document and save it, Growile PDF ensures the new angle stays fixed every time you open the final file.",
+  },
+  {
+    heading: "Change PDF Orientation Online Free",
+    description:
+      "Need to switch from landscape to portrait? You can easily change PDF orientation online free. Just upload your file, select the sheets, and Growile PDF will adjust the viewing layout in seconds.",
+  },
+  {
+    heading: "Turn PDF Pages Upside Down Online Free",
+    description:
+      "Got a completely flipped scan? You can quickly turn PDF pages upside down online free. Our tool lets you easily flip any page 180 degrees so your text and images become perfectly readable again.",
+  },
 ];
 
 const faqs = [
-  { question: "How do I rotate PDF pages?", answer: "Upload one PDF, click the rotate button above any page, and click Rotate PDF." },
-  { question: "Can I rotate only one page?", answer: "Yes. Each page has its own rotate button, so you can rotate individual pages independently." },
-  { question: "How much does each click rotate a page?", answer: "Each click rotates that page 90 degrees clockwise." },
-  { question: "Can I rotate multiple pages?", answer: "Yes. Click the rotate button on as many pages as you need." },
-  { question: "Can I upload more than one PDF?", answer: "This Rotate PDF tool accepts one PDF file at a time." },
-  { question: "Will my PDF be uploaded to a server?", answer: "No. The rotation is processed directly in your browser." },
-  { question: "Is the Rotate PDF tool free?", answer: "Yes. You can rotate PDF pages online with Growile for free." },
-  { question: "What happens after I click Rotate PDF?", answer: "A new PDF with the chosen page rotations is created and prepared for download." },
+  {
+    question: "Is the Growile PDF rotation tool free?",
+    answer:
+      "Yes, fixing your document's angle with Growile PDF is 100% free. You can adjust your files anytime without paying any subscription fees.",
+  },
+  {
+    question: "Can I flip just one page instead of all?",
+    answer:
+      "Absolutely! You can select a single sheet to rotate, keeping the rest of your document exactly as it is for perfect readability.",
+  },
+  {
+    question: "Will the text quality drop after rotating?",
+    answer:
+      "No, your file quality remains perfect. Growile PDF ensures you change the orientation without losing the original text clarity.",
+  },
+  {
+    question: "Do I need an app to fix sideways scans?",
+    answer:
+      "No installation is required. You can easily correct sideways documents directly from your web browser using our online Growile PDF tool.",
+  },
+  {
+    question: "Are my uploaded files and fixed documents safe?",
+    answer:
+      "Your data is entirely secure. Growile PDF automatically deletes your original file and the rotated document from our servers instantly.",
+  },
+  {
+    question: "What if the pages are in the wrong order?",
+    answer: (
+      <>
+        This tool only fixes angles. If your sheets are mixed up, please use our{" "}
+        <a href="/tools/reorder-pdf-pages">Reorder PDF Pages</a> tool to rearrange them correctly.
+      </>
+    ),
+  },
+  {
+    question: "Can I remove a sideways page entirely?",
+    answer: (
+      <>
+        This tool only turns sheets. If you want to erase an unwanted page instead of fixing it, use our{" "}
+        <a href="/tools/delete-pdf-pages">Delete PDF Pages</a> tool.
+      </>
+    ),
+  },
+  {
+    question: "Does this orientation tool work on mobile?",
+    answer:
+      "Yes, Growile PDF is mobile-friendly. You can easily fix sideways photos or upside-down reports using your Android or iOS smartphone.",
+  },
 ];
 
 const faqSchema = {
@@ -52,7 +106,13 @@ const faqSchema = {
   mainEntity: faqs.map((faq) => ({
     "@type": "Question",
     name: faq.question,
-    acceptedAnswer: { "@type": "Answer", text: faq.answer },
+    acceptedAnswer: {
+      "@type": "Answer",
+      text:
+        typeof faq.answer === "string"
+          ? faq.answer
+          : "Use the linked PDF tool for this document task.",
+    },
   })),
 };
 
@@ -143,18 +203,19 @@ export default function RotatePDF() {
   return (
     <>
       <PageMeta
-        title="Rotate PDF Pages Online"
-        description="Rotate individual PDF pages online with Growile's browser-based Rotate PDF tool."
+        title="Rotate PDF Pages Online Free - Fast & Easy | Growile PDF"
+        description="Use Growile PDF to rotate PDF pages online free. Easily change PDF orientation or rotate PDF permanently without losing quality. Safe, fast, and 100% free!"
         canonicalPath="/tools/rotate-pdf"
       />
       <PdfNavBar />
       <Hero
         kicker="PDF Organization"
-        title="Rotate PDF Pages"
-        subtitle="Rotate individual pages in your PDF to the orientation you need."
+        title="Rotate PDF Pages Online Free"
+        subtitle="Did you scan a document sideways or upside down? Growile PDF helps you rotate PDF pages online free in just a few clicks. Whether you need to fix a single image or adjust a whole presentation, our tool instantly changes the viewing angle. You do not need to install software or pay fees. Enjoy fast, secure, and permanent orientation fixes right from your web browser to make your files readable."
         ctaText="Upload PDF"
         ctaHref="#rotate-pdf-upload"
       />
+      <Divider />
       <main className="jpg-to-pdf-page">
         <section className="jpg-to-pdf-upload-section" id="rotate-pdf-upload">
           <div className="jpg-to-pdf-upload-layout">
@@ -185,9 +246,22 @@ export default function RotatePDF() {
           {rotateMessage && <p className="jpg-to-pdf-status" role="status">{rotateMessage}</p>}
           {rotateError && <p className="jpg-to-pdf-error" role="alert">{rotateError}</p>}
         </section>
+        <section className="pdf-related-tools" aria-labelledby="related-pdf-tools-title">
+          <h2 id="related-pdf-tools-title">More PDF Tools</h2>
+          <div className="pdf-related-tools-grid pdf-related-tools-grid-five">
+            <PdfIconToolCard toolId="reorder-pdf-pages" />
+            <PdfIconToolCard toolId="delete-pdf-pages" />
+            <PdfIconToolCard toolId="split-pdf" />
+            <PdfIconToolCard toolId="merge-pdf" />
+            <PdfIconToolCard toolId="compress-pdf" />
+          </div>
+        </section>
         <HowToUse heading="How to Rotate a PDF" steps={steps} />
+        <Divider />
         <H2Section blocks={seoBlocks} />
+        <Divider />
         <FAQ heading="Rotate PDF FAQs" faqs={faqs} />
+        <Divider />
       </main>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(contentSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />

@@ -7,6 +7,9 @@
   border-radius: 7px;
   background: color-mix(in srgb, var(--color-primary) 5%, var(--color-secondary));
   cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: none;
   text-align: center;
 }
 

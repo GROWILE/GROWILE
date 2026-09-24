@@ -12,6 +12,8 @@ import HowToUse from "../../../../packages/ui/src/HowToUse";
 import PageMeta from "../../../../packages/ui/src/PageMeta";
 import PdfNavBar from "./NavBar";
 import PdfToolsFooter from "./toolsFooter";
+import PdfIconToolCard from "./IconToolCard";
+import Divider from "../../../../packages/ui/src/Divider";
 import { downloadExtractedPdf, extractPdfPages } from "../Utilities/ExtractPDFPagesProcessing";
 import "./JPGtoPDF.css";
 import "./SplitPDF.css";
@@ -29,20 +31,72 @@ const steps = [
 ];
 
 const seoBlocks = [
-  { heading: "Extract PDF Pages Online", description: "Select specific pages from a PDF and create a new PDF document directly in your browser." },
-  { heading: "Choose Only the Pages You Need", description: "Select any pages from your PDF preview, including non-consecutive pages such as 2, 5, and 8." },
-  { heading: "Simple PDF Page Extraction", description: "Extract pages without installing desktop software or uploading your document to a server." },
+  {
+    heading: "Extract Specific Pages from PDF Online Free",
+    description:
+      "With Growile PDF, it is very simple to extract specific pages from PDF online free. Just upload your document, choose the exact page numbers you want to keep, and we will generate a fresh file fast.",
+  },
+  {
+    heading: "Extract Selected Pages from PDF Online Free",
+    description:
+      "Only want certain sections? You can effortlessly extract selected pages from PDF online free. Our intuitive platform lets you pick your desired content and saves it into a clean, ready-to-share file.",
+  },
+  {
+    heading: "Extract Single Page from PDF Online Free",
+    description:
+      "Sometimes you only need one sheet. You can easily extract single page from PDF online free using our platform. Just select that one crucial page, and Growile PDF will isolate it for you in seconds.",
+  },
 ];
 
 const faqs = [
-  { question: "How do I extract pages from a PDF?", answer: "Upload one PDF, click the pages you want in the preview, and click Extract PDF." },
-  { question: "Can I select non-consecutive pages?", answer: "Yes. You can select pages such as 2, 5, and 8 in any order." },
-  { question: "Will the selected pages keep their original order?", answer: "Yes. The extracted PDF keeps the selected pages in their original document order." },
-  { question: "Can I select all PDF pages?", answer: "Yes. Click every page in the preview to create a copy containing all selected pages." },
-  { question: "Can I upload more than one PDF?", answer: "This Extract PDF Pages tool accepts one PDF file at a time." },
-  { question: "Will my PDF be uploaded to a server?", answer: "No. The extraction is processed directly in your browser." },
-  { question: "Is the Extract PDF Pages tool free?", answer: "Yes. You can extract PDF pages online with Growile for free." },
-  { question: "What happens after I click Extract PDF?", answer: "A new PDF containing only your selected pages is created and prepared for download." },
+  {
+    question: "Is the Growile PDF page extractor free?",
+    answer:
+      "Yes, pulling out pages with Growile PDF is 100% free. You can grab exactly what you need from any document without paying subscription fees.",
+  },
+  {
+    question: "Can I extract specific pages from a long document?",
+    answer:
+      "Absolutely! You can easily select and extract specific pages from PDF online free, creating a brand-new file containing only your chosen data.",
+  },
+  {
+    question: "Will the quality drop for the extracted pages?",
+    answer:
+      "No, your file quality remains perfect. Growile PDF ensures that the text and layout of your selected pages stay exactly like the original.",
+  },
+  {
+    question: "Do I need software to pull out a single page?",
+    answer:
+      "No installation is required. You can quickly isolate and extract single page from PDF online free directly using your preferred web browser.",
+  },
+  {
+    question: "Are my uploaded documents and extracted files safe?",
+    answer:
+      "Your privacy is 100% secure. Growile PDF automatically deletes your original document and the newly extracted file from our secure servers.",
+  },
+  {
+    question: "Does this extraction tool work on mobile?",
+    answer:
+      "Yes, Growile PDF is highly mobile-friendly. You can comfortably pull out important pages from your business reports using your smartphone.",
+  },
+  {
+    question: "What is the difference between extracting and deleting?",
+    answer: (
+      <>
+        Extracting saves only the pages you select. If you want to remove just a few unwanted pages instead, please use our{" "}
+        <a href="/tools/delete-pdf-pages">Delete PDF Pages</a> tool.
+      </>
+    ),
+  },
+  {
+    question: "What if I want to cut the document into multiple parts?",
+    answer: (
+      <>
+        Extracting creates one new file. If you need to divide a large document into several separate files, try using our{" "}
+        <a href="/tools/split-pdf">Split PDF</a> tool instead.
+      </>
+    ),
+  },
 ];
 
 const faqSchema = {
@@ -51,7 +105,13 @@ const faqSchema = {
   mainEntity: faqs.map((faq) => ({
     "@type": "Question",
     name: faq.question,
-    acceptedAnswer: { "@type": "Answer", text: faq.answer },
+    acceptedAnswer: {
+      "@type": "Answer",
+      text:
+        typeof faq.answer === "string"
+          ? faq.answer
+          : "Use the linked PDF tool for this document task.",
+    },
   })),
 };
 
@@ -122,18 +182,19 @@ export default function ExtractPDFPages() {
   return (
     <>
       <PageMeta
-        title="Extract PDF Pages Online"
-        description="Extract specific pages from a PDF and create a new document online with Growile's browser-based tool."
+        title="Extract Pages From PDF Online Free - Fast | Growile PDF"
+        description="Use Growile PDF to extract pages from PDF online free. Easily extract specific or single pages into a new file. Safe, fast, and 100% free tool!"
         canonicalPath="/tools/extract-pdf-pages"
       />
       <PdfNavBar />
       <Hero
         kicker="PDF Organization"
-        title="Extract PDF Pages"
-        subtitle="Choose specific pages from your PDF and create a new document."
+        title="Extract Pages from PDF Online Free"
+        subtitle="Do you only need a few important sections from a massive document? Growile PDF helps you extract pages from PDF online free in just seconds. Whether you want to pull out a single invoice or select specific report chapters, our smart tool creates a new document with only the content you need. You do not have to install any software or pay hidden fees. Enjoy fast and secure extraction instantly."
         ctaText="Upload PDF"
         ctaHref="#extract-pdf-pages-upload"
       />
+      <Divider />
       <main className="jpg-to-pdf-page">
         <section className="jpg-to-pdf-upload-section" id="extract-pdf-pages-upload">
           <div className="jpg-to-pdf-upload-layout">
@@ -165,9 +226,22 @@ export default function ExtractPDFPages() {
           {extractMessage && <p className="jpg-to-pdf-status" role="status">{extractMessage}</p>}
           {extractError && <p className="jpg-to-pdf-error" role="alert">{extractError}</p>}
         </section>
+        <section className="pdf-related-tools" aria-labelledby="related-pdf-tools-title">
+          <h2 id="related-pdf-tools-title">More PDF Tools</h2>
+          <div className="pdf-related-tools-grid pdf-related-tools-grid-five">
+            <PdfIconToolCard toolId="split-pdf" />
+            <PdfIconToolCard toolId="delete-pdf-pages" />
+            <PdfIconToolCard toolId="merge-pdf" />
+            <PdfIconToolCard toolId="compress-pdf" />
+            <PdfIconToolCard toolId="pdf-to-jpg" />
+          </div>
+        </section>
         <HowToUse heading="How to Extract PDF Pages" steps={steps} />
+        <Divider />
         <H2Section blocks={seoBlocks} />
+        <Divider />
         <FAQ heading="Extract PDF Pages FAQs" faqs={faqs} />
+        <Divider />
       </main>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(contentSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />

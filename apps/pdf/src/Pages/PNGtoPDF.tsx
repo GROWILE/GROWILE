@@ -11,13 +11,19 @@ import HowToUse from "../../../../packages/ui/src/HowToUse";
 import PageMeta from "../../../../packages/ui/src/PageMeta";
 import PdfNavBar from "./NavBar";
 import PdfToolsFooter from "./toolsFooter";
+import PdfIconToolCard from "./IconToolCard";
+import Divider from "../../../../packages/ui/src/Divider";
 import { convertPngFilesToPdf, downloadPngPdf } from "../Utilities/PNGtoPDFProcessing";
 import "./JPGtoPDF.css";
 
 const seoBlocks = [
-  { heading: "Convert PNG Images to PDF Online", description: "Turn one or more PNG images into a single PDF document with Growile's simple online PNG to PDF converter." },
-  { heading: "Create a PDF from PNG Files", description: "Upload, arrange, and convert PNG images into a shareable PDF without installing desktop software." },
-  { heading: "Simple PNG to PDF Conversion", description: "Convert transparent graphics, screenshots, and everyday PNG files through a focused browser-based workflow." },
+  { heading: "Convert Multiple PNG to PDF Online Free", description: "Do you have many images to process? With Growile PDF, you can easily convert multiple PNG to PDF online free. Just upload your batch of photos, and we will combine them into one single file quickly." },
+
+  { heading: "Convert PNG to PDF Without Losing Quality",
+   description: "Image clarity is very important. Our Growile PDF tool ensures you can convert PNG to PDF without losing quality. Your final document will keep the exact original resolution and transparent details." },
+
+  { heading: "Change PNG Format to PDF Online Free", 
+    description: "The process is incredibly simple for everyone. You can change PNG format to PDF online free by just dragging and dropping your files. Growile PDF handles the rest to give you a ready document." },
 ];
 
 const steps = [
@@ -27,14 +33,26 @@ const steps = [
 ];
 
 const faqs = [
-  { question: "How do I convert PNG to PDF?", answer: "Select PNG images, arrange them in the required order, and click Convert to PDF." },
-  { question: "Can I convert multiple PNG images to one PDF?", answer: "Yes. You can upload and arrange up to 50 PNG images in one PDF." },
-  { question: "Do I need to install software?", answer: "No. The PNG to PDF converter works directly in your browser." },
-  { question: "Can I rearrange PNG images before conversion?", answer: "Yes. Drag image cards on desktop or use the up and down controls on mobile." },
-  { question: "Will transparent PNG images work?", answer: "Yes. PNG images, including transparent graphics, are supported." },
-  { question: "Will the image quality be preserved?", answer: "Each PNG is embedded at its original dimensions with a 50px page margin." },
-  { question: "Can I convert JPG images here?", answer: "Use the JPG to PDF tool for JPG and JPEG files." },
-  { question: "What can I do with the PDF after conversion?", answer: "You can use Growile tools to compress, merge, edit, protect, or convert the resulting PDF." },
+  { question: "Is the Growile PDF PNG converter free?", 
+    answer: "Yes, converting PNGs with Growile PDF is completely free. You can process your transparent graphics without limits or hidden costs." },
+
+  { question: "Can I convert multiple PNG files at once?", answer: "Yes, you can upload a batch of PNGs. Growile PDF will flawlessly combine all your design assets and screenshots into a single document." },
+
+  { question: "Will my PNGs lose their original quality?",
+    answer: "No, your graphic quality is protected. Growile PDF maintains the crisp details and vibrant colors of your original PNG designs." },
+
+  { question: "Do I need to install software to process PNGs?", 
+    answer: "Not at all. Growile PDF operates entirely online, allowing you to convert PNG formats directly through your preferred web browser." },
+
+  { question: "Are my uploaded PNG files safe with Growile PDF?", 
+    answer: "Your data is 100% safe. Growile PDF permanently removes your PNG uploads and resulting documents from our encrypted servers after processing." },
+
+  { question: "Will the transparent background of my PNG stay?",    answer: "Yes! Our PNG tool is designed to perfectly handle transparency, ensuring your graphics look exactly as intended in the final file." },
+
+  { question: "Can I use this PNG converter on my Mac?", 
+    answer: "Yes, Growile PDF works flawlessly on Mac, Windows, and Linux. You can process your PNG files smoothly on any operating system." },
+
+  { question: "Is there a file limit for PNG conversions?", answer: "Growile PDF offers a seamless experience for your daily tasks, allowing you to convert your essential PNG graphics without any hassle." },
 ];
 
 const faqSchema = {
@@ -96,18 +114,19 @@ export default function PNGtoPDF() {
   return (
     <>
       <PageMeta
-        title="PNG to PDF Converter"
-        description="Convert PNG images to PDF online with Growile's simple browser-based PNG to PDF converter."
+        title="Convert PNG to PDF Online Free | Growile PDF"
+        description="Use Growile PDF to convert PNG to PDF online free. Easily change multiple PNG formats to PDF without losing quality. Safe, fast, and 100% free tool!"
         canonicalPath="/tools/png-to-pdf"
       />
       <PdfNavBar />
       <Hero
         kicker="PDF Conversion"
-        title="PNG to PDF Converter"
-        subtitle="Convert your PNG images into a PDF document quickly and easily."
+        title="Convert PNG to PDF Online Free with Growile PDF"
+        subtitle="Are you looking for a simple way to turn your images into documents? Growile PDF helps you convert PNG to PDF online free in just a few seconds. Whether it is a single logo or a design file, our smart tool creates a perfectly formatted document instantly. You do not need to download software or pay hidden fees. Experience fast and secure conversions directly from your web browser today."
         ctaText="Upload PNG"
         ctaHref="#png-to-pdf-upload"
       />
+      <Divider />
       <main className="jpg-to-pdf-page">
         <section className="jpg-to-pdf-upload-section" id="png-to-pdf-upload">
           <div className="jpg-to-pdf-upload-layout">
@@ -131,9 +150,22 @@ export default function PNGtoPDF() {
           {conversionMessage && <p className="jpg-to-pdf-status" role="status">{conversionMessage}</p>}
           {conversionError && <p className="jpg-to-pdf-error" role="alert">{conversionError}</p>}
         </section>
+        <section className="pdf-related-tools" aria-labelledby="related-pdf-tools-title">
+          <h2 id="related-pdf-tools-title">More PDF Tools</h2>
+          <div className="pdf-related-tools-grid pdf-related-tools-grid-five">
+            <PdfIconToolCard toolId="compress-pdf" />
+            <PdfIconToolCard toolId="merge-pdf" />
+            <PdfIconToolCard toolId="jpg-to-pdf" />
+            <PdfIconToolCard toolId="pdf-to-png" />
+            <PdfIconToolCard toolId="protect-pdf" />
+          </div>
+        </section>
         <HowToUse heading="How to Convert PNG to PDF" steps={steps} />
+        <Divider />
         <H2Section blocks={seoBlocks} />
+        <Divider />
         <FAQ heading="PNG to PDF FAQs" faqs={faqs} />
+        <Divider />
       </main>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(contentSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />

@@ -11,6 +11,7 @@ import HowToUse from "../../../../packages/ui/src/HowToUse";
 import PageMeta from "../../../../packages/ui/src/PageMeta";
 import PdfNavBar from "./NavBar";
 import PdfToolsFooter from "./toolsFooter";
+import Divider from "../../../../packages/ui/src/Divider";
 import { convertPdfToWord, downloadWordFile } from "../Utilities/PDFtoWordProcessing";
 import "./JPGtoPDF.css";
 
@@ -106,6 +107,7 @@ export default function PDFtoWord() {
         ctaText="Upload PDF"
         ctaHref="#pdf-to-word-upload"
       />
+      <Divider />
       <main className="jpg-to-pdf-page">
         <section className="jpg-to-pdf-upload-section" id="pdf-to-word-upload">
           <div className="jpg-to-pdf-upload-layout">
@@ -127,8 +129,11 @@ export default function PDFtoWord() {
           {conversionError && <p className="jpg-to-pdf-error" role="alert">{conversionError}</p>}
         </section>
         <HowToUse heading="How to Convert PDF to Word" steps={steps} />
+        <Divider />
         <H2Section blocks={seoBlocks} />
+        <Divider />
         <FAQ heading="PDF to Word FAQs" faqs={faqs} />
+        <Divider />
       </main>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(contentSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />

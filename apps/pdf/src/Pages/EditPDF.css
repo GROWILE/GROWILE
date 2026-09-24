@@ -238,6 +238,404 @@
   padding: 4px 2px 0;
 }
 
+.pdf-highlight-edit-content {
+  gap: 14px;
+}
+
+.pdf-highlight-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  gap: 14px;
+  padding: 14px;
+  border: 1px solid color-mix(in srgb, var(--color-text-highlight) 20%, transparent);
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--color-text-highlight) 4%, var(--color-secondary));
+}
+
+.pdf-highlight-toolbar fieldset,
+.pdf-highlight-toolbar label {
+  display: grid;
+  gap: 7px;
+  min-width: 150px;
+  border: 0;
+  padding: 0;
+  color: var(--color-primary);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.pdf-highlight-toolbar legend {
+  padding: 0;
+  margin-bottom: 7px;
+}
+
+.pdf-highlight-toolbar input[type="range"] {
+  accent-color: var(--color-text-highlight);
+}
+
+.pdf-highlight-toolbar label span {
+  font-weight: 500;
+}
+
+.pdf-highlight-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.pdf-highlight-actions button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 34px;
+  padding: 7px 10px;
+  border: 1px solid color-mix(in srgb, var(--color-primary) 20%, transparent);
+  border-radius: 7px;
+  background: var(--color-secondary);
+  color: var(--color-primary);
+  cursor: pointer;
+}
+
+.pdf-highlight-actions button:disabled {
+  cursor: not-allowed;
+  opacity: .45;
+}
+
+.pdf-highlight-overlay {
+  position: absolute;
+  z-index: 2;
+  border: 2px solid transparent;
+  border-radius: 2px;
+  cursor: pointer;
+  padding: 0;
+  touch-action: none;
+}
+
+.pdf-highlight-overlay.active {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 2px var(--color-secondary);
+}
+
+.pdf-highlight-edit-content .pdf-page-canvas {
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: none;
+}
+
+.pdf-highlight-edit-content .pdf-page-canvas img {
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.pdf-highlight-count {
+  margin: 0;
+  color: var(--color-primary);
+  font-size: 13px;
+  text-align: center;
+}
+
+.pdf-watermark-toolbar {
+  display: grid;
+  grid-template-columns: minmax(220px, 1.5fr) repeat(4, minmax(120px, 1fr));
+  align-items: end;
+  gap: 12px;
+  padding: 14px;
+  border: 1px solid color-mix(in srgb, var(--color-text-highlight) 20%, transparent);
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--color-text-highlight) 4%, var(--color-secondary));
+}
+
+.pdf-watermark-toolbar label,
+.pdf-watermark-toolbar fieldset {
+  display: grid;
+  gap: 7px;
+  min-width: 0;
+  border: 0;
+  padding: 0;
+  color: var(--color-primary);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.pdf-watermark-toolbar fieldset {
+  grid-column: span 2;
+}
+
+.pdf-watermark-toolbar fieldset .pdf-color-options {
+  flex-wrap: wrap;
+  gap: 9px;
+  min-width: 0;
+}
+
+.pdf-watermark-toolbar input:not([type="checkbox"]) {
+  width: 100%;
+  min-height: 36px;
+}
+
+.pdf-watermark-toolbar input[type="range"] {
+  accent-color: var(--color-text-highlight);
+}
+
+.pdf-watermark-toolbar span {
+  font-weight: 500;
+}
+
+.pdf-watermark-text {
+  grid-column: span 2;
+}
+
+.pdf-watermark-check {
+  display: flex !important;
+  grid-column: span 2;
+  align-items: center;
+  min-height: 36px;
+}
+
+.pdf-watermark-check input {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--color-text-highlight);
+}
+
+.pdf-watermark-reset {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 36px;
+  border: 1px solid color-mix(in srgb, var(--color-primary) 20%, transparent);
+  border-radius: 7px;
+  background: var(--color-secondary);
+  color: var(--color-primary);
+  cursor: pointer;
+}
+
+.pdf-watermark-preview {
+  position: absolute;
+  z-index: 1;
+  max-width: 90%;
+  white-space: nowrap;
+  font-weight: 700;
+  pointer-events: auto;
+  cursor: grab;
+  user-select: none;
+  touch-action: none;
+}
+
+.pdf-watermark-preview:active {
+  cursor: grabbing;
+}
+
+.pdf-page-number-content {
+  gap: 14px;
+}
+
+.pdf-page-number-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 16px;
+  max-height: 70vh;
+  overflow: auto;
+  padding: 4px;
+}
+
+.pdf-page-number-preview {
+  display: grid;
+  gap: 7px;
+  min-width: 0;
+  color: var(--color-primary);
+  font-size: 12px;
+  text-align: center;
+}
+
+.pdf-page-number-sheet {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--color-primary) 18%, transparent);
+  border-radius: 6px;
+  background: var(--color-secondary);
+  box-shadow: 0 3px 10px color-mix(in srgb, var(--color-primary) 12%, transparent);
+}
+
+.pdf-page-number-sheet img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.pdf-page-number-sheet span {
+  position: absolute;
+  left: 50%;
+  bottom: 3%;
+  transform: translateX(-50%);
+  color: #333;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.pdf-sign-edit-content {
+  gap: 14px;
+}
+
+.pdf-signature-pad-wrap {
+  display: grid;
+  gap: 8px;
+  padding: 14px;
+  border: 1px solid color-mix(in srgb, var(--color-text-highlight) 20%, transparent);
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--color-text-highlight) 4%, var(--color-secondary));
+}
+
+.pdf-signature-pad-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--color-primary);
+}
+
+.pdf-signature-pad-heading button {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 6px 9px;
+  border: 1px solid color-mix(in srgb, var(--color-primary) 20%, transparent);
+  border-radius: 7px;
+  background: var(--color-secondary);
+  color: var(--color-primary);
+  cursor: pointer;
+}
+
+.pdf-signature-pad {
+  display: block;
+  width: 100%;
+  height: auto;
+  min-height: 120px;
+  border: 1px dashed var(--color-text-highlight);
+  border-radius: 8px;
+  background: var(--color-secondary);
+  cursor: crosshair;
+  touch-action: none;
+}
+
+.pdf-signature-pad-wrap p {
+  margin: 0;
+  color: color-mix(in srgb, var(--color-primary) 60%, transparent);
+  font-size: 12px;
+}
+
+.pdf-signature-preview {
+  position: absolute;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  pointer-events: auto;
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-user-drag: none;
+  touch-action: none;
+}
+
+.pdf-signature-preview > img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.pdf-signature-preview:active {
+  cursor: grabbing;
+}
+
+.pdf-signature-page-canvas {
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: none;
+}
+
+.pdf-signature-page-canvas > img:first-child {
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.pdf-signature-delete {
+  position: absolute;
+  z-index: 3;
+  right: 4px;
+  top: 4px;
+  display: grid;
+  width: 28px;
+  height: 28px;
+  place-items: center;
+  border: 2px solid var(--color-secondary);
+  border-radius: 50%;
+  background: var(--color-accent);
+  color: var(--color-secondary);
+  cursor: pointer;
+}
+
+.pdf-signature-count {
+  margin: 0;
+  color: var(--color-primary);
+  font-size: 13px;
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+  .pdf-page-number-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+}
+
+.pdf-watermark-preview.pending {
+  border: 2px dashed currentColor;
+  padding: 4px 8px;
+}
+
+.pdf-watermark-place {
+  position: absolute;
+  right: -14px;
+  top: -14px;
+  display: grid;
+  width: 28px;
+  height: 28px;
+  place-items: center;
+  border: 2px solid var(--color-secondary);
+  border-radius: 50%;
+  background: var(--color-text-highlight);
+  color: var(--color-secondary);
+  font-size: 16px;
+  font-weight: 800;
+  line-height: 1;
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+.pdf-watermark-edit-content .pdf-page-canvas {
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+@media (max-width: 850px) {
+  .pdf-watermark-toolbar {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .pdf-watermark-text,
+  .pdf-watermark-check {
+    grid-column: 1 / -1;
+  }
+
+  .pdf-watermark-toolbar fieldset {
+    grid-column: 1 / -1;
+  }
+}
+
 .pdf-image-upload-control {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
@@ -374,6 +772,8 @@
   background: rgb(255 255 255 / 12%);
   cursor: move;
   touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 .pdf-image-overlay > img {
@@ -433,6 +833,19 @@
   .pdf-color-options {
     justify-content: center;
   }
+
+  .pdf-highlight-toolbar {
+    align-items: stretch;
+  }
+
+  .pdf-highlight-toolbar fieldset,
+  .pdf-highlight-toolbar label {
+    flex: 1 1 220px;
+  }
+
+  .pdf-highlight-actions {
+    flex: 1 1 100%;
+  }
 }
 
 @media (max-width: 600px) {
@@ -464,6 +877,80 @@
     flex-basis: 34px;
     width: 34px;
     height: 34px;
+  }
+
+  .pdf-highlight-toolbar {
+    gap: 12px;
+    padding: 12px;
+  }
+
+  .pdf-highlight-toolbar fieldset,
+  .pdf-highlight-toolbar label {
+    flex-basis: 100%;
+    min-width: 0;
+  }
+
+  .pdf-highlight-toolbar fieldset .pdf-color-options {
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 11px;
+  }
+
+  .pdf-highlight-toolbar label {
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+  }
+
+  .pdf-highlight-toolbar label input[type="range"] {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .pdf-highlight-toolbar label span {
+    min-width: 42px;
+    text-align: right;
+  }
+
+  .pdf-highlight-actions {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .pdf-highlight-actions button {
+    justify-content: center;
+    min-width: 0;
+    padding-inline: 6px;
+    font-size: 12px;
+  }
+
+  .pdf-highlight-edit-content .pdf-editor-hint {
+    font-size: 12px;
+    line-height: 1.45;
+  }
+
+  .pdf-watermark-toolbar {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    padding: 12px;
+  }
+
+  .pdf-watermark-text,
+  .pdf-watermark-check {
+    grid-column: auto;
+  }
+
+  .pdf-watermark-toolbar fieldset {
+    grid-column: auto;
+  }
+
+  .pdf-watermark-toolbar label:not(.pdf-watermark-check) {
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+  }
+
+  .pdf-watermark-toolbar fieldset .pdf-color-options {
+    flex-wrap: wrap;
+    gap: 11px;
   }
 
   .pdf-image-toolbar {
