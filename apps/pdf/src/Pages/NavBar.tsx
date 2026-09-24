@@ -1,6 +1,5 @@
 import { FileArchive, FileEdit, FileImage, FolderKanban, LockKeyhole } from "lucide-react";
 import Navbar from "../../../../packages/ui/src/Navbar";
-import pdfLogo from "../../../../packages/ui/assets/growile-logo.svg";
 import { allPdfTools } from "./allPdfTools";
 
 const pdfToolCategories = ["Conversion", "Organize", "Compression", "Edit", "Security"] as const;
@@ -58,8 +57,7 @@ export default function PdfNavBar() {
   return (
     <Navbar
       logoAlt="Growile PDF tools"
-      logoSrc={pdfLogo}
-      home={{ label: "Home", href: "/pdf/" }}
+      logoSrc="/pdf/Growile-pdf-logo.svg"
       products={{
         label: "Products",
         items: [

@@ -34,6 +34,10 @@
       "destination": "https://growile-pdf.vercel.app/favicon.svg"
     },
     {
+      "source": "/pdf/Growile-pdf-logo.svg",
+      "destination": "https://growile-pdf.vercel.app/Growile-pdf-logo.svg"
+    },
+    {
       "source": "/pdf/:path*",
       "destination": "https://growile-pdf.vercel.app/pdf/:path*"
     },

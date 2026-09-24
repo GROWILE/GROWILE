@@ -18,7 +18,7 @@ type NavbarLinkGroup = {
 type NavbarProps = {
   logoAlt: string;
   logoSrc: string;
-  home: NavbarLink;
+  home?: NavbarLink;
   products: {
     label: string;
     items: NavbarLink[];
@@ -148,9 +148,15 @@ export default function Navbar({ logoAlt, logoSrc, home, products, tools, about 
   return (
     <header className="navbar">
       <div className="navbar-container">
-        <a href={home.href} className="navbar-logo">
-          <img src={logoSrc} alt={logoAlt} />
-        </a>
+        {home ? (
+          <a href={home.href} className="navbar-logo">
+            <img src={logoSrc} alt={logoAlt} />
+          </a>
+        ) : (
+          <div className="navbar-logo">
+            <img src={logoSrc} alt={logoAlt} />
+          </div>
+        )}
 
         <button
           className={`navbar-menu-toggle ${isMenuOpen ? "open" : ""}`}
@@ -165,9 +171,11 @@ export default function Navbar({ logoAlt, logoSrc, home, products, tools, about 
         </button>
 
         <nav className={`navbar-links ${isMenuOpen ? "open" : ""}`}>
-           <a href={home.href} className="navbar-link" onClick={() => setIsMenuOpen(false)}>
-             {home.label}
-           </a>
+          {home && (
+            <a href={home.href} className="navbar-link" onClick={() => setIsMenuOpen(false)}>
+              {home.label}
+            </a>
+          )}
 
           <NavbarDropdown
             label={products.label}
