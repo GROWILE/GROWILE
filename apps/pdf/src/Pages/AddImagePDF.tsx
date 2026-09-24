@@ -11,6 +11,8 @@ import Hero from "../../../../packages/ui/src/Hero";
 import HowToUse from "../../../../packages/ui/src/HowToUse";
 import PageMeta from "../../../../packages/ui/src/PageMeta";
 import PdfNavBar from "./NavBar";
+import SoftwareApplicationSchema from "../../../../packages/ui/src/SoftwareApplicationSchema";
+import PdfBreadcrumb from "./PdfBreadcrumb";
 import PdfToolsFooter from "./toolsFooter";
 import PdfIconToolCard from "./IconToolCard";
 import Divider from "../../../../packages/ui/src/Divider";
@@ -39,8 +41,8 @@ const faqs = [
   { question: "Which picture formats can I upload to my document?", answer: "Our tool supports all popular image formats. You can effortlessly upload and insert JPG, PNG, or GIF files into your documents instantly." },
   { question: "Do I need software to paste a picture into my file?", answer: "No installation is needed. You can quickly add visual elements directly from your browser using our online Growile PDF platform securely." },
   { question: "Are my uploaded documents and personal photos safe?", answer: "Your privacy is fully protected. Growile PDF automatically deletes your original file and the inserted pictures from our servers instantly." },
-  { question: "Can I use this tool to create a faded background logo?", answer: <>While you can add logos here, we highly recommend using our <a href="/tools/add-watermark">Add Watermark</a> tool to perfectly fade and center logos across all your pages.</> },
-  { question: "What if my file becomes too large after adding pictures?", answer: <>High-quality photos can increase file size. If your document becomes too heavy, just use our <a href="/tools/compress-pdf">Compress PDF</a> tool to shrink it for sharing.</> },
+  { question: "Can I use this tool to create a faded background logo?", answer: <>While you can add logos here, we highly recommend using our <a href="/pdf/add-watermark">Add Watermark</a> tool to perfectly fade and center logos across all your pages.</> },
+  { question: "What if my file becomes too large after adding pictures?", answer: <>High-quality photos can increase file size. If your document becomes too heavy, just use our <a href="/pdf/compress-pdf">Compress PDF</a> tool to shrink it for sharing.</> },
   { question: "Does this picture tool work on mobile devices?", answer: "Yes, Growile PDF is mobile-friendly. You can easily select photos from your smartphone gallery and insert them into your files on the go." },
 ];
 
@@ -186,8 +188,10 @@ export default function AddImagePDF() {
   const selectedPage = pages[currentPage];
   return (
     <>
-      <PageMeta title="Add Image to PDF Online Free Instantly - Easy | Growile PDF" description="Use Growile PDF to add image to PDF online free instantly. Easily insert photos or paste images on documents securely. Fast, unlimited, and 100% free tool!" canonicalPath="/tools/add-image" />
+      <PageMeta title="Add Image to PDF Online Free Instantly - Easy | Growile PDF" description="Use Growile PDF to add image to PDF online free instantly. Easily insert photos or paste images on documents securely. Fast, unlimited, and 100% free tool!" canonicalPath="/pdf/add-image" />
       <PdfNavBar />
+      <SoftwareApplicationSchema name="Growile Add Image to PDF" description="Insert images into PDF documents online." path="/pdf/add-image" />
+      <PdfBreadcrumb label="Add Image" path="add-image" />
       <Hero kicker="PDF Editing" title="Add Image to PDF Online Free Instantly" subtitle="Do you need to attach a picture to your digital file? Growile PDF helps you add image to PDF online free instantly in just a few clicks. Whether you are inserting a profile photo or placing a diagram in a report, our tool makes it effortless. You do not need to download heavy software or pay any fees. Enjoy fast, secure, and limitless image insertion directly from your web browser right now." ctaText="Upload PDF" ctaHref="#add-image-upload" />
       <Divider />
       <main className="jpg-to-pdf-page">

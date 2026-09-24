@@ -16,6 +16,10 @@ export { default as DownloadPopup } from './DownloadPopup';
 export { default as ConfirmPopUp } from './ConfirmPopUp';
 export type { ConfirmPopUpProps } from './ConfirmPopUp';
 export { default as Breadcrumb } from './Breadcrumb'
+export { default as OrganizationSchema } from "./OrganizationSchema"
+export { default as WebsiteSchema } from "./WebsiteSchema"
+export { default as SoftwareApplicationSchema } from "./SoftwareApplicationSchema"
+export type { SoftwareApplicationSchemaProps } from "./SoftwareApplicationSchema"
 export { default as ToolCard } from "./toolsUi/toolCard"
 export { default as IconToolCard } from "./toolsUi/IconToolCard"
 export type { IconToolCardProps } from "./toolsUi/IconToolCard"

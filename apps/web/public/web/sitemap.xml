@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  
-  <!-- Main Site Pages -->
   <url>
     <loc>https://growile.com/</loc>
     <priority>1.0</priority>
@@ -18,25 +16,6 @@
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://growile.com/finance</loc>
-    <priority>0.9</priority>
-    <changefreq>weekly</changefreq>
-  </url>
-
-  <!-- Invoice App Pages (Ithuvum main sitemap laye vanthudum) -->
-  <url>
-    <loc>https://growile.com/invoice/without-gst-invoice</loc>
-    <priority>0.9</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://growile.com/invoice/gst-invoice</loc>
-    <priority>0.9</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-  <!-- Legal & Policy Pages -->
-  <!-- Legal & Policy Pages -->
-  <url>
     <loc>https://growile.com/privacy-policy</loc>
     <priority>0.5</priority>
     <changefreq>yearly</changefreq>
@@ -46,10 +25,4 @@
     <priority>0.5</priority>
     <changefreq>yearly</changefreq>
   </url>
-  <url>
-    <loc>https://growile.com/invoice/terms-and-conditions</loc>
-    <priority>0.5</priority>
-    <changefreq>yearly</changefreq>
-  </url>
-  
 </urlset>

@@ -21,64 +21,64 @@ import AddPageNumbers from "./Pages/AddPageNumbers";
 import AddSignature from "./Pages/AddSignature";
 
 export default function App() {
-  if (window.location.pathname === "/tools/jpg-to-pdf") {
+  if (window.location.pathname === "/pdf/jpg-to-pdf") {
     return <JPGtoPDF />;
   }
-  if (window.location.pathname === "/tools/png-to-pdf") {
+  if (window.location.pathname === "/pdf/png-to-pdf") {
     return <PNGtoPDF />;
   }
-  if (window.location.pathname === "/tools/pdf-to-jpg") {
+  if (window.location.pathname === "/pdf/pdf-to-jpg") {
     return <PDFtoJPG />;
   }
-  if (window.location.pathname === "/tools/pdf-to-png") {
+  if (window.location.pathname === "/pdf/pdf-to-png") {
     return <PDFtoPNG />;
   }
-  if (window.location.pathname === "/tools/pdf-to-text") {
+  if (window.location.pathname === "/pdf/pdf-to-text") {
     return <PDFtoText />;
   }
-  if (window.location.pathname === "/tools/merge-pdf") {
+  if (window.location.pathname === "/pdf/merge-pdf") {
     return <MergePDF />;
   }
-  if (window.location.pathname === "/tools/split-pdf") {
+  if (window.location.pathname === "/pdf/split-pdf") {
     return <SplitPDF />;
   }
-  if (window.location.pathname === "/tools/extract-pdf-pages") {
+  if (window.location.pathname === "/pdf/extract-pdf-pages") {
     return <ExtractPDFPages />;
   }
-  if (window.location.pathname === "/tools/delete-pdf-pages") {
+  if (window.location.pathname === "/pdf/delete-pdf-pages") {
     return <DeletePDFPages />;
   }
-  if (window.location.pathname === "/tools/reorder-pdf-pages") {
+  if (window.location.pathname === "/pdf/reorder-pdf-pages") {
     return <ReorderPDFPages />;
   }
-  if (window.location.pathname === "/tools/rotate-pdf") {
+  if (window.location.pathname === "/pdf/rotate-pdf") {
     return <RotatePDF />;
   }
-  if (window.location.pathname === "/tools/compress-pdf") {
+  if (window.location.pathname === "/pdf/compress-pdf") {
     return <CompressPDF />;
   }
-  if (window.location.pathname === "/tools/protect-pdf") {
+  if (window.location.pathname === "/pdf/protect-pdf") {
     return <ProtectPDF />;
   }
-  if (window.location.pathname === "/tools/unlock-pdf") {
+  if (window.location.pathname === "/pdf/unlock-pdf") {
     return <UnlockPDF />;
   }
-  if (window.location.pathname === "/tools/add-text") {
+  if (window.location.pathname === "/pdf/add-text") {
     return <AddTextPDF />;
   }
-  if (window.location.pathname === "/tools/add-image") {
+  if (window.location.pathname === "/pdf/add-image") {
     return <AddImagePDF />;
   }
-  if (window.location.pathname === "/tools/highlight-pdf") {
+  if (window.location.pathname === "/pdf/highlight-pdf") {
     return <HighlightPDF />;
   }
-  if (window.location.pathname === "/tools/add-watermark") {
+  if (window.location.pathname === "/pdf/add-watermark") {
     return <WatermarkPDF />;
   }
-  if (window.location.pathname === "/tools/add-page-numbers") {
+  if (window.location.pathname === "/pdf/add-page-numbers") {
     return <AddPageNumbers />;
   }
-  if (window.location.pathname === "/tools/add-signature" || window.location.pathname === "/tools/sign-pdf") {
+  if (window.location.pathname === "/pdf/add-signature" || window.location.pathname === "/pdf/sign-pdf") {
     return <AddSignature />;
   }
   return <Home />;

@@ -10,6 +10,8 @@ import Hero from "../../../../packages/ui/src/Hero";
 import HowToUse from "../../../../packages/ui/src/HowToUse";
 import PageMeta from "../../../../packages/ui/src/PageMeta";
 import PdfNavBar from "./NavBar";
+import SoftwareApplicationSchema from "../../../../packages/ui/src/SoftwareApplicationSchema";
+import PdfBreadcrumb from "./PdfBreadcrumb";
 import PdfToolsFooter from "./toolsFooter";
 import PdfIconToolCard from "./IconToolCard";
 import Divider from "../../../../packages/ui/src/Divider";
@@ -35,8 +37,8 @@ const faqs = [
   { question: "What happens if I forget the secret code I set?", answer: "Please write your code down! Because our encryption is extremely secure, we cannot recover or open the document if you lose your secret key." },
   { question: "Do I need software to lock my bank statements?", answer: "No installation is required. You can easily secure your confidential data directly from your web browser using our online Growile PDF tool." },
   { question: "Are my uploaded files and locked documents secure?", answer: "Your data is perfectly safe. Growile PDF automatically deletes your original file and the newly encrypted document from our servers instantly." },
-  { question: "Can I remove the lock later if I change my mind?", answer: <>Yes! If you know the current code but want to remove it permanently for easier sharing, you can easily use our <a href="/tools/unlock-pdf">Unlock PDF</a> tool to clear it.</> },
-  { question: "Should I sign my contract before or after locking it?", answer: <>Always sign first! Use our <a href="/tools/add-signature">Add Signature</a> tool to approve your paperwork, and then use this protection tool to ensure nobody alters your mark.</> },
+  { question: "Can I remove the lock later if I change my mind?", answer: <>Yes! If you know the current code but want to remove it permanently for easier sharing, you can easily use our <a href="/pdf/unlock-pdf">Unlock PDF</a> tool to clear it.</> },
+  { question: "Should I sign my contract before or after locking it?", answer: <>Always sign first! Use our <a href="/pdf/add-signature">Add Signature</a> tool to approve your paperwork, and then use this protection tool to ensure nobody alters your mark.</> },
   { question: "Does this file locking tool work on mobile phones?", answer: "Yes, Growile PDF is highly mobile-friendly. You can easily encrypt and secure private financial files using your Android or iOS smartphone." },
 ];
 
@@ -85,8 +87,10 @@ export default function ProtectPDF() {
 
   return (
     <>
-      <PageMeta title="Password Protect PDF File Online Free - Secure | Growile PDF" description="Use Growile PDF to password protect PDF file online free. Easily encrypt and secure your PDF document with a password safely. Fast, private, and 100% free." canonicalPath="/tools/protect-pdf" />
+      <PageMeta title="Password Protect PDF File Online Free - Secure | Growile PDF" description="Use Growile PDF to password protect PDF file online free. Easily encrypt and secure your PDF document with a password safely. Fast, private, and 100% free." canonicalPath="/pdf/protect-pdf" />
       <PdfNavBar />
+      <SoftwareApplicationSchema name="Growile Protect PDF" description="Password protect PDF documents online." path="/pdf/protect-pdf" />
+      <PdfBreadcrumb label="Protect PDF" path="protect-pdf" />
       <Hero kicker="PDF Security" title="Password Protect PDF File Online Free" subtitle="Do you have highly sensitive documents that need strict privacy? Growile PDF helps you password protect PDF file online free in just seconds. Whether it is a bank statement or a confidential contract, our tool locks your data securely. You do not need to install expensive security software or pay fees. Experience fast, reliable, and military-grade encryption directly from your browser easily." ctaText="Upload PDF" ctaHref="#protect-pdf-upload" />
       <Divider />
       <main className="jpg-to-pdf-page">

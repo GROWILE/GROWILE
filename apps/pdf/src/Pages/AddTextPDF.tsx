@@ -11,6 +11,8 @@ import Hero from "../../../../packages/ui/src/Hero";
 import HowToUse from "../../../../packages/ui/src/HowToUse";
 import PageMeta from "../../../../packages/ui/src/PageMeta";
 import PdfNavBar from "./NavBar";
+import SoftwareApplicationSchema from "../../../../packages/ui/src/SoftwareApplicationSchema";
+import PdfBreadcrumb from "./PdfBreadcrumb";
 import PdfToolsFooter from "./toolsFooter";
 import PdfIconToolCard from "./IconToolCard";
 import Divider from "../../../../packages/ui/src/Divider";
@@ -65,8 +67,8 @@ const faqs = [
   { question: "Can I use this tool to fill out government forms?", answer: "Yes, you can easily click on blank fields and type your information to cleanly fill out official applications or digital paperwork." },
   { question: "Do I need an app to insert paragraphs into my file?", answer: "No installation is required. You can quickly add text directly from your web browser using our online Growile PDF platform easily." },
   { question: "Are my uploaded forms and typed documents safe?", answer: "Your data is perfectly safe. Growile PDF automatically deletes your original file and the updated document from our secure servers quickly." },
-  { question: "What if I also need to add my handwritten signature?", answer: <>If your form requires a signature after you type your details, you can easily use our <a href="/tools/add-signature">Add Signature</a> tool to make the document official.</> },
-  { question: "Can I insert a company logo using this specific tool?", answer: <>This tool is strictly for typing words. If you need to attach a picture or logo, please use our <a href="/tools/add-image">Add Image</a> tool for the best results.</> },
+  { question: "What if I also need to add my handwritten signature?", answer: <>If your form requires a signature after you type your details, you can easily use our <a href="/pdf/add-signature">Add Signature</a> tool to make the document official.</> },
+  { question: "Can I insert a company logo using this specific tool?", answer: <>This tool is strictly for typing words. If you need to attach a picture or logo, please use our <a href="/pdf/add-image">Add Image</a> tool for the best results.</> },
   { question: "Does this typing tool work on mobile smartphones?", answer: "Yes, Growile PDF is mobile-friendly. You can comfortably tap, type, and fill out forms on your Android or iOS device while on the move." },
 ];
 
@@ -178,8 +180,10 @@ export default function AddTextPDF() {
 
   return (
     <>
-      <PageMeta title="Add Text to PDF Document Online Free - Fast | Growile PDF" description="Use Growile PDF to add text to PDF document online free. Easily insert text, type on pages, or fill out PDF forms safely. Fast, secure, and 100% free!" canonicalPath="/tools/add-text" />
+      <PageMeta title="Add Text to PDF Document Online Free - Fast | Growile PDF" description="Use Growile PDF to add text to PDF document online free. Easily insert text, type on pages, or fill out PDF forms safely. Fast, secure, and 100% free!" canonicalPath="/pdf/add-text" />
       <PdfNavBar />
+      <SoftwareApplicationSchema name="Growile Add Text to PDF" description="Add text to PDF documents online." path="/pdf/add-text" />
+      <PdfBreadcrumb label="Add Text" path="add-text" />
       <Hero kicker="PDF Editing" title="Add Text to PDF Document Online Free" subtitle="Do you need to update a document but cannot edit it? Growile PDF helps you add text to PDF document online free in just seconds. Whether you need to fill forms, type notes, or insert paragraphs, our tool makes it easy. You do not have to install software or pay fees. Enjoy fast, secure, and unlimited typing directly on your files right from your web browser without any complex steps today." ctaText="Upload PDF" ctaHref="#add-text-upload" />
       <Divider />
       <main className="jpg-to-pdf-page">
@@ -238,7 +242,7 @@ export default function AddTextPDF() {
                     </button>
                   </div>
                   <div className="pdf-zoom-controls" aria-label="Page zoom controls">
-                    <button type="button" onClick={() => setZoom((current) => Math.max(0.75, Number((current - 0.25).toFixed(2))))} disabled={zoom <= 0.75}>−</button>
+                    <button type="button" onClick={() => setZoom((current) => Math.max(0.75, Number((current - 0.25).toFixed(2))))} disabled={zoom <= 0.75}>ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã¢â‚¬Â¹ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢</button>
                     <span>{Math.round(zoom * 100)}%</span>
                     <button type="button" onClick={() => setZoom((current) => Math.min(2.5, Number((current + 0.25).toFixed(2))))} disabled={zoom >= 2.5}>+</button>
                     <button type="button" className="pdf-zoom-reset" onClick={() => setZoom(1)} disabled={zoom === 1}>Reset</button>

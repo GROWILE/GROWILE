@@ -57,7 +57,7 @@ export default function PrivacyPolicy({
 
       <BreadcrumbSchema
         items={[
-          { name: "Home", url: "https://growile.com" },
+          { name: "Home", url: `https://growile.com${home.href}` },
           { name: "Privacy Policy", url: fullUrl }
         ]}
       />

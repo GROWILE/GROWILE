@@ -13,7 +13,7 @@ function createFooterColumns(invoiceHref: string) {
   {
     title: "Products",
     links: [
-      { label: "Finance", href: "/finance" },
+      { label: "PDF", href: "/pdf" },
       { label: "Invoice", href: invoiceHref },
     ],
   },
@@ -73,8 +73,8 @@ export default function Footer({ invoiceHref = "/invoice", termsHref = "#", priv
         <div className="footer-column">
           <h3 className="footer-column-title">Contact</h3>
           <p className="footer-contact-label">Email</p>
-          <a href="mailto:contact@growile.com" className="footer-contact-email">
-            contact@growile.com
+          <a href="mailto:growile.groups@gmail.com" className="footer-contact-email">
+            growile.groups@gmail.com
           </a>
         </div>
       </div>

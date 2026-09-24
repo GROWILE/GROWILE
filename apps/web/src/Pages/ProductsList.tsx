@@ -11,13 +11,13 @@ export default function ProductsList() {
   // Future-la innum products add panrathukku inga list-la add pannina pothum!
   const allProducts = [
     {
-      id: "finance",
+      id: "pdf",
       suiteLabel: "GROWILE SUITE",
-      title: "Finance",
-      description: "A simpler way to understand your money and stay in control.",
-      tags: ["Coming Soon"],
-      ctaLabel: "Explore Finance",
-      ctaHref: "/finance"
+      title: "PDF Tools",
+      description: "Free browser-based tools to convert, edit, organize, and secure PDF files.",
+      tags: ["FREE", "PRIVATE"],
+      ctaLabel: "Explore PDF Tools",
+      ctaHref: "/pdf"
     },
     {
       id: "invoice",
@@ -48,7 +48,7 @@ export default function ProductsList() {
         products={{
           label: "Products",
           items: [
-            { label: "Finance", href: "/finance" },
+            { label: "PDF", href: "/pdf" },
             { label: "Invoice", href: "/invoice" },
           ],
         }}

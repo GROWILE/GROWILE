@@ -16,7 +16,7 @@ type H2SectionProps = {
 // Pass 1 or more { heading, description } blocks as props — this
 // component just renders them. Content lives with the page using it,
 // not inside this file, so the same component works for every
-// product page (Invoice, Finance, future tools).
+// product pages and future tools.
 
 export default function H2Section({ blocks }: H2SectionProps) {
   return (

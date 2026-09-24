@@ -7,6 +7,7 @@ export default defineConfig({
   build: {
     outDir: 'dist'
   },
+  base: './',
   resolve: {
     alias: {
       // 👇 packages/ui-ku kulla irukkura src-a point panrom

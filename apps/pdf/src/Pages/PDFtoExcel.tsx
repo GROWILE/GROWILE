@@ -10,6 +10,7 @@ import Hero from "../../../../packages/ui/src/Hero";
 import HowToUse from "../../../../packages/ui/src/HowToUse";
 import PageMeta from "../../../../packages/ui/src/PageMeta";
 import PdfNavBar from "./NavBar";
+import SoftwareApplicationSchema from "../../../../packages/ui/src/SoftwareApplicationSchema";
 import PdfToolsFooter from "./toolsFooter";
 import Divider from "../../../../packages/ui/src/Divider";
 import { convertPdfToExcel, downloadExcelFile } from "../Utilities/PDFtoExcelProcessing";
@@ -97,9 +98,10 @@ export default function PDFtoExcel() {
       <PageMeta
         title="PDF to Excel Converter"
         description="Convert PDF files to editable Excel workbooks online with Growile's browser-based PDF to Excel converter."
-        canonicalPath="/tools/pdf-to-excel"
+        canonicalPath="/pdf/pdf-to-excel"
       />
       <PdfNavBar />
+      <SoftwareApplicationSchema name="Growile PDF to Excel" description="Convert PDF files into editable Excel spreadsheets online." path="/pdf/pdf-to-excel" />
       <Hero
         kicker="PDF Conversion"
         title="PDF to Excel Converter"

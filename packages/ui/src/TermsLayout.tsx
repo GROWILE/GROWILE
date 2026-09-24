@@ -4,6 +4,7 @@ import Footer from "./Footer";
 import Navbar from "./Navbar";
 import PageMeta from "./PageMeta";
 import Breadcrumb from "./Breadcrumb";
+import BreadcrumbSchema from "./BreadcrumbSchema";
 
 export type NavbarLink = {
   label: string;
@@ -60,6 +61,12 @@ export default function TermsLayout({
         description={pageDescription}
         canonicalPath={typeof window !== "undefined" ? window.location.pathname : "/"}
       />
+      <BreadcrumbSchema
+        items={[
+          { name: "Home", url: `https://growile.com${home.href === "/" ? "/" : home.href}` },
+          { name: heroTitle, url: `https://growile.com${typeof window !== "undefined" ? window.location.pathname : home.href}` },
+        ]}
+      />
 
       <Navbar
         logoAlt={logoAlt}
@@ -73,7 +80,7 @@ export default function TermsLayout({
       <Breadcrumb
       items={[
         { label: home.label, href: home.href },
-        { label: heroTitle, href: "#" }
+        { label: heroTitle, href: typeof window !== "undefined" ? window.location.pathname : home.href }
       ]}
       />
 

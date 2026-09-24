@@ -11,6 +11,8 @@ import Hero from "../../../../packages/ui/src/Hero";
 import HowToUse from "../../../../packages/ui/src/HowToUse";
 import PageMeta from "../../../../packages/ui/src/PageMeta";
 import PdfNavBar from "./NavBar";
+import SoftwareApplicationSchema from "../../../../packages/ui/src/SoftwareApplicationSchema";
+import PdfBreadcrumb from "./PdfBreadcrumb";
 import PdfToolsFooter from "./toolsFooter";
 import PdfIconToolCard from "./IconToolCard";
 import Divider from "../../../../packages/ui/src/Divider";
@@ -84,7 +86,7 @@ const faqs = [
     answer: (
       <>
         Extracting saves only the pages you select. If you want to remove just a few unwanted pages instead, please use our{" "}
-        <a href="/tools/delete-pdf-pages">Delete PDF Pages</a> tool.
+        <a href="/pdf/delete-pdf-pages">Delete PDF Pages</a> tool.
       </>
     ),
   },
@@ -93,7 +95,7 @@ const faqs = [
     answer: (
       <>
         Extracting creates one new file. If you need to divide a large document into several separate files, try using our{" "}
-        <a href="/tools/split-pdf">Split PDF</a> tool instead.
+        <a href="/pdf/split-pdf">Split PDF</a> tool instead.
       </>
     ),
   },
@@ -184,9 +186,11 @@ export default function ExtractPDFPages() {
       <PageMeta
         title="Extract Pages From PDF Online Free - Fast | Growile PDF"
         description="Use Growile PDF to extract pages from PDF online free. Easily extract specific or single pages into a new file. Safe, fast, and 100% free tool!"
-        canonicalPath="/tools/extract-pdf-pages"
+        canonicalPath="/pdf/extract-pdf-pages"
       />
       <PdfNavBar />
+      <SoftwareApplicationSchema name="Growile Extract PDF Pages" description="Extract selected pages from a PDF into a new document." path="/pdf/extract-pdf-pages" />
+      <PdfBreadcrumb label="Extract PDF Pages" path="extract-pdf-pages" />
       <Hero
         kicker="PDF Organization"
         title="Extract Pages from PDF Online Free"

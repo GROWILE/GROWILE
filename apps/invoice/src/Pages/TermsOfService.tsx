@@ -21,7 +21,7 @@ export default function TermsAndConditions() {
       products={{
         label: "Products",
         items: [
-          { label: "Finance", href: "/finance" },
+          { label: "PDF", href: "/pdf" },
           { label: "Invoice", href: invoiceHomeHref },
         ],
       }}

@@ -11,6 +11,8 @@ import Hero from "../../../../packages/ui/src/Hero";
 import HowToUse from "../../../../packages/ui/src/HowToUse";
 import PageMeta from "../../../../packages/ui/src/PageMeta";
 import PdfNavBar from "./NavBar";
+import SoftwareApplicationSchema from "../../../../packages/ui/src/SoftwareApplicationSchema";
+import PdfBreadcrumb from "./PdfBreadcrumb";
 import PdfToolsFooter from "./toolsFooter";
 import PdfIconToolCard from "./IconToolCard";
 import Divider from "../../../../packages/ui/src/Divider";
@@ -80,7 +82,7 @@ const faqs = [
     answer: (
       <>
         This tool only fixes angles. If your sheets are mixed up, please use our{" "}
-        <a href="/tools/reorder-pdf-pages">Reorder PDF Pages</a> tool to rearrange them correctly.
+        <a href="/pdf/reorder-pdf-pages">Reorder PDF Pages</a> tool to rearrange them correctly.
       </>
     ),
   },
@@ -89,7 +91,7 @@ const faqs = [
     answer: (
       <>
         This tool only turns sheets. If you want to erase an unwanted page instead of fixing it, use our{" "}
-        <a href="/tools/delete-pdf-pages">Delete PDF Pages</a> tool.
+        <a href="/pdf/delete-pdf-pages">Delete PDF Pages</a> tool.
       </>
     ),
   },
@@ -205,9 +207,11 @@ export default function RotatePDF() {
       <PageMeta
         title="Rotate PDF Pages Online Free - Fast & Easy | Growile PDF"
         description="Use Growile PDF to rotate PDF pages online free. Easily change PDF orientation or rotate PDF permanently without losing quality. Safe, fast, and 100% free!"
-        canonicalPath="/tools/rotate-pdf"
+        canonicalPath="/pdf/rotate-pdf"
       />
       <PdfNavBar />
+      <SoftwareApplicationSchema name="Growile Rotate PDF" description="Rotate PDF pages online." path="/pdf/rotate-pdf" />
+      <PdfBreadcrumb label="Rotate PDF" path="rotate-pdf" />
       <Hero
         kicker="PDF Organization"
         title="Rotate PDF Pages Online Free"
@@ -295,7 +299,7 @@ function RotatePagePreview({
       </div>
       <div className="split-pdf-selection-help" role="status">
         <strong>Rotate the pages</strong>
-        <span>Click the rotate button above any page. Each click rotates it 90° clockwise.</span>
+        <span>Click the rotate button above any page. Each click rotates it 90ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â° clockwise.</span>
       </div>
       <div className="split-pdf-page-grid">
         {pageImages.map((image, index) => (

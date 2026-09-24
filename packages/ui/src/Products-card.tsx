@@ -10,11 +10,11 @@ type Product = {
 
 const products: Product[] = [
   {
-    title: "Finance",
-    href: "/finance",
-    buttonLabel: "Explore Finance",
-    description: "A simpler way to understand your money and stay in control.",
-    tags: ["Coming Soon"],
+    title: "PDF Tools",
+    href: "/pdf",
+    buttonLabel: "Explore PDF Tools",
+    description: "Free browser-based tools to convert, edit, organize, and secure PDF files.",
+    tags: ["FREE", "PRIVATE"],
   },
   {
     title: "Invoice",

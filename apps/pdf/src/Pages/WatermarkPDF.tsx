@@ -11,6 +11,8 @@ import Hero from "../../../../packages/ui/src/Hero";
 import HowToUse from "../../../../packages/ui/src/HowToUse";
 import PageMeta from "../../../../packages/ui/src/PageMeta";
 import PdfNavBar from "./NavBar";
+import SoftwareApplicationSchema from "../../../../packages/ui/src/SoftwareApplicationSchema";
+import PdfBreadcrumb from "./PdfBreadcrumb";
 import PdfToolsFooter from "./toolsFooter";
 import PdfIconToolCard from "./IconToolCard";
 import Divider from "../../../../packages/ui/src/Divider";
@@ -33,8 +35,8 @@ const faqs = [
   { question: "Will the stamp be applied to every single page?", answer: "Yes, our tool automatically applies your custom text or logo across every sheet in your document, saving you immense time and effort." },
   { question: "Do I need software to brand my business reports?", answer: "No installation is required. You can quickly secure and brand your files directly from your web browser using our online Growile PDF tool." },
   { question: "Are my uploaded files and branded documents secure?", answer: "Your data is entirely safe. Growile PDF automatically deletes your original file and the newly stamped document from our secure servers." },
-  { question: "What is the difference between this and adding an image?", answer: <>This tool fades and repeats a graphic across all pages. To insert a normal, solid picture on a specific page, please use our <a href="/tools/add-image">Add Image</a> tool.</> },
-  { question: "How can I stop people from removing my stamp?", answer: <>To ensure ultimate security, after applying your stamp, use our <a href="/tools/protect-pdf">Protect PDF</a> tool to lock the file so no one can edit or remove your branding.</> },
+  { question: "What is the difference between this and adding an image?", answer: <>This tool fades and repeats a graphic across all pages. To insert a normal, solid picture on a specific page, please use our <a href="/pdf/add-image">Add Image</a> tool.</> },
+  { question: "How can I stop people from removing my stamp?", answer: <>To ensure ultimate security, after applying your stamp, use our <a href="/pdf/protect-pdf">Protect PDF</a> tool to lock the file so no one can edit or remove your branding.</> },
   { question: "Does this document stamping tool work on mobile?", answer: "Yes, Growile PDF is mobile-friendly. You can effortlessly brand your confidential drafts using your smartphone while traveling for business." },
 ];
 
@@ -157,8 +159,10 @@ export default function WatermarkPDF() {
 
   return (
     <>
-      <PageMeta title="Add Watermark to PDF Online Free - Fast | Growile PDF" description="Use Growile PDF to add watermark to PDF online free. Easily insert transparent text or a logo watermark securely. Fast, reliable, and 100% free online tool." canonicalPath="/tools/add-watermark" />
+      <PageMeta title="Add Watermark to PDF Online Free - Fast | Growile PDF" description="Use Growile PDF to add watermark to PDF online free. Easily insert transparent text or a logo watermark securely. Fast, reliable, and 100% free online tool." canonicalPath="/pdf/add-watermark" />
       <PdfNavBar />
+      <SoftwareApplicationSchema name="Growile Add Watermark to PDF" description="Add watermarks to PDF documents online." path="/pdf/add-watermark" />
+      <PdfBreadcrumb label="Add Watermark" path="add-watermark" />
       <Hero kicker="PDF Editing" title="Add Watermark to PDF Online Free" subtitle="Do you want to protect your digital files from unauthorized copying? Growile PDF helps you add watermark to PDF online free in just seconds. Whether you are stamping a confidential draft or branding a report with your logo, our tool ensures your ownership is visible. You do not need software or paid plans. Experience fast, secure, and limitless document branding directly from your web browser." ctaText="Upload PDF" ctaHref="#watermark-pdf-upload" />
       <Divider />
       <main className="jpg-to-pdf-page"><section className="jpg-to-pdf-upload-section" id="watermark-pdf-upload"><div className="jpg-to-pdf-upload-layout">
@@ -169,14 +173,14 @@ export default function WatermarkPDF() {
               <fieldset><legend>Color</legend><div className="pdf-color-options">{colors.map((item) => <button type="button" key={item} className={`pdf-color-swatch ${options.color === item ? "selected" : ""}`} style={{ backgroundColor: item }} aria-label={`Choose ${item}`} onClick={() => update("color", item)} />)}</div></fieldset>
               <label>Opacity<input type="range" min="0.1" max="0.9" step="0.05" value={options.opacity} onChange={(event) => update("opacity", Number(event.target.value))} /><span>{Math.round(options.opacity * 100)}%</span></label>
               <label>Size<input type="range" min="12" max="96" step="1" value={options.fontSize} onChange={(event) => update("fontSize", Number(event.target.value))} /><span>{options.fontSize}px</span></label>
-              <label>Angle<input type="range" min="-45" max="45" step="1" value={options.angle} onChange={(event) => update("angle", Number(event.target.value))} /><span>{options.angle}°</span></label>
+              <label>Angle<input type="range" min="-45" max="45" step="1" value={options.angle} onChange={(event) => update("angle", Number(event.target.value))} /><span>{options.angle}ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â°</span></label>
               <label className="pdf-watermark-check"><input type="checkbox" checked={options.allPages} onChange={(event) => update("allPages", event.target.checked)} /> Apply to all pages</label>
               <button type="button" className="pdf-watermark-reset" onClick={() => setOptions(initialOptions)}><RotateCcw size={15} /> Reset</button>
             </div>
             <p className="pdf-editor-hint">Click anywhere on the page to position the watermark. It will be added as a new overlay.</p>
             <div className="pdf-page-carousel" aria-label="PDF watermark editor">
               <button type="button" className="pdf-page-arrow" aria-label="Previous PDF page" disabled={currentPage === 0} onClick={() => changePage(currentPage - 1)}><ChevronLeft size={24} /></button>
-              {page && <div className="pdf-page-viewport"><div className="pdf-page-canvas selected" onClick={handlePageClick} onDoubleClick={(event) => event.preventDefault()}><img src={page.image} alt={`PDF page ${currentPage + 1}`} /><span className={`pdf-watermark-preview ${placement ? "placed" : "pending"}`} style={previewStyle} onPointerDown={handleWatermarkPointerDown} onPointerMove={handleWatermarkPointerMove} onPointerUp={handleWatermarkPointerUp} onPointerCancel={handleWatermarkPointerUp}>{options.text || "Watermark"}{!placement && <button type="button" className="pdf-watermark-place" aria-label={`Place watermark on page ${currentPage + 1}`} onClick={(event) => { event.stopPropagation(); placeOnCurrentPage(); }}>✓</button>}</span><span className="pdf-page-label">Page {currentPage + 1} of {pages.length}</span></div></div>}
+              {page && <div className="pdf-page-viewport"><div className="pdf-page-canvas selected" onClick={handlePageClick} onDoubleClick={(event) => event.preventDefault()}><img src={page.image} alt={`PDF page ${currentPage + 1}`} /><span className={`pdf-watermark-preview ${placement ? "placed" : "pending"}`} style={previewStyle} onPointerDown={handleWatermarkPointerDown} onPointerMove={handleWatermarkPointerMove} onPointerUp={handleWatermarkPointerUp} onPointerCancel={handleWatermarkPointerUp}>{options.text || "Watermark"}{!placement && <button type="button" className="pdf-watermark-place" aria-label={`Place watermark on page ${currentPage + 1}`} onClick={(event) => { event.stopPropagation(); placeOnCurrentPage(); }}>ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã¢â‚¬Â¦ÃƒÂ¢Ã¢â€šÂ¬Ã…â€œÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“</button>}</span><span className="pdf-page-label">Page {currentPage + 1} of {pages.length}</span></div></div>}
               <button type="button" className="pdf-page-arrow" aria-label="Next PDF page" disabled={currentPage === pages.length - 1} onClick={() => changePage(currentPage + 1)}><ChevronRight size={24} /></button>
             </div>
           </div>

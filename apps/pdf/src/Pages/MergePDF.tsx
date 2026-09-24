@@ -10,6 +10,8 @@ import Hero from "../../../../packages/ui/src/Hero";
 import HowToUse from "../../../../packages/ui/src/HowToUse";
 import PageMeta from "../../../../packages/ui/src/PageMeta";
 import PdfNavBar from "./NavBar";
+import SoftwareApplicationSchema from "../../../../packages/ui/src/SoftwareApplicationSchema";
+import PdfBreadcrumb from "./PdfBreadcrumb";
 import PdfToolsFooter from "./toolsFooter";
 import PdfIconToolCard from "./IconToolCard";
 import Divider from "../../../../packages/ui/src/Divider";
@@ -142,9 +144,11 @@ export default function MergePDF() {
       <PageMeta
         title="Merge PDF Files Online Free - Fast & Secure | Growile PDF"
         description="Use Growile PDF to merge PDF files online free. Easily combine multiple PDF files into one document without losing quality. Safe, fast, and 100% free tool!"
-        canonicalPath="/tools/merge-pdf"
+        canonicalPath="/pdf/merge-pdf"
       />
       <PdfNavBar />
+      <SoftwareApplicationSchema name="Growile Merge PDF" description="Combine multiple PDF files into one document online." path="/pdf/merge-pdf" />
+      <PdfBreadcrumb label="Merge PDF" path="merge-pdf" />
       <Hero
         kicker="PDF Organization"
         title="Merge PDF Files Online Free"

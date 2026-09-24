@@ -10,6 +10,8 @@ import Hero from "../../../../packages/ui/src/Hero";
 import HowToUse from "../../../../packages/ui/src/HowToUse";
 import PageMeta from "../../../../packages/ui/src/PageMeta";
 import PdfNavBar from "./NavBar";
+import SoftwareApplicationSchema from "../../../../packages/ui/src/SoftwareApplicationSchema";
+import PdfBreadcrumb from "./PdfBreadcrumb";
 import PdfToolsFooter from "./toolsFooter";
 import PdfIconToolCard from "./IconToolCard";
 import Divider from "../../../../packages/ui/src/Divider";
@@ -142,9 +144,11 @@ export default function PDFtoPNG() {
       <PageMeta
         title="Convert PDF to PNG Online Free & High Quality | Growile PDF"
         description="Use Growile PDF to convert PDF to PNG online free. Easily change PDF pages to PNG format without losing quality. Safe, fast, and 100% free tool!"
-        canonicalPath="/tools/pdf-to-png"
+        canonicalPath="/pdf/pdf-to-png"
       />
       <PdfNavBar />
+      <SoftwareApplicationSchema name="Growile PDF to PNG" description="Convert PDF pages into PNG images online." path="/pdf/pdf-to-png" />
+      <PdfBreadcrumb label="PDF to PNG" path="pdf-to-png" />
       <Hero
         kicker="PDF Conversion"
         title="Convert PDF to PNG Online Free"

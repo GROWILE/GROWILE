@@ -94,7 +94,7 @@ export default function OfficeToPDFPage({ format, icon }: { format: OfficeFormat
   ];
   return (
     <>
-      <PageMeta title={`${current.title} Converter`} description={current.subtitle} canonicalPath={`/tools/${format}-to-pdf`} />
+      <PageMeta title={`${current.title} Converter`} description={current.subtitle} canonicalPath={`/pdf/${format}-to-pdf`} />
       <PdfNavBar />
       <Hero kicker="PDF Conversion" title={`${current.title} Converter`} subtitle={current.subtitle} ctaText={`Upload ${current.formatLabel}`} ctaHref={`#${format}-to-pdf-upload`} />
       <Divider />

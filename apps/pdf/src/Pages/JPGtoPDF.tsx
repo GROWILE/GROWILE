@@ -9,6 +9,8 @@ import Hero from "../../../../packages/ui/src/Hero";
 import HowToUse from "../../../../packages/ui/src/HowToUse";
 import PageMeta from "../../../../packages/ui/src/PageMeta";
 import PdfNavBar from "./NavBar";
+import SoftwareApplicationSchema from "../../../../packages/ui/src/SoftwareApplicationSchema";
+import PdfBreadcrumb from "./PdfBreadcrumb";
 import PdfToolsFooter from "./toolsFooter";
 import PdfIconToolCard from "./IconToolCard";
 import DownloadPopup from "../../../../packages/ui/src/DownloadPopup";
@@ -161,9 +163,11 @@ export default function JPGtoPDF() {
       <PageMeta
         title="Convert JPG to PDF Online Free - High Quality | Growile PDF"
         description="Convert JPG to PDF online free with our fast tool. Change multiple JPG to PDF format without losing quality. Enjoy safe, unlimited, and easy conversions!"
-        canonicalPath="/tools/jpg-to-pdf"
+        canonicalPath="/pdf/jpg-to-pdf"
       />
       <PdfNavBar />
+      <SoftwareApplicationSchema name="Growile JPG to PDF" description="Convert JPG images into PDF files online." path="/pdf/jpg-to-pdf" />
+      <PdfBreadcrumb label="JPG to PDF" path="jpg-to-pdf" />
       <Hero
         kicker="PDF Conversion"
         title="Convert JPG to PDF Online Free"

@@ -10,6 +10,8 @@ import Hero from "../../../../packages/ui/src/Hero";
 import HowToUse from "../../../../packages/ui/src/HowToUse";
 import PageMeta from "../../../../packages/ui/src/PageMeta";
 import PdfNavBar from "./NavBar";
+import SoftwareApplicationSchema from "../../../../packages/ui/src/SoftwareApplicationSchema";
+import PdfBreadcrumb from "./PdfBreadcrumb";
 import PdfToolsFooter from "./toolsFooter";
 import PdfIconToolCard from "./IconToolCard";
 import Divider from "../../../../packages/ui/src/Divider";
@@ -142,9 +144,11 @@ export default function PDFtoText() {
       <PageMeta
         title="Convert PDF to Text Online Free - Fast & Easy | Growile PDF"
         description="Use Growile PDF to convert PDF to text online free. Easily extract text from scanned PDFs without losing data. Safe, fast, and 100% free tool. Try it now!"
-        canonicalPath="/tools/pdf-to-text"
+        canonicalPath="/pdf/pdf-to-text"
       />
       <PdfNavBar />
+      <SoftwareApplicationSchema name="Growile PDF to Text" description="Extract text from PDF files online." path="/pdf/pdf-to-text" />
+      <PdfBreadcrumb label="PDF to Text" path="pdf-to-text" />
       <Hero
         kicker="PDF Conversion"
         title="Convert PDF to Text Online Free"

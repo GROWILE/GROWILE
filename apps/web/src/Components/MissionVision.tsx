@@ -10,7 +10,7 @@ const items = [
   {
     title: "Vision",
     description:
-      "We envision a future where every everyday tool — documents, images, finance, invoicing — works together on one connected platform, processed locally, built with the same simplicity and care. A place people return to not because they have to, but because it just works.",
+      "We envision a future where every everyday tool — documents, images, PDF, invoicing — works together on one connected platform, processed locally, built with the same simplicity and care. A place people return to not because they have to, but because it just works.",
     accentClass: "accent-blue",
   },
 ];

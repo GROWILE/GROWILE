@@ -11,6 +11,8 @@ import Hero from "../../../../packages/ui/src/Hero";
 import HowToUse from "../../../../packages/ui/src/HowToUse";
 import PageMeta from "../../../../packages/ui/src/PageMeta";
 import PdfNavBar from "./NavBar";
+import SoftwareApplicationSchema from "../../../../packages/ui/src/SoftwareApplicationSchema";
+import PdfBreadcrumb from "./PdfBreadcrumb";
 import PdfToolsFooter from "./toolsFooter";
 import PdfIconToolCard from "./IconToolCard";
 import Divider from "../../../../packages/ui/src/Divider";
@@ -32,8 +34,8 @@ const faqs = [
   { question: "Can I start the numbering from a specific digit?", answer: "Yes, you have full control. If your document is the second chapter of a book, you can easily set the starting digit to any custom value." },
   { question: "Do I need an app to format my university thesis?", answer: "No software is needed. You can quickly organize and paginate your lengthy documents directly from your web browser using our secure platform." },
   { question: "Are my uploaded documents and formatted files safe?", answer: "Your privacy is fully protected. Growile PDF automatically deletes your original file and the numbered document from our servers quickly." },
-  { question: "What if I combine files before adding digits?", answer: <>That is a great workflow! You can use our <a href="/tools/merge-pdf">Merge PDF</a> tool to combine separate chapters first, and then use this tool to number the final file.</> },
-  { question: "What if my sheets are currently in the wrong order?", answer: <>Before adding sequential digits, we recommend using our <a href="/tools/reorder-pdf-pages">Reorder PDF Pages</a> tool to ensure all your sheets are in the correct logical sequence.</> },
+  { question: "What if I combine files before adding digits?", answer: <>That is a great workflow! You can use our <a href="/pdf/merge-pdf">Merge PDF</a> tool to combine separate chapters first, and then use this tool to number the final file.</> },
+  { question: "What if my sheets are currently in the wrong order?", answer: <>Before adding sequential digits, we recommend using our <a href="/pdf/reorder-pdf-pages">Reorder PDF Pages</a> tool to ensure all your sheets are in the correct logical sequence.</> },
   { question: "Does this pagination tool work on mobile devices?", answer: "Yes, Growile PDF is mobile-friendly. You can easily organize and format large business reports using your Android or iOS smartphone anywhere." },
 ];
 
@@ -100,8 +102,10 @@ export default function AddPageNumbers() {
 
   return (
     <>
-      <PageMeta title="Add Page Numbers to PDF Online Free - Easy | Growile PDF" description="Use Growile PDF to add page numbers to PDF online free. Easily paginate your document or add custom page numbers safely. Fast, reliable, and 100% free tool!" canonicalPath="/tools/add-page-numbers" />
+      <PageMeta title="Add Page Numbers to PDF Online Free - Easy | Growile PDF" description="Use Growile PDF to add page numbers to PDF online free. Easily paginate your document or add custom page numbers safely. Fast, reliable, and 100% free tool!" canonicalPath="/pdf/add-page-numbers" />
       <PdfNavBar />
+      <SoftwareApplicationSchema name="Growile Add Page Numbers to PDF" description="Add page numbers to PDF documents online." path="/pdf/add-page-numbers" />
+      <PdfBreadcrumb label="Add Page Numbers" path="add-page-numbers" />
       <Hero kicker="PDF Editing" title="Add Page Numbers to PDF Online Free" subtitle="Do you need to organize a lengthy document for easy reading? Growile PDF helps you add page numbers to PDF online free in just a few clicks. Whether you are formatting a university thesis or a massive business report, our tool keeps everything in sequence perfectly. You do not need to install complex apps or pay fees. Enjoy fast, secure, and limitless pagination directly from your web browser." ctaText="Upload PDF" ctaHref="#add-page-numbers-upload" />
       <Divider />
       <main className="jpg-to-pdf-page">

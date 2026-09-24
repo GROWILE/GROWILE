@@ -10,6 +10,8 @@ import Hero from "../../../../packages/ui/src/Hero";
 import HowToUse from "../../../../packages/ui/src/HowToUse";
 import PageMeta from "../../../../packages/ui/src/PageMeta";
 import PdfNavBar from "./NavBar";
+import SoftwareApplicationSchema from "../../../../packages/ui/src/SoftwareApplicationSchema";
+import PdfBreadcrumb from "./PdfBreadcrumb";
 import PdfToolsFooter from "./toolsFooter";
 import PdfIconToolCard from "./IconToolCard";
 import Divider from "../../../../packages/ui/src/Divider";
@@ -76,7 +78,7 @@ const faqs = [
     answer: (
       <>
         If the file remains too bulky, you can use our{" "}
-        <a href="/tools/split-pdf">Split PDF</a> tool to break the heavy document into smaller, manageable parts for emailing.
+        <a href="/pdf/split-pdf">Split PDF</a> tool to break the heavy document into smaller, manageable parts for emailing.
       </>
     ),
   },
@@ -85,7 +87,7 @@ const faqs = [
     answer: (
       <>
         If certain pages contain huge images you do not need, try our{" "}
-        <a href="/tools/delete-pdf-pages">Delete PDF Pages</a> tool first to erase them and save even more space.
+        <a href="/pdf/delete-pdf-pages">Delete PDF Pages</a> tool first to erase them and save even more space.
       </>
     ),
   },
@@ -196,9 +198,11 @@ export default function CompressPDF() {
       <PageMeta
         title="Compress PDF File Size Online Free - Fast | Growile PDF"
         description="Use Growile PDF to compress PDF file size online free. Shrink documents to 100KB or 200KB easily without losing quality. Safe, fast, and 100% free tool!"
-        canonicalPath="/tools/compress-pdf"
+        canonicalPath="/pdf/compress-pdf"
       />
       <PdfNavBar />
+      <SoftwareApplicationSchema name="Growile Compress PDF" description="Reduce PDF file size online." path="/pdf/compress-pdf" />
+      <PdfBreadcrumb label="Compress PDF" path="compress-pdf" />
       <Hero
         kicker="PDF Compression"
         title="Compress PDF File Size Online Free"

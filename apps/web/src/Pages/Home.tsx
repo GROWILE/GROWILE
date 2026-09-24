@@ -6,11 +6,13 @@ import MissionVision from '../Components/MissionVision'
 import Navbar from '../../../../packages/ui/src/Navbar'
 import Products from '../../../../packages/ui/src/Products-card'
 import webLogo from '../../../../packages/ui/assets/growile-logo.svg'
+import OrganizationSchema from '../../../../packages/ui/src/OrganizationSchema'
+import WebsiteSchema from '../../../../packages/ui/src/WebsiteSchema'
 
 
 const mainFaqs = [
     { question: "Do I need to create an account to use Growile tools?", answer: "No. There is no sign-up, login, or registration required. You can access and use all our tools instantly for free." },
-    { question: "Is my business and financial data secure?", answer: "Yes, 100% secure. We never store your data on our servers. Everything processes locally right inside your web browser." },
+    { question: "Are my documents and data secure?", answer: "Yes, 100% secure. We never store your data on our servers. Everything processes locally right inside your web browser." },
     { question: "Are Growile tools completely free to use?", answer: "Yes, our tools are free. A small, clean brand watermark helps us keep the platform open and free for everyone worldwide." },
     { question: "Can I use Growile tools for international clients?", answer: "Yes! Our platform supports multi-currency options and global standards, making it ideal for cross-border workflows." },
     { question: "Is there any usage limit on the tools?", answer: "No limits at all. You can generate, create, and download as many professional files as your business needs." },
@@ -35,6 +37,8 @@ function Home() {
   return (
 
     <>
+      <OrganizationSchema />
+      <WebsiteSchema />
 
       <Navbar
         logoAlt="Growile"
@@ -43,7 +47,7 @@ function Home() {
         products={{
           label: "Products",
           items: [
-            { label: "Finance", href: "/finance" },
+            { label: "PDF", href: "/pdf" },
             { label: "Invoice", href: "/invoice" },
           ],
         }}

@@ -80,50 +80,50 @@ export default function InvoicePage() {
 
   // --- Page Meta Tags ---
   const pageTitle = isGstPage 
-    ? "Free GST Invoice Generator (No Sign-Up) | Growile"
-    : "Free Invoice Generator Online (Non-GST) | Growile";
+    ? "Free GST Invoice Generator Online - Secure | Growile PDF"
+    : "Free Invoice Generator Without GST Online | Growile PDF";
 
   const pageDescription = isGstPage
-    ? "Create professional GST tax invoices in any currency. Auto-calculate your exact tax percentages and download a tax-ready PDF bill with no sign-up required."
-    : "Create global bills instantly with our simple invoice maker free of charge. Get your standard non GST bill format in any currency with no sign-up required.";
+    ? "Use Growile PDF's free GST invoice generator online. Easily create a GST invoice format or make a tax invoice securely. Fast, accurate, and 100% free!"
+    : "Use Growile PDF's free invoice generator without GST online. Easily create a non-GST invoice format or bill of supply safely. Fast and 100% free tool!";
 
   // --- Hero Section Content ---
   const heroTitle = isGstPage
-    ? "Free GST Invoice Generator (No Sign-Up)"
-    : "Free Invoice Generator Online (Non-GST)";
+    ? "Free GST Invoice Generator Online"
+    : "Free Invoice Generator Without GST Online";
     
   const heroSubtitle = isGstPage
-    ? "Need a free GST invoice generator for your global business? Our online tool helps you build tax-ready bills fast. You do not need to sign up or log in. Just select your local currency from our global list, add your tax details, and input your item prices. The system will auto-calculate the tax percentage for you. Get your billing done quickly and download a professional PDF in seconds to get paid."
-    : "Create professional bills in any currency with our free invoice generator online. Designed for global freelancers and small businesses who don't need to add tax details. You can easily select your local currency, enter customer information, item pricing, and payment terms, then download a clean PDF right away. No sign-up is required, making cross-border billing as fast and simple as possible.";
+    ? "Are you a registered business looking to bill your customers professionally? Growile PDF provides a fast, free GST invoice generator online. Whether you need to calculate taxes or include specific codes, our smart tool creates compliant documents instantly. You do not need expensive accounting software. Enjoy secure, accurate, and limitless tax billing directly from your web browser today easily."
+    : "Are you a freelancer or a small business owner not registered for taxes? Growile PDF offers a fast, free invoice generator without GST online. Whether you need to bill clients for freelance work or issue a standard receipt, our tool creates professional documents instantly. You do not need to install software or pay fees. Enjoy safe, simple, and unlimited billing right from your web browser.";
 
   // --- SEO H2 Blocks ---
   const gstSeoBlocks = [
     {
-      heading: "Tax Invoice Format under GST",
-      description: "Looking for the right tax invoice format under GST? We make global billing easy. Our layout supports every world currency and includes all mandatory fields like your tax ID. Just fill the boxes and you are set."
+      heading: "Create GST Invoice Format Online Free",
+      description: "It is incredibly simple to create GST invoice format online free using Growile PDF. Just input your company details, add your products with proper tax rates, and we will generate a clean document."
     },
     {
-      heading: "Create GST Bill Online Free",
-      description: "You can create GST bill online free of cost with this tool. Forget heavy software. Pick any world currency, add your tax percentage, let the math happen automatically, and bill international clients in seconds."
+      heading: "Make Tax Invoice With GST Online Free",
+      description: "Selling products or services? You can easily make tax invoice with GST online free. Our intuitive platform automatically calculates the tax amounts, ensuring your final billing file is perfectly accurate."
     },
     {
-      heading: "GST Invoice Format in PDF",
-      description: "Clients worldwide ask for a GST invoice format in PDF to process payments. When you hit download, our tool packs your multi-currency details into a clean, universally accepted PDF document ready to email."
+      heading: "Generate GST Bill Online Free",
+      description: "The entire calculation process is totally stress-free. You can generate GST bill online free by filling out the details here. Growile PDF instantly builds your document, ready to share with clients."
     }
   ];
 
   const nonGstSeoBlocks = [
     {
-      heading: "Standard Non GST Bill Format",
-      description: "Wondering what to include in a standard non GST bill format? Our tool keeps global billing simple. Just pick your currency, add your business name, items, and total. We handle the professional layout."
+      heading: "Create Non GST Invoice Format Online Free",
+      description: "It is extremely simple to create non GST invoice format online free with Growile PDF. Just enter your business details, add your services, and our tool will neatly arrange everything into a clean PDF."
     },
     {
-      heading: "Simple Invoice Maker Free",
-      description: "As a simple invoice maker free of complicated settings, this tool gets the job done fast. You don't need heavy software to bill international clients. Type your details in any currency and download."
+      heading: "Make Bill Without GST Online Free",
+      description: "Need a quick receipt for your customer? You can effortlessly make bill without GST online free. Our platform removes complex tax columns, giving you a straightforward billing document in seconds."
     },
     {
-      heading: "Quotation Maker Without GST",
-      description: "Need to send an estimate to an overseas client? You can also use this as a quotation maker without GST. Change the invoice number to a quote number, set your world currency, fill your rates, and send."
+      heading: "Generate Bill of Supply Online Free",
+      description: "The billing process is completely hassle-free. You can generate bill of supply online free by simply filling out our form. Growile PDF instantly processes the data and prepares your ready-to-send file."
     }
   ];
 
@@ -173,25 +173,25 @@ export default function InvoicePage() {
 
   // --- FAQs Data ---
   const nonGstFaqs = [
-    { question: "Who can use a non-GST bill?", answer: "Perfect for freelancers, small business owners, and unregistered service providers whose income is below the mandatory GST threshold." },
-    { question: "Is my invoice data saved on your servers?", answer: "No. Your privacy is 100% safe. We do not store your data. Everything is processed locally right inside your web browser." },
-    { question: "Can I generate an invoice in USD or other currencies?", answer: "Yes! You can select any world currency from our global list. It works perfectly for billing overseas clients." },
-    { question: "Do I need to create an account to download the PDF?", answer: "No sign-up or login is required. You can instantly fill in your details and download unlimited PDF invoices for free." },
-    { question: "Will there be a watermark on the free invoice?", answer: "Yes, a small, clean 'Invoice Created by GROWILE' text appears at the bottom to help keep this tool free for everyone." },
-    { question: "Is there a limit on how many bills I can create?", answer: "No, there are absolutely no limitations. You can generate and download as many professional bills as your business needs." },
-    { question: "Can I use this as a quotation or estimate maker?", answer: "Yes. Simply type 'Quotation' or 'Estimate' instead of an invoice number, fill in your pricing, and download it instantly." },
-    { question: "Is this bill format legally valid without GST?", answer: "Yes, a standard bill of supply without GST is completely valid for accounting and payment collection for unregistered businesses." }
+    { question: "Is this non-tax billing tool completely free?", answer: "Yes, our platform is 100% free. You can create unlimited standard receipts and bills of supply without paying any hidden subscription fees." },
+    { question: "Can I download the final bill as a PDF?", answer: "Absolutely! Once you enter your details, Growile PDF will instantly generate a clean, professional PDF document that you can download easily." },
+    { question: "What is the difference between this and a tax bill?", answer: <>This tool removes tax columns. If you are a registered business needing tax breakdowns, please use our <a href="/invoice/gst-invoice">GST Invoice</a> generator tool instead.</> },
+    { question: "Can I add my company logo to the receipt?", answer: <>Yes, our billing form lets you upload your logo. If you need to add a faded background logo later, try using our <a href="/pdf/add-watermark">Add Watermark</a> tool.</> },
+    { question: "Do I need an app to create my business receipts?", answer: "No software is needed. You can quickly make your standard customer receipts directly from your web browser using our secure online platform." },
+    { question: "Are my financial details safe on this website?", answer: "Your privacy is completely secure. Growile PDF automatically deletes your entered data and the generated document from our servers instantly." },
+    { question: "Can I sign the document after creating it?", answer: <>Yes! After downloading your final document, you can easily use our <a href="/pdf/add-signature">Add Signature</a> tool to insert your electronic signature professionally.</> },
+    { question: "Does this receipt maker work on mobile phones?", answer: "Yes, Growile PDF is mobile-friendly. You can easily generate a professional bill of supply for your clients using your Android or iOS device." }
   ];
 
   const gstFaqs = [
-    { question: "Is my GST and financial data stored on your servers?", answer: "No. Your privacy is 100% secure. We do not store any invoice data. Everything is processed locally right inside your web browser." },
-    { question: "Does the tool auto-calculate CGST, SGST, and IGST?", answer: "Yes. Just enter your tax percentage. The tool handles the math automatically and formats the tax breakdown for your PDF document." },
-    { question: "Can I create a GST invoice in USD or other currencies?", answer: "Yes! You can select any world currency from our list. The system will calculate your GST tax percentage exactly the same way." },
-    { question: "Do I need to create an account or pay to download?", answer: "No sign-up, login, or payment is required. You can instantly fill in your tax details and download unlimited PDF bills for free." },
-    { question: "Will there be a watermark on the downloaded GST PDF?", answer: "Yes, a small, clean 'Invoice Created by GROWILE' text appears at the bottom. This helps us keep this premium tool free for everyone." },
-    { question: "Is there a limit on how many tax invoices I can generate?", answer: "No, there are absolutely no limitations. You can generate and download as many professional GST tax invoices as your business needs." },
-    { question: "Can I add my business GSTIN and HSN codes?", answer: "Yes. You can easily add your GSTIN, customer tax details, and HSN/SAC codes in the item boxes to stay fully tax compliant." },
-    { question: "Is this GST bill format valid for claiming ITC?", answer: "Yes. Our format includes all mandatory fields required by tax laws, making it fully valid for accounting and Input Tax Credit claims." }
+    { question: "Is this tax billing generator completely free?", answer: "Yes, our tool is 100% free to use. You can calculate taxes and create unlimited professional business bills without paying any hidden fees." },
+    { question: "Does it calculate CGST, SGST, and IGST automatically?", answer: "Absolutely! Just enter your product prices and the correct tax percentage. Our smart platform will handle all the complex math automatically." },
+    { question: "What if I am not a registered business?", answer: <>If you do not have a registration number and do not charge tax, we highly recommend using our <a href="/invoice/without-gst-invoice">Without GST Invoice</a> generator tool instead.</> },
+    { question: "Do I need an app to create my tax documents?", answer: "No installation is required. You can quickly generate professional tax bills directly from your web browser using our secure online platform." },
+    { question: "Are my client details and financial data safe?", answer: "Your privacy is strictly protected. Growile PDF automatically deletes your entered information and the generated file from our secure servers." },
+    { question: "Can I lock this document so nobody changes the price?", answer: <>Yes! After downloading your final tax bill, you can upload it to our <a href="/pdf/protect-pdf">Protect PDF</a> tool to securely lock it with a strong secret password.</> },
+    { question: "How do I add my digital stamp to the final bill?", answer: <>Once your document is ready, you can easily use our <a href="/pdf/add-image">Add Image</a> tool to place your official company stamp perfectly on the final invoice file.</> },
+    { question: "Does this tax bill creator work on smartphones?", answer: "Yes, Growile PDF is highly mobile-friendly. You can comfortably calculate taxes and issue professional bills using your Android or iOS device." }
   ];
 
   const currentFaqs = isGstPage ? gstFaqs : nonGstFaqs;
@@ -206,7 +206,7 @@ export default function InvoicePage() {
       "name": faq.question,
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": faq.answer
+        "text": typeof faq.answer === "string" ? faq.answer : "Use the linked invoice or PDF tool for this billing task."
       }
     }))
   };
@@ -219,7 +219,7 @@ export default function InvoicePage() {
       "name": faq.question,
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": faq.answer
+        "text": typeof faq.answer === "string" ? faq.answer : "Use the linked invoice or PDF tool for this billing task."
       }
     }))
   };
@@ -292,9 +292,8 @@ export default function InvoicePage() {
       
         <BreadcrumbSchema
         items={[
-          { name: "Home", url: "https://growile.com" },
-          { name: "Products", url: "https://growile.com/products" },
-          { name: "Invoice Generator", url: "https://growile.com/invoice" },
+          { name: "Home", url: "https://growile.com/" },
+          { name: "Invoice", url: "https://growile.com/invoice/" },
           { name: invoicePageLabel, url: `https://growile.com${invoicePagePath}` }
         ]}
       />
@@ -306,7 +305,7 @@ export default function InvoicePage() {
         products={{
           label: "Products",
           items: [
-            { label: "Finance", href: "/finance" },
+            { label: "PDF", href: "/pdf" },
             { label: "Invoice", href: invoiceHomeHref },
           ],
         }}
@@ -322,8 +321,7 @@ export default function InvoicePage() {
       <Breadcrumb
         items={[
           { label: "Home", href: "/" },
-          { label: "Products", href: "/products" },
-          { label: "Invoice Generator", href: "/invoice" },
+          { label: "Invoice", href: "/invoice/" },
           { label: invoicePageLabel, href: invoicePagePath }
         ]}
       />

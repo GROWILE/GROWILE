@@ -10,6 +10,7 @@ import Hero from "../../../../packages/ui/src/Hero";
 import HowToUse from "../../../../packages/ui/src/HowToUse";
 import PageMeta from "../../../../packages/ui/src/PageMeta";
 import PdfNavBar from "./NavBar";
+import SoftwareApplicationSchema from "../../../../packages/ui/src/SoftwareApplicationSchema";
 import PdfToolsFooter from "./toolsFooter";
 import Divider from "../../../../packages/ui/src/Divider";
 import { convertPdfToWord, downloadWordFile } from "../Utilities/PDFtoWordProcessing";
@@ -97,9 +98,10 @@ export default function PDFtoWord() {
       <PageMeta
         title="PDF to Word Converter"
         description="Convert PDF files to editable Word documents online with Growile's browser-based PDF to Word converter."
-        canonicalPath="/tools/pdf-to-word"
+        canonicalPath="/pdf/pdf-to-word"
       />
       <PdfNavBar />
+      <SoftwareApplicationSchema name="Growile PDF to Word" description="Convert PDF files into editable Word documents online." path="/pdf/pdf-to-word" />
       <Hero
         kicker="PDF Conversion"
         title="PDF to Word Converter"

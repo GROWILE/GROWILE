@@ -11,6 +11,8 @@ import Hero from "../../../../packages/ui/src/Hero";
 import HowToUse from "../../../../packages/ui/src/HowToUse";
 import PageMeta from "../../../../packages/ui/src/PageMeta";
 import PdfNavBar from "./NavBar";
+import SoftwareApplicationSchema from "../../../../packages/ui/src/SoftwareApplicationSchema";
+import PdfBreadcrumb from "./PdfBreadcrumb";
 import PdfToolsFooter from "./toolsFooter";
 import PdfIconToolCard from "./IconToolCard";
 import Divider from "../../../../packages/ui/src/Divider";
@@ -39,8 +41,8 @@ const faqs = [
   { question: "Will the highlighted text remain readable?", answer: "Yes, the markup acts like a real fluorescent marker. It applies a bright, semi-transparent color over the words, keeping them fully readable." },
   { question: "Do I need an app to annotate my study materials?", answer: "No installation is required. You can easily draw over important paragraphs directly from your web browser using our Growile PDF tool." },
   { question: "Are my uploaded files and annotated documents safe?", answer: "Your data is entirely secure. Growile PDF automatically deletes your original document and the marked-up file from our servers quickly." },
-  { question: "Can I type extra study notes next to my highlights?", answer: <>This tool is specifically for drawing marker lines. If you need to type extra paragraphs or notes, please use our <a href="/tools/add-text">Add Text</a> tool instead.</> },
-  { question: "What if I only want to keep the marked pages?", answer: <>Once you finish annotating, you can save the file and then use our <a href="/tools/extract-pdf-pages">Extract PDF Pages</a> tool to pull out only the pages containing your notes.</> },
+  { question: "Can I type extra study notes next to my highlights?", answer: <>This tool is specifically for drawing marker lines. If you need to type extra paragraphs or notes, please use our <a href="/pdf/add-text">Add Text</a> tool instead.</> },
+  { question: "What if I only want to keep the marked pages?", answer: <>Once you finish annotating, you can save the file and then use our <a href="/pdf/extract-pdf-pages">Extract PDF Pages</a> tool to pull out only the pages containing your notes.</> },
   { question: "Does this markup tool work well on smartphones?", answer: "Yes, Growile PDF is highly mobile-friendly. You can easily use your touchscreen to swipe and mark important text on your Android or iOS device." },
 ];
 
@@ -165,8 +167,10 @@ export default function HighlightPDF() {
 
   return (
     <>
-      <PageMeta title="Highlight Text in PDF Online Free - Markup | Growile PDF" description="Use Growile PDF to highlight text in PDF online free. Easily annotate documents and markup PDF files securely. Fast, safe, and 100% free highlighting tool!" canonicalPath="/tools/highlight-pdf" />
+      <PageMeta title="Highlight Text in PDF Online Free - Markup | Growile PDF" description="Use Growile PDF to highlight text in PDF online free. Easily annotate documents and markup PDF files securely. Fast, safe, and 100% free highlighting tool!" canonicalPath="/pdf/highlight-pdf" />
       <PdfNavBar />
+      <SoftwareApplicationSchema name="Growile Highlight PDF" description="Highlight text in PDF documents online." path="/pdf/highlight-pdf" />
+      <PdfBreadcrumb label="Highlight PDF" path="highlight-pdf" />
       <Hero kicker="PDF Editing" title="Highlight Text in PDF Online Free" subtitle="Do you want to mark important sentences in your study materials? Growile PDF helps you highlight text in PDF online free in just seconds. Whether you need to annotate a research paper or emphasize a contract clause, our tool makes it simple. You do not have to install any apps or pay hidden charges. Enjoy fast, secure, and unlimited document markup directly from your web browser very easily." ctaText="Upload PDF" ctaHref="#highlight-pdf-upload" />
       <Divider />
       <main className="jpg-to-pdf-page">

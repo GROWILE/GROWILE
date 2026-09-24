@@ -22,7 +22,7 @@ export default function TermsOfService() {
       products={{
         label: "Products",
         items: [
-          { label: "Finance", href: "/finance" },
+          { label: "PDF", href: "/pdf" },
           { label: "Invoice", href: "/invoice" },
         ],
       }}
@@ -42,7 +42,7 @@ export default function TermsOfService() {
         <h2 className="about-heading">1. About GROWILE</h2>
         <p className="about-text">
           GROWILE is a software company that builds simple, browser-based tools
-          to help you handle everyday tasks, including finance, invoicing, and
+          to help you handle everyday tasks, including PDF editing, invoicing, and
           other utilities. Our tools are designed to be fast, easy to use, and
           privacy-friendly.
         </p>

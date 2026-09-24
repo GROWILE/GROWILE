@@ -52,7 +52,7 @@ export default function About() {
         products={{
           label: "Products",
           items: [
-            { label: "Finance", href: "/finance" },
+            { label: "PDF", href: "/pdf" },
             { label: "Invoice", href: "/invoice" },
           ],
         }}
@@ -71,7 +71,7 @@ export default function About() {
         <h1 className="about-title">About Growile</h1>
         <p className="about-description">
           We build simple software tools that help you get everyday work
-          done — faster, easier, and without the clutter. From Finance to
+          done — faster, easier, and without the clutter. From PDF tools to
           invoices, Growile brings everything you need into one place, so
           you can spend less time struggling with tools and more time doing
           what matters.
@@ -126,7 +126,7 @@ export default function About() {
         <h2 className="about-heading">What We're Building</h2>
         <p className="about-text">
           Growile is growing into a full set of everyday tools — starting
-          with PDF, image, finance, and invoice tools, all connected under
+          with PDF, image, and invoice tools, all connected under
           one platform. Instead of jumping between apps, you'll soon be
           able to handle everything you need in one simple place, built to
           grow with you.

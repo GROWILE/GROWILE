@@ -8,7 +8,6 @@ import Home from "./Pages/Home";
 import About from "./Pages/About";
 import TermsOfService from "./Pages/TermsOfService";
 import PrivacyPolicyPage from "./Pages/PrivacyPolicyPage"; // <-- Ithu ippo sariya import aayirukku
-import FinanceComingSoon from "./Pages/FinanceComingSoon";
 import ProductsList from "./Pages/ProductsList";
 
 const pageMetadata = {
@@ -28,9 +27,9 @@ const pageMetadata = {
     title: "Privacy Policy for Growile",
     description: "Read the Growile Privacy Policy to understand how we collect, protect, and use your information across our tools.",
   },
-  "/finance": {
-    title: "Finance - Coming Soon | Growile",
-    description: "Our Finance product is currently in active development. We are building a simpler, smarter experience for tracking and managing financial tasks."
+  "/pdf": {
+    title: "Free PDF Tools Online | Growile",
+    description: "Use Growile's free online PDF tools to merge, split, convert, compress, edit, sign, and secure PDF files."
   },
   "/products": {
     title: "All Products - Growile Suite",
@@ -70,7 +69,6 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/terms-of-service" element={<TermsOfService />} />
         <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
-        <Route path="/finance" element={<FinanceComingSoon />} />
         <Route path="/products" element={<ProductsList />} />
       </Routes>
     </>

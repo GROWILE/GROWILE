@@ -11,6 +11,8 @@ import Hero from "../../../../packages/ui/src/Hero";
 import HowToUse from "../../../../packages/ui/src/HowToUse";
 import PageMeta from "../../../../packages/ui/src/PageMeta";
 import PdfNavBar from "./NavBar";
+import SoftwareApplicationSchema from "../../../../packages/ui/src/SoftwareApplicationSchema";
+import PdfBreadcrumb from "./PdfBreadcrumb";
 import PdfToolsFooter from "./toolsFooter";
 import PdfIconToolCard from "./IconToolCard";
 import Divider from "../../../../packages/ui/src/Divider";
@@ -88,7 +90,7 @@ const faqs = [
     answer: (
       <>
         This tool cuts a file into parts. If you want to pull out specific pages, please use our{" "}
-        <a href="/tools/extract-pdf-pages">Extract PDF Pages</a> tool for precise page extraction.
+        <a href="/pdf/extract-pdf-pages">Extract PDF Pages</a> tool for precise page extraction.
       </>
     ),
   },
@@ -196,9 +198,11 @@ export default function SplitPDF() {
       <PageMeta
         title="Split PDF Files Online Free - Easy & Fast | Growile PDF"
         description="Use Growile PDF to split PDF files online free. Divide large PDF pages or split a PDF into multiple files instantly. Safe, fast, and 100% free tool!"
-        canonicalPath="/tools/split-pdf"
+        canonicalPath="/pdf/split-pdf"
       />
       <PdfNavBar />
+      <SoftwareApplicationSchema name="Growile Split PDF" description="Split a PDF into separate files online." path="/pdf/split-pdf" />
+      <PdfBreadcrumb label="Split PDF" path="split-pdf" />
       <Hero
         kicker="PDF Organization"
         title="Split PDF Files Online Free"
@@ -250,7 +254,7 @@ export default function SplitPDF() {
                   {splitParts.map((part) => (
                     <article className="split-pdf-result-card" key={`${part.startPage}-${part.endPage}`}>
                       <div>
-                        <strong>Pages {part.startPage}–{part.endPage}</strong>
+                        <strong>Pages {part.startPage}ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“{part.endPage}</strong>
                         <span>Separate PDF section</span>
                       </div>
                       <button

@@ -10,6 +10,8 @@ import Hero from "../../../../packages/ui/src/Hero";
 import HowToUse from "../../../../packages/ui/src/HowToUse";
 import PageMeta from "../../../../packages/ui/src/PageMeta";
 import PdfNavBar from "./NavBar";
+import SoftwareApplicationSchema from "../../../../packages/ui/src/SoftwareApplicationSchema";
+import PdfBreadcrumb from "./PdfBreadcrumb";
 import PdfToolsFooter from "./toolsFooter";
 import PdfIconToolCard from "./IconToolCard";
 import Divider from "../../../../packages/ui/src/Divider";
@@ -33,8 +35,8 @@ const faqs = [
   { question: "Can I remove editing and printing restrictions?", answer: "Yes, when authorized, the tool removes supported security restrictions so you can edit or print the document freely." },
   { question: "Do I need software to unlock my documents?", answer: "No installation is required. You can unlock your confidential files directly from your web browser using Growile PDF." },
   { question: "Are my uploaded files and unlocked documents safe?", answer: "Your data is secure. Growile PDF automatically deletes your original file and unlocked document from our servers." },
-  { question: "How can I lock the file again after unlocking it?", answer: <>After making your changes, use our <a href="/tools/protect-pdf">Protect PDF</a> tool to add a new password and secure the document again.</> },
-  { question: "Can I type on the unlocked PDF?", answer: <>Yes. Once the restrictions are removed, you can use our <a href="/tools/add-text">Add Text</a> tool to type notes or fill in fields.</> },
+  { question: "How can I lock the file again after unlocking it?", answer: <>After making your changes, use our <a href="/pdf/protect-pdf">Protect PDF</a> tool to add a new password and secure the document again.</> },
+  { question: "Can I type on the unlocked PDF?", answer: <>Yes. Once the restrictions are removed, you can use our <a href="/pdf/add-text">Add Text</a> tool to type notes or fill in fields.</> },
   { question: "Does this unlocking tool work on mobile phones?", answer: "Yes, Growile PDF is mobile-friendly. You can unlock authorized files from any Android or iOS smartphone." },
 ];
 const schemas = {
@@ -65,8 +67,10 @@ export default function UnlockPDF() {
 
   return (
     <>
-      <PageMeta title="Remove Password From PDF Online Free - Unlock | Growile PDF" description="Use Growile PDF to remove password from PDF online free. Easily unlock your PDF document or decrypt files to remove editing restrictions. Fast and 100% free!" canonicalPath="/tools/unlock-pdf" />
+      <PageMeta title="Remove Password From PDF Online Free - Unlock | Growile PDF" description="Use Growile PDF to remove password from PDF online free. Easily unlock your PDF document or decrypt files to remove editing restrictions. Fast and 100% free!" canonicalPath="/pdf/unlock-pdf" />
       <PdfNavBar />
+      <SoftwareApplicationSchema name="Growile Unlock PDF" description="Unlock authorized PDF documents online." path="/pdf/unlock-pdf" />
+      <PdfBreadcrumb label="Unlock PDF" path="unlock-pdf" />
       <Hero kicker="PDF Security" title="Remove Password from PDF Online Free" subtitle="Have you forgotten the passcode to your own digital document? Growile PDF helps you remove password from PDF online free in just a few clicks. Whether you need to read a locked invoice or edit a restricted report, our smart tool instantly clears the barrier. You do not need to install complex software or pay any fees. Enjoy fast, secure, and limitless unlocking right from your web browser today." ctaText="Upload PDF" ctaHref="#unlock-pdf-upload" />
       <Divider />
       <main className="jpg-to-pdf-page">

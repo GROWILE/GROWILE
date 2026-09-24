@@ -11,6 +11,8 @@ import Hero from "../../../../packages/ui/src/Hero";
 import HowToUse from "../../../../packages/ui/src/HowToUse";
 import PageMeta from "../../../../packages/ui/src/PageMeta";
 import PdfNavBar from "./NavBar";
+import SoftwareApplicationSchema from "../../../../packages/ui/src/SoftwareApplicationSchema";
+import PdfBreadcrumb from "./PdfBreadcrumb";
 import PdfToolsFooter from "./toolsFooter";
 import PdfIconToolCard from "./IconToolCard";
 import Divider from "../../../../packages/ui/src/Divider";
@@ -79,7 +81,7 @@ const faqs = [
     answer: (
       <>
         If you want to pull out and save pages rather than erasing them, please use our{" "}
-        <a href="/tools/extract-pdf-pages">Extract PDF Pages</a> tool to create a new file with chosen sheets.
+        <a href="/pdf/extract-pdf-pages">Extract PDF Pages</a> tool to create a new file with chosen sheets.
       </>
     ),
   },
@@ -88,7 +90,7 @@ const faqs = [
     answer: (
       <>
         This tool only erases sheets. If you need to rearrange the sequence of your document, we recommend using our{" "}
-        <a href="/tools/reorder-pdf-pages">Reorder PDF Pages</a> tool instead.
+        <a href="/pdf/reorder-pdf-pages">Reorder PDF Pages</a> tool instead.
       </>
     ),
   },
@@ -184,9 +186,11 @@ export default function DeletePDFPages() {
       <PageMeta
         title="Delete Pages From PDF Online Free - Fast | Growile PDF"
         description="Use Growile PDF to delete pages from PDF online free. Easily remove specific or blank pages from your document. Safe, fast, and 100% free tool!"
-        canonicalPath="/tools/delete-pdf-pages"
+        canonicalPath="/pdf/delete-pdf-pages"
       />
       <PdfNavBar />
+      <SoftwareApplicationSchema name="Growile Delete PDF Pages" description="Remove unwanted pages from a PDF online." path="/pdf/delete-pdf-pages" />
+      <PdfBreadcrumb label="Delete PDF Pages" path="delete-pdf-pages" />
       <Hero
         kicker="PDF Organization"
         title="Delete Pages from PDF Online Free"

@@ -11,6 +11,8 @@ import Hero from "../../../../packages/ui/src/Hero";
 import HowToUse from "../../../../packages/ui/src/HowToUse";
 import PageMeta from "../../../../packages/ui/src/PageMeta";
 import PdfNavBar from "./NavBar";
+import SoftwareApplicationSchema from "../../../../packages/ui/src/SoftwareApplicationSchema";
+import PdfBreadcrumb from "./PdfBreadcrumb";
 import PdfToolsFooter from "./toolsFooter";
 import PdfIconToolCard from "./IconToolCard";
 import Divider from "../../../../packages/ui/src/Divider";
@@ -80,7 +82,7 @@ const faqs = [
     answer: (
       <>
         This tool only shifts sequence. If a sheet is sideways or upside down, please use our{" "}
-        <a href="/tools/rotate-pdf">Rotate PDF</a> tool to fix its orientation easily.
+        <a href="/pdf/rotate-pdf">Rotate PDF</a> tool to fix its orientation easily.
       </>
     ),
   },
@@ -89,7 +91,7 @@ const faqs = [
     answer: (
       <>
         This tool strictly moves sheets. If you find a blank or wrong page you want to remove, try using our{" "}
-        <a href="/tools/delete-pdf-pages">Delete PDF Pages</a> tool instead.
+        <a href="/pdf/delete-pdf-pages">Delete PDF Pages</a> tool instead.
       </>
     ),
   },
@@ -197,9 +199,11 @@ export default function ReorderPDFPages() {
       <PageMeta
         title="Reorder PDF Pages Online Free - Fast & Easy | Growile PDF"
         description="Use Growile PDF to reorder PDF pages online free. Easily rearrange, sort, or change the order of your document's pages. Safe, fast, and 100% free tool!"
-        canonicalPath="/tools/reorder-pdf-pages"
+        canonicalPath="/pdf/reorder-pdf-pages"
       />
       <PdfNavBar />
+      <SoftwareApplicationSchema name="Growile Reorder PDF Pages" description="Rearrange PDF pages online." path="/pdf/reorder-pdf-pages" />
+      <PdfBreadcrumb label="Reorder PDF Pages" path="reorder-pdf-pages" />
       <Hero
         kicker="PDF Organization"
         title="Reorder PDF Pages Online Free"
@@ -319,9 +323,9 @@ function ReorderPagePreview({
             onDrop={() => dropPage(index)}
           >
             <div className="reorder-pdf-page-controls">
-              <button type="button" onClick={() => movePage(index, -1)} disabled={index === 0} aria-label={`Move page ${pageNumber} left`}>←</button>
+              <button type="button" onClick={() => movePage(index, -1)} disabled={index === 0} aria-label={`Move page ${pageNumber} left`}>ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â</button>
               <span>Order {index + 1}</span>
-              <button type="button" onClick={() => movePage(index, 1)} disabled={index === pageOrder.length - 1} aria-label={`Move page ${pageNumber} right`}>→</button>
+              <button type="button" onClick={() => movePage(index, 1)} disabled={index === pageOrder.length - 1} aria-label={`Move page ${pageNumber} right`}>ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢</button>
             </div>
             <img src={pageImages[pageNumber - 1]} alt={`PDF page ${pageNumber}`} />
             <span>Page {pageNumber}</span>

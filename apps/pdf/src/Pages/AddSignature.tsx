@@ -11,6 +11,8 @@ import Hero from "../../../../packages/ui/src/Hero";
 import HowToUse from "../../../../packages/ui/src/HowToUse";
 import PageMeta from "../../../../packages/ui/src/PageMeta";
 import PdfNavBar from "./NavBar";
+import SoftwareApplicationSchema from "../../../../packages/ui/src/SoftwareApplicationSchema";
+import PdfBreadcrumb from "./PdfBreadcrumb";
 import PdfToolsFooter from "./toolsFooter";
 import PdfIconToolCard from "./IconToolCard";
 import Divider from "../../../../packages/ui/src/Divider";
@@ -34,8 +36,8 @@ const faqs = [
   { question: "Can I upload a picture of my real handwriting?", answer: "Yes, if you already have a scanned picture of your handwriting, you can upload it into our tool and place it seamlessly on the dotted line." },
   { question: "Do I need an app to sign my digital contracts?", answer: "No software is needed. You can quickly approve official paperwork directly from your web browser using our secure online Growile PDF tool." },
   { question: "Are my uploaded contracts and private marks safe?", answer: "Your privacy is strictly protected. Growile PDF automatically deletes your original paperwork and the signed file from our servers instantly." },
-  { question: "How can I prevent others from altering my signed file?", answer: <>After approving your document, we highly recommend using our <a href="/tools/protect-pdf">Protect PDF</a> tool to lock the file with a password for maximum legal security.</> },
-  { question: "What if I also need to type the date next to my name?", answer: <>If your contract requires a printed date or printed name, simply use our <a href="/tools/add-text">Add Text</a> tool to type those details before or after signing.</> },
+  { question: "How can I prevent others from altering my signed file?", answer: <>After approving your document, we highly recommend using our <a href="/pdf/protect-pdf">Protect PDF</a> tool to lock the file with a password for maximum legal security.</> },
+  { question: "What if I also need to type the date next to my name?", answer: <>If your contract requires a printed date or printed name, simply use our <a href="/pdf/add-text">Add Text</a> tool to type those details before or after signing.</> },
   { question: "Does this electronic signer work on mobile devices?", answer: "Yes, Growile PDF is mobile-friendly. You can comfortably approve urgent business contracts on the go using any Android or iOS smartphone." },
 ];
 
@@ -235,8 +237,10 @@ export default function AddSignature() {
 
   return (
     <>
-      <PageMeta title="Add Signature to PDF Online Free - Secure | Growile PDF" description="Use Growile PDF to add signature to PDF online free. Easily draw or insert an electronic signature in your document. Safe, fast, and 100% free signer tool!" canonicalPath="/tools/add-signature" />
+      <PageMeta title="Add Signature to PDF Online Free - Secure | Growile PDF" description="Use Growile PDF to add signature to PDF online free. Easily draw or insert an electronic signature in your document. Safe, fast, and 100% free signer tool!" canonicalPath="/pdf/add-signature" />
       <PdfNavBar />
+      <SoftwareApplicationSchema name="Growile Add Signature to PDF" description="Add an electronic signature to PDF documents online." path="/pdf/add-signature" />
+      <PdfBreadcrumb label="Add Signature" path="add-signature" />
       <Hero kicker="PDF Editing" title="Add Signature to PDF Online Free" subtitle="Do you need to sign paperwork without printing it out? Growile PDF helps you add signature to PDF online free in just a few clicks. Whether you are authorizing a business contract or approving an invoice, our tool creates legally binding marks. You do not need to install software or pay subscription fees. Enjoy fast, secure, and limitless electronic signing right from your web browser today." ctaText="Upload PDF" ctaHref="#add-signature-upload" />
       <Divider />
       <main className="jpg-to-pdf-page"><section className="jpg-to-pdf-upload-section" id="add-signature-upload"><div className="jpg-to-pdf-upload-layout">
