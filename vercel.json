@@ -5,19 +5,11 @@
   "outputDirectory": "apps/web/dist",
 
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "redirects": [
+  "rewrites": [
     {
       "source": "/pdf",
-      "destination": "/pdf/",
-      "permanent": false
+      "destination": "https://growile-pdf.vercel.app/pdf/"
     },
-    {
-      "source": "/pdf/:path*",
-      "destination": "https://growile-pdf.vercel.app/pdf/:path*",
-      "permanent": false
-    }
-  ],
-  "rewrites": [
     {
       "source": "/pdf/sitemap.xml",
       "destination": "https://growile-pdf.vercel.app/sitemap.xml"
