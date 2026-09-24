@@ -18,6 +18,18 @@
       "destination": "/"
     },
     {
+      "source": "/pdf",
+      "destination": "https://growile-pdf.vercel.app/pdf/"
+    },
+    {
+      "source": "/pdf/sitemap.xml",
+      "destination": "https://growile-pdf.vercel.app/sitemap.xml"
+    },
+    {
+      "source": "/pdf/:path*",
+      "destination": "https://growile-pdf.vercel.app/pdf/:path*"
+    },
+    {
       "source": "/invoice",
       "destination": "https://growile-invoice.vercel.app/"
     },
