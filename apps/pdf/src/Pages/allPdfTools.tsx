@@ -21,6 +21,14 @@ const categoryIcons = {
   Security: LockKeyhole,
 } as const;
 
+const toolIconColors = [
+  "var(--color-tool-blue)",
+  "var(--color-tool-orange)",
+  "var(--color-tool-green)",
+  "var(--color-tool-purple)",
+  "var(--color-tool-teal)",
+] as const;
+
 type AllPdfToolsProps = {
   tools?: PdfTool[];
 };
@@ -101,12 +109,17 @@ export default function AllPdfTools({ tools = allPdfTools }: AllPdfToolsProps) {
       <div className="all-pdf-tools-category-list" aria-label="PDF tool categories">
         {pdfToolCategories
           .filter((category) => category !== "All")
-          .map((category) => {
+          .map((category, categoryIndex) => {
             const Icon = categoryIcons[category];
             return (
               <div key={category} className="all-pdf-tools-category-group">
                 <div className="all-pdf-tools-category-header">
-                  <span className="all-pdf-tools-category-icon"><Icon size={16} aria-hidden="true" /></span>
+                  <span
+                    className="all-pdf-tools-category-icon"
+                    style={{ color: toolIconColors[categoryIndex % toolIconColors.length] }}
+                  >
+                    <Icon size={16} aria-hidden="true" />
+                  </span>
                   <span>{category}</span>
                 </div>
                 <ul className="all-pdf-tools-category-list-items">
@@ -114,10 +127,16 @@ export default function AllPdfTools({ tools = allPdfTools }: AllPdfToolsProps) {
                     .filter((tool) => tool.category === category)
                     .map((tool) => {
                       const ToolIcon = tool.icon;
+                      const toolIndex = allPdfTools.indexOf(tool);
                       return (
                         <li key={tool.id}>
                           <a href={tool.href}>
-                            <span className="all-pdf-tools-item-icon"><ToolIcon size={15} aria-hidden="true" /></span>
+                            <span
+                              className="all-pdf-tools-item-icon"
+                              style={{ color: toolIconColors[toolIndex % toolIconColors.length] }}
+                            >
+                              <ToolIcon size={15} aria-hidden="true" />
+                            </span>
                             {tool.title}
                           </a>
                         </li>

@@ -1,5 +1,6 @@
 import { FileArchive, FileEdit, FileImage, FolderKanban, LockKeyhole } from "lucide-react";
 import Navbar from "../../../../packages/ui/src/Navbar";
+import DocumentIcon from "../../../../packages/ui/src/DocumentIcon";
 import { allPdfTools } from "../config/pdfTools";
 
 const pdfToolCategories = ["Conversion", "Organize", "Compression", "Edit", "Security"] as const;
@@ -61,8 +62,8 @@ export default function PdfNavBar() {
       products={{
         label: "Products",
         items: [
-          { label: "Invoice", href: "/invoice" },
-          { label: "PDF", href: "/pdf" },
+          { label: "Invoice", href: "/invoice", icon: <DocumentIcon /> },
+          { label: "PDF", href: "/pdf", icon: <DocumentIcon label="PDF" /> },
         ],
       }}
       tools={{ label: "All Tools", items: [], groups: pdfNavToolGroups }}

@@ -1,8 +1,9 @@
 import { createElement } from "react";
 import webLogo from "../../../../packages/ui/assets/growile-logo.svg";
+import DocumentIcon from "../../../../packages/ui/src/DocumentIcon";
 
-const productIcon = (label: string) =>
-  createElement("span", { className: "navbar-product-icon" }, label);
+const productIcon = (label?: string) =>
+  createElement(DocumentIcon, label ? { label } : {});
 
 export const webNavigation = {
   logoAlt: "Growile",
@@ -12,7 +13,7 @@ export const webNavigation = {
     label: "Products",
     items: [
       { label: "PDF", href: "/pdf", icon: productIcon("PDF") },
-      { label: "Invoice", href: "/invoice", icon: productIcon("INV") },
+      { label: "Invoice", href: "/invoice", icon: productIcon() },
     ],
   },
   about: { label: "About", href: "/about" },

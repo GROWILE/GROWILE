@@ -7,6 +7,12 @@
   margin-bottom: 0;
 }
 
+.footer-ad-space.ad-space-banner {
+  min-height: 100px;
+  height: 100px;
+  max-height: 100px;
+}
+
 .footer-cta {
   text-align: center;
   padding: 0 24px 40px;

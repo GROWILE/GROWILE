@@ -1,8 +1,9 @@
 import { createElement } from "react";
 import invoiceLogo from "../../../../packages/ui/assets/growile-InvoiceGenerator-logo.svg";
+import DocumentIcon from "../../../../packages/ui/src/DocumentIcon";
 
-const productIcon = (label: string) =>
-  createElement("span", { className: "navbar-product-icon" }, label);
+const productIcon = (label?: string) =>
+  createElement(DocumentIcon, label ? { label } : {});
 
 export const invoiceNavigation = (invoiceHomeHref: string, withoutGstInvoiceHref: string, gstInvoiceHref: string) => ({
   logoAlt: "Growile",
@@ -12,7 +13,7 @@ export const invoiceNavigation = (invoiceHomeHref: string, withoutGstInvoiceHref
     label: "Products",
     items: [
       { label: "PDF", href: "/pdf", icon: productIcon("PDF") },
-      { label: "Invoice", href: invoiceHomeHref, icon: productIcon("INV") },
+      { label: "Invoice", href: invoiceHomeHref, icon: productIcon() },
     ],
   },
   tools: {
