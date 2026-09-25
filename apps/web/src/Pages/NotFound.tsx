@@ -1,6 +1,7 @@
 import Navbar from "../../../../packages/ui/src/Navbar";
 import Footer from "../../../../packages/ui/src/Footer";
 import PageMeta from "../../../../packages/ui/src/PageMeta";
+import webLogo from "../../../../packages/ui/assets/growile-logo.svg";
 import { webFooter, webNavigation } from "../config/site";
 import "./NotFound.css";
 
@@ -21,7 +22,7 @@ export default function NotFound() {
           <div className="not-found-illustration" aria-hidden="true">
             <span className="not-found-number">4</span>
             <div className="not-found-logo-wrap">
-              <img src={webNavigation.logoSrc} alt="" />
+              <img src={webLogo} alt="" />
             </div>
             <span className="not-found-number">4</span>
           </div>

@@ -1,12 +1,12 @@
 // File: apps/web/src/App.tsx
+import { lazy } from "react";
 import { Routes, Route } from "react-router-dom";
 
-// Normal Static Imports (No Lazy Loading)
-import Home from "./Pages/Home";
-import About from "./Pages/About";
-import TermsOfService from "./Pages/TermsOfService";
-import PrivacyPolicyPage from "./Pages/PrivacyPolicyPage"; // <-- Ithu ippo sariya import aayirukku
-import ProductsList from "./Pages/ProductsList";
+const Home = lazy(() => import("./Pages/Home"));
+const About = lazy(() => import("./Pages/About"));
+const TermsOfService = lazy(() => import("./Pages/TermsOfService"));
+const PrivacyPolicyPage = lazy(() => import("./Pages/PrivacyPolicyPage"));
+const ProductsList = lazy(() => import("./Pages/ProductsList"));
 import RouteMetadata from "./Components/RouteMetadata";
 import ScrollToTop from "./Components/ScrollToTop";
 import NotFound from "./Pages/NotFound";

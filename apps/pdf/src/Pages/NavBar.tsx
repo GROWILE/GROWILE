@@ -62,7 +62,7 @@ export default function PdfNavBar() {
         label: "Products",
         items: [
           { label: "Invoice", href: "/invoice" },
-          { label: "PDF", href: "/pdf/" },
+          { label: "PDF", href: "/pdf" },
         ],
       }}
       tools={{ label: "All Tools", items: [], groups: pdfNavToolGroups }}

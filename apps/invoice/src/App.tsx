@@ -1,6 +1,8 @@
-import Home from "./Pages/Home";
-import TermsAndConditions from "./Pages/TermsOfService";
-import PrivacyPolicyPage from "./Pages/PrivacyPolicyPage";
+import { lazy } from "react";
+
+const Home = lazy(() => import("./Pages/Home"));
+const TermsAndConditions = lazy(() => import("./Pages/TermsOfService"));
+const PrivacyPolicyPage = lazy(() => import("./Pages/PrivacyPolicyPage"));
 
 function App() {
   const path = window.location.pathname;
