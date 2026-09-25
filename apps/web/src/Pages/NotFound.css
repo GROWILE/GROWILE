@@ -1,0 +1,200 @@
+.not-found-page {
+  min-height: 58vh;
+  display: grid;
+  place-items: center;
+  padding: 5rem 1.25rem 6rem;
+  background:
+    radial-gradient(circle at 15% 20%, rgba(0, 122, 204, 0.08), transparent 28rem),
+    radial-gradient(circle at 85% 75%, rgba(253, 95, 3, 0.08), transparent 26rem);
+}
+
+.not-found-card {
+  position: relative;
+  width: min(100%, 780px);
+  overflow: hidden;
+  padding: clamp(2.5rem, 6vw, 5rem) 1.5rem;
+  border: 1px solid color-mix(in srgb, var(--color-text-highlight) 24%, transparent);
+  border-radius: 2px;
+  text-align: center;
+  background: color-mix(in srgb, var(--color-secondary) 92%, var(--color-text-highlight));
+  box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.08);
+}
+
+.not-found-illustration {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(0.5rem, 2vw, 1.25rem);
+  margin-bottom: 1.75rem;
+}
+
+.not-found-number {
+  color: var(--color-text-highlight);
+  font-size: clamp(5rem, 15vw, 9rem);
+  font-weight: 800;
+  line-height: 0.8;
+  letter-spacing: -0.1em;
+  animation: not-found-number-float 3s ease-in-out infinite;
+}
+
+.not-found-number:last-child {
+  animation-delay: 0.35s;
+}
+
+.not-found-logo-wrap {
+  display: grid;
+  width: clamp(5rem, 13vw, 7.5rem);
+  height: clamp(5rem, 13vw, 7.5rem);
+  place-items: center;
+  border: 2px solid var(--color-text-highlight);
+  border-radius: 50%;
+  background: var(--color-secondary);
+  box-shadow: 0 0 0 0.75rem color-mix(in srgb, var(--color-text-highlight) 10%, transparent);
+  animation: not-found-logo-pulse 2.2s ease-in-out infinite;
+}
+
+.not-found-logo-wrap img {
+  width: 68%;
+  height: 68%;
+  object-fit: contain;
+}
+
+.not-found-kicker {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 0.75rem;
+  color: var(--color-text-highlight);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.not-found-card h1 {
+  position: relative;
+  z-index: 1;
+  margin: 0 auto 1rem;
+  max-width: 30rem;
+  color: var(--color-primary);
+  font-size: clamp(1.75rem, 4vw, 2.75rem);
+  line-height: 1.15;
+}
+
+.not-found-description {
+  position: relative;
+  z-index: 1;
+  max-width: 34rem;
+  margin: 0 auto;
+  color: color-mix(in srgb, var(--color-primary) 68%, var(--color-secondary));
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.not-found-actions {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-top: 2rem;
+}
+
+.not-found-actions a {
+  min-width: 9.5rem;
+  padding: 0.8rem 1.2rem;
+  border: 1px solid var(--color-text-highlight);
+  border-radius: 1px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+}
+
+.not-found-actions a:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0.5rem 1.25rem rgba(0, 122, 204, 0.16);
+}
+
+.not-found-primary-action {
+  color: var(--color-secondary);
+  background: var(--color-text-highlight);
+}
+
+.not-found-secondary-action {
+  color: var(--color-text-highlight);
+  background: var(--color-secondary);
+}
+
+.not-found-orbit {
+  position: absolute;
+  width: 0.65rem;
+  height: 0.65rem;
+  border-radius: 50%;
+  background: var(--color-accent);
+  animation: not-found-orbit-float 4s ease-in-out infinite;
+}
+
+.not-found-orbit-one {
+  top: 16%;
+  left: 13%;
+}
+
+.not-found-orbit-two {
+  right: 14%;
+  bottom: 18%;
+  width: 0.45rem;
+  height: 0.45rem;
+  animation-delay: 1.2s;
+}
+
+@keyframes not-found-number-float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-7px);
+  }
+}
+
+@keyframes not-found-logo-pulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0.75rem color-mix(in srgb, var(--color-text-highlight) 10%, transparent);
+  }
+  50% {
+    transform: scale(1.04);
+    box-shadow: 0 0 0 1rem color-mix(in srgb, var(--color-text-highlight) 16%, transparent);
+  }
+}
+
+@keyframes not-found-orbit-float {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(12px, -14px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .not-found-number,
+  .not-found-logo-wrap,
+  .not-found-orbit {
+    animation: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .not-found-page {
+    padding-right: 1rem;
+    padding-left: 1rem;
+  }
+
+  .not-found-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}

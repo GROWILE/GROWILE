@@ -1,4 +1,5 @@
 import { lazy, Suspense } from "react";
+import LoadingScreen from "../../../packages/ui/src/LoadingScreen";
 
 const Home = lazy(() => import("./Pages/Home"));
 const JPGtoPDF = lazy(() => import("./Pages/JPGtoPDF"));
@@ -52,7 +53,7 @@ export default function App() {
   else if (path === "/pdf/add-signature" || path === "/pdf/sign-pdf") Page = AddSignature;
 
   return (
-    <Suspense fallback={<main aria-busy="true">Loading PDF tool...</main>}>
+    <Suspense fallback={<LoadingScreen label="Loading PDF tool" />}>
       <Page />
     </Suspense>
   );

@@ -1,0 +1,30 @@
+.loading-screen {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  background: var(--color-background, #ffffff);
+}
+
+.loading-screen-logo {
+  width: 88px;
+  height: 88px;
+  object-fit: contain;
+}
+
+.loading-screen-spinner {
+  width: 30px;
+  height: 30px;
+  border: 3px solid color-mix(in srgb, var(--color-text-highlight, #f5a623) 25%, transparent);
+  border-top-color: var(--color-text-highlight, #f5a623);
+  border-radius: 50%;
+  animation: loading-screen-spin 0.8s linear infinite;
+}
+
+@keyframes loading-screen-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
