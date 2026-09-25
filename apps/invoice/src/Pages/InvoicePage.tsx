@@ -298,7 +298,7 @@ export default function InvoicePage() {
         <BreadcrumbSchema
         items={[
           { name: "Home", url: "https://growile.com/" },
-          { name: "Invoice", url: "https://growile.com/invoice/" },
+          { name: "Invoice", url: "https://growile.com/invoice" },
           { name: invoicePageLabel, url: `https://growile.com${invoicePagePath}` }
         ]}
       />
@@ -308,7 +308,7 @@ export default function InvoicePage() {
       <Breadcrumb
         items={[
           { label: "Home", href: "/" },
-          { label: "Invoice", href: "/invoice/" },
+          { label: "Invoice", href: "/invoice" },
           { label: invoicePageLabel, href: invoicePagePath }
         ]}
       />
