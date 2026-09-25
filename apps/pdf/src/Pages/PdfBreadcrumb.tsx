@@ -7,11 +7,11 @@ type PdfBreadcrumbProps = {
 };
 
 export default function PdfBreadcrumb({ label, path }: PdfBreadcrumbProps) {
-  const currentPath = path ? `/pdf/${path}` : "/pdf/";
+  const currentPath = path ? `/pdf/${path}` : "/pdf";
   const siteUrl = "https://growile.com";
   const items = [
     { label: "Home", href: "/" },
-    { label: "PDF Tools", href: "/pdf/" },
+    { label: "PDF Tools", href: "/pdf" },
     ...(label ? [{ label, href: currentPath }] : []),
   ];
 
@@ -20,7 +20,7 @@ export default function PdfBreadcrumb({ label, path }: PdfBreadcrumbProps) {
       <BreadcrumbSchema
         items={[
           { name: "Home", url: `${siteUrl}/` },
-          { name: "PDF Tools", url: `${siteUrl}/pdf/` },
+          { name: "PDF Tools", url: `${siteUrl}/pdf` },
           ...(label ? [{ name: label, url: `${siteUrl}${currentPath}` }] : []),
         ]}
       />

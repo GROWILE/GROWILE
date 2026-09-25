@@ -1,32 +1,10 @@
-import { useEffect, useId, useRef, useState } from "react";
-import type { ChangeEvent, DragEvent, ReactNode, SVGProps } from "react";
+import { useId, useRef, useState } from "react";
+import type { ChangeEvent, DragEvent, ReactNode } from "react";
 import ConfirmPopUp from "../ConfirmPopUp";
+import CloseIcon from "./CloseIcon";
+import FileCheckIcon from "./FileCheckIcon";
+import FilePreview from "./FilePreview";
 import "./fileUploadBox.css";
-
-function FileCheckIcon(props: SVGProps<SVGSVGElement>) {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" {...props}>
-      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-      <path d="M14 2v6h6M8 15l2 2 5-5" />
-    </svg>
-  );
-}
-
-function CloseIcon(props: SVGProps<SVGSVGElement>) {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" {...props}>
-      <path d="M6 6l12 12M18 6L6 18" />
-    </svg>
-  );
-}
-
-function MoveIcon(props: SVGProps<SVGSVGElement>) {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" {...props}>
-      <path d="M8 7h8M8 17h8M12 3l3 3-3 3M12 21l-3-3 3-3" />
-    </svg>
-  );
-}
 
 export type FileUploadSource = {
   label: string;
@@ -52,20 +30,6 @@ export type FileUploadBoxProps = {
   dropHint?: string;
   className?: string;
 };
-
-function formatFileSize(bytes: number) {
-  if (bytes < 1024) return `${bytes} B`;
-  if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(1)} KB`;
-  return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
-}
-
-function getFileExtension(fileName: string) {
-  return fileName.split(".").pop()?.toUpperCase() || "FILE";
-}
-
-function isImageFile(file: File) {
-  return file.type.startsWith("image/") || /\.(avif|gif|jpe?g|png|svg|webp)$/i.test(file.name);
-}
 
 function getToolTheme(title: string) {
   const themeByTitle: Record<string, "blue" | "orange" | "green" | "purple" | "teal"> = {
@@ -332,110 +296,6 @@ export default function FileUploadBox({
         onConfirm={handleRemove}
         onCancel={() => setIsRemoveAllConfirmationOpen(false)}
       />
-    </div>
-  );
-}
-
-function FilePreview({
-  file,
-  index,
-  isDragging,
-  onDragStart,
-  onDragOver,
-  onDrop,
-  onMoveUp,
-  onMoveDown,
-  canMoveUp,
-  canMoveDown,
-  onRemove,
-  isReorderable,
-}: {
-  file: File;
-  index: number;
-  isDragging: boolean;
-  onDragStart: () => void;
-  onDragOver: (event: DragEvent<HTMLDivElement>) => void;
-  onDrop: () => void;
-  onMoveUp: () => void;
-  onMoveDown: () => void;
-  canMoveUp: boolean;
-  canMoveDown: boolean;
-  onRemove: () => void;
-  isReorderable: boolean;
-}) {
-  const [previewUrl, setPreviewUrl] = useState("");
-  const [hasPreviewError, setHasPreviewError] = useState(false);
-
-  useEffect(() => {
-    if (!isImageFile(file)) {
-      setPreviewUrl("");
-      return;
-    }
-
-    setHasPreviewError(false);
-    const url = URL.createObjectURL(file);
-    setPreviewUrl(url);
-    return () => URL.revokeObjectURL(url);
-  }, [file]);
-
-  return (
-    <div
-      className={`file-selected-card ${isReorderable ? "file-selected-card-reorderable" : ""} ${isDragging ? "file-selected-card-dragging" : ""}`}
-      draggable={isReorderable}
-      onDragStart={isReorderable ? onDragStart : undefined}
-      onDragOver={isReorderable ? onDragOver : undefined}
-      onDrop={isReorderable ? onDrop : undefined}
-      aria-label={`Image ${index + 1}: ${file.name}`}
-    >
-      {isReorderable && (
-        <button
-          type="button"
-          className="file-drag-handle"
-          aria-label={`Drag to reorder ${file.name}`}
-          title="Drag to reorder"
-        >
-          <MoveIcon width={18} height={18} aria-hidden="true" />
-        </button>
-      )}
-      {previewUrl && !hasPreviewError ? (
-        <img
-          className="file-selected-thumbnail"
-          src={previewUrl}
-          alt=""
-          onError={() => setHasPreviewError(true)}
-        />
-      ) : (
-        <div className="file-selected-type" aria-hidden="true">
-          .{getFileExtension(file.name).toLowerCase()}
-        </div>
-      )}
-      <div className="file-selected-details">
-        <strong className="file-selected-name" title={file.name}>
-          {file.name}
-        </strong>
-        <span className="file-selected-meta">
-          {getFileExtension(file.name)} file · {formatFileSize(file.size)}
-        </span>
-      </div>
-      {isReorderable && (
-        <div className="file-reorder-controls" aria-label={`Reorder ${file.name}`}>
-          <button type="button" onClick={onMoveUp} disabled={!canMoveUp} aria-label="Move image up">
-            ↑
-          </button>
-          <button type="button" onClick={onMoveDown} disabled={!canMoveDown} aria-label="Move image down">
-            ↓
-          </button>
-        </div>
-      )}
-      <button
-        type="button"
-        className="file-selected-remove"
-        onClick={onRemove}
-        aria-label={`Remove ${file.name}`}
-        title="Remove file"
-      >
-        <CloseIcon width={15} height={15} aria-hidden="true" />
-      </button>
     </div>
   );
 }

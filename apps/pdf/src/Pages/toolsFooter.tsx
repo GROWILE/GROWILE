@@ -1,5 +1,5 @@
 import ToolsFooter from "../../../../packages/ui/src/toolsUi/toolsFooter";
-import { allPdfTools, type PdfToolCategory } from "./allPdfTools";
+import { allPdfTools, type PdfToolCategory } from "../config/pdfTools";
 
 const categories: PdfToolCategory[] = [
   "Conversion",

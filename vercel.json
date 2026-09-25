@@ -7,6 +7,22 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "rewrites": [
     {
+      "source": "/about",
+      "destination": "/seo/about/index.html"
+    },
+    {
+      "source": "/products",
+      "destination": "/seo/products/index.html"
+    },
+    {
+      "source": "/terms-of-service",
+      "destination": "/seo/terms-of-service/index.html"
+    },
+    {
+      "source": "/privacy-policy",
+      "destination": "/seo/privacy-policy/index.html"
+    },
+    {
       "source": "/pdf",
       "destination": "https://growile-pdf.vercel.app/pdf/"
     },
@@ -29,14 +45,6 @@
     {
       "source": "/pdf/:path*",
       "destination": "https://growile-pdf.vercel.app/pdf/:path*"
-    },
-    {
-      "source": "/about",
-      "destination": "/"
-    },
-    {
-      "source": "/terms-of-service",
-      "destination": "/"
     },
     {
       "source": "/invoice",

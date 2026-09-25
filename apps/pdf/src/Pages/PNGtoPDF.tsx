@@ -16,7 +16,7 @@ import PdfToolsFooter from "./toolsFooter";
 import PdfIconToolCard from "./IconToolCard";
 import Divider from "../../../../packages/ui/src/Divider";
 import { convertPngFilesToPdf, downloadPngPdf } from "../Utilities/PNGtoPDFProcessing";
-import "./JPGtoPDF.css";
+import "./PdfUploadLayout.css";
 
 const seoBlocks = [
   { heading: "Convert Multiple PNG to PDF Online Free", description: "Do you have many images to process? With Growile PDF, you can easily convert multiple PNG to PDF online free. Just upload your batch of photos, and we will combine them into one single file quickly." },

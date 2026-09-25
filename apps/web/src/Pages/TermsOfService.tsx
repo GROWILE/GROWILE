@@ -1,7 +1,7 @@
 import TermsLayout from "../../../../packages/ui/src/TermsLayout";
 import Divider from "../../../../packages/ui/src/Divider";
-import webLogo from "../../../../packages/ui/assets/growile-logo.svg";
-import "./About.css";
+import { webNavigation } from "../config/site";
+import "./TermsOfService.css";
 
 const acceptableUseItems = [
   "Attempting to disrupt or damage the website or its functionality",
@@ -16,17 +16,7 @@ export default function TermsOfService() {
       pageDescription="Read the Growile Terms of Service governing your use of our website, tools, and ecosystem."
       heroTitle="Terms of Service"
       lastUpdated="14/09/2026"
-      logoAlt="Growile"
-      logoSrc={webLogo}
-      home={{ label: "Home", href: "/" }}
-      products={{
-        label: "Products",
-        items: [
-          { label: "PDF", href: "/pdf" },
-          { label: "Invoice", href: "/invoice" },
-        ],
-      }}
-      about={{ label: "About", href: "/about" }}
+      {...webNavigation}
     >
       <section className="about-section">
         <p className="about-text">

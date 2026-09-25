@@ -13,7 +13,7 @@ import PdfNavBar from "./NavBar";
 import PdfToolsFooter from "./toolsFooter";
 import Divider from "../../../../packages/ui/src/Divider";
 import { convertOfficeToPdf, downloadOfficePdf } from "../Utilities/OfficeToPDFProcessing";
-import "./JPGtoPDF.css";
+import "./PdfUploadLayout.css";
 
 type OfficeFormat = "word" | "excel" | "powerpoint";
 

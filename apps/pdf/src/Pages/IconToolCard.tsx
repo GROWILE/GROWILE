@@ -1,12 +1,5 @@
 import GlobalIconToolCard from "../../../../packages/ui/src/toolsUi/IconToolCard";
-import { allPdfTools } from "./allPdfTools";
-
-const toolCardThemes = ["blue", "orange", "green", "purple", "teal"] as const;
-
-export const pdfIconTools = allPdfTools.map((tool, index) => ({
-  ...tool,
-  colorTheme: toolCardThemes[index % toolCardThemes.length],
-}));
+import { pdfIconTools } from "../config/pdfTools";
 
 type PdfIconToolCardProps = {
   toolId: string;

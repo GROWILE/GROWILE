@@ -17,8 +17,8 @@ import PdfToolsFooter from "./toolsFooter";
 import PdfIconToolCard from "./IconToolCard";
 import Divider from "../../../../packages/ui/src/Divider";
 import { downloadHighlightPdf, highlightPdf, type HighlightPlacement } from "../Utilities/HighlightPDFProcessing";
-import "./JPGtoPDF.css";
-import "./EditPDF.css";
+import "./PdfUploadLayout.css";
+import "./PdfEditorStyles.css";
 
 pdfjsLib.GlobalWorkerOptions.workerSrc = new URL("pdfjs-dist/build/pdf.worker.mjs", import.meta.url).toString();
 

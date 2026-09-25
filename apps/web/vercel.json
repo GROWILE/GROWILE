@@ -6,20 +6,24 @@
   "outputDirectory": "dist",
   "rewrites": [
     {
-      "source": "/pdf",
-      "destination": "https://growile-pdf.vercel.app/pdf/"
+      "source": "/about",
+      "destination": "/seo/about/index.html"
     },
     {
-      "source": "/about",
-      "destination": "/"
+      "source": "/products",
+      "destination": "/seo/products/index.html"
     },
     {
       "source": "/terms-of-service",
-      "destination": "/"
+      "destination": "/seo/terms-of-service/index.html"
     },
     {
       "source": "/privacy-policy",
-      "destination": "/"
+      "destination": "/seo/privacy-policy/index.html"
+    },
+    {
+      "source": "/pdf",
+      "destination": "https://growile-pdf.vercel.app/pdf/"
     },
     {
       "source": "/pdf/sitemap.xml",

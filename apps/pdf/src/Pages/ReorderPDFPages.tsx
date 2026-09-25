@@ -17,9 +17,10 @@ import PdfToolsFooter from "./toolsFooter";
 import PdfIconToolCard from "./IconToolCard";
 import Divider from "../../../../packages/ui/src/Divider";
 import { downloadReorderedPdf, reorderPdfPages } from "../Utilities/ReorderPDFPagesProcessing";
-import "./JPGtoPDF.css";
-import "./SplitPDF.css";
-import "./ExtractPDFPages.css";
+import ReorderPagePreview from "./ReorderPagePreview";
+import "./PdfUploadLayout.css";
+import "./PdfPagePreview.css";
+import "./PdfSelectionPreview.css";
 import "./ReorderPDFPages.css";
 
 pdfjsLib.GlobalWorkerOptions.workerSrc = new URL(
@@ -271,67 +272,5 @@ export default function ReorderPDFPages() {
         itemName="reordered PDF"
       />
     </>
-  );
-}
-
-function ReorderPagePreview({
-  pageOrder,
-  pageImages,
-  onPageOrderChange,
-}: {
-  pageOrder: number[];
-  pageImages: string[];
-  onPageOrderChange: (order: number[]) => void;
-}) {
-  const [draggedPage, setDraggedPage] = useState<number | null>(null);
-
-  const movePage = (index: number, direction: -1 | 1) => {
-    const targetIndex = index + direction;
-    if (targetIndex < 0 || targetIndex >= pageOrder.length) return;
-    const nextOrder = [...pageOrder];
-    [nextOrder[index], nextOrder[targetIndex]] = [nextOrder[targetIndex], nextOrder[index]];
-    onPageOrderChange(nextOrder);
-  };
-
-  const dropPage = (targetIndex: number) => {
-    if (draggedPage === null || draggedPage === targetIndex) return;
-    const nextOrder = [...pageOrder];
-    const [movedPage] = nextOrder.splice(draggedPage, 1);
-    nextOrder.splice(targetIndex, 0, movedPage);
-    onPageOrderChange(nextOrder);
-    setDraggedPage(null);
-  };
-
-  return (
-    <div className="split-pdf-preview reorder-pdf-preview">
-      <div className="split-pdf-preview-heading">
-        <strong>Arrange PDF pages</strong>
-        <span>{pageOrder.length} pages</span>
-      </div>
-      <div className="split-pdf-selection-help" role="status">
-        <strong>Reorder the pages</strong>
-        <span>Drag a page or use the left and right arrows above each thumbnail.</span>
-      </div>
-      <div className="split-pdf-page-grid">
-        {pageOrder.map((pageNumber, index) => (
-          <div
-            className="reorder-pdf-page-item"
-            key={pageNumber}
-            draggable
-            onDragStart={() => setDraggedPage(index)}
-            onDragOver={(event) => event.preventDefault()}
-            onDrop={() => dropPage(index)}
-          >
-            <div className="reorder-pdf-page-controls">
-              <button type="button" onClick={() => movePage(index, -1)} disabled={index === 0} aria-label={`Move page ${pageNumber} left`}>ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â</button>
-              <span>Order {index + 1}</span>
-              <button type="button" onClick={() => movePage(index, 1)} disabled={index === pageOrder.length - 1} aria-label={`Move page ${pageNumber} right`}>ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢</button>
-            </div>
-            <img src={pageImages[pageNumber - 1]} alt={`PDF page ${pageNumber}`} />
-            <span>Page {pageNumber}</span>
-          </div>
-        ))}
-      </div>
-    </div>
   );
 }

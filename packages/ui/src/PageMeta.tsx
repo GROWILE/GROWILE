@@ -4,9 +4,11 @@ type PageMetaProps = {
   title: string;
   description: string;
   canonicalPath?: string;
+  indexable?: boolean;
 };
 
-const siteName = "GROWILE";
+const siteName = "Growile";
+const publicOrigin = "https://growile.com";
 const defaultImage = "/growile-icon.png"; // Fixed extension
 
 function setMeta(name: string, content: string) {
@@ -42,29 +44,35 @@ function setCanonical(path: string) {
     document.head.appendChild(link);
   }
 
-  link.href = new URL(path, window.location.origin).href;
+  link.href = new URL(path, publicOrigin).href;
 }
 
-export default function PageMeta({ title, description, canonicalPath = window.location.pathname }: PageMetaProps) {
+export default function PageMeta({
+  title,
+  description,
+  canonicalPath = window.location.pathname,
+  indexable = true,
+}: PageMetaProps) {
   useEffect(() => {
-    const fullTitle = title === siteName ? siteName : `${title} | ${siteName}`;
+    const fullTitle =
+      title === siteName || title.includes("|") ? title : `${title} | ${siteName}`;
 
     document.title = fullTitle;
     setMeta("description", description);
-    setMeta("robots", "index, follow");
+    setMeta("robots", indexable ? "index, follow" : "noindex, follow");
     setProperty("og:title", fullTitle);
     setProperty("og:description", description);
     setProperty("og:type", "website");
-    setProperty("og:url", new URL(canonicalPath, window.location.origin).href);
-    setProperty("og:image", new URL(defaultImage, window.location.origin).href);
+    setProperty("og:url", new URL(canonicalPath, publicOrigin).href);
+    setProperty("og:image", new URL(defaultImage, publicOrigin).href);
     
     // Updated to summary_large_image for big social previews
     setMeta("twitter:card", "summary_large_image");
     setMeta("twitter:title", fullTitle);
     setMeta("twitter:description", description);
-    setMeta("twitter:image", new URL(defaultImage, window.location.origin).href);
+    setMeta("twitter:image", new URL(defaultImage, publicOrigin).href);
     setCanonical(canonicalPath);
-  }, [canonicalPath, description, title]);
+  }, [canonicalPath, description, indexable, title]);
 
   return null;
 }

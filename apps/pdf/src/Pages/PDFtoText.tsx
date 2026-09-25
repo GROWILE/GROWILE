@@ -16,7 +16,7 @@ import PdfToolsFooter from "./toolsFooter";
 import PdfIconToolCard from "./IconToolCard";
 import Divider from "../../../../packages/ui/src/Divider";
 import { convertPdfToText, downloadTextFile } from "../Utilities/PDFtoTextProcessing";
-import "./JPGtoPDF.css";
+import "./PdfUploadLayout.css";
 
 const steps = [
   { number: "1", title: "Upload a PDF", description: "Select one PDF file or drag it into the upload area." },

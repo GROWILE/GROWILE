@@ -1,183 +1,36 @@
-.products {
-  max-width: 1160px;
-  margin: 0 auto;
-  padding: 72px 24px 112px;
-}
-
-.products-heading {
-  margin: 0 0 32px;
-  text-align: left;
-}
-
-.products-heading h2 {
-  color: var(--color-primary);
-  font-size: clamp(28px, 4vw, 40px);
-  letter-spacing: 0;
-  line-height: 1.15;
-  margin: 8px 0 0;
-}
-
+/* ProductsPage keeps its original page-specific accent and compact mobile treatment. */
 .products-kicker {
-  color: var(--color-accent);
-  font-size: 16px;
-  font-weight: 800;
-  letter-spacing: 0.08em;
-  margin: 0;
-}
-
-.products-grid {
-  display: grid;
-  gap: 24px;
-  grid-template-columns: repeat(2, 1fr);
-}
-
-.product-card {
-  background: var(--color-secondary);
-  border: 1px solid color-mix(in srgb, var(--color-primary) 10%, var(--color-secondary));
-  border-radius: 1px;
-  box-shadow: 0 8px 24px rgba(32, 41, 56, 0.04);
-  display: flex;
-  flex-direction: column;
-  min-height: 408px;
-  padding: 36px;
-  transition: box-shadow 0.2s ease, transform 0.2s ease;
-}
-
-.product-card:hover {
-  box-shadow: 0 16px 36px rgba(32, 41, 56, 0.1);
-  transform: translateY(-3px);
-}
-
-.product-icon-wrap {
-  align-items: center;
-  background: color-mix(in srgb, var(--color-accent) 8%, var(--color-secondary));
-  border-radius: 50%;
-  display: flex;
-  height: 56px;
-  justify-content: center;
-  margin-bottom: 26px;
-  width: 56px;
-}
-
-.product-icon {
-  fill: none;
-  height: 45px;
-  stroke: var(--color-accent);
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-width: 1.8;
-  width: 45px;
-}
-
-.product-context {
-  align-items: center;
-  color: color-mix(in srgb, var(--color-primary) 40%, var(--color-secondary));
-  display: flex;
-  font-size: 14px;
-  gap: 9px;
-  margin: 0 0 24px;
-}
-
-.product-context span:first-child {
-  color: var(--color-accent);
-  font-weight: 700;
-}
-
-.product-title {
-  color: var(--color-primary);
-  font-size: 28px;
-  font-weight: 700;
-  line-height: 1.2;
-  margin: 0 0 8px;
-}
-
-.product-description {
-  color: var(--color-primary);
-  opacity: 0.8;
-  font-size: 16px;
-  line-height: 1.5;
-  margin: 0;
-  max-width: 34ch;
-}
-
-.product-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 24px;
-}
-
-.product-tag {
-  background: color-mix(in srgb, var(--color-primary) 5%, var(--color-secondary));
-  border-radius: 999px;
-  color: color-mix(in srgb, var(--color-primary) 60%, var(--color-secondary));
-  font-size: 16px;
-  padding: 8px 14px;
-}
-
-.product-divider {
-  border-top: 1px solid color-mix(in srgb, var(--color-primary) 12%, var(--color-secondary));
-  margin: auto 0 24px;
-}
-
-.product-button {
-  align-items: center;
-  background: var(--color-text-highlight);
-  border-radius: 10px;
-  color: var(--color-secondary);
-  display: flex;
-  font-size: 18px;
-  font-weight: 700;
-  justify-content: center;
-  min-height: 48px;
-  padding: 12px 18px;
-  text-decoration: none;
-  transition: background-color 0.2s ease, transform 0.2s ease;
-}
-
-.product-button:hover {
-  background: var(--color-secondary);
   color: var(--color-text-highlight);
 }
 
-.product-button .product-arrow {
-  margin-left: 8px;
-  transition: transform 0.2s ease;
-}
-
-.product-button:hover .product-arrow {
-  transform: translateX(3px);
-}
-
-/* ==========================================
-   📱 MOBILE RESPONSIVE MEDIA QUERY (≤ 768px)
-   ========================================== */
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .products {
-    padding: 48px 16px 64px; /* Mobile-la outer padding-a korachirukken */
+    padding: 72px 24px 112px;
   }
 
   .products-grid {
-    grid-template-columns: 1fr; /* 2 columns-la irunthu 1 column-a change aagum */
+    gap: 24px;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .products {
+    padding: 48px 16px 64px;
+  }
+
+  .products-grid {
+    grid-template-columns: 1fr;
     gap: 16px;
   }
 
   .product-card {
-    padding: 24px; /* Card padding-a mobile-ku etha maari kuraichi irukken */
-    min-height: auto; /* Fixed min-height remove aagi content-ku etha maari adjust aagum */
+    padding: 24px;
+    min-height: auto;
   }
 
   .product-title {
-    font-size: 24px; /* Mobile-la title font size koncham chinna-tha irukkum */
+    font-size: 24px;
   }
 
-  .product-description {
-    max-width: 100%; /* Full width-a text stretch aagum */
-    font-size: 15px;
-  }
-
-  .product-tag {
-    font-size: 14px;
-    padding: 6px 12px;
-  }
 }

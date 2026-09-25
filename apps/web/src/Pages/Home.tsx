@@ -5,7 +5,8 @@ import Hero from '../../../../packages/ui/src/Hero'
 import MissionVision from '../Components/MissionVision'
 import Navbar from '../../../../packages/ui/src/Navbar'
 import Products from '../../../../packages/ui/src/Products-card'
-import webLogo from '../../../../packages/ui/assets/growile-logo.svg'
+import { homeHero, webFooter, webNavigation } from "../config/site";
+import { webProductCards } from "../config/productCards";
 import OrganizationSchema from '../../../../packages/ui/src/OrganizationSchema'
 import WebsiteSchema from '../../../../packages/ui/src/WebsiteSchema'
 
@@ -40,27 +41,10 @@ function Home() {
       <OrganizationSchema />
       <WebsiteSchema />
 
-      <Navbar
-        logoAlt="Growile"
-        logoSrc={webLogo}
-        home={{ label: "Home", href: "/" }}
-        products={{
-          label: "Products",
-          items: [
-            { label: "PDF", href: "/pdf" },
-            { label: "Invoice", href: "/invoice" },
-          ],
-        }}
-        about={{ label: "About", href: "/about" }}
-      />
-      <Hero
-        title= "Web tools for the modern global workflow."
-        subtitle="Built for freelancers, creators, and teams who move fast. Growile combines zero-signup accessibility with cross-border flexibility. Generate, create, and manage your work securely in your browser without ever compromising on privacy."
-        ctaText="Explore Products"
-        ctaHref="/products"
-      />
+      <Navbar {...webNavigation} />
+      <Hero {...homeHero} />
       <Divider />
-      <Products />
+      <Products products={webProductCards} />
       <MissionVision />
       <Divider />
       <FAQ
@@ -74,7 +58,7 @@ function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(mainFaqSchema) }}
        />
   
-      <Footer termsHref="/terms-of-service"/>
+      <Footer {...webFooter} />
 
         
      </>

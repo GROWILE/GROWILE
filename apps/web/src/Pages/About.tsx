@@ -2,7 +2,7 @@ import "./About.css";
 import Navbar from "../../../../packages/ui/src/Navbar";
 import Footer from "../../../../packages/ui/src/Footer";
 import Divider from "../../../../packages/ui/src/Divider";
-import webLogo from "../../../../packages/ui/assets/growile-logo.svg";
+import { webNavigation } from "../config/site";
 import Breadcrumb from "../../../../packages/ui/src/Breadcrumb";
 import BreadcrumbSchema from "../../../../packages/ui/src/BreadcrumbSchema";
 
@@ -45,19 +45,7 @@ export default function About() {
           { name: "About Us", url: "https://growile.com/about" }
           ]}
         />
-      <Navbar
-        logoAlt="Growile"
-        logoSrc={webLogo}
-        home={{ label: "Home", href: "/" }}
-        products={{
-          label: "Products",
-          items: [
-            { label: "PDF", href: "/pdf" },
-            { label: "Invoice", href: "/invoice" },
-          ],
-        }}
-        about={{ label: "About", href: "/about" }}
-      />
+      <Navbar {...webNavigation} />
 
       <Breadcrumb
         items={[

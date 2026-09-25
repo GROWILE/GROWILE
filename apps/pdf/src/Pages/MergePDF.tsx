@@ -16,7 +16,7 @@ import PdfToolsFooter from "./toolsFooter";
 import PdfIconToolCard from "./IconToolCard";
 import Divider from "../../../../packages/ui/src/Divider";
 import { downloadMergedPdf, mergePdfFiles } from "../Utilities/MergePDFProcessing";
-import "./JPGtoPDF.css";
+import "./PdfUploadLayout.css";
 
 const steps = [
   { number: "1", title: "Upload PDF files", description: "Select your PDF files or drag them into the upload area." },

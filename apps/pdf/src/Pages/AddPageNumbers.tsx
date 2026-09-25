@@ -17,8 +17,8 @@ import PdfToolsFooter from "./toolsFooter";
 import PdfIconToolCard from "./IconToolCard";
 import Divider from "../../../../packages/ui/src/Divider";
 import { addPageNumbersToPdf, downloadPageNumbersPdf } from "../Utilities/AddPageNumbersProcessing";
-import "./JPGtoPDF.css";
-import "./EditPDF.css";
+import "./PdfUploadLayout.css";
+import "./PdfEditorStyles.css";
 
 pdfjsLib.GlobalWorkerOptions.workerSrc = new URL("pdfjs-dist/build/pdf.worker.mjs", import.meta.url).toString();
 

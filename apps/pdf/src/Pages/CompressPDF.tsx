@@ -20,7 +20,7 @@ import {
   downloadCompressedPdf,
   type CompressionTarget,
 } from "../Utilities/CompressPDFProcessing";
-import "./JPGtoPDF.css";
+import "./PdfUploadLayout.css";
 import "./CompressPDF.css";
 
 const steps = [

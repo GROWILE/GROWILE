@@ -1,0 +1,190 @@
+.split-pdf-range-controls {
+  display: flex;
+  align-items: end;
+  gap: 16px;
+  max-width: 780px;
+  margin: 24px auto 0;
+  padding: 20px;
+  border: 1px solid color-mix(in srgb, var(--color-text-highlight) 30%, transparent);
+  border-radius: 10px;
+  background: var(--color-secondary);
+}
+
+.split-pdf-main-column {
+  min-width: 0;
+}
+
+.split-pdf-preview {
+  width: min(100%, 780px);
+  margin: 20px auto;
+  padding: 16px;
+  border: 1px solid color-mix(in srgb, var(--color-text-highlight) 25%, transparent);
+  border-radius: 10px;
+  background: var(--color-secondary);
+  box-sizing: border-box;
+}
+
+.split-pdf-preview-heading {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  color: var(--color-primary);
+}
+
+.split-pdf-preview-heading span {
+  color: color-mix(in srgb, var(--color-primary) 60%, transparent);
+  font-size: 13px;
+}
+
+.split-pdf-selection-help {
+  display: grid;
+  gap: 3px;
+  margin: 0 0 14px;
+  padding: 12px 14px;
+  border-left: 4px solid var(--color-text-highlight);
+  border-radius: 6px;
+  background: color-mix(in srgb, var(--color-text-highlight) 10%, var(--color-secondary));
+  color: var(--color-primary);
+}
+
+.split-pdf-selection-help strong {
+  color: var(--color-text-highlight);
+  font-size: 16px;
+}
+
+.split-pdf-selection-help span {
+  font-size: 15px;
+  line-height: 1.4;
+}
+
+.split-pdf-page-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 10px;
+  max-height: 360px;
+  overflow-y: auto;
+  padding: 4px;
+}
+
+.split-pdf-page-thumbnail {
+  display: grid;
+  gap: 6px;
+  width: 100%;
+  padding: 6px;
+  border: 2px solid transparent;
+  border-radius: 7px;
+  background: color-mix(in srgb, var(--color-primary) 5%, var(--color-secondary));
+  cursor: pointer;
+  text-align: center;
+}
+
+.split-pdf-page-thumbnail:hover {
+  border-color: color-mix(in srgb, var(--color-text-highlight) 60%, transparent);
+}
+
+.split-pdf-page-thumbnail.selected {
+  border-color: var(--color-text-highlight);
+  background: color-mix(in srgb, var(--color-text-highlight) 12%, var(--color-secondary));
+}
+
+.split-pdf-page-thumbnail img {
+  display: block;
+  width: 100%;
+  height: 135px;
+  object-fit: contain;
+  background: var(--color-secondary);
+}
+
+.split-pdf-page-thumbnail span {
+  color: var(--color-primary);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.split-pdf-range-controls p {
+  flex: 1;
+  margin: 0;
+  color: var(--color-primary);
+  font-size: 17px;
+  text-align: center;
+}
+
+.split-pdf-range-controls label {
+  display: grid;
+  gap: 6px;
+  color: var(--color-primary);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.split-pdf-range-controls input {
+  width: 90px;
+  padding: 9px 10px;
+  border: 1px solid color-mix(in srgb, var(--color-primary) 25%, transparent);
+  border-radius: 6px;
+  font: inherit;
+}
+
+.split-pdf-results {
+  display: grid;
+  gap: 12px;
+  max-width: 780px;
+  margin: 24px auto 0;
+  scroll-margin-top: 96px;
+}
+
+.split-pdf-result-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 20px;
+  border: 1px solid color-mix(in srgb, var(--color-text-highlight) 30%, transparent);
+  border-radius: 10px;
+  background: var(--color-secondary);
+}
+
+.split-pdf-result-card div {
+  display: grid;
+  gap: 5px;
+}
+
+.split-pdf-result-card span {
+  color: color-mix(in srgb, var(--color-primary) 60%, transparent);
+  font-size: 13px;
+}
+
+.split-pdf-result-card button {
+  padding: 10px 18px;
+  border: 0;
+  border-radius: 6px;
+  color: var(--color-secondary);
+  background: var(--color-text-highlight);
+  cursor: pointer;
+  font-weight: 700;
+}
+
+@media (max-width: 600px) {
+  .split-pdf-page-grid {
+    grid-template-columns: repeat(3, minmax(70px, 1fr));
+  }
+
+  .split-pdf-page-thumbnail img {
+    height: 100px;
+  }
+
+  .split-pdf-range-controls {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .split-pdf-range-controls input {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .split-pdf-result-card {
+    align-items: stretch;
+    flex-direction: column;
+  }
+}

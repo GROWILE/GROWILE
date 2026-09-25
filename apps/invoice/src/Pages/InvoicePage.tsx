@@ -6,14 +6,16 @@ import Footer from "../../../../packages/ui/src/Footer";
 import Hero from "../../../../packages/ui/src/Hero";
 import HowToUse from "@growile/ui/src/HowToUse";
 import Navbar from "../../../../packages/ui/src/Navbar";
-import invoiceLogo from "../../../../packages/ui/assets/growile-InvoiceGenerator-logo.svg";
 import GstInvoice from "./GstInvoice.tsx";
 import WithoutGstInvoice from "./WithoutGstInvoice";
 import Products from '../../../../packages/ui/src/Products-card';
 import PageMeta from "../../../../packages/ui/src/PageMeta";
+import SoftwareApplicationSchema from "../../../../packages/ui/src/SoftwareApplicationSchema";
 import H2Section from "../../../../packages/ui/src/H2Section";
 import Breadcrumb from "../../../../packages/ui/src/Breadcrumb";
 import BreadcrumbSchema from "../../../../packages/ui/src/BreadcrumbSchema";
+import { invoiceHero, invoiceNavigation, invoiceVariantHero } from "../config/site";
+import "./InvoicePage.css";
 
 type InvoicePageVariant = "without-gst" | "gst";
 
@@ -88,13 +90,8 @@ export default function InvoicePage() {
     : "Use Growile PDF's free invoice generator without GST online. Easily create a non-GST invoice format or bill of supply safely. Fast and 100% free tool!";
 
   // --- Hero Section Content ---
-  const heroTitle = isGstPage
-    ? "Free GST Invoice Generator Online"
-    : "Free Invoice Generator Without GST Online";
-    
-  const heroSubtitle = isGstPage
-    ? "Are you a registered business looking to bill your customers professionally? Growile PDF provides a fast, free GST invoice generator online. Whether you need to calculate taxes or include specific codes, our smart tool creates compliant documents instantly. You do not need expensive accounting software. Enjoy secure, accurate, and limitless tax billing directly from your web browser today easily."
-    : "Are you a freelancer or a small business owner not registered for taxes? Growile PDF offers a fast, free invoice generator without GST online. Whether you need to bill clients for freelance work or issue a standard receipt, our tool creates professional documents instantly. You do not need to install software or pay fees. Enjoy safe, simple, and unlimited billing right from your web browser.";
+  const { title: heroTitle, subtitle: heroSubtitle } =
+    isGstPage ? invoiceVariantHero.gst : invoiceVariantHero.withoutGst;
 
   // --- SEO H2 Blocks ---
   const gstSeoBlocks = [
@@ -265,6 +262,11 @@ export default function InvoicePage() {
         description={pageDescription}
         canonicalPath={isGstPage ? "/invoice/gst-invoice" : "/invoice/without-gst-invoice"}
       />
+      <SoftwareApplicationSchema
+        name={isGstPage ? "Growile GST Invoice Generator" : "Growile Non-GST Invoice Generator"}
+        description={pageDescription}
+        path={isGstPage ? "/invoice/gst-invoice" : "/invoice/without-gst-invoice"}
+      />
     
         {isGstPage ? (
           <>
@@ -298,25 +300,7 @@ export default function InvoicePage() {
         ]}
       />
 
-      <Navbar
-        logoAlt="Growile"
-        logoSrc={invoiceLogo}
-        home={{ label: "Home", href: invoiceHomeHref }}
-        products={{
-          label: "Products",
-          items: [
-            { label: "PDF", href: "/pdf" },
-            { label: "Invoice", href: invoiceHomeHref },
-          ],
-        }}
-        tools={{
-          label: "All Tools",
-          items: [
-            { label: "Non-GST Invoice", href: withoutGstInvoiceHref },
-            { label: "GST Invoice", href: gstInvoiceHref },
-          ],
-        }}
-      />
+      <Navbar {...invoiceNavigation(invoiceHomeHref, withoutGstInvoiceHref, gstInvoiceHref)} />
 
       <Breadcrumb
         items={[
@@ -328,10 +312,10 @@ export default function InvoicePage() {
 
       <main id={isGstPage ? "gst-invoice-page" : "without-gst-invoice-page"}>
         <Hero
-          kicker="GROWILE INVOICE"
+          kicker={invoiceHero.kicker}
           title={heroTitle}
           subtitle={heroSubtitle}
-          ctaText="Create Free Invoice"
+          ctaText={invoiceHero.ctaText}
           ctaHref={isGstPage ? gstInvoiceHref : withoutGstInvoiceHref}
           onCtaClick={scrollToInvoiceForm}
         />

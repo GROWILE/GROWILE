@@ -1,6 +1,6 @@
 import { FileArchive, FileEdit, FileImage, FolderKanban, LockKeyhole } from "lucide-react";
 import Navbar from "../../../../packages/ui/src/Navbar";
-import { allPdfTools } from "./allPdfTools";
+import { allPdfTools } from "../config/pdfTools";
 
 const pdfToolCategories = ["Conversion", "Organize", "Compression", "Edit", "Security"] as const;
 

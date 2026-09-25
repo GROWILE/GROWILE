@@ -16,7 +16,7 @@ import PdfIconToolCard from "./IconToolCard";
 import DownloadPopup from "../../../../packages/ui/src/DownloadPopup";
 import Divider from "../../../../packages/ui/src/Divider";
 import { convertJpgFilesToPdf, downloadPdf } from "../Utilities/JPGtoPDFProcessing";
-import "./JPGtoPDF.css";
+import "./PdfUploadLayout.css";
 
 const seoBlocks = [
   {

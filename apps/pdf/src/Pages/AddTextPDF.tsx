@@ -21,8 +21,8 @@ import {
   downloadAddTextPdf,
   type TextPlacement,
 } from "../Utilities/AddTextPDFProcessing";
-import "./JPGtoPDF.css";
-import "./EditPDF.css";
+import "./PdfUploadLayout.css";
+import "./PdfEditorStyles.css";
 
 pdfjsLib.GlobalWorkerOptions.workerSrc = new URL(
   "pdfjs-dist/build/pdf.worker.mjs",
@@ -242,7 +242,7 @@ export default function AddTextPDF() {
                     </button>
                   </div>
                   <div className="pdf-zoom-controls" aria-label="Page zoom controls">
-                    <button type="button" onClick={() => setZoom((current) => Math.max(0.75, Number((current - 0.25).toFixed(2))))} disabled={zoom <= 0.75}>ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã¢â‚¬Â¹ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢</button>
+                    <button type="button" onClick={() => setZoom((current) => Math.max(0.75, Number((current - 0.25).toFixed(2))))} disabled={zoom <= 0.75}>-</button>
                     <span>{Math.round(zoom * 100)}%</span>
                     <button type="button" onClick={() => setZoom((current) => Math.min(2.5, Number((current + 0.25).toFixed(2))))} disabled={zoom >= 2.5}>+</button>
                     <button type="button" className="pdf-zoom-reset" onClick={() => setZoom(1)} disabled={zoom === 1}>Reset</button>

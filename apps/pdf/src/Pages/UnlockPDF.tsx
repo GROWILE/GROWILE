@@ -16,7 +16,7 @@ import PdfToolsFooter from "./toolsFooter";
 import PdfIconToolCard from "./IconToolCard";
 import Divider from "../../../../packages/ui/src/Divider";
 import { downloadUnlockedPdf, unlockPdf } from "../Utilities/UnlockPDFProcessing";
-import "./JPGtoPDF.css";
+import "./PdfUploadLayout.css";
 import "./SecurityPDF.css";
 
 const steps = [

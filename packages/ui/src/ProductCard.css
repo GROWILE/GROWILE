@@ -1,0 +1,111 @@
+.product-card {
+  align-items: center;
+  background: var(--color-secondary);
+  border: 1px solid var(--color-text-highlight);
+  border-radius: 1px;
+  box-shadow: 0 8px 24px rgba(32, 41, 56, 0.04);
+  display: flex;
+  gap: 24px;
+  min-height: 150px;
+  padding: 24px;
+  text-decoration: none;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.product-card:hover {
+  box-shadow: 0 16px 36px rgba(32, 41, 56, 0.1);
+  transform: translateY(-3px);
+}
+
+.product-icon-wrap {
+  align-items: center;
+  display: flex;
+  flex: 0 0 104px;
+  height: 104px;
+  justify-content: center;
+  position: relative;
+  width: 104px;
+}
+
+.product-document-label {
+  align-items: center;
+  background: color-mix(in srgb, var(--color-text-highlight) 10%, var(--color-secondary));
+  border-radius: 8px;
+  color: var(--color-text-highlight);
+  display: flex;
+  font-size: 22px;
+  font-weight: 700;
+  height: 68px;
+  justify-content: center;
+  letter-spacing: 0.02em;
+  width: 68px;
+}
+
+.product-icon {
+  fill: none;
+  height: 68px;
+  stroke: var(--color-text-highlight);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.8;
+  width: 68px;
+}
+
+.product-card-content {
+  min-width: 0;
+}
+
+.product-title {
+  color: var(--color-primary);
+  font-size: 27px;
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0 0 10px;
+}
+
+.product-description {
+  color: var(--color-primary);
+  opacity: 0.8;
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .product-card {
+    transition: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .product-card {
+    gap: 16px;
+    min-height: 128px;
+    padding: 18px;
+  }
+
+  .product-icon-wrap {
+    flex-basis: 80px;
+    height: 80px;
+    width: 80px;
+  }
+
+  .product-icon {
+    height: 52px;
+    width: 52px;
+  }
+
+  .product-document-label {
+    font-size: 19px;
+    height: 58px;
+    width: 58px;
+  }
+
+  .product-title {
+    font-size: 22px;
+  }
+
+  .product-description {
+    font-size: 15px;
+  }
+}
