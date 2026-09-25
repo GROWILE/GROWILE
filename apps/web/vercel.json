@@ -6,6 +6,11 @@
   "outputDirectory": "dist",
   "redirects": [
     {
+      "source": "/invoice/",
+      "destination": "/invoice",
+      "permanent": true
+    },
+    {
       "source": "/pdf/",
       "destination": "/pdf",
       "permanent": true
