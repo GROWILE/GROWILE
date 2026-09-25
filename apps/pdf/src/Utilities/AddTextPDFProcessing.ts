@@ -1,3 +1,4 @@
+// Processes add text pdf for PDF files.
 import { PDFDocument, rgb, StandardFonts } from "pdf-lib";
 
 export type TextPlacement = {
@@ -11,6 +12,7 @@ export type TextPlacement = {
   fontWeight: "normal" | "medium" | "bold";
 };
 
+// Adds text to pdf.
 export async function addTextToPdf(file: File, placement: TextPlacement): Promise<Uint8Array> {
   const pdf = await PDFDocument.load(await file.arrayBuffer());
   const page = pdf.getPages()[placement.pageIndex];
@@ -29,6 +31,7 @@ export async function addTextToPdf(file: File, placement: TextPlacement): Promis
   return pdf.save();
 }
 
+// Gets font name.
 function getFontName(
   family: TextPlacement["fontFamily"],
   weight: TextPlacement["fontWeight"],
@@ -42,6 +45,7 @@ function getFontName(
   return weight === "bold" ? StandardFonts.HelveticaBold : StandardFonts.Helvetica;
 }
 
+// Parses hex color.
 function parseHexColor(value: string) {
   const normalized = value.replace("#", "");
   if (!/^[0-9a-f]{6}$/i.test(normalized)) return rgb(0, 0, 0);
@@ -52,10 +56,12 @@ function parseHexColor(value: string) {
   );
 }
 
+// Downloads add text pdf.
 export function downloadAddTextPdf(bytes: Uint8Array, fileName: string) {
   downloadPdf(bytes, fileName);
 }
 
+// Downloads pdf.
 function downloadPdf(bytes: Uint8Array, fileName: string) {
   const buffer = new ArrayBuffer(bytes.byteLength);
   new Uint8Array(buffer).set(bytes);

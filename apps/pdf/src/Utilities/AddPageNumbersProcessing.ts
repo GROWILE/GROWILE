@@ -1,13 +1,15 @@
+// Adds page numbers to PDF files.
 import { PDFDocument, rgb, StandardFonts } from "pdf-lib";
 
 const BOTTOM_MARGIN = 40;
 
+// Adds page numbers to pdf.
 export async function addPageNumbersToPdf(file: File): Promise<Uint8Array> {
   const pdf = await PDFDocument.load(await file.arrayBuffer());
   const font = await pdf.embedFont(StandardFonts.Helvetica);
   const pages = pdf.getPages();
 
-  pages.forEach((page, index) => {
+  pages.forEach(/* Processes each item in the collection. */ (page, index) => {
     const { width, height } = page.getSize();
     page.setSize(width, height + BOTTOM_MARGIN);
     const label = String(index + 1);
@@ -25,6 +27,7 @@ export async function addPageNumbersToPdf(file: File): Promise<Uint8Array> {
   return pdf.save();
 }
 
+// Downloads page numbers pdf.
 export function downloadPageNumbersPdf(bytes: Uint8Array, fileName: string) {
   const buffer = new ArrayBuffer(bytes.byteLength);
   new Uint8Array(buffer).set(bytes);

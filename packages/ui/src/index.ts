@@ -1,3 +1,4 @@
+// Exports the shared UI components and their public types.
 import "./Colors.css";
 
 export { default as Navbar } from "./Navbar";

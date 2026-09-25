@@ -1,3 +1,4 @@
+// Renders the PDF tools landing page.
 import AllPdfTools from "./allPdfTools";
 import AdSpace from "../../../../packages/ui/src/AdSpace";
 import FAQ from "../../../../packages/ui/src/FAQ";
@@ -70,7 +71,7 @@ const pdfFaqs = [
 const pdfFaqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  mainEntity: pdfFaqs.map((faq) => ({
+  mainEntity: pdfFaqs.map(/* Builds a value for each item in the collection. */ (faq) => ({
     "@type": "Question",
     name: faq.question,
     acceptedAnswer: {
@@ -84,13 +85,14 @@ const pdfContentSchema = {
   "@context": "https://schema.org",
   "@type": "WebPage",
   name: "Free Online PDF Tools",
-  hasPart: pdfSeoBlocks.map((block) => ({
+  hasPart: pdfSeoBlocks.map(/* Builds a value for each item in the collection. */ (block) => ({
     "@type": "WebPageElement",
     name: block.heading,
     text: block.description,
   })),
 };
 
+// Renders the home interface.
 export default function Home() {
   return (
     <>

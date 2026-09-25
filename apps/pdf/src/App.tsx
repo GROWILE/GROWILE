@@ -1,30 +1,32 @@
+// Selects and renders the page for the current PDF tool route.
 import { lazy, Suspense } from "react";
 import LoadingScreen from "../../../packages/ui/src/LoadingScreen";
 
-const Home = lazy(() => import("./Pages/Home"));
-const JPGtoPDF = lazy(() => import("./Pages/JPGtoPDF"));
-const PNGtoPDF = lazy(() => import("./Pages/PNGtoPDF"));
-const PDFtoJPG = lazy(() => import("./Pages/PDFtoJPG"));
-const PDFtoPNG = lazy(() => import("./Pages/PDFtoPNG"));
-const PDFtoText = lazy(() => import("./Pages/PDFtoText"));
-const MergePDF = lazy(() => import("./Pages/MergePDF"));
-const SplitPDF = lazy(() => import("./Pages/SplitPDF"));
-const ExtractPDFPages = lazy(() => import("./Pages/ExtractPDFPages"));
-const DeletePDFPages = lazy(() => import("./Pages/DeletePDFPages"));
-const ReorderPDFPages = lazy(() => import("./Pages/ReorderPDFPages"));
-const RotatePDF = lazy(() => import("./Pages/RotatePDF"));
-const CompressPDF = lazy(() => import("./Pages/CompressPDF"));
-const ProtectPDF = lazy(() => import("./Pages/ProtectPDF"));
-const UnlockPDF = lazy(() => import("./Pages/UnlockPDF"));
-const AddTextPDF = lazy(() => import("./Pages/AddTextPDF"));
-const AddImagePDF = lazy(() => import("./Pages/AddImagePDF"));
-const HighlightPDF = lazy(() => import("./Pages/HighlightPDF"));
-const WatermarkPDF = lazy(() => import("./Pages/WatermarkPDF"));
-const AddPageNumbers = lazy(() => import("./Pages/AddPageNumbers"));
-const AddSignature = lazy(() => import("./Pages/AddSignature"));
-const PDFtoWord = lazy(() => import("./Pages/PDFtoWord"));
-const PDFtoExcel = lazy(() => import("./Pages/PDFtoExcel"));
+const Home = lazy(/* Handles home work. */ () => import("./Pages/Home"));
+const JPGtoPDF = lazy(/* Handles jpgto pdf work. */ () => import("./Pages/JPGtoPDF"));
+const PNGtoPDF = lazy(/* Handles pngto pdf work. */ () => import("./Pages/PNGtoPDF"));
+const PDFtoJPG = lazy(/* Handles pdfto jpg work. */ () => import("./Pages/PDFtoJPG"));
+const PDFtoPNG = lazy(/* Handles pdfto png work. */ () => import("./Pages/PDFtoPNG"));
+const PDFtoText = lazy(/* Handles pdfto text work. */ () => import("./Pages/PDFtoText"));
+const MergePDF = lazy(/* Combines pdf. */ () => import("./Pages/MergePDF"));
+const SplitPDF = lazy(/* Splits pdf. */ () => import("./Pages/SplitPDF"));
+const ExtractPDFPages = lazy(/* Extracts pdfpages. */ () => import("./Pages/ExtractPDFPages"));
+const DeletePDFPages = lazy(/* Removes pdfpages. */ () => import("./Pages/DeletePDFPages"));
+const ReorderPDFPages = lazy(/* Moves pdfpages. */ () => import("./Pages/ReorderPDFPages"));
+const RotatePDF = lazy(/* Rotates pdf. */ () => import("./Pages/RotatePDF"));
+const CompressPDF = lazy(/* Compresses pdf. */ () => import("./Pages/CompressPDF"));
+const ProtectPDF = lazy(/* Protects pdf. */ () => import("./Pages/ProtectPDF"));
+const UnlockPDF = lazy(/* Unlocks pdf. */ () => import("./Pages/UnlockPDF"));
+const AddTextPDF = lazy(/* Adds text pdf. */ () => import("./Pages/AddTextPDF"));
+const AddImagePDF = lazy(/* Adds image pdf. */ () => import("./Pages/AddImagePDF"));
+const HighlightPDF = lazy(/* Handles highlight pdf work. */ () => import("./Pages/HighlightPDF"));
+const WatermarkPDF = lazy(/* Handles watermark pdf work. */ () => import("./Pages/WatermarkPDF"));
+const AddPageNumbers = lazy(/* Adds page numbers. */ () => import("./Pages/AddPageNumbers"));
+const AddSignature = lazy(/* Adds signature. */ () => import("./Pages/AddSignature"));
+const PDFtoWord = lazy(/* Handles pdfto word work. */ () => import("./Pages/PDFtoWord"));
+const PDFtoExcel = lazy(/* Handles pdfto excel work. */ () => import("./Pages/PDFtoExcel"));
 
+// Renders the app interface.
 export default function App() {
   const path = window.location.pathname;
   let Page = Home;

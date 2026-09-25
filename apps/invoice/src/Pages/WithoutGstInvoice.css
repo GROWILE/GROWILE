@@ -1,3 +1,5 @@
+/* Styles the invoice form section for spacing and layout. */
+/* Styles the without gst invoice page. */
 /* ============================================
    SECTION WRAPPER
    ============================================ */
@@ -7,12 +9,14 @@
   padding: 100px 24px 100px;
 }
 
+/* Styles the invoice form heading for spacing and layout. */
 .invoice-form-heading {
   max-width: 900px;
   margin: 0 auto 40px;
   text-align: center;
 }
 
+/* Styles the invoice form kicker for spacing and layout. */
 .invoice-form-kicker {
   color: var(--color-text-highlight);
   font-size: 16px;
@@ -22,6 +26,7 @@
   margin: 0 0 12px;
 }
 
+/* Styles the invoice form heading for spacing and layout. */
 .invoice-form-heading h2 {
   color: var(--color-primary);
   font-size: 36px;
@@ -29,6 +34,7 @@
   margin: 0 0 14px;
 }
 
+/* Styles the invoice form heading for spacing and layout. */
 .invoice-form-heading > p:last-child {
   color: var(--color-primary);
   opacity: 0.8;
@@ -37,6 +43,7 @@
   line-height: 1.6;
 }
 
+/* Styles the invoice form for spacing and layout. */
 /* ============================================
    FORM CONTAINER
    ============================================ */
@@ -50,6 +57,7 @@
   border-radius: 1px;
 }
 
+/* Styles the invoice form error for flex layout and alignment. */
 /* ============================================
    ERROR MESSAGE
    ============================================ */
@@ -69,6 +77,7 @@
   border-radius: 4px;
 }
 
+/* Styles the invoice form error decorative pseudo-element for text appearance and alignment. */
 .invoice-form-error::before {
   content: "!";
   display: inline-grid;
@@ -83,6 +92,7 @@
   font-weight: 800;
 }
 
+/* Styles the invoice form logo row for flex layout and alignment. */
 /* ============================================
    LOGO UPLOAD
    ============================================ */
@@ -94,11 +104,13 @@
   margin-bottom: 28px;
 }
 
+/* Styles the invoice logo field for element sizing. */
 .invoice-logo-field {
   max-width: none;
   cursor: pointer;
 }
 
+/* Styles the invoice logo field for positioning and stacking. */
 .invoice-logo-field input[type="file"] {
   position: absolute;
   width: 1px;
@@ -107,6 +119,7 @@
   pointer-events: none;
 }
 
+/* Styles the invoice logo card for flex layout and alignment. */
 .invoice-logo-card {
   width: 200px;
   min-height: 130px;
@@ -123,17 +136,20 @@
   font-weight: 600;
 }
 
+/* Styles the invoice logo card hover state for colors and background. */
 .invoice-logo-card:hover {
   border-color: var(--color-accent);
   color: var(--color-accent);
 }
 
+/* Styles the invoice logo plus for text appearance and alignment. */
 .invoice-logo-plus {
   font-size: 28px;
   font-weight: 300;
   line-height: 1;
 }
 
+/* Styles the invoice logo preview for spacing and layout. */
 .invoice-logo-preview {
   width: 100px;
   height: 100px;
@@ -144,6 +160,7 @@
   background-color: var(--color-secondary);
 }
 
+/* Styles the invoice form grid for grid layout and alignment. */
 /* ============================================
    FROM / TO / INVOICE NUMBER / DATE GRID
    ============================================ */
@@ -154,6 +171,7 @@
   gap: 50px;
 }
 
+/* Styles the invoice form for flex layout and alignment. */
 /* Shared label + input/textarea styling.
    overflow-wrap / word-break / white-space keep long typed text
    wrapping inside the box instead of spilling outside it. */
@@ -172,6 +190,7 @@
   height: auto;
 }
 
+/* Styles the invoice form for spacing and layout. */
 .invoice-form input,
 .invoice-form textarea {
   box-sizing: border-box;
@@ -193,17 +212,20 @@
   transition: border-color 0.2s ease;
 }
 
+/* Styles the invoice form focus state for borders and visual depth. */
 .invoice-form input:focus,
 .invoice-form textarea:focus {
   border-color: var(--color-accent);
 }
 
+/* Styles the invoice form for borders and visual depth. */
 .invoice-form input:invalid:not(:placeholder-shown),
 .invoice-form textarea:invalid:not(:placeholder-shown) {
   border-color: var(--color-accent);
   box-shadow: 0 0 0 2px rgba(240, 119, 15, 0.16);
 }
 
+/* Styles the invoice payment info for spacing and layout. */
 /* ============================================
    PAYMENT INFO
    ============================================ */
@@ -212,11 +234,13 @@
   margin-top: 22px;
 }
 
+/* Styles the invoice payment info for text appearance and alignment. */
 .invoice-payment-info textarea {
   font-size: 16px;
   font-weight: 600;
 }
 
+/* Styles the invoice items for spacing and layout. */
 /* ============================================
    ITEMS TABLE
    ============================================ */
@@ -225,6 +249,7 @@
   margin-top: 28px;
 }
 
+/* Styles the invoice items heading for grid layout and alignment. */
 .invoice-items-heading {
   display: grid;
   grid-template-columns: minmax(0, 2fr) minmax(100px, 0.7fr) minmax(140px, 1fr);
@@ -237,6 +262,7 @@
   margin-bottom: 14px;
 }
 
+/* Styles the invoice items heading for spacing and layout. */
 .invoice-items-heading h3 {
   grid-column: 1;
   font-size: 18px;
@@ -244,6 +270,7 @@
   margin: 0;
 }
 
+/* Styles the invoice items heading for text appearance and alignment. */
 .invoice-items-heading span {
   grid-column: 3;
   text-align: right;
@@ -251,6 +278,7 @@
   font-weight: 700;
 }
 
+/* Styles the invoice item row for grid layout and alignment. */
 .invoice-item-row {
   display: grid;
   grid-template-columns: minmax(0, 2fr) minmax(100px, 0.7fr) minmax(140px, 1fr);
@@ -259,6 +287,7 @@
   border-top: 1px solid color-mix(in srgb, var(--color-primary) 8%, var(--color-secondary));
 }
 
+/* Styles the invoice add item for spacing and layout. */
 .invoice-add-item {
   margin-top: 18px;
   border: 1px solid var(--color-secondary);
@@ -274,15 +303,18 @@
   transition: background 0.2s ease, color 0.2s ease;
 }
 
+/* Styles the invoice add item hover state for colors and background. */
 .invoice-add-item:hover {
   background: var(--color-accent);
   color: var(--color-secondary);
 }
 
+/* Styles the invoice add item for spacing and layout. */
 .invoice-add-item span {
   margin-left: 8px;
 }
 
+/* Styles the invoice total for flex layout and alignment. */
 /* ============================================
    TOTAL ROW
    ============================================ */
@@ -300,6 +332,7 @@
   font-weight: 700;
 }
 
+/* Styles the invoice total for spacing and layout. */
 .invoice-total strong {
   border: 1px solid color-mix(in srgb, var(--color-primary) 15%, var(--color-secondary));
   background: var(--color-secondary);
@@ -311,6 +344,7 @@
   color: var(--color-accent);
 }
 
+/* Styles the invoice form button for spacing and layout. */
 /* ============================================
    SUBMIT BUTTON
    ============================================ */
@@ -330,16 +364,19 @@
   transition: opacity 0.2s ease;
 }
 
+/* Styles the invoice form button hover state for colors and background. */
 .invoice-form-button:hover {
   background-color: var(--color-secondary);
   color: var(--color-accent);
   opacity: 0.9;
 }
 
+/* Styles the invoice form button for spacing and layout. */
 .invoice-form-button span {
   margin-left: 8px;
 }
 
+/* Styles the invoice switch button for spacing and layout. */
 /* ============================================
    SWITCH TO GST INVOICE LINK
    ============================================ */
@@ -357,106 +394,130 @@
 
 
 
+/* Applies nested styles at (max-width: 900px). */
 /* ============================================
    RESPONSIVE — TABLET (≤900px)
    ============================================ */
 
 @media (max-width: 900px) {
+  /* Styles the invoice form section for spacing and layout. */
   .invoice-form-section {
     padding: 64px 24px 72px;
   }
 
+  /* Styles the invoice form heading for text appearance and alignment. */
   .invoice-form-heading h2 {
     font-size: 28px;
   }
 
+  /* Styles the invoice form for spacing and layout. */
   .invoice-form {
     padding: 28px;
   }
 
+  /* Styles the invoice item row for visual appearance. */
   .invoice-item-row {
     gap: 14px;
   }
 
+  /* Styles the invoice form grid for visual appearance. */
   .invoice-form-grid {
     gap: 18px;
   }
 }
 
+/* Applies nested styles at (max-width: 600px). */
 /* ============================================
    RESPONSIVE — MOBILE (≤600px)
    ============================================ */
 
 @media (max-width: 600px) {
+  /* Styles the invoice form section for spacing and layout. */
   .invoice-form-section {
     padding: 56px 16px;
   }
 
+  /* Styles the invoice form heading for text appearance and alignment. */
   .invoice-form-heading h2 {
     font-size: 26px;
   }
 
+  /* Styles the invoice form for spacing and layout. */
   .invoice-form {
     padding: 22px 18px;
   }
 
+  /* Styles the invoice form heading for text appearance and alignment. */
   .invoice-form-heading > p:last-child {
     font-size: 15px;
   }
 
+  /* Styles the invoice form logo row for visual appearance. */
   .invoice-form-logo-row {
     align-items: flex-start;
     flex-direction: column;
     gap: 14px;
   }
 
+  /* Styles the invoice logo card for element sizing. */
   .invoice-logo-card {
     width: 180px;
     min-height: 116px;
   }
 
+  /* Styles the invoice form grid for visual appearance. */
   .invoice-form-grid {
     grid-template-columns: 1fr;
   }
 
+  /* Styles the invoice form button for spacing and layout. */
   .invoice-form-button {
     padding: 14px 22px;
   }
 
+  /* Styles the invoice item row for visual appearance. */
   .invoice-item-row {
     grid-template-columns: 1fr 1fr;
   }
 
+  /* Styles the invoice item row for visual appearance. */
   .invoice-item-row label:first-child {
     grid-column: 1 / -1;
   }
 
+  /* Styles the invoice items heading for visual appearance. */
   .invoice-items-heading {
     grid-template-columns: 1fr 1fr;
   }
 
+  /* Styles the invoice items heading for visual appearance. */
   .invoice-items-heading span {
     grid-column: 2;
   }
 
+  /* Styles the invoice total for visual appearance. */
   .invoice-total {
     justify-content: space-between;
   }
 
+  /* Styles the invoice total for element sizing. */
   .invoice-total strong {
     min-width: auto;
   }
 
+  /* Styles the invoice switch button for text appearance and alignment. */
   .invoice-switch-button {
     text-align: left;
   }
 }
 
+/* Applies nested styles at print. */
 /* ============================================
    PRINT VIEW (used when generating/previewing PDF)
    ============================================ */
 
 @media print {
+  /* Styles the navbar for visual appearance. */
   .navbar,
   .invoice-form-heading,
   .invoice-switch-button,
@@ -469,17 +530,20 @@
     display: none !important;
   }
 
+  /* Styles the invoice form section for spacing and layout. */
   .invoice-form-section {
     padding: 0;
     background: var(--color-secondary);
   }
 
+  /* Styles the invoice form for spacing and layout. */
   .invoice-form {
     max-width: none;
     border: 0;
     padding: 0;
   }
 
+  /* Styles the invoice form for spacing and layout. */
   .invoice-form input,
   .invoice-form textarea,
   .invoice-form select {

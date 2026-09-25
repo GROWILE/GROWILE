@@ -1,3 +1,4 @@
+// Renders the reorder pdfpages PDF tool page.
 import { useCallback, useState } from "react";
 import { FileText } from "lucide-react";
 import * as pdfjsLib from "pdfjs-dist";
@@ -106,7 +107,7 @@ const faqs = [
 const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  mainEntity: faqs.map((faq) => ({
+  mainEntity: faqs.map(/* Builds a value for each item in the collection. */ (faq) => ({
     "@type": "Question",
     name: faq.question,
     acceptedAnswer: {
@@ -123,13 +124,14 @@ const contentSchema = {
   "@context": "https://schema.org",
   "@type": "WebPage",
   name: "Reorder PDF Pages",
-  hasPart: seoBlocks.map((block) => ({
+  hasPart: seoBlocks.map(/* Builds a value for each item in the collection. */ (block) => ({
     "@type": "WebPageElement",
     name: block.heading,
     text: block.description,
   })),
 };
 
+// Renders the reorder pdfpages interface.
 export default function ReorderPDFPages() {
   const [isReordering, setIsReordering] = useState(false);
   const [reorderMessage, setReorderMessage] = useState("");
@@ -140,16 +142,16 @@ export default function ReorderPDFPages() {
   const [pendingPdf, setPendingPdf] = useState<Uint8Array | null>(null);
   const [isDownloadPopupOpen, setIsDownloadPopupOpen] = useState(false);
 
-  const triggerDownload = useCallback(() => {
+  const triggerDownload = useCallback(/* Creates a callback that stays stable until its dependencies change. */ () => {
     if (pendingPdf) downloadReorderedPdf(pendingPdf, "reordered-pages.pdf");
   }, [pendingPdf]);
 
-  const closeDownloadPopup = useCallback(() => {
+  const closeDownloadPopup = useCallback(/* Creates a callback that stays stable until its dependencies change. */ () => {
     setIsDownloadPopupOpen(false);
     setPendingPdf(null);
   }, []);
 
-  const handleSelectionChange = async (files: File[]) => {
+  const handleSelectionChange = /* Handles selection change work. */ async (files: File[]) => {
     const file = files[0] ?? null;
     setSelectedFile(file);
     setPageOrder([]);
@@ -173,13 +175,13 @@ export default function ReorderPDFPages() {
         images.push(canvas.toDataURL("image/jpeg", 0.8));
       }
       setPageImages(images);
-      setPageOrder(Array.from({ length: pdf.numPages }, (_, index) => index + 1));
+      setPageOrder(Array.from({ length: pdf.numPages }, /* Handles selection change work. */ (_, index) => index + 1));
     } catch (error) {
       setReorderError(error instanceof Error ? error.message : "Could not read the PDF pages.");
     }
   };
 
-  const handleAction = async (file: File) => {
+  const handleAction = /* Handles action work. */ async (file: File) => {
     setIsReordering(true);
     setReorderMessage("");
     setReorderError("");

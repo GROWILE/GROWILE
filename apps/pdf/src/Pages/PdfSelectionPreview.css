@@ -1,3 +1,5 @@
+/* Styles the extract pdf preview for text appearance and alignment. */
+/* Styles the pdf selection preview page. */
 .extract-pdf-preview .split-pdf-selection-help {
   grid-template-columns: auto 1fr;
   align-items: center;
@@ -5,6 +7,7 @@
   text-align: center;
 }
 
+/* Styles the extract pdf selected count for grid layout and alignment. */
 .extract-pdf-selected-count {
   display: grid;
   min-width: 104px;
@@ -14,40 +17,49 @@
   color: var(--color-secondary);
 }
 
+/* Styles the extract pdf selected count for text appearance and alignment. */
 .extract-pdf-selected-count strong {
   color: inherit;
   font-size: 24px;
   line-height: 1;
 }
 
+/* Styles the extract pdf selected count for text appearance and alignment. */
 .extract-pdf-selected-count span {
   color: inherit;
   font-size: 12px;
   font-weight: 700;
 }
 
+/* Styles the extract pdf selection instruction for grid layout and alignment. */
 .extract-pdf-selection-instruction {
   display: grid;
   gap: 3px;
 }
 
+/* Styles the extract pdf preview for text appearance and alignment. */
 .extract-pdf-preview .split-pdf-selection-help strong {
   font-size: 16px;
 }
 
+/* Styles the extract pdf preview for text appearance and alignment. */
 .extract-pdf-preview .split-pdf-selection-help span {
   font-size: 15px;
 }
 
+/* Styles the extract pdf preview for text appearance and alignment. */
 .extract-pdf-preview .extract-pdf-selected-count strong {
   font-size: 24px;
 }
 
+/* Styles the extract pdf preview for text appearance and alignment. */
 .extract-pdf-preview .extract-pdf-selected-count span {
   font-size: 12px;
 }
 
+/* Applies nested styles at (max-width: 600px). */
 @media (max-width: 600px) {
+  /* Styles the extract pdf preview for visual appearance. */
   .extract-pdf-preview .split-pdf-selection-help {
     grid-template-columns: 1fr;
   }

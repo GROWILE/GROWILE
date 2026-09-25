@@ -1,3 +1,4 @@
+// Updates the page title, description, and social metadata.
 import { useEffect } from "react";
 
 type PageMetaProps = {
@@ -23,6 +24,7 @@ function setMeta(name: string, content: string) {
   element.content = content;
 }
 
+// Updates property.
 function setProperty(property: string, content: string) {
   let element = document.head.querySelector<HTMLMetaElement>(`meta[property="${property}"]`);
 
@@ -35,6 +37,7 @@ function setProperty(property: string, content: string) {
   element.content = content;
 }
 
+// Updates canonical.
 function setCanonical(path: string) {
   let link = document.head.querySelector<HTMLLinkElement>("link[rel=canonical]");
 
@@ -47,13 +50,14 @@ function setCanonical(path: string) {
   link.href = new URL(path, publicOrigin).href;
 }
 
+// Renders the page meta interface.
 export default function PageMeta({
   title,
   description,
   canonicalPath = window.location.pathname,
   indexable = true,
 }: PageMetaProps) {
-  useEffect(() => {
+  useEffect(/* Runs side effects when its dependencies change. */ () => {
     const fullTitle =
       title === siteName || title.includes("|") ? title : `${title} | ${siteName}`;
 

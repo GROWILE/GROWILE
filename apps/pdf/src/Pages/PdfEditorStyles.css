@@ -1,9 +1,12 @@
+/* Styles the pdf edit content for grid layout and alignment. */
+/* Styles the PDF editing controls and workspace. */
 .pdf-edit-content {
   display: grid;
   gap: 12px;
   margin-top: 16px;
 }
 
+/* Styles the pdf text toolbar for grid layout and alignment. */
 .pdf-text-toolbar {
   display: grid;
   grid-template-columns: minmax(220px, 1.8fr) repeat(3, minmax(120px, 1fr));
@@ -16,6 +19,7 @@
   box-shadow: 0 3px 12px color-mix(in srgb, var(--color-primary) 7%, transparent);
 }
 
+/* Styles the pdf text toolbar for grid layout and alignment. */
 .pdf-text-toolbar label,
 .pdf-color-picker {
   min-width: 0;
@@ -26,6 +30,7 @@
   font-weight: 700;
 }
 
+/* Styles the pdf color picker for visual appearance. */
 .pdf-color-picker {
   grid-column: 1 / -1;
   align-self: stretch;
@@ -33,6 +38,7 @@
   overflow: visible;
 }
 
+/* Styles the pdf text toolbar for spacing and layout. */
 .pdf-text-toolbar input,
 .pdf-text-toolbar select {
   width: 100%;
@@ -47,12 +53,14 @@
   transition: border-color .18s ease, box-shadow .18s ease;
 }
 
+/* Styles the pdf text toolbar focus state for borders and visual depth. */
 .pdf-text-toolbar input:focus,
 .pdf-text-toolbar select:focus {
   border-color: var(--color-text-highlight);
   box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-text-highlight) 16%, transparent);
 }
 
+/* Styles the pdf color options for flex layout and alignment. */
 .pdf-color-options {
   display: flex;
   align-items: center;
@@ -65,6 +73,7 @@
   overflow: visible;
 }
 
+/* Styles the pdf color swatch for borders and visual depth. */
 .pdf-color-swatch {
   flex: 0 0 25px;
   width: 26px;
@@ -75,15 +84,18 @@
   transition: transform .18s ease, box-shadow .18s ease;
 }
 
+/* Styles the pdf color swatch hover state for animation and transitions. */
 .pdf-color-swatch:hover {
   transform: translateY(-2px);
 }
 
+/* Styles the pdf color swatch for borders and visual depth. */
 .pdf-color-swatch.selected {
   border-color: var(--color-text-highlight);
   box-shadow: 0 0 0 2px var(--color-secondary), 0 0 0 4px var(--color-text-highlight);
 }
 
+/* Styles the pdf editor hint for spacing and layout. */
 .pdf-editor-hint {
   margin: 0;
   padding: 9px 12px;
@@ -94,10 +106,12 @@
   text-align: center;
 }
 
+/* Styles the pdf text edit content for visual appearance. */
 .pdf-text-edit-content {
   gap: 14px;
 }
 
+/* Styles the pdf page carousel for flex layout and alignment. */
 .pdf-page-carousel {
   display: flex;
   align-items: center;
@@ -108,6 +122,7 @@
   overflow: hidden;
 }
 
+/* Styles the pdf page viewport for flex layout and alignment. */
 .pdf-page-viewport {
   display: flex;
   justify-content: center;
@@ -118,6 +133,7 @@
   scrollbar-width: thin;
 }
 
+/* Styles the pdf page canvas for colors and background. */
 .pdf-page-canvas {
   position: relative;
   flex: 0 1 min(100%, 560px);
@@ -132,10 +148,12 @@
   scroll-snap-align: start;
 }
 
+/* Styles the pdf page canvas for borders and visual depth. */
 .pdf-page-canvas.selected {
   border-color: var(--color-text-highlight);
 }
 
+/* Styles the pdf page canvas for element sizing. */
 .pdf-page-canvas img {
   display: block;
   width: 100%;
@@ -145,10 +163,12 @@
   pointer-events: none;
 }
 
+/* Styles the pdf page viewport for visual appearance. */
 .pdf-page-viewport .pdf-page-canvas {
   transform-origin: top center;
 }
 
+/* Styles the pdf zoom controls for flex layout and alignment. */
 .pdf-zoom-controls {
   display: flex;
   justify-content: center;
@@ -157,6 +177,7 @@
   margin-top: -2px;
 }
 
+/* Styles the pdf zoom controls for text appearance and alignment. */
 .pdf-zoom-controls button {
   min-width: 32px;
   min-height: 30px;
@@ -169,11 +190,13 @@
   cursor: pointer;
 }
 
+/* Styles the pdf zoom controls disabled state for interaction behavior. */
 .pdf-zoom-controls button:disabled {
   cursor: not-allowed;
   opacity: .4;
 }
 
+/* Styles the pdf zoom controls for text appearance and alignment. */
 .pdf-zoom-controls span {
   min-width: 48px;
   color: var(--color-primary);
@@ -182,11 +205,13 @@
   text-align: center;
 }
 
+/* Styles the pdf zoom controls for spacing and layout. */
 .pdf-zoom-controls .pdf-zoom-reset {
   padding-inline: 8px;
   font-size: 12px;
 }
 
+/* Styles the pdf page arrow for colors and background. */
 .pdf-page-arrow {
   display: inline-grid;
   flex: 0 0 42px;
@@ -200,16 +225,19 @@
   cursor: pointer;
 }
 
+/* Styles the pdf page arrow hover state for colors and background. */
 .pdf-page-arrow:hover:not(:disabled) {
   border-color: var(--color-text-highlight);
   color: var(--color-text-highlight);
 }
 
+/* Styles the pdf page arrow disabled state for interaction behavior. */
 .pdf-page-arrow:disabled {
   cursor: not-allowed;
   opacity: .35;
 }
 
+/* Styles the pdf live text for positioning and stacking. */
 .pdf-live-text {
   position: absolute;
   z-index: 1;
@@ -221,6 +249,7 @@
   text-shadow: 0 0 2px rgb(255 255 255 / 75%);
 }
 
+/* Styles the pdf page label for positioning and stacking. */
 .pdf-page-label {
   position: absolute;
   right: 8px;
@@ -233,15 +262,18 @@
   font-weight: 700;
 }
 
+/* Styles the pdf image edit content for spacing and layout. */
 .pdf-image-edit-content {
   gap: 16px;
   padding: 4px 2px 0;
 }
 
+/* Styles the pdf highlight edit content for visual appearance. */
 .pdf-highlight-edit-content {
   gap: 14px;
 }
 
+/* Styles the pdf highlight toolbar for flex layout and alignment. */
 .pdf-highlight-toolbar {
   display: flex;
   flex-wrap: wrap;
@@ -253,6 +285,7 @@
   background: color-mix(in srgb, var(--color-text-highlight) 4%, var(--color-secondary));
 }
 
+/* Styles the pdf highlight toolbar for grid layout and alignment. */
 .pdf-highlight-toolbar fieldset,
 .pdf-highlight-toolbar label {
   display: grid;
@@ -265,25 +298,30 @@
   font-weight: 700;
 }
 
+/* Styles the pdf highlight toolbar for spacing and layout. */
 .pdf-highlight-toolbar legend {
   padding: 0;
   margin-bottom: 7px;
 }
 
+/* Styles the pdf highlight toolbar for visual appearance. */
 .pdf-highlight-toolbar input[type="range"] {
   accent-color: var(--color-text-highlight);
 }
 
+/* Styles the pdf highlight toolbar for text appearance and alignment. */
 .pdf-highlight-toolbar label span {
   font-weight: 500;
 }
 
+/* Styles the pdf highlight actions for flex layout and alignment. */
 .pdf-highlight-actions {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
 }
 
+/* Styles the pdf highlight actions for spacing and layout. */
 .pdf-highlight-actions button {
   display: inline-flex;
   align-items: center;
@@ -297,11 +335,13 @@
   cursor: pointer;
 }
 
+/* Styles the pdf highlight actions disabled state for interaction behavior. */
 .pdf-highlight-actions button:disabled {
   cursor: not-allowed;
   opacity: .45;
 }
 
+/* Styles the pdf highlight overlay for positioning and stacking. */
 .pdf-highlight-overlay {
   position: absolute;
   z-index: 2;
@@ -312,22 +352,26 @@
   touch-action: none;
 }
 
+/* Styles the pdf highlight overlay for borders and visual depth. */
 .pdf-highlight-overlay.active {
   border-color: var(--color-primary);
   box-shadow: 0 0 0 2px var(--color-secondary);
 }
 
+/* Styles the pdf highlight edit content for visual appearance. */
 .pdf-highlight-edit-content .pdf-page-canvas {
   user-select: none;
   -webkit-user-select: none;
   touch-action: none;
 }
 
+/* Styles the pdf highlight edit content for visual appearance. */
 .pdf-highlight-edit-content .pdf-page-canvas img {
   user-select: none;
   -webkit-user-drag: none;
 }
 
+/* Styles the pdf highlight count for spacing and layout. */
 .pdf-highlight-count {
   margin: 0;
   color: var(--color-primary);
@@ -335,6 +379,7 @@
   text-align: center;
 }
 
+/* Styles the pdf watermark toolbar for grid layout and alignment. */
 .pdf-watermark-toolbar {
   display: grid;
   grid-template-columns: minmax(220px, 1.5fr) repeat(4, minmax(120px, 1fr));
@@ -346,6 +391,7 @@
   background: color-mix(in srgb, var(--color-text-highlight) 4%, var(--color-secondary));
 }
 
+/* Styles the pdf watermark toolbar for grid layout and alignment. */
 .pdf-watermark-toolbar label,
 .pdf-watermark-toolbar fieldset {
   display: grid;
@@ -358,33 +404,40 @@
   font-weight: 700;
 }
 
+/* Styles the pdf watermark toolbar for visual appearance. */
 .pdf-watermark-toolbar fieldset {
   grid-column: span 2;
 }
 
+/* Styles the pdf watermark toolbar for element sizing. */
 .pdf-watermark-toolbar fieldset .pdf-color-options {
   flex-wrap: wrap;
   gap: 9px;
   min-width: 0;
 }
 
+/* Styles the pdf watermark toolbar for element sizing. */
 .pdf-watermark-toolbar input:not([type="checkbox"]) {
   width: 100%;
   min-height: 36px;
 }
 
+/* Styles the pdf watermark toolbar for visual appearance. */
 .pdf-watermark-toolbar input[type="range"] {
   accent-color: var(--color-text-highlight);
 }
 
+/* Styles the pdf watermark toolbar for text appearance and alignment. */
 .pdf-watermark-toolbar span {
   font-weight: 500;
 }
 
+/* Styles the pdf watermark text for visual appearance. */
 .pdf-watermark-text {
   grid-column: span 2;
 }
 
+/* Styles the pdf watermark check for element sizing. */
 .pdf-watermark-check {
   display: flex !important;
   grid-column: span 2;
@@ -392,12 +445,14 @@
   min-height: 36px;
 }
 
+/* Styles the pdf watermark check for element sizing. */
 .pdf-watermark-check input {
   width: 16px;
   height: 16px;
   accent-color: var(--color-text-highlight);
 }
 
+/* Styles the pdf watermark reset for colors and background. */
 .pdf-watermark-reset {
   display: inline-flex;
   align-items: center;
@@ -411,6 +466,7 @@
   cursor: pointer;
 }
 
+/* Styles the pdf watermark preview for positioning and stacking. */
 .pdf-watermark-preview {
   position: absolute;
   z-index: 1;
@@ -423,14 +479,17 @@
   touch-action: none;
 }
 
+/* Styles the pdf watermark preview active state for interaction behavior. */
 .pdf-watermark-preview:active {
   cursor: grabbing;
 }
 
+/* Styles the pdf page number content for visual appearance. */
 .pdf-page-number-content {
   gap: 14px;
 }
 
+/* Styles the pdf page number grid for grid layout and alignment. */
 .pdf-page-number-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
@@ -440,6 +499,7 @@
   padding: 4px;
 }
 
+/* Styles the pdf page number preview for grid layout and alignment. */
 .pdf-page-number-preview {
   display: grid;
   gap: 7px;
@@ -449,6 +509,7 @@
   text-align: center;
 }
 
+/* Styles the pdf page number sheet for colors and background. */
 .pdf-page-number-sheet {
   position: relative;
   overflow: hidden;
@@ -458,12 +519,14 @@
   box-shadow: 0 3px 10px color-mix(in srgb, var(--color-primary) 12%, transparent);
 }
 
+/* Styles the pdf page number sheet for element sizing. */
 .pdf-page-number-sheet img {
   display: block;
   width: 100%;
   height: auto;
 }
 
+/* Styles the pdf page number sheet for positioning and stacking. */
 .pdf-page-number-sheet span {
   position: absolute;
   left: 50%;
@@ -474,10 +537,12 @@
   font-weight: 500;
 }
 
+/* Styles the pdf sign edit content for visual appearance. */
 .pdf-sign-edit-content {
   gap: 14px;
 }
 
+/* Styles the pdf signature pad wrap for grid layout and alignment. */
 .pdf-signature-pad-wrap {
   display: grid;
   gap: 8px;
@@ -487,6 +552,7 @@
   background: color-mix(in srgb, var(--color-text-highlight) 4%, var(--color-secondary));
 }
 
+/* Styles the pdf signature pad heading for flex layout and alignment. */
 .pdf-signature-pad-heading {
   display: flex;
   align-items: center;
@@ -494,6 +560,7 @@
   color: var(--color-primary);
 }
 
+/* Styles the pdf signature pad heading for spacing and layout. */
 .pdf-signature-pad-heading button {
   display: inline-flex;
   align-items: center;
@@ -506,6 +573,7 @@
   cursor: pointer;
 }
 
+/* Styles the pdf signature pad for colors and background. */
 .pdf-signature-pad {
   display: block;
   width: 100%;
@@ -518,12 +586,14 @@
   touch-action: none;
 }
 
+/* Styles the pdf signature pad wrap for spacing and layout. */
 .pdf-signature-pad-wrap p {
   margin: 0;
   color: color-mix(in srgb, var(--color-primary) 60%, transparent);
   font-size: 12px;
 }
 
+/* Styles the pdf signature preview for grid layout and alignment. */
 .pdf-signature-preview {
   position: absolute;
   z-index: 2;
@@ -537,6 +607,7 @@
   touch-action: none;
 }
 
+/* Styles the pdf signature preview for element sizing. */
 .pdf-signature-preview > img {
   display: block;
   width: 100%;
@@ -547,21 +618,25 @@
   -webkit-user-drag: none;
 }
 
+/* Styles the pdf signature preview active state for interaction behavior. */
 .pdf-signature-preview:active {
   cursor: grabbing;
 }
 
+/* Styles the pdf signature page canvas for visual appearance. */
 .pdf-signature-page-canvas {
   user-select: none;
   -webkit-user-select: none;
   touch-action: none;
 }
 
+/* Styles the pdf signature page canvas for visual appearance. */
 .pdf-signature-page-canvas > img:first-child {
   user-select: none;
   -webkit-user-drag: none;
 }
 
+/* Styles the pdf signature delete for grid layout and alignment. */
 .pdf-signature-delete {
   position: absolute;
   z-index: 3;
@@ -578,6 +653,7 @@
   cursor: pointer;
 }
 
+/* Styles the pdf signature count for spacing and layout. */
 .pdf-signature-count {
   margin: 0;
   color: var(--color-primary);
@@ -585,18 +661,22 @@
   text-align: center;
 }
 
+/* Applies nested styles at (max-width: 600px). */
 @media (max-width: 600px) {
+  /* Styles the pdf page number grid for visual appearance. */
   .pdf-page-number-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 10px;
   }
 }
 
+/* Styles the pdf watermark preview for spacing and layout. */
 .pdf-watermark-preview.pending {
   border: 2px dashed currentColor;
   padding: 4px 8px;
 }
 
+/* Styles the pdf watermark place for grid layout and alignment. */
 .pdf-watermark-place {
   position: absolute;
   right: -14px;
@@ -616,26 +696,32 @@
   cursor: pointer;
 }
 
+/* Styles the pdf watermark edit content for visual appearance. */
 .pdf-watermark-edit-content .pdf-page-canvas {
   user-select: none;
   -webkit-user-select: none;
 }
 
+/* Applies nested styles at (max-width: 850px). */
 @media (max-width: 850px) {
+  /* Styles the pdf watermark toolbar for visual appearance. */
   .pdf-watermark-toolbar {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  /* Styles the pdf watermark text for visual appearance. */
   .pdf-watermark-text,
   .pdf-watermark-check {
     grid-column: 1 / -1;
   }
 
+  /* Styles the pdf watermark toolbar for visual appearance. */
   .pdf-watermark-toolbar fieldset {
     grid-column: 1 / -1;
   }
 }
 
+/* Styles the pdf image upload control for grid layout and alignment. */
 .pdf-image-upload-control {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
@@ -649,11 +735,13 @@
   cursor: pointer;
 }
 
+/* Styles the pdf image upload control hover state for colors and background. */
 .pdf-image-upload-control:hover {
   border-color: var(--color-text-highlight);
   background: color-mix(in srgb, var(--color-text-highlight) 9%, var(--color-secondary));
 }
 
+/* Styles the pdf image upload label for spacing and layout. */
 .pdf-image-upload-label {
   display: inline-flex;
   align-items: center;
@@ -667,6 +755,7 @@
   white-space: nowrap;
 }
 
+/* Styles the pdf image upload control for positioning and stacking. */
 .pdf-image-upload-control input {
   position: absolute;
   width: 1px;
@@ -677,6 +766,7 @@
   white-space: nowrap;
 }
 
+/* Styles the pdf image file name for text appearance and alignment. */
 .pdf-image-file-name {
   min-width: 0;
   overflow: hidden;
@@ -686,6 +776,7 @@
   white-space: nowrap;
 }
 
+/* Styles the pdf image toolbar for flex layout and alignment. */
 .pdf-image-toolbar {
   display: flex;
   flex-wrap: wrap;
@@ -697,6 +788,7 @@
   background: color-mix(in srgb, var(--color-secondary) 92%, white);
 }
 
+/* Styles the pdf image toolbar for spacing and layout. */
 .pdf-image-toolbar button {
   display: inline-flex;
   align-items: center;
@@ -710,16 +802,19 @@
   cursor: pointer;
 }
 
+/* Styles the pdf image toolbar hover state for colors and background. */
 .pdf-image-toolbar button:hover:not(:disabled) {
   border-color: var(--color-text-highlight);
   color: var(--color-text-highlight);
 }
 
+/* Styles the pdf image toolbar disabled state for interaction behavior. */
 .pdf-image-toolbar button:disabled {
   cursor: not-allowed;
   opacity: .45;
 }
 
+/* Styles the pdf image toolbar for text appearance and alignment. */
 .pdf-image-toolbar label {
   display: inline-flex;
   align-items: center;
@@ -729,6 +824,7 @@
   font-weight: 700;
 }
 
+/* Styles the pdf image toolbar for spacing and layout. */
 .pdf-image-toolbar input {
   width: 74px;
   min-height: 36px;
@@ -739,12 +835,14 @@
   color: var(--color-primary);
 }
 
+/* Styles the pdf image tabs for flex layout and alignment. */
 .pdf-image-tabs {
   display: flex;
   flex-wrap: wrap;
   gap: 7px;
 }
 
+/* Styles the pdf image tabs for spacing and layout. */
 .pdf-image-tabs button {
   min-height: 32px;
   border: 1px solid color-mix(in srgb, var(--color-primary) 18%, transparent);
@@ -757,12 +855,14 @@
   cursor: pointer;
 }
 
+/* Styles the pdf image tabs for colors and background. */
 .pdf-image-tabs button.active {
   border-color: var(--color-text-highlight);
   background: color-mix(in srgb, var(--color-text-highlight) 12%, var(--color-secondary));
   color: var(--color-text-highlight);
 }
 
+/* Styles the pdf image overlay for positioning and stacking. */
 .pdf-image-overlay {
   position: absolute;
   z-index: 2;
@@ -776,6 +876,7 @@
   -webkit-user-select: none;
 }
 
+/* Styles the pdf image overlay for element sizing. */
 .pdf-image-overlay > img {
   display: block;
   width: 100%;
@@ -784,11 +885,13 @@
   pointer-events: none;
 }
 
+/* Styles the pdf image overlay for borders and visual depth. */
 .pdf-image-overlay.active {
   border-color: var(--color-text-highlight);
   box-shadow: 0 0 0 2px rgb(255 255 255 / 85%), 0 0 0 4px var(--color-text-highlight);
 }
 
+/* Styles the pdf image delete for grid layout and alignment. */
 .pdf-image-delete {
   position: absolute;
   top: -13px;
@@ -804,6 +907,7 @@
   cursor: pointer;
 }
 
+/* Styles the pdf image resize for positioning and stacking. */
 .pdf-image-resize {
   position: absolute;
   right: -8px;
@@ -816,106 +920,129 @@
   cursor: nwse-resize;
 }
 
+/* Applies nested styles at (max-width: 850px). */
 @media (max-width: 850px) {
+  /* Styles the pdf text toolbar for visual appearance. */
   .pdf-text-toolbar {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  /* Styles the pdf toolbar text for visual appearance. */
   .pdf-toolbar-text {
     grid-column: 1 / -1;
   }
 
+  /* Styles the pdf color picker for visual appearance. */
   .pdf-color-picker {
     grid-column: 1 / -1;
     justify-items: center;
   }
 
+  /* Styles the pdf color options for visual appearance. */
   .pdf-color-options {
     justify-content: center;
   }
 
+  /* Styles the pdf highlight toolbar for visual appearance. */
   .pdf-highlight-toolbar {
     align-items: stretch;
   }
 
+  /* Styles the pdf highlight toolbar for visual appearance. */
   .pdf-highlight-toolbar fieldset,
   .pdf-highlight-toolbar label {
     flex: 1 1 220px;
   }
 
+  /* Styles the pdf highlight actions for visual appearance. */
   .pdf-highlight-actions {
     flex: 1 1 100%;
   }
 }
 
+/* Applies nested styles at (max-width: 600px). */
 @media (max-width: 600px) {
+  /* Styles the pdf text toolbar for spacing and layout. */
   .pdf-text-toolbar {
     grid-template-columns: 1fr;
     gap: 10px;
     padding: 12px;
   }
 
+  /* Styles the pdf toolbar text for visual appearance. */
   .pdf-toolbar-text,
   .pdf-color-picker {
     grid-column: auto;
   }
 
+  /* Styles the pdf page carousel for visual appearance. */
   .pdf-page-carousel {
     gap: 7px;
   }
 
+  /* Styles the pdf page canvas for element sizing. */
   .pdf-page-canvas {
     width: 100%;
   }
 
+  /* Styles the pdf page viewport for element sizing. */
   .pdf-page-viewport {
     width: calc(100% - 78px);
     max-height: 68vh;
   }
 
+  /* Styles the pdf page arrow for element sizing. */
   .pdf-page-arrow {
     flex-basis: 34px;
     width: 34px;
     height: 34px;
   }
 
+  /* Styles the pdf highlight toolbar for spacing and layout. */
   .pdf-highlight-toolbar {
     gap: 12px;
     padding: 12px;
   }
 
+  /* Styles the pdf highlight toolbar for element sizing. */
   .pdf-highlight-toolbar fieldset,
   .pdf-highlight-toolbar label {
     flex-basis: 100%;
     min-width: 0;
   }
 
+  /* Styles the pdf highlight toolbar for visual appearance. */
   .pdf-highlight-toolbar fieldset .pdf-color-options {
     justify-content: flex-start;
     flex-wrap: wrap;
     gap: 11px;
   }
 
+  /* Styles the pdf highlight toolbar for visual appearance. */
   .pdf-highlight-toolbar label {
     grid-template-columns: minmax(0, 1fr) auto;
     align-items: center;
   }
 
+  /* Styles the pdf highlight toolbar for element sizing. */
   .pdf-highlight-toolbar label input[type="range"] {
     min-width: 0;
     width: 100%;
   }
 
+  /* Styles the pdf highlight toolbar for text appearance and alignment. */
   .pdf-highlight-toolbar label span {
     min-width: 42px;
     text-align: right;
   }
 
+  /* Styles the pdf highlight actions for grid layout and alignment. */
   .pdf-highlight-actions {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  /* Styles the pdf highlight actions for spacing and layout. */
   .pdf-highlight-actions button {
     justify-content: center;
     min-width: 0;
@@ -923,50 +1050,60 @@
     font-size: 12px;
   }
 
+  /* Styles the pdf highlight edit content for text appearance and alignment. */
   .pdf-highlight-edit-content .pdf-editor-hint {
     font-size: 12px;
     line-height: 1.45;
   }
 
+  /* Styles the pdf watermark toolbar for spacing and layout. */
   .pdf-watermark-toolbar {
     grid-template-columns: 1fr;
     gap: 10px;
     padding: 12px;
   }
 
+  /* Styles the pdf watermark text for visual appearance. */
   .pdf-watermark-text,
   .pdf-watermark-check {
     grid-column: auto;
   }
 
+  /* Styles the pdf watermark toolbar for visual appearance. */
   .pdf-watermark-toolbar fieldset {
     grid-column: auto;
   }
 
+  /* Styles the pdf watermark toolbar for visual appearance. */
   .pdf-watermark-toolbar label:not(.pdf-watermark-check) {
     grid-template-columns: minmax(0, 1fr) auto;
     align-items: center;
   }
 
+  /* Styles the pdf watermark toolbar for visual appearance. */
   .pdf-watermark-toolbar fieldset .pdf-color-options {
     flex-wrap: wrap;
     gap: 11px;
   }
 
+  /* Styles the pdf image toolbar for visual appearance. */
   .pdf-image-toolbar {
     gap: 7px;
   }
 
+  /* Styles the pdf image toolbar for visual appearance. */
   .pdf-image-toolbar label {
     flex: 1 1 120px;
     justify-content: space-between;
   }
 
+  /* Styles the pdf image upload control for visual appearance. */
   .pdf-image-upload-control {
     grid-template-columns: 1fr;
     gap: 8px;
   }
 
+  /* Styles the pdf image upload label for visual appearance. */
   .pdf-image-upload-label {
     justify-self: start;
   }

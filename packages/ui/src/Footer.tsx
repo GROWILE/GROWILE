@@ -1,3 +1,4 @@
+// Renders the shared site footer and its navigation links.
 import AdSpace from "./AdSpace";
 import "./Footer.css";
 
@@ -6,8 +7,10 @@ type FooterProps = {
   termsHref?: string;
   privacyHref?: string;
   showAdSpace?: boolean;
+  reserveBottomAdSpace?: boolean;
 };
 
+// Creates footer columns.
 function createFooterColumns(invoiceHref: string) {
   return [
   {
@@ -17,13 +20,6 @@ function createFooterColumns(invoiceHref: string) {
       { label: "Invoice", href: invoiceHref },
     ],
   },
-  /* {
-    title: "Resources",
-    links: [
-      { label: "FAQ", href: "#" },
-      { label: "Help Center", href: "#" },
-    ],
-  }, */
   {
     title: "Company",
     links: [{ label: "About Us", href: "/about" }],
@@ -31,19 +27,18 @@ function createFooterColumns(invoiceHref: string) {
   ];
 }
 
-/* const socialLinks = [
-  { label: "X", href: "#" },
-  { label: "FB", href: "#" },
-  { label: "YT", href: "#" },
-  { label: "IN", href: "#" },
-  { label: "IG", href: "#" },
-]; */
-
-export default function Footer({ invoiceHref = "/invoice", termsHref = "#", privacyHref = "/privacy-policy", showAdSpace = false }: FooterProps) {
+// Renders the footer interface.
+export default function Footer({
+  invoiceHref = "/invoice",
+  termsHref = "#",
+  privacyHref = "/privacy-policy",
+  showAdSpace = false,
+  reserveBottomAdSpace = true,
+}: FooterProps) {
   const footerColumns = createFooterColumns(invoiceHref);
 
   return (
-    <footer className="footer">
+    <footer className={`footer${reserveBottomAdSpace ? "" : " footer--no-bottom-ad-space"}`}>
       {showAdSpace && <AdSpace compact className="footer-ad-space" />}
 
       <div className="footer-cta">
@@ -57,11 +52,11 @@ export default function Footer({ invoiceHref = "/invoice", termsHref = "#", priv
       <div className="footer-divider"></div>
 
       <div className="footer-columns">
-        {footerColumns.map((column) => (
+        {footerColumns.map(/* Builds a value for each item in the collection. */ (column) => (
           <div key={column.title} className="footer-column">
            <h3 className="footer-column-title">{column.title}</h3>
             <ul className="footer-column-links">
-              {column.links.map((link) => (
+              {column.links.map(/* Builds a value for each item in the collection. */ (link) => (
               <li key={link.label}>
               <a href={link.href}>{link.label}</a>
               </li>
@@ -78,19 +73,6 @@ export default function Footer({ invoiceHref = "/invoice", termsHref = "#", priv
           </a>
         </div>
       </div>
-
-      { /* <div className="footer-social">
-        {socialLinks.map((social) => (
-          <a
-            key={social.label}
-            href={social.href}
-            className="footer-social-icon"
-            aria-label={social.label}
-          >
-            {social.label}
-          </a>
-        ))}
-      </div> */ }
 
       <div className="footer-legal">
         <a href={termsHref}>Terms of Service</a>

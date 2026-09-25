@@ -1,3 +1,4 @@
+// Adds organization structured data for search engines.
 type OrganizationSchemaProps = {
   name?: string;
   url?: string;
@@ -6,6 +7,7 @@ type OrganizationSchemaProps = {
   sameAs?: string[];
 };
 
+// Renders the organization schema interface.
 export default function OrganizationSchema({
   name = "Growile",
   url = "https://growile.com/",

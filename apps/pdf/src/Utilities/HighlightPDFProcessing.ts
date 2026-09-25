@@ -1,3 +1,4 @@
+// Highlights selected content in PDF files.
 import { PDFDocument, rgb } from "pdf-lib";
 
 export type HighlightPlacement = {
@@ -8,6 +9,7 @@ export type HighlightPlacement = {
   height: number;
 };
 
+// Handles highlight pdf work.
 export async function highlightPdf(file: File, highlights: HighlightPlacement[], color: string, opacity: number) {
   const pdf = await PDFDocument.load(await file.arrayBuffer());
   const fill = parseHexColor(color);
@@ -27,6 +29,7 @@ export async function highlightPdf(file: File, highlights: HighlightPlacement[],
   return pdf.save();
 }
 
+// Parses hex color.
 function parseHexColor(value: string) {
   const normalized = value.replace("#", "");
   if (!/^[0-9a-f]{6}$/i.test(normalized)) return rgb(1, 0.86, 0.08);
@@ -37,6 +40,7 @@ function parseHexColor(value: string) {
   );
 }
 
+// Downloads highlight pdf.
 export function downloadHighlightPdf(bytes: Uint8Array, fileName: string) {
   const buffer = new ArrayBuffer(bytes.byteLength);
   new Uint8Array(buffer).set(bytes);

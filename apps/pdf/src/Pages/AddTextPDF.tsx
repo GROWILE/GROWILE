@@ -1,3 +1,4 @@
+// Renders the add text pdf PDF tool page.
 import { useCallback, useState } from "react";
 import { ChevronLeft, ChevronRight, Type } from "lucide-react";
 import * as pdfjsLib from "pdfjs-dist";
@@ -83,6 +84,7 @@ const initialPlacement: TextPlacement = {
   fontWeight: "normal",
 };
 
+// Renders the add text pdf interface.
 export default function AddTextPDF() {
   const [file, setFile] = useState<File | null>(null);
   const [pages, setPages] = useState<PreviewPage[]>([]);
@@ -94,11 +96,11 @@ export default function AddTextPDF() {
   const [popup, setPopup] = useState(false);
   const [zoom, setZoom] = useState(1);
 
-  const update = <K extends keyof TextPlacement>(key: K, value: TextPlacement[K]) => {
-    setPlacement((current) => ({ ...current, [key]: value }));
+  const update = /* Updates. */ <K extends keyof TextPlacement>(key: K, value: TextPlacement[K]) => {
+    setPlacement(/* Updates. */ (current) => ({ ...current, [key]: value }));
   };
 
-  const renderPreview = async (selected: File) => {
+  const renderPreview = /* Renders preview. */ async (selected: File) => {
     const pdf = await pdfjsLib.getDocument({ data: await selected.arrayBuffer() }).promise;
     const renderedPages: PreviewPage[] = [];
 
@@ -120,7 +122,7 @@ export default function AddTextPDF() {
     setPages(renderedPages);
   };
 
-  const handleSelection = async (files: File[]) => {
+  const handleSelection = /* Handles selection work. */ async (files: File[]) => {
     const selected = files[0] ?? null;
     setFile(selected);
     setPages([]);
@@ -136,7 +138,7 @@ export default function AddTextPDF() {
     }
   };
 
-  const handlePageClick = (
+  const handlePageClick = /* Handles page click work. */ (
     event: React.MouseEvent<HTMLDivElement>,
     pageIndex: number,
     page: PreviewPage,
@@ -149,7 +151,7 @@ export default function AddTextPDF() {
     update("y", Math.max(0, Math.min(page.height, page.height - yFromTop)));
   };
 
-  const handleAction = async (selected: File) => {
+  const handleAction = /* Handles action work. */ async (selected: File) => {
     setBusy(true);
     setMessage("");
     setError("");
@@ -165,7 +167,7 @@ export default function AddTextPDF() {
     }
   };
 
-  const closePopup = useCallback(() => {
+  const closePopup = useCallback(/* Creates a callback that stays stable until its dependencies change. */ () => {
     setPopup(false);
     setPending(null);
   }, []);
@@ -204,48 +206,48 @@ export default function AddTextPDF() {
                 <div className="pdf-edit-content pdf-text-edit-content">
                   <div className="pdf-text-toolbar" aria-label="Text formatting controls">
                     <label className="pdf-toolbar-text">Text
-                      <input value={placement.text} onChange={(event) => update("text", event.target.value)} placeholder="Type text, then click a page" />
+                      <input value={placement.text} onChange={/* Runs when the user triggers change. */ (event) => update("text", event.target.value)} placeholder="Type text, then click a page" />
                     </label>
                     <label>Font size
-                      <select value={placement.fontSize} onChange={(event) => update("fontSize", Number(event.target.value))}>
-                        {[12, 14, 16, 18, 20, 24, 28, 32, 40].map((size) => <option value={size} key={size}>{size}px</option>)}
+                      <select value={placement.fontSize} onChange={/* Runs when the user triggers change. */ (event) => update("fontSize", Number(event.target.value))}>
+                        {[12, 14, 16, 18, 20, 24, 28, 32, 40].map(/* Builds a value for each item in the collection. */ (size) => <option value={size} key={size}>{size}px</option>)}
                       </select>
                     </label>
                     <label>Font style
-                      <select value={placement.fontFamily} onChange={(event) => update("fontFamily", event.target.value as TextPlacement["fontFamily"])}>
-                        {fontFamilies.map((font) => <option value={font.value} key={font.value}>{font.label}</option>)}
+                      <select value={placement.fontFamily} onChange={/* Runs when the user triggers change. */ (event) => update("fontFamily", event.target.value as TextPlacement["fontFamily"])}>
+                        {fontFamilies.map(/* Builds a value for each item in the collection. */ (font) => <option value={font.value} key={font.value}>{font.label}</option>)}
                       </select>
                     </label>
                     <label>Weight
-                      <select value={placement.fontWeight} onChange={(event) => update("fontWeight", event.target.value as TextPlacement["fontWeight"])}>
-                        {weights.map((weight) => <option value={weight.value} key={weight.value}>{weight.label}</option>)}
+                      <select value={placement.fontWeight} onChange={/* Runs when the user triggers change. */ (event) => update("fontWeight", event.target.value as TextPlacement["fontWeight"])}>
+                        {weights.map(/* Builds a value for each item in the collection. */ (weight) => <option value={weight.value} key={weight.value}>{weight.label}</option>)}
                       </select>
                     </label>
-                    <div className="pdf-color-picker"><div className="pdf-color-options">{colors.map((color) => <button type="button" key={color} className={`pdf-color-swatch ${placement.color === color ? "selected" : ""}`} style={{ backgroundColor: color }} aria-label={`Choose ${color}`} aria-pressed={placement.color === color} onClick={() => update("color", color)} />)}</div></div>
+                    <div className="pdf-color-picker"><div className="pdf-color-options">{colors.map(/* Builds a value for each item in the collection. */ (color) => <button type="button" key={color} className={`pdf-color-swatch ${placement.color === color ? "selected" : ""}`} style={{ backgroundColor: color }} aria-label={`Choose ${color}`} aria-pressed={placement.color === color} onClick={/* Runs when the user triggers click. */ () => update("color", color)} />)}</div></div>
                   </div>
                   <p className="pdf-editor-hint">{placement.text.trim() ? "Click anywhere on a page to place your text." : "Type your text above, then click anywhere on a page."}</p>
                   <div className="pdf-page-carousel" aria-label="PDF page editor">
-                    <button type="button" className="pdf-page-arrow" aria-label="Previous PDF page" disabled={placement.pageIndex === 0} onClick={() => update("pageIndex", placement.pageIndex - 1)}>
+                    <button type="button" className="pdf-page-arrow" aria-label="Previous PDF page" disabled={placement.pageIndex === 0} onClick={/* Runs when the user triggers click. */ () => update("pageIndex", placement.pageIndex - 1)}>
                       <ChevronLeft size={24} aria-hidden="true" />
                     </button>
                     {selectedPage && (
                       <div className="pdf-page-viewport">
-                        <div className="pdf-page-canvas selected" style={{ transform: `scale(${zoom})` }} role="button" tabIndex={0} onClick={(event) => handlePageClick(event, placement.pageIndex, selectedPage)}>
+                        <div className="pdf-page-canvas selected" style={{ transform: `scale(${zoom})` }} role="button" tabIndex={0} onClick={/* Runs when the user triggers click. */ (event) => handlePageClick(event, placement.pageIndex, selectedPage)}>
                           <img src={selectedPage.image} alt={`PDF page ${placement.pageIndex + 1}`} />
                           {placement.text.trim() && <span className="pdf-live-text" style={{ ...previewStyle, fontSize: `${Math.max(10, placement.fontSize * 0.72)}px`, color: placement.color, fontFamily: ["Georgia", "TimesRoman"].includes(placement.fontFamily) ? "Georgia, serif" : placement.fontFamily === "Courier" ? "monospace" : "Arial, sans-serif", fontWeight: placement.fontWeight === "bold" ? 700 : placement.fontWeight === "medium" ? 500 : 400 }}>{placement.text}</span>}
                           <span className="pdf-page-label">Page {placement.pageIndex + 1} of {pages.length}</span>
                         </div>
                       </div>
                     )}
-                    <button type="button" className="pdf-page-arrow" aria-label="Next PDF page" disabled={placement.pageIndex === pages.length - 1} onClick={() => update("pageIndex", placement.pageIndex + 1)}>
+                    <button type="button" className="pdf-page-arrow" aria-label="Next PDF page" disabled={placement.pageIndex === pages.length - 1} onClick={/* Runs when the user triggers click. */ () => update("pageIndex", placement.pageIndex + 1)}>
                       <ChevronRight size={24} aria-hidden="true" />
                     </button>
                   </div>
                   <div className="pdf-zoom-controls" aria-label="Page zoom controls">
-                    <button type="button" onClick={() => setZoom((current) => Math.max(0.75, Number((current - 0.25).toFixed(2))))} disabled={zoom <= 0.75}>-</button>
+                    <button type="button" onClick={/* Runs when the user triggers click. */ () => setZoom(/* Runs when the user triggers click. */ (current) => Math.max(0.75, Number((current - 0.25).toFixed(2))))} disabled={zoom <= 0.75}>-</button>
                     <span>{Math.round(zoom * 100)}%</span>
-                    <button type="button" onClick={() => setZoom((current) => Math.min(2.5, Number((current + 0.25).toFixed(2))))} disabled={zoom >= 2.5}>+</button>
-                    <button type="button" className="pdf-zoom-reset" onClick={() => setZoom(1)} disabled={zoom === 1}>Reset</button>
+                    <button type="button" onClick={/* Runs when the user triggers click. */ () => setZoom(/* Runs when the user triggers click. */ (current) => Math.min(2.5, Number((current + 0.25).toFixed(2))))} disabled={zoom >= 2.5}>+</button>
+                    <button type="button" className="pdf-zoom-reset" onClick={/* Runs when the user triggers click. */ () => setZoom(1)} disabled={zoom === 1}>Reset</button>
                   </div>
                 </div>
               ) : null}
@@ -277,7 +279,7 @@ export default function AddTextPDF() {
       <PdfToolsFooter />
       <Footer />
       <AdSpace className="footer-bottom-ad-space" />
-      <DownloadPopup isOpen={popup} onClose={closePopup} onTriggerDownload={() => { if (pending) downloadAddTextPdf(pending, "text-added.pdf"); }} itemName="PDF with added text" />
+      <DownloadPopup isOpen={popup} onClose={closePopup} onTriggerDownload={/* Runs when the user triggers trigger download. */ () => { if (pending) downloadAddTextPdf(pending, "text-added.pdf"); }} itemName="PDF with added text" />
     </>
   );
 }

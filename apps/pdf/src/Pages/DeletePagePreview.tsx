@@ -1,6 +1,8 @@
+// Previews delete page pages.
 import { useEffect, useState } from "react";
 import * as pdfjsLib from "pdfjs-dist";
 
+// Renders the delete page preview interface.
 export default function DeletePagePreview({
   file,
   pageCount,
@@ -14,9 +16,9 @@ export default function DeletePagePreview({
 }) {
   const [pageImages, setPageImages] = useState<string[]>([]);
 
-  useEffect(() => {
+  useEffect(/* Runs side effects when its dependencies change. */ () => {
     let cancelled = false;
-    const renderPages = async () => {
+    const renderPages = /* Renders pages. */ async () => {
       const pdf = await pdfjsLib.getDocument({ data: await file.arrayBuffer() }).promise;
       const images: string[] = [];
       for (let pageNumber = 1; pageNumber <= pdf.numPages; pageNumber += 1) {
@@ -33,16 +35,16 @@ export default function DeletePagePreview({
       if (!cancelled) setPageImages(images);
     };
     void renderPages();
-    return () => {
+    return /* Runs side effects when its dependencies change. */ () => {
       cancelled = true;
     };
   }, [file]);
 
-  const togglePage = (pageNumber: number) => {
+  const togglePage = /* Toggles page. */ (pageNumber: number) => {
     onSelectedPagesChange(
       selectedPages.includes(pageNumber)
-        ? selectedPages.filter((page) => page !== pageNumber)
-        : [...selectedPages, pageNumber].sort((first, second) => first - second),
+        ? selectedPages.filter(/* Keeps items that match the condition. */ (page) => page !== pageNumber)
+        : [...selectedPages, pageNumber].sort(/* Compares items to determine their order. */ (first, second) => first - second),
     );
   };
 
@@ -63,7 +65,7 @@ export default function DeletePagePreview({
         </div>
       </div>
       <div className="split-pdf-page-grid">
-        {pageImages.map((image, index) => {
+        {pageImages.map(/* Builds a value for each item in the collection. */ (image, index) => {
           const pageNumber = index + 1;
           const isSelected = selectedPages.includes(pageNumber);
           return (
@@ -71,7 +73,7 @@ export default function DeletePagePreview({
               type="button"
               className={`split-pdf-page-thumbnail ${isSelected ? "selected" : ""}`}
               key={pageNumber}
-              onClick={() => togglePage(pageNumber)}
+              onClick={/* Runs when the user triggers click. */ () => togglePage(pageNumber)}
               aria-pressed={isSelected}
               aria-label={`${isSelected ? "Keep" : "Delete"} page ${pageNumber}`}
             >

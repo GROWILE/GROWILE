@@ -1,11 +1,14 @@
+// Converts PNG images to PDF files.
 import { PDFDocument } from "pdf-lib";
 
 const PAGE_MARGIN = 50;
 
+// Checks png file.
 function isPngFile(file: File) {
   return file.type.toLowerCase() === "image/png" || /\.png$/i.test(file.name);
 }
 
+// Converts png files to pdf.
 export async function convertPngFilesToPdf(files: File[]): Promise<Uint8Array> {
   if (files.length === 0) {
     throw new Error("Select at least one PNG image before converting.");
@@ -18,9 +21,9 @@ export async function convertPngFilesToPdf(files: File[]): Promise<Uint8Array> {
   }
 
   const pdf = await PDFDocument.create();
-  const imageBytes = await Promise.all(files.map((file) => file.arrayBuffer()));
+  const imageBytes = await Promise.all(files.map(/* Builds a value for each item in the collection. */ (file) => file.arrayBuffer()));
   const images = await Promise.all(
-    imageBytes.map((bytes) => pdf.embedPng(bytes)),
+    imageBytes.map(/* Builds a value for each item in the collection. */ (bytes) => pdf.embedPng(bytes)),
   );
 
   for (const image of images) {
@@ -41,6 +44,7 @@ export async function convertPngFilesToPdf(files: File[]): Promise<Uint8Array> {
   return pdf.save();
 }
 
+// Downloads png pdf.
 export function downloadPngPdf(bytes: Uint8Array, fileName: string) {
   const pdfBuffer = new ArrayBuffer(bytes.byteLength);
   new Uint8Array(pdfBuffer).set(bytes);

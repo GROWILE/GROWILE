@@ -1,3 +1,4 @@
+// Renders the pdf breadcrumb PDF tool page.
 import Breadcrumb from "../../../../packages/ui/src/Breadcrumb";
 import BreadcrumbSchema from "../../../../packages/ui/src/BreadcrumbSchema";
 
@@ -6,6 +7,7 @@ type PdfBreadcrumbProps = {
   path?: string;
 };
 
+// Renders the pdf breadcrumb interface.
 export default function PdfBreadcrumb({ label, path }: PdfBreadcrumbProps) {
   const currentPath = path ? `/pdf/${path}` : "/pdf";
   const siteUrl = "https://growile.com";

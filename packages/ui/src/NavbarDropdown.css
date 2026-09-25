@@ -1,19 +1,25 @@
+/* Styles the navbar dropdown for visual appearance. */
+/* Styles the navbar dropdown component. */
 .navbar-dropdown {
   position: relative;
 }
 
+/* Styles the navbar dropdown trigger for text appearance and alignment. */
 .navbar-dropdown-trigger {
   font-family: 'Manrope', sans-serif;
 }
 
+/* Styles the navbar arrow for animation and transitions. */
 .navbar-arrow {
   transition: transform 0.2s ease;
 }
 
+/* Styles the navbar arrow for animation and transitions. */
 .navbar-arrow.open {
   transform: rotate(180deg);
 }
 
+/* Styles the navbar dropdown menu for positioning and stacking. */
 .navbar-dropdown-menu {
   position: absolute;
   top: 100%;
@@ -26,6 +32,7 @@
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
 }
 
+/* Styles the navbar dropdown menu wide for grid layout and alignment. */
 .navbar-dropdown-menu-wide {
   display: grid;
   grid-template-columns: repeat(5, minmax(145px, 1fr));
@@ -34,11 +41,13 @@
   gap: 2px 8px;
 }
 
+/* Styles the navbar dropdown group for spacing and layout. */
 .navbar-dropdown-group {
   min-width: 0;
   padding: 4px;
 }
 
+/* Styles the navbar dropdown group title for flex layout and alignment. */
 .navbar-dropdown-group-title {
   display: flex;
   align-items: center;
@@ -51,21 +60,25 @@
   text-transform: uppercase;
 }
 
+/* Styles the navbar dropdown group title for colors and background. */
 .navbar-dropdown-group-title svg,
 .navbar-dropdown-item svg {
   flex: 0 0 auto;
   color: var(--color-accent);
 }
 
+/* Styles the navbar dropdown menu wide for spacing and layout. */
 .navbar-dropdown-menu-wide .navbar-dropdown-item {
   padding: 10px 12px;
 }
 
+/* Styles the navbar dropdown for visual appearance. */
 .navbar-dropdown:last-child .navbar-dropdown-menu {
   left: auto;
   right: 0;
 }
 
+/* Styles the navbar dropdown item for flex layout and alignment. */
 .navbar-dropdown-item {
   display: flex;
   align-items: center;
@@ -76,6 +89,7 @@
   font-size: 15px;
 }
 
+/* Styles the navbar dropdown item for spacing and layout. */
 .navbar-dropdown-item .product-document-label {
   align-items: center;
   background: color-mix(in srgb, var(--color-text-highlight) 10%, var(--color-secondary));
@@ -92,6 +106,7 @@
   text-transform: uppercase;
 }
 
+/* Styles the navbar dropdown item for element sizing. */
 .navbar-dropdown-item .product-icon {
   flex: 0 0 auto;
   height: 24px;
@@ -99,30 +114,37 @@
   width: 24px;
 }
 
+/* Styles the navbar dropdown item hover state for colors and background. */
 .navbar-dropdown-item:hover {
   color: var(--color-secondary);
   background: var(--color-text-highlight);
 }
 
+/* Styles the navbar dropdown item hover state for colors and background. */
 .navbar-dropdown-item:hover .product-document-label {
   background: rgba(255, 255, 255, 0.18);
   color: var(--color-secondary);
 }
 
+/* Styles the navbar dropdown item hover state for visual appearance. */
 .navbar-dropdown-item:hover .product-icon {
   stroke: var(--color-secondary);
 }
 
+/* Applies nested styles at (max-width: 600px). */
 @media (max-width: 600px) {
+  /* Styles the navbar dropdown for element sizing. */
   .navbar-dropdown {
     width: 100%;
   }
 
+  /* Styles the navbar dropdown trigger for element sizing. */
   .navbar-dropdown-trigger {
     width: 100%;
     justify-content: center;
   }
 
+  /* Styles the navbar dropdown menu for spacing and layout. */
   .navbar-dropdown-menu {
     position: static;
     left: auto;
@@ -131,12 +153,14 @@
     width: min(100%, 240px);
   }
 
+  /* Styles the navbar dropdown menu wide for spacing and layout. */
   .navbar-dropdown-menu-wide {
     display: block;
     width: min(100%, 300px);
     padding: 0;
   }
 
+  /* Styles the navbar dropdown group for spacing and layout. */
   .navbar-dropdown-group {
     padding: 4px 0;
   }

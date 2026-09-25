@@ -1,3 +1,5 @@
+/* Styles the split pdf range controls for flex layout and alignment. */
+/* Styles the split pdf page. */
 .split-pdf-range-controls {
   display: flex;
   align-items: end;
@@ -10,9 +12,11 @@
   background: var(--color-secondary);
 }
 
+/* Styles the split pdf main column for element sizing. */
 .split-pdf-main-column {
   min-width: 0;
 }
+/* Styles the split pdf range controls for spacing and layout. */
 .split-pdf-range-controls p {
   flex: 1;
   margin: 0;
@@ -21,6 +25,7 @@
   text-align: center;
 }
 
+/* Styles the split pdf range controls for grid layout and alignment. */
 .split-pdf-range-controls label {
   display: grid;
   gap: 6px;
@@ -29,6 +34,7 @@
   font-weight: 700;
 }
 
+/* Styles the split pdf range controls for spacing and layout. */
 .split-pdf-range-controls input {
   width: 90px;
   padding: 9px 10px;
@@ -37,6 +43,7 @@
   font: inherit;
 }
 
+/* Styles the split pdf results for grid layout and alignment. */
 .split-pdf-results {
   display: grid;
   gap: 12px;
@@ -45,6 +52,7 @@
   scroll-margin-top: 96px;
 }
 
+/* Styles the split pdf result card for flex layout and alignment. */
 .split-pdf-result-card {
   display: flex;
   align-items: center;
@@ -56,16 +64,19 @@
   background: var(--color-secondary);
 }
 
+/* Styles the split pdf result card for grid layout and alignment. */
 .split-pdf-result-card div {
   display: grid;
   gap: 5px;
 }
 
+/* Styles the split pdf result card for text appearance and alignment. */
 .split-pdf-result-card span {
   color: color-mix(in srgb, var(--color-primary) 60%, transparent);
   font-size: 13px;
 }
 
+/* Styles the split pdf result card for spacing and layout. */
 .split-pdf-result-card button {
   padding: 10px 18px;
   border: 0;

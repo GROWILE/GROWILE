@@ -1,3 +1,4 @@
+// Renders the web app home page.
 import Divider from '../../../../packages/ui/src/Divider'
 import FAQ from '../../../../packages/ui/src/FAQ'
 import Footer from '../../../../packages/ui/src/Footer'
@@ -23,7 +24,7 @@ const mainFaqs = [
   const mainFaqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    "mainEntity": mainFaqs.map(faq => ({
+    "mainEntity": mainFaqs.map(/* Builds a value for each item in the collection. */ faq => ({
       "@type": "Question",
       "name": faq.question,
       "acceptedAnswer": {
@@ -33,6 +34,7 @@ const mainFaqs = [
     }))
   };
 
+// Renders the home interface.
 function Home() {
 
   return (
@@ -52,7 +54,7 @@ function Home() {
         faqs={mainFaqs}
       />
 
-      {/* Google-kku Schema Script */}
+      {/* Google Schema Script */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(mainFaqSchema) }}

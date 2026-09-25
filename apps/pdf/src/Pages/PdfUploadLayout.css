@@ -1,13 +1,17 @@
+/* Styles the jpg to pdf page for colors and background. */
+/* Styles the pdf upload layout page. */
 .jpg-to-pdf-page {
   background: color-mix(in srgb, var(--color-accent) 3%, var(--color-secondary));
 }
 
+/* Styles the jpg to pdf upload section for spacing and layout. */
 .jpg-to-pdf-upload-section {
   max-width: 1300px;
   margin: 0 auto;
   padding: 40px 24px 20px;
 }
 
+/* Styles the jpg to pdf upload layout for grid layout and alignment. */
 .jpg-to-pdf-upload-layout {
   display: grid;
   grid-template-columns: minmax(0, 1fr) 220px;
@@ -15,10 +19,12 @@
   align-items: stretch;
 }
 
+/* Styles the jpg to pdf upload box for element sizing. */
 .jpg-to-pdf-upload-box {
   width: 100%;
 }
 
+/* Styles the jpg to pdf status for spacing and layout. */
 .jpg-to-pdf-status {
   margin: 16px 0 0;
   color: var(--color-primary);
@@ -26,6 +32,7 @@
   text-align: center;
 }
 
+/* Styles the jpg to pdf error for spacing and layout. */
 .jpg-to-pdf-error {
   margin: 16px 0 0;
   color: var(--color-accent);
@@ -34,55 +41,68 @@
   text-align: center;
 }
 
+/* Styles the pdf related tools for spacing and layout. */
 .pdf-related-tools {
   max-width: 1300px;
   margin: 0 auto;
   padding: 32px 24px 40px;
 }
 
+/* Styles the pdf related tools for spacing and layout. */
 .pdf-related-tools h2 {
   margin: 0 0 20px;
   color: var(--color-primary);
   font-size: 28px;
 }
 
+/* Styles the pdf related tools grid for grid layout and alignment. */
 .pdf-related-tools-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 18px;
 }
 
+/* Styles the pdf related tools grid four for visual appearance. */
 .pdf-related-tools-grid-four {
   grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
+/* Styles the pdf related tools grid five for visual appearance. */
 .pdf-related-tools-grid-five {
   grid-template-columns: repeat(5, minmax(0, 1fr));
 }
 
+/* Applies nested styles at (max-width: 900px). */
 @media (max-width: 900px) {
+  /* Styles the jpg to pdf upload layout for visual appearance. */
   .jpg-to-pdf-upload-layout {
     grid-template-columns: 1fr;
   }
 
+  /* Styles the jpg to pdf upload layout for visual appearance. */
   .jpg-to-pdf-upload-layout .ad-space-vertical {
     display: none;
   }
 
+  /* Styles the pdf related tools grid for visual appearance. */
   .pdf-related-tools-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
+/* Applies nested styles at (max-width: 600px). */
 @media (max-width: 600px) {
+  /* Styles the jpg to pdf upload section for spacing and layout. */
   .jpg-to-pdf-upload-section {
     padding: 24px 16px 12px;
   }
 
+  /* Styles the pdf related tools for spacing and layout. */
   .pdf-related-tools {
     padding: 24px 16px 32px;
   }
 
+  /* Styles the pdf related tools grid for visual appearance. */
   .pdf-related-tools-grid {
     grid-template-columns: 1fr;
   }

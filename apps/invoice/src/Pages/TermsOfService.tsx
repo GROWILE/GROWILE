@@ -1,8 +1,10 @@
+// Renders the terms of service page for the invoice app.
 import TermsLayout from "../../../../packages/ui/src/TermsLayout";
 import Divider from "../../../../packages/ui/src/Divider";
 import invoiceLogo from "../../../../packages/ui/assets/growile-InvoiceGenerator-logo.svg";
 import "./TermsOfService.css";
 
+// Renders the terms and conditions interface.
 export default function TermsAndConditions() {
   const isEmbeddedInvoice = window.location.pathname.startsWith("/invoice");
   const invoiceBaseHref = isEmbeddedInvoice ? "/invoice" : "";
@@ -33,6 +35,7 @@ export default function TermsAndConditions() {
         ],
       }}
       footerTermsHref={termsHref}
+      reserveBottomAdSpace={false}
     >
       <section className="about-section">
         <p className="about-text">

@@ -1,3 +1,4 @@
+// Renders the current page breadcrumb trail.
 import "./Breadcrumb.css";
 
 export type BreadcrumbLink = {
@@ -9,11 +10,12 @@ export type BreadcrumbProps = {
   items: BreadcrumbLink[];
 };
 
+// Renders the breadcrumb interface.
 export default function Breadcrumb({ items }: BreadcrumbProps) {
   return (
     <nav className="breadcrumb" aria-label="Breadcrumb">
       <ol className="breadcrumb-list">
-        {items.map((item: BreadcrumbLink, index: number) => {
+        {items.map(/* Builds a value for each item in the collection. */ (item: BreadcrumbLink, index: number) => {
           const isLast = index === items.length - 1;
           return (
             <li className="breadcrumb-item" key={item.href}>

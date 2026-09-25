@@ -1,3 +1,4 @@
+// Renders a linked tool card with an optional description and theme.
 import type { ReactNode } from "react";
 import "./toolCard.css";
 
@@ -9,6 +10,7 @@ export type ToolCardProps = {
   colorTheme?: "blue" | "orange" | "green" | "purple" | "teal" | "default";
 };
 
+// Renders the tool card interface.
 export default function ToolCard({
   title,
   href,
@@ -16,7 +18,7 @@ export default function ToolCard({
   icon,
   colorTheme = "default",
 }: ToolCardProps) {
-  // variant-detailed class-a inga fix panniyachu
+  // Uses the detailed card layout and selected color theme.
   const cardClass = `growile-toolcard variant-detailed theme-${colorTheme}`;
 
   return (
@@ -28,7 +30,7 @@ export default function ToolCard({
       <div className="growile-toolcard-content">
         <h3 className="growile-toolcard-title">{title}</h3>
         
-        {/* variant check thevaiyilla, description irunthaale render aagum */}
+        {/* Shows the description only when one is provided. */}
         {description && (
           <p className="growile-toolcard-desc">{description}</p>
         )}

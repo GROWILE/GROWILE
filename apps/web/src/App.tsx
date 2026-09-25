@@ -1,16 +1,17 @@
-// File: apps/web/src/App.tsx
+// Defines the main routes for the web app.
 import { lazy } from "react";
 import { Routes, Route } from "react-router-dom";
 
-const Home = lazy(() => import("./Pages/Home"));
-const About = lazy(() => import("./Pages/About"));
-const TermsOfService = lazy(() => import("./Pages/TermsOfService"));
-const PrivacyPolicyPage = lazy(() => import("./Pages/PrivacyPolicyPage"));
-const ProductsList = lazy(() => import("./Pages/ProductsList"));
+const Home = lazy(/* Handles home work. */ () => import("./Pages/Home"));
+const About = lazy(/* Handles about work. */ () => import("./Pages/About"));
+const TermsOfService = lazy(/* Handles terms of service work. */ () => import("./Pages/TermsOfService"));
+const PrivacyPolicyPage = lazy(/* Handles privacy policy page work. */ () => import("./Pages/PrivacyPolicyPage"));
+const ProductsList = lazy(/* Handles products list work. */ () => import("./Pages/ProductsList"));
 import RouteMetadata from "./Components/RouteMetadata";
 import ScrollToTop from "./Components/ScrollToTop";
 import NotFound from "./Pages/NotFound";
 
+// Renders the app interface.
 function App() {
   return (
     <>

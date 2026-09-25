@@ -1,3 +1,4 @@
+// Defines the product cards shown on the web app.
 import type { Product } from "../../../../packages/ui/src/ProductCard";
 import type { ProductItem } from "../../../../packages/ui/src/ProductsPage";
 
@@ -20,7 +21,7 @@ export const webProductCards: Product[] = [
   },
 ];
 
-export const webProductList: ProductItem[] = webProductCards.map((product) => ({
+export const webProductList: ProductItem[] = webProductCards.map(/* Builds a value for each item in the collection. */ (product) => ({
   id: product.id ?? product.title.toLowerCase().replace(/\s+/g, "-"),
   suiteLabel: "GROWILE SUITE",
   title: product.title,

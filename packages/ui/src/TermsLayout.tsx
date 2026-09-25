@@ -1,3 +1,4 @@
+// Renders the shared terms page layout around page-specific content.
 import type { ReactNode } from "react";
 import Divider from "./Divider";
 import Footer from "./Footer";
@@ -17,7 +18,7 @@ export type TermsLayoutProps = {
   heroTitle: string;
   lastUpdated?: string;
   
-  // Ithu thaan error-a fix panra antha magic prop!
+  // Allows page-specific content inside the shared terms layout.
   children: ReactNode; 
   
   logoAlt: string;
@@ -35,8 +36,10 @@ export type TermsLayoutProps = {
   footerInvoiceHref?: string;
   footerTermsHref?: string;
   footerPrivacyHref?: string;
+  reserveBottomAdSpace?: boolean;
 };
 
+// Renders the terms layout interface.
 export default function TermsLayout({
   pageTitle,
   pageDescription,
@@ -52,6 +55,7 @@ export default function TermsLayout({
   footerInvoiceHref = "/invoice",
   footerTermsHref = "/terms-of-service",
   footerPrivacyHref = "/privacy-policy",
+  reserveBottomAdSpace = true,
 }: TermsLayoutProps) {
   
   return (
@@ -91,7 +95,7 @@ export default function TermsLayout({
 
       <Divider />
 
-      {/* --- INGA THAAN UNGA PRODUCT SPECIFIC TERMS TEXT VARUM --- */}
+      {/* Page-specific terms content is inserted here. */}
       <div className="terms-content">
         {children}
       </div>
@@ -100,6 +104,7 @@ export default function TermsLayout({
         invoiceHref={footerInvoiceHref}
         termsHref={footerTermsHref}
         privacyHref={footerPrivacyHref}
+        reserveBottomAdSpace={reserveBottomAdSpace}
       />
     </>
   );

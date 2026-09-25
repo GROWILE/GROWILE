@@ -1,3 +1,4 @@
+// Renders the add image pdf PDF tool page.
 import { useCallback, useState } from "react";
 import { ChevronLeft, ChevronRight, FileImage, RotateCw, Trash2 } from "lucide-react";
 import * as pdfjsLib from "pdfjs-dist";
@@ -48,6 +49,7 @@ const faqs = [
 
 const initialPlacement: ImagePlacement = { pageIndex: 0, x: 50, y: 50, width: 180, height: 120, rotation: 0 };
 
+// Renders the add image pdf interface.
 export default function AddImagePDF() {
   const [pdfFile, setPdfFile] = useState<File | null>(null);
   const [imageFiles, setImageFiles] = useState<File[]>([]);
@@ -64,11 +66,11 @@ export default function AddImagePDF() {
   const [popup, setPopup] = useState(false);
 
   const placement = placements[activeImage] ?? initialPlacement;
-  const update = <K extends keyof ImagePlacement>(key: K, value: ImagePlacement[K]) => {
-    setPlacements((current) => current.map((item, index) => index === activeImage ? { ...item, [key]: value } : item));
+  const update = /* Updates. */ <K extends keyof ImagePlacement>(key: K, value: ImagePlacement[K]) => {
+    setPlacements(/* Updates. */ (current) => current.map(/* Builds a value for each item in the collection. */ (item, index) => index === activeImage ? { ...item, [key]: value } : item));
   };
 
-  const handlePdfSelection = async (files: File[]) => {
+  const handlePdfSelection = /* Handles pdf selection work. */ async (files: File[]) => {
     const selected = files[0] ?? null;
     setPdfFile(selected);
     setPages([]);
@@ -98,16 +100,16 @@ export default function AddImagePDF() {
     }
   };
 
-  const handleImageSelection = async (files: File[]) => {
+  const handleImageSelection = /* Handles image selection work. */ async (files: File[]) => {
     const exceededLimit = imageFiles.length + files.length > 10;
     const selected = files.slice(0, 10 - imageFiles.length);
     const startIndex = imageFiles.length;
     if (selected.length === 0) return;
-    setImageFiles((current) => [...current, ...selected]);
-    setImagePreviews((current) => [...current, ...selected.map((file) => URL.createObjectURL(file))]);
-    setPlacements((current) => [
+    setImageFiles(/* Handles image selection work. */ (current) => [...current, ...selected]);
+    setImagePreviews(/* Handles image selection work. */ (current) => [...current, ...selected.map(/* Builds a value for each item in the collection. */ (file) => URL.createObjectURL(file))]);
+    setPlacements(/* Handles image selection work. */ (current) => [
       ...current,
-      ...selected.map((_, index) => ({
+      ...selected.map(/* Builds a value for each item in the collection. */ (_, index) => ({
         ...initialPlacement,
         pageIndex: currentPage,
         x: initialPlacement.x + (startIndex + index) * 12,
@@ -118,14 +120,14 @@ export default function AddImagePDF() {
     setError(exceededLimit ? "You can upload up to 10 images." : "");
   };
 
-  const handleOverlayPointerDown = (event: React.PointerEvent<HTMLElement>, mode: DragState["mode"]) => {
+  const handleOverlayPointerDown = /* Handles overlay pointer down work. */ (event: React.PointerEvent<HTMLElement>, mode: DragState["mode"]) => {
     event.preventDefault();
     event.stopPropagation();
     event.currentTarget.setPointerCapture(event.pointerId);
     setDrag({ mode, startX: event.clientX, startY: event.clientY, placement });
   };
 
-  const handleOverlayPointerMove = (event: React.PointerEvent<HTMLElement>) => {
+  const handleOverlayPointerMove = /* Handles overlay pointer move work. */ (event: React.PointerEvent<HTMLElement>) => {
     if (!drag || !selectedPage) return;
     event.preventDefault();
     event.stopPropagation();
@@ -145,14 +147,14 @@ export default function AddImagePDF() {
     }
   };
 
-  const stopDragging = (event: React.PointerEvent<HTMLElement>) => {
+  const stopDragging = /* Handles stop dragging work. */ (event: React.PointerEvent<HTMLElement>) => {
     event.preventDefault();
     event.stopPropagation();
     if (event.currentTarget.hasPointerCapture(event.pointerId)) event.currentTarget.releasePointerCapture(event.pointerId);
     setDrag(null);
   };
 
-  const handlePageClick = (event: React.MouseEvent<HTMLDivElement>) => {
+  const handlePageClick = /* Handles page click work. */ (event: React.MouseEvent<HTMLDivElement>) => {
     if (imageFiles.length === 0 || drag || !selectedPage || placement.pageIndex !== currentPage) return;
     const bounds = event.currentTarget.getBoundingClientRect();
     const x = ((event.clientX - bounds.left) / bounds.width) * selectedPage.width - placement.width / 2;
@@ -161,7 +163,7 @@ export default function AddImagePDF() {
     update("y", Math.max(0, Math.min(selectedPage.height - placement.height, selectedPage.height - yFromTop - placement.height / 2)));
   };
 
-  const handleAction = async (selected: File) => {
+  const handleAction = /* Handles action work. */ async (selected: File) => {
     if (imageFiles.length === 0) {
       setError("Upload at least one image before adding it.");
       return;
@@ -181,7 +183,7 @@ export default function AddImagePDF() {
     }
   };
 
-  const closePopup = useCallback(() => {
+  const closePopup = useCallback(/* Creates a callback that stays stable until its dependencies change. */ () => {
     setPopup(false);
     setPending(null);
   }, []);
@@ -212,25 +214,25 @@ export default function AddImagePDF() {
                 <div className="pdf-edit-content pdf-image-edit-content">
                   <label className="pdf-edit-file-input pdf-image-upload-control">
                     <span className="pdf-image-upload-label">Image overlay</span>
-                    <input type="file" accept="image/png,image/jpeg,image/webp,.png,.jpg,.jpeg,.webp" onChange={(event) => { void handleImageSelection(Array.from(event.target.files ?? [])); }} />
+                    <input type="file" accept="image/png,image/jpeg,image/webp,.png,.jpg,.jpeg,.webp" onChange={/* Runs when the user triggers change. */ (event) => { void handleImageSelection(Array.from(event.target.files ?? [])); }} />
                     <span className="pdf-image-file-name">{imageFiles.length ? `${imageFiles.length} image${imageFiles.length === 1 ? "" : "s"} selected` : "Choose up to 10 JPG, PNG, or WebP images"}</span>
                   </label>
                   <div className="pdf-image-toolbar" aria-label="Image overlay controls">
-                    <button type="button" onClick={() => update("rotation", (placement.rotation + 90) % 360)} disabled={!imageFiles.length}><RotateCw size={16} /> Rotate</button>
-                    <button type="button" onClick={() => { setImageFiles((current) => current.filter((_, index) => index !== activeImage)); setImagePreviews((current) => current.filter((_, index) => index !== activeImage)); setPlacements((current) => current.filter((_, index) => index !== activeImage)); setActiveImage((current) => Math.max(0, current - 1)); }} disabled={!imageFiles.length}><Trash2 size={16} /> Delete</button>
-                    <label>Width <input type="number" min="24" value={Math.round(placement.width)} onChange={(event) => update("width", Number(event.target.value))} /></label>
-                    <label>Height <input type="number" min="24" value={Math.round(placement.height)} onChange={(event) => update("height", Number(event.target.value))} /></label>
+                    <button type="button" onClick={/* Runs when the user triggers click. */ () => update("rotation", (placement.rotation + 90) % 360)} disabled={!imageFiles.length}><RotateCw size={16} /> Rotate</button>
+                    <button type="button" onClick={/* Runs when the user triggers click. */ () => { setImageFiles(/* Runs when the user triggers click. */ (current) => current.filter(/* Keeps items that match the condition. */ (_, index) => index !== activeImage)); setImagePreviews(/* Runs when the user triggers click. */ (current) => current.filter(/* Keeps items that match the condition. */ (_, index) => index !== activeImage)); setPlacements(/* Runs when the user triggers click. */ (current) => current.filter(/* Keeps items that match the condition. */ (_, index) => index !== activeImage)); setActiveImage(/* Runs when the user triggers click. */ (current) => Math.max(0, current - 1)); }} disabled={!imageFiles.length}><Trash2 size={16} /> Delete</button>
+                    <label>Width <input type="number" min="24" value={Math.round(placement.width)} onChange={/* Runs when the user triggers change. */ (event) => update("width", Number(event.target.value))} /></label>
+                    <label>Height <input type="number" min="24" value={Math.round(placement.height)} onChange={/* Runs when the user triggers change. */ (event) => update("height", Number(event.target.value))} /></label>
                   </div>
-                  <div className="pdf-image-tabs">{imageFiles.map((file, index) => <button type="button" className={activeImage === index ? "active" : ""} key={`${file.name}-${index}`} onClick={() => setActiveImage(index)}>Image {index + 1}</button>)}</div>
+                  <div className="pdf-image-tabs">{imageFiles.map(/* Builds a value for each item in the collection. */ (file, index) => <button type="button" className={activeImage === index ? "active" : ""} key={`${file.name}-${index}`} onClick={/* Runs when the user triggers click. */ () => setActiveImage(index)}>Image {index + 1}</button>)}</div>
                   <p className="pdf-editor-hint">{imageFiles.length ? "Select an image, then drag it to move it or use the corner handle to resize." : "Upload images to show them as overlays on the page."}</p>
                   <div className="pdf-page-carousel" aria-label="PDF page editor">
-                    <button type="button" className="pdf-page-arrow" aria-label="Previous PDF page" disabled={currentPage === 0} onClick={() => setCurrentPage((page) => page - 1)}><ChevronLeft size={24} /></button>
+                    <button type="button" className="pdf-page-arrow" aria-label="Previous PDF page" disabled={currentPage === 0} onClick={/* Runs when the user triggers click. */ () => setCurrentPage(/* Runs when the user triggers click. */ (page) => page - 1)}><ChevronLeft size={24} /></button>
                     {selectedPage && <div className="pdf-page-viewport"><div className="pdf-page-canvas selected" onClick={handlePageClick}>
                       <img src={selectedPage.image} alt={`PDF page ${currentPage + 1}`} />
-                      {imageFiles.map((file, index) => { const item = placements[index]; const preview = imagePreviews[index]; if (!item || !preview || item.pageIndex !== currentPage) return null; const style = { left: `${(item.x / selectedPage.width) * 100}%`, bottom: `${(item.y / selectedPage.height) * 100}%`, width: `${(item.width / selectedPage.width) * 100}%`, height: `${(item.height / selectedPage.height) * 100}%`, transform: `rotate(${item.rotation}deg)` }; return <div className={`pdf-image-overlay ${activeImage === index ? "active" : ""}`} style={style} key={`${file.name}-${index}`} onClick={(event) => { event.stopPropagation(); setActiveImage(index); }} onDoubleClick={(event) => event.preventDefault()} onPointerDown={(event) => { setActiveImage(index); handleOverlayPointerDown(event, "move"); }} onPointerMove={activeImage === index ? handleOverlayPointerMove : undefined} onPointerUp={stopDragging} onPointerCancel={stopDragging}><img src={preview} alt={`Image overlay ${index + 1}`} />{activeImage === index && <><button type="button" className="pdf-image-delete" aria-label="Delete image overlay" onPointerDown={(event) => event.stopPropagation()} onClick={() => { setImageFiles((current) => current.filter((_, currentIndex) => currentIndex !== index)); setImagePreviews((current) => current.filter((_, currentIndex) => currentIndex !== index)); setPlacements((current) => current.filter((_, currentIndex) => currentIndex !== index)); setActiveImage(0); }}><Trash2 size={13} /></button><span className="pdf-image-resize" aria-label="Resize image" onPointerDown={(event) => { setActiveImage(index); handleOverlayPointerDown(event, "resize"); }} /></>}</div>; })}
+                      {imageFiles.map(/* Builds a value for each item in the collection. */ (file, index) => { const item = placements[index]; const preview = imagePreviews[index]; if (!item || !preview || item.pageIndex !== currentPage) return null; const style = { left: `${(item.x / selectedPage.width) * 100}%`, bottom: `${(item.y / selectedPage.height) * 100}%`, width: `${(item.width / selectedPage.width) * 100}%`, height: `${(item.height / selectedPage.height) * 100}%`, transform: `rotate(${item.rotation}deg)` }; return <div className={`pdf-image-overlay ${activeImage === index ? "active" : ""}`} style={style} key={`${file.name}-${index}`} onClick={/* Runs when the user triggers click. */ (event) => { event.stopPropagation(); setActiveImage(index); }} onDoubleClick={/* Runs when the user triggers double click. */ (event) => event.preventDefault()} onPointerDown={/* Runs when the user triggers pointer down. */ (event) => { setActiveImage(index); handleOverlayPointerDown(event, "move"); }} onPointerMove={activeImage === index ? handleOverlayPointerMove : undefined} onPointerUp={stopDragging} onPointerCancel={stopDragging}><img src={preview} alt={`Image overlay ${index + 1}`} />{activeImage === index && <><button type="button" className="pdf-image-delete" aria-label="Delete image overlay" onPointerDown={/* Runs when the user triggers pointer down. */ (event) => event.stopPropagation()} onClick={/* Runs when the user triggers click. */ () => { setImageFiles(/* Runs when the user triggers click. */ (current) => current.filter(/* Keeps items that match the condition. */ (_, currentIndex) => currentIndex !== index)); setImagePreviews(/* Runs when the user triggers click. */ (current) => current.filter(/* Keeps items that match the condition. */ (_, currentIndex) => currentIndex !== index)); setPlacements(/* Runs when the user triggers click. */ (current) => current.filter(/* Keeps items that match the condition. */ (_, currentIndex) => currentIndex !== index)); setActiveImage(0); }}><Trash2 size={13} /></button><span className="pdf-image-resize" aria-label="Resize image" onPointerDown={/* Runs when the user triggers pointer down. */ (event) => { setActiveImage(index); handleOverlayPointerDown(event, "resize"); }} /></>}</div>; })}
                       <span className="pdf-page-label">Page {currentPage + 1} of {pages.length}</span>
                     </div></div>}
-                    <button type="button" className="pdf-page-arrow" aria-label="Next PDF page" disabled={currentPage === pages.length - 1} onClick={() => setCurrentPage((page) => page + 1)}><ChevronRight size={24} /></button>
+                    <button type="button" className="pdf-page-arrow" aria-label="Next PDF page" disabled={currentPage === pages.length - 1} onClick={/* Runs when the user triggers click. */ () => setCurrentPage(/* Runs when the user triggers click. */ (page) => page + 1)}><ChevronRight size={24} /></button>
                   </div>
                 </div>
               ) : null}
@@ -260,7 +262,7 @@ export default function AddImagePDF() {
       </main>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ "@context": "https://schema.org", "@type": "FAQPage", mainEntity: faqs.map((faq) => ({ "@type": "Question", name: faq.question, acceptedAnswer: { "@type": "Answer", text: typeof faq.answer === "string" ? faq.answer : "Use the linked PDF tool for this document task." } })) }) }} />
       <PdfToolsFooter /><Footer /><AdSpace className="footer-bottom-ad-space" />
-      <DownloadPopup isOpen={popup} onClose={closePopup} onTriggerDownload={() => { if (pending) downloadAddImagePdf(pending, "image-added.pdf"); }} itemName="PDF with image overlay" />
+      <DownloadPopup isOpen={popup} onClose={closePopup} onTriggerDownload={/* Runs when the user triggers trigger download. */ () => { if (pending) downloadAddImagePdf(pending, "image-added.pdf"); }} itemName="PDF with image overlay" />
     </>
   );
 }

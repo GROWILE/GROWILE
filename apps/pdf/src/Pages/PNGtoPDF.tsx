@@ -1,3 +1,4 @@
+// Renders the pngto pdf PDF tool page.
 import { useCallback, useState } from "react";
 import { FileImage } from "lucide-react";
 import AdSpace from "../../../../packages/ui/src/AdSpace";
@@ -60,7 +61,7 @@ const faqs = [
 const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  mainEntity: faqs.map((faq) => ({
+  mainEntity: faqs.map(/* Builds a value for each item in the collection. */ (faq) => ({
     "@type": "Question",
     name: faq.question,
     acceptedAnswer: { "@type": "Answer", text: faq.answer },
@@ -71,13 +72,14 @@ const contentSchema = {
   "@context": "https://schema.org",
   "@type": "WebPage",
   name: "PNG to PDF Converter",
-  hasPart: seoBlocks.map((block) => ({
+  hasPart: seoBlocks.map(/* Builds a value for each item in the collection. */ (block) => ({
     "@type": "WebPageElement",
     name: block.heading,
     text: block.description,
   })),
 };
 
+// Renders the pngto pdf interface.
 export default function PNGtoPDF() {
   const [conversionMessage, setConversionMessage] = useState("");
   const [conversionError, setConversionError] = useState("");
@@ -85,18 +87,18 @@ export default function PNGtoPDF() {
   const [isDownloadPopupOpen, setIsDownloadPopupOpen] = useState(false);
   const [pendingPdf, setPendingPdf] = useState<Uint8Array | null>(null);
 
-  const triggerDownload = useCallback(() => {
+  const triggerDownload = useCallback(/* Creates a callback that stays stable until its dependencies change. */ () => {
     if (pendingPdf) {
       downloadPngPdf(pendingPdf, "png-to-pdf.pdf");
     }
   }, [pendingPdf]);
 
-  const closeDownloadPopup = useCallback(() => {
+  const closeDownloadPopup = useCallback(/* Creates a callback that stays stable until its dependencies change. */ () => {
     setIsDownloadPopupOpen(false);
     setPendingPdf(null);
   }, []);
 
-  const handleAction = async (files: File[]) => {
+  const handleAction = /* Handles action work. */ async (files: File[]) => {
     setIsConverting(true);
     setConversionMessage("");
     setConversionError("");
@@ -143,7 +145,7 @@ export default function PNGtoPDF() {
               actionLabel={isConverting ? "Converting..." : "Convert to PDF"}
               actionDisabled={isConverting}
               accept=".png,image/png"
-              onAction={(file) => handleAction([file])}
+              onAction={/* Runs when the user triggers action. */ (file) => handleAction([file])}
               onFilesAction={handleAction}
               multiple
               maxFiles={50}

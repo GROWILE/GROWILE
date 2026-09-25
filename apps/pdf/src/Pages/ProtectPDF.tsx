@@ -1,3 +1,4 @@
+// Renders the protect pdf PDF tool page.
 import { useCallback, useState } from "react";
 import { LockKeyhole } from "lucide-react";
 import AdSpace from "../../../../packages/ui/src/AdSpace";
@@ -47,6 +48,7 @@ const schemas = {
   content: { "@context": "https://schema.org", "@type": "WebPage", name: "Protect PDF", hasPart: seoBlocks.map((block) => ({ "@type": "WebPageElement", name: block.heading, text: block.description })) },
 };
 
+// Renders the protect pdf interface.
 export default function ProtectPDF() {
   const [isProtecting, setIsProtecting] = useState(false);
   const [message, setMessage] = useState("");
@@ -57,15 +59,15 @@ export default function ProtectPDF() {
   const [pendingPdf, setPendingPdf] = useState<Uint8Array | null>(null);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
 
-  const triggerDownload = useCallback(() => {
+  const triggerDownload = useCallback(/* Creates a callback that stays stable until its dependencies change. */ () => {
     if (pendingPdf) downloadProtectedPdf(pendingPdf, "protected.pdf");
   }, [pendingPdf]);
-  const closePopup = useCallback(() => {
+  const closePopup = useCallback(/* Creates a callback that stays stable until its dependencies change. */ () => {
     setIsPopupOpen(false);
     setPendingPdf(null);
   }, []);
 
-  const handleAction = async (file: File) => {
+  const handleAction = /* Handles action work. */ async (file: File) => {
     setMessage("");
     setError("");
     if (password !== confirmPassword) {
@@ -106,7 +108,7 @@ export default function ProtectPDF() {
               actionDisabled={isProtecting || !selectedFile}
               accept=".pdf,application/pdf"
               onAction={handleAction}
-              onSelectionChange={(files) => {
+              onSelectionChange={/* Runs when the user triggers selection change. */ (files) => {
                 setSelectedFile(files[0] ?? null);
                 setMessage("");
                 setError("");
@@ -114,8 +116,8 @@ export default function ProtectPDF() {
               selectedContent={
                 selectedFile ? (
                   <div className="security-pdf-fields">
-                    <label>Password<input type="password" value={password} onChange={(event) => setPassword(event.target.value)} autoComplete="new-password" /></label>
-                    <label>Confirm password<input type="password" value={confirmPassword} onChange={(event) => setConfirmPassword(event.target.value)} autoComplete="new-password" /></label>
+                    <label>Password<input type="password" value={password} onChange={/* Runs when the user triggers change. */ (event) => setPassword(event.target.value)} autoComplete="new-password" /></label>
+                    <label>Confirm password<input type="password" value={confirmPassword} onChange={/* Runs when the user triggers change. */ (event) => setConfirmPassword(event.target.value)} autoComplete="new-password" /></label>
                   </div>
                 ) : null
               }

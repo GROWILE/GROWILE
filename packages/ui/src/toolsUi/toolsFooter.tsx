@@ -1,3 +1,4 @@
+// Renders categorized links to related tools.
 import "./toolsFooter.css";
 
 export type ToolsFooterLink = {
@@ -15,15 +16,16 @@ export type ToolsFooterProps = {
   className?: string;
 };
 
+// Renders the tools footer interface.
 export default function ToolsFooter({ categories, className = "" }: ToolsFooterProps) {
   return (
     <section className={`tools-footer ${className}`.trim()} aria-label="PDF tools">
       <div className="tools-footer-inner">
-        {categories.map((category) => (
+        {categories.map(/* Builds a value for each item in the collection. */ (category) => (
           <div className="tools-footer-category" key={category.title}>
             <h2 className="tools-footer-category-title">{category.title}</h2>
             <ul className="tools-footer-list">
-              {category.tools.map((tool) => (
+              {category.tools.map(/* Builds a value for each item in the collection. */ (tool) => (
                 <li key={tool.label}>
                   <a href={tool.href}>{tool.label}</a>
                 </li>

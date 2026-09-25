@@ -1,3 +1,5 @@
+/* Styles the growile toolcard for flex layout and alignment. */
+/* Styles the tool card component. */
 
 .growile-toolcard {
   display: flex;
@@ -14,16 +16,19 @@
   overflow: hidden;
 }
 
+/* Styles the growile toolcard hover state for borders and visual depth. */
 .growile-toolcard:hover {
   transform: translateY(-3px);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
   border-color: var(--color-text-highlight);
 }
 
+/* Styles the growile toolcard header for spacing and layout. */
 .growile-toolcard-header {
   margin-bottom: 10px;
 }
 
+/* Styles the growile toolcard icon for flex layout and alignment. */
 .growile-toolcard-icon {
   width: 50px;
   height: 50px;
@@ -35,17 +40,20 @@
   color: var(--color-text-highlight);
 }
 
+/* Styles the growile toolcard icon for element sizing. */
 .growile-toolcard-icon svg {
   width: 35px;
   height: 35px;
 }
 
+/* Styles the growile toolcard content for flex layout and alignment. */
 .growile-toolcard-content {
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
 
+/* Styles the growile toolcard title for spacing and layout. */
 .growile-toolcard-title {
   color: var(--color-primary);
   font-size: 26px;
@@ -53,6 +61,7 @@
   margin: 0;
 }
 
+/* Styles the growile toolcard desc for spacing and layout. */
 .growile-toolcard-desc {
   color: color-mix(in srgb, var(--color-primary) 52%, transparent);
   font-size: 16px;
@@ -60,17 +69,21 @@
   margin: 0;
 }
 
+/* Applies nested styles at (max-width: 600px). */
 @media (max-width: 600px) {
+  /* Styles the growile toolcard title for text appearance and alignment. */
   .growile-toolcard-title {
     font-size: 22px;
   }
 
+  /* Styles the growile toolcard desc for text appearance and alignment. */
   .growile-toolcard-desc {
     font-size: 16px;
   }
 }
 
 
+/* Styles the growile toolcard hover state for borders and visual depth. */
 /* ==========================================
    THEME COLORS (Icon & Hover Borders)
    ========================================== */
@@ -79,47 +92,61 @@
 .growile-toolcard.theme-blue:hover {
   border-color: var(--color-text-highlight);
 }
+/* Styles the growile toolcard for visual appearance. */
 .growile-toolcard.theme-blue { --tool-card-color: var(--color-tool-blue); }
+/* Styles the growile toolcard for colors and background. */
 .growile-toolcard.theme-blue .growile-toolcard-icon {
   color: var(--color-tool-blue);
   background-color: color-mix(in srgb, var(--color-tool-blue) 10%, var(--color-secondary));
 }
 
+/* Styles the growile toolcard hover state for borders and visual depth. */
 /* Orange Theme */
 .growile-toolcard.theme-orange:hover {
   border-color: var(--color-text-highlight);
 }
+/* Styles the growile toolcard for visual appearance. */
 .growile-toolcard.theme-orange { --tool-card-color: var(--color-tool-orange); }
+/* Styles the growile toolcard for colors and background. */
 .growile-toolcard.theme-orange .growile-toolcard-icon {
   color: var(--color-tool-orange);
   background-color: color-mix(in srgb, var(--color-tool-orange) 10%, var(--color-secondary));
 }
 
+/* Styles the growile toolcard hover state for borders and visual depth. */
 /* Green Theme */
 .growile-toolcard.theme-green:hover {
   border-color: var(--color-text-highlight);
 }
+/* Styles the growile toolcard for visual appearance. */
 .growile-toolcard.theme-green { --tool-card-color: var(--color-tool-green); }
+/* Styles the growile toolcard for colors and background. */
 .growile-toolcard.theme-green .growile-toolcard-icon {
   color: var(--color-tool-green);
   background-color: color-mix(in srgb, var(--color-tool-green) 10%, var(--color-secondary));
 }
 
+/* Styles the growile toolcard hover state for borders and visual depth. */
 /* Purple Theme */
 .growile-toolcard.theme-purple:hover {
   border-color: var(--color-text-highlight);
 }
+/* Styles the growile toolcard for visual appearance. */
 .growile-toolcard.theme-purple { --tool-card-color: var(--color-tool-purple); }
+/* Styles the growile toolcard for colors and background. */
 .growile-toolcard.theme-purple .growile-toolcard-icon {
   color: var(--color-tool-purple);
   background-color: color-mix(in srgb, var(--color-tool-purple) 10%, var(--color-secondary));
 }
 
+/* Styles the growile toolcard hover state for borders and visual depth. */
 /* Teal Theme */
 .growile-toolcard.theme-teal:hover {
   border-color: var(--color-text-highlight);
 }
+/* Styles the growile toolcard for visual appearance. */
 .growile-toolcard.theme-teal { --tool-card-color: var(--color-tool-teal); }
+/* Styles the growile toolcard for colors and background. */
 .growile-toolcard.theme-teal .growile-toolcard-icon {
   color: var(--color-tool-teal);
   background-color: color-mix(in srgb, var(--color-tool-teal) 10%, var(--color-secondary));

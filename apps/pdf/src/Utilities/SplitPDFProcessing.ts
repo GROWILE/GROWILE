@@ -1,3 +1,4 @@
+// Splits PDF files into separate documents.
 import { PDFDocument } from "pdf-lib";
 
 export type SplitPdfPart = {
@@ -6,10 +7,12 @@ export type SplitPdfPart = {
   bytes: Uint8Array;
 };
 
+// Checks pdf file.
 function isPdfFile(file: File) {
   return file.type.toLowerCase() === "application/pdf" || /\.pdf$/i.test(file.name);
 }
 
+// Gets pdf page count.
 export async function getPdfPageCount(file: File): Promise<number> {
   if (!isPdfFile(file)) {
     throw new Error(`${file.name} is not a PDF file.`);
@@ -19,6 +22,7 @@ export async function getPdfPageCount(file: File): Promise<number> {
   return sourcePdf.getPageCount();
 }
 
+// Splits pdf by range.
 export async function splitPdfByRange(
   file: File,
   startPage: number,
@@ -44,16 +48,16 @@ export async function splitPdfByRange(
     [1, startPage - 1],
     [startPage, endPage],
     [endPage + 1, pageCount],
-  ].filter(([rangeStart, rangeEnd]) => rangeStart <= rangeEnd);
+  ].filter(/* Keeps items that match the condition. */ ([rangeStart, rangeEnd]) => rangeStart <= rangeEnd);
 
   return Promise.all(
-    ranges.map(async ([rangeStart, rangeEnd]) => {
+    ranges.map(/* Builds a value for each item in the collection. */ async ([rangeStart, rangeEnd]) => {
       const outputPdf = await PDFDocument.create();
       const pages = await outputPdf.copyPages(
         sourcePdf,
-        Array.from({ length: rangeEnd - rangeStart + 1 }, (_, index) => rangeStart - 1 + index),
+        Array.from({ length: rangeEnd - rangeStart + 1 }, /* Handles pages work. */ (_, index) => rangeStart - 1 + index),
       );
-      pages.forEach((page) => outputPdf.addPage(page));
+      pages.forEach(/* Processes each item in the collection. */ (page) => outputPdf.addPage(page));
       return {
         startPage: rangeStart,
         endPage: rangeEnd,
@@ -63,6 +67,7 @@ export async function splitPdfByRange(
   );
 }
 
+// Downloads split pdf.
 export function downloadSplitPdf(bytes: Uint8Array, fileName: string) {
   const buffer = new ArrayBuffer(bytes.byteLength);
   new Uint8Array(buffer).set(bytes);

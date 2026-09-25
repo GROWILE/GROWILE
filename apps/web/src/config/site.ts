@@ -1,8 +1,9 @@
+// Defines shared navigation and footer settings for the web app.
 import { createElement } from "react";
 import webLogo from "../../../../packages/ui/assets/growile-logo.svg";
 import DocumentIcon from "../../../../packages/ui/src/DocumentIcon";
 
-const productIcon = (label?: string) =>
+const productIcon = /* Handles product icon work. */ (label?: string) =>
   createElement(DocumentIcon, label ? { label } : {});
 
 export const webNavigation = {
@@ -23,6 +24,7 @@ export const webFooter = {
   invoiceHref: "/invoice",
   termsHref: "/terms-of-service",
   privacyHref: "/privacy-policy",
+  reserveBottomAdSpace: false,
 } as const;
 
 export const homeHero = {

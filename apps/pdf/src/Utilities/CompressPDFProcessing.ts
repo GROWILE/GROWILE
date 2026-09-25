@@ -1,3 +1,4 @@
+// Compresses PDF files.
 import { PDFDocument } from "pdf-lib";
 import * as pdfjsLib from "pdfjs-dist";
 
@@ -15,10 +16,12 @@ const TARGET_BYTES: Record<Exclude<CompressionTarget, "default">, number> = {
   "100kb": 100 * 1024,
 };
 
+// Checks pdf file.
 function isPdfFile(file: File) {
   return file.type.toLowerCase() === "application/pdf" || /\.pdf$/i.test(file.name);
 }
 
+// Creates compressed pdf.
 async function createCompressedPdf(file: File, scale: number, quality: number) {
   const source = await pdfjsLib.getDocument({ data: await file.arrayBuffer() }).promise;
   const output = await PDFDocument.create();
@@ -33,7 +36,7 @@ async function createCompressedPdf(file: File, scale: number, quality: number) {
     canvas.width = Math.ceil(viewport.width);
     canvas.height = Math.ceil(viewport.height);
     await page.render({ canvas, canvasContext: context, viewport }).promise;
-    const blob = await new Promise<Blob | null>((resolve) =>
+    const blob = await new Promise<Blob | null>(/* Handles blob work. */ (resolve) =>
       canvas.toBlob(resolve, "image/jpeg", quality),
     );
     if (!blob) throw new Error(`Could not compress PDF page ${pageNumber}.`);
@@ -51,6 +54,7 @@ async function createCompressedPdf(file: File, scale: number, quality: number) {
   return output.save();
 }
 
+// Compresses pdf.
 export async function compressPdf(file: File, target: CompressionTarget): Promise<Uint8Array> {
   if (!isPdfFile(file)) throw new Error(`${file.name} is not a PDF file.`);
 
@@ -74,6 +78,7 @@ export async function compressPdf(file: File, target: CompressionTarget): Promis
   return best;
 }
 
+// Downloads compressed pdf.
 export function downloadCompressedPdf(bytes: Uint8Array, fileName: string) {
   const buffer = new ArrayBuffer(bytes.byteLength);
   new Uint8Array(buffer).set(bytes);

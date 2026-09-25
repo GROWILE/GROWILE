@@ -1,3 +1,5 @@
+/* Styles the not found page for grid layout and alignment. */
+/* Styles the not found page. */
 .not-found-page {
   min-height: 58vh;
   display: grid;
@@ -8,6 +10,7 @@
     radial-gradient(circle at 85% 75%, rgba(253, 95, 3, 0.08), transparent 26rem);
 }
 
+/* Styles the not found card for spacing and layout. */
 .not-found-card {
   position: relative;
   width: min(100%, 780px);
@@ -20,6 +23,7 @@
   box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.08);
 }
 
+/* Styles the not found illustration for flex layout and alignment. */
 .not-found-illustration {
   position: relative;
   z-index: 1;
@@ -30,6 +34,7 @@
   margin-bottom: 1.75rem;
 }
 
+/* Styles the not found number for text appearance and alignment. */
 .not-found-number {
   color: var(--color-text-highlight);
   font-size: clamp(5rem, 15vw, 9rem);
@@ -39,10 +44,12 @@
   animation: not-found-number-float 3s ease-in-out infinite;
 }
 
+/* Styles the not found number for animation and transitions. */
 .not-found-number:last-child {
   animation-delay: 0.35s;
 }
 
+/* Styles the not found logo wrap for grid layout and alignment. */
 .not-found-logo-wrap {
   display: grid;
   width: clamp(5rem, 13vw, 7.5rem);
@@ -55,12 +62,14 @@
   animation: not-found-logo-pulse 2.2s ease-in-out infinite;
 }
 
+/* Styles the not found logo wrap for element sizing. */
 .not-found-logo-wrap img {
   width: 68%;
   height: 68%;
   object-fit: contain;
 }
 
+/* Styles the not found kicker for spacing and layout. */
 .not-found-kicker {
   position: relative;
   z-index: 1;
@@ -72,6 +81,7 @@
   text-transform: uppercase;
 }
 
+/* Styles the not found card for spacing and layout. */
 .not-found-card h1 {
   position: relative;
   z-index: 1;
@@ -82,6 +92,7 @@
   line-height: 1.15;
 }
 
+/* Styles the not found description for spacing and layout. */
 .not-found-description {
   position: relative;
   z-index: 1;
@@ -92,6 +103,7 @@
   line-height: 1.7;
 }
 
+/* Styles the not found actions for flex layout and alignment. */
 .not-found-actions {
   position: relative;
   z-index: 1;
@@ -102,6 +114,7 @@
   margin-top: 2rem;
 }
 
+/* Styles the not found actions for spacing and layout. */
 .not-found-actions a {
   min-width: 9.5rem;
   padding: 0.8rem 1.2rem;
@@ -113,21 +126,25 @@
   transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
 }
 
+/* Styles the not found actions hover state for borders and visual depth. */
 .not-found-actions a:hover {
   transform: translateY(-2px);
   box-shadow: 0 0.5rem 1.25rem rgba(0, 122, 204, 0.16);
 }
 
+/* Styles the not found primary action for colors and background. */
 .not-found-primary-action {
   color: var(--color-secondary);
   background: var(--color-text-highlight);
 }
 
+/* Styles the not found secondary action for colors and background. */
 .not-found-secondary-action {
   color: var(--color-text-highlight);
   background: var(--color-secondary);
 }
 
+/* Styles the not found orbit for positioning and stacking. */
 .not-found-orbit {
   position: absolute;
   width: 0.65rem;
@@ -137,11 +154,13 @@
   animation: not-found-orbit-float 4s ease-in-out infinite;
 }
 
+/* Styles the not found orbit one for visual appearance. */
 .not-found-orbit-one {
   top: 16%;
   left: 13%;
 }
 
+/* Styles the not found orbit two for element sizing. */
 .not-found-orbit-two {
   right: 14%;
   bottom: 18%;
@@ -150,36 +169,47 @@
   animation-delay: 1.2s;
 }
 
+/* Defines the not-found-number-float animation. */
 @keyframes not-found-number-float {
+  /* Styles the 0% for animation and transitions. */
   0%, 100% {
     transform: translateY(0);
   }
+  /* Sets the 50% animation state. */
   50% {
     transform: translateY(-7px);
   }
 }
 
+/* Defines the not-found-logo-pulse animation. */
 @keyframes not-found-logo-pulse {
+  /* Styles the 0% for borders and visual depth. */
   0%, 100% {
     transform: scale(1);
     box-shadow: 0 0 0 0.75rem color-mix(in srgb, var(--color-text-highlight) 10%, transparent);
   }
+  /* Sets the 50% animation state. */
   50% {
     transform: scale(1.04);
     box-shadow: 0 0 0 1rem color-mix(in srgb, var(--color-text-highlight) 16%, transparent);
   }
 }
 
+/* Defines the not-found-orbit-float animation. */
 @keyframes not-found-orbit-float {
+  /* Styles the 0% for animation and transitions. */
   0%, 100% {
     transform: translate(0, 0);
   }
+  /* Sets the 50% animation state. */
   50% {
     transform: translate(12px, -14px);
   }
 }
 
+/* Applies nested styles at (prefers-reduced-motion: reduce). */
 @media (prefers-reduced-motion: reduce) {
+  /* Styles the not found number for animation and transitions. */
   .not-found-number,
   .not-found-logo-wrap,
   .not-found-orbit {
@@ -187,12 +217,15 @@
   }
 }
 
+/* Applies nested styles at (max-width: 480px). */
 @media (max-width: 480px) {
+  /* Styles the not found page for spacing and layout. */
   .not-found-page {
     padding-right: 1rem;
     padding-left: 1rem;
   }
 
+  /* Styles the not found actions for visual appearance. */
   .not-found-actions {
     flex-direction: column;
     align-items: stretch;

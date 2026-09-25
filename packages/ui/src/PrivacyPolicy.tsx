@@ -1,3 +1,4 @@
+// Renders the shared privacy policy page layout and content.
 // File: packages/ui/src/PrivacyPolicy.tsx
 import Divider from "./Divider";
 import Footer from "./Footer";
@@ -27,8 +28,10 @@ export type PrivacyPolicyProps = {
   footerInvoiceHref?: string;
   footerTermsHref?: string;
   footerPrivacyHref?: string;
+  reserveBottomAdSpace?: boolean;
 };
 
+// Renders the privacy policy interface.
 export default function PrivacyPolicy({
   logoAlt,
   logoSrc,
@@ -39,6 +42,7 @@ export default function PrivacyPolicy({
   footerInvoiceHref = "/invoice",
   footerTermsHref = "/terms-of-service",
   footerPrivacyHref = "/privacy-policy",
+  reserveBottomAdSpace = true,
 }: PrivacyPolicyProps) {
   const pageTitle = "Privacy Policy for Growile | Growile";
   const pageDescription =
@@ -219,6 +223,7 @@ export default function PrivacyPolicy({
         invoiceHref={footerInvoiceHref}
         termsHref={footerTermsHref}
         privacyHref={footerPrivacyHref}
+        reserveBottomAdSpace={reserveBottomAdSpace}
       />
     </>
   );

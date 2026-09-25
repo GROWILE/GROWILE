@@ -1,5 +1,7 @@
+// Previews rotate page pages.
 import { RotateCw } from "lucide-react";
 
+// Renders the rotate page preview interface.
 export default function RotatePagePreview({
   pageImages,
   rotations,
@@ -20,12 +22,12 @@ export default function RotatePagePreview({
         <span>Click the rotate button above any page. Each click rotates it 90ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â° clockwise.</span>
       </div>
       <div className="split-pdf-page-grid">
-        {pageImages.map((image, index) => (
+        {pageImages.map(/* Builds a value for each item in the collection. */ (image, index) => (
           <div className="rotate-pdf-page-item" key={index}>
             <button
               type="button"
               className="rotate-pdf-button"
-              onClick={() => onRotate(index)}
+              onClick={/* Runs when the user triggers click. */ () => onRotate(index)}
               aria-label={`Rotate page ${index + 1}`}
             >
               <RotateCw size={16} aria-hidden="true" />

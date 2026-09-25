@@ -1,3 +1,4 @@
+// Defines the PDF tool catalog and categories.
 import {
   FileArchive,
   FileImage,
@@ -55,7 +56,7 @@ export const allPdfTools: PdfTool[] = [
 
 export const toolCardThemes = ["blue", "orange", "green", "purple", "teal"] as const;
 
-export const pdfIconTools = allPdfTools.map((tool, index) => ({
+export const pdfIconTools = allPdfTools.map(/* Builds a value for each item in the collection. */ (tool, index) => ({
   ...tool,
   colorTheme: toolCardThemes[index % toolCardThemes.length],
 }));

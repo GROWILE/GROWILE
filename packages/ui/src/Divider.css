@@ -1,3 +1,5 @@
+/* Styles the divider for flex layout and alignment. */
+/* Styles the divider component. */
 .divider {
   display: flex;
   max-width: 1230px;
@@ -5,27 +7,34 @@
   margin: auto;
 }
 
+/* Styles the divider accent for colors and background. */
 .divider-accent {
   width: 50%;
   background: var(--color-text-highlight);
 }
 
+/* Styles the divider line for colors and background. */
 .divider-line {
   flex: 1;
   background: var(--color-primary);
 }
 
+/* Applies nested styles at (max-width: 900px). */
 @media (max-width: 900px) {
+  /* Styles the divider for element sizing. */
   .divider {
     max-width: calc(100% - 48px);
   }
 }
 
+/* Applies nested styles at (max-width: 600px). */
 @media (max-width: 600px) {
+  /* Styles the divider accent for element sizing. */
   .divider-accent {
     width: 40%;
   }
 
+  /* Styles the divider for element sizing. */
   .divider {
     max-width: calc(100% - 40px);
   }

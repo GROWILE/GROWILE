@@ -1,3 +1,5 @@
+/* Styles the h2 section for flex layout and alignment. */
+/* Styles the h2 section component. */
 .h2-section {
   max-width: 800px;
   margin: 0 auto;
@@ -7,10 +9,12 @@
   gap: 48px;
 }
 
+/* Styles the h2 block for text appearance and alignment. */
 .h2-block {
   text-align: center;
 }
 
+/* Styles the h2 block heading for spacing and layout. */
 .h2-block-heading {
   font-size: 36px;
   font-weight: 700;
@@ -18,6 +22,7 @@
   margin: 0 0 16px;
 }
 
+/* Styles the h2 block description for spacing and layout. */
 .h2-block-description {
   font-size: 18px;
   line-height: 1.7;
@@ -26,11 +31,14 @@
   margin: 0;
 }
 
+/* Applies nested styles at (max-width: 640px). */
 @media (max-width: 640px) {
+  /* Styles the h2 block heading for text appearance and alignment. */
   .h2-block-heading {
     font-size: 28px;
   }
 
+  /* Styles the h2 block description for text appearance and alignment. */
   .h2-block-description {
     font-size: 16px;
   }

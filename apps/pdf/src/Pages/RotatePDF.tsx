@@ -1,3 +1,4 @@
+// Renders the rotate pdf PDF tool page.
 import { useCallback, useState } from "react";
 import { WandSparkles } from "lucide-react";
 import * as pdfjsLib from "pdfjs-dist";
@@ -106,7 +107,7 @@ const faqs = [
 const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  mainEntity: faqs.map((faq) => ({
+  mainEntity: faqs.map(/* Builds a value for each item in the collection. */ (faq) => ({
     "@type": "Question",
     name: faq.question,
     acceptedAnswer: {
@@ -123,13 +124,14 @@ const contentSchema = {
   "@context": "https://schema.org",
   "@type": "WebPage",
   name: "Rotate PDF",
-  hasPart: seoBlocks.map((block) => ({
+  hasPart: seoBlocks.map(/* Builds a value for each item in the collection. */ (block) => ({
     "@type": "WebPageElement",
     name: block.heading,
     text: block.description,
   })),
 };
 
+// Renders the rotate pdf interface.
 export default function RotatePDF() {
   const [isRotating, setIsRotating] = useState(false);
   const [rotateMessage, setRotateMessage] = useState("");
@@ -140,16 +142,16 @@ export default function RotatePDF() {
   const [pendingPdf, setPendingPdf] = useState<Uint8Array | null>(null);
   const [isDownloadPopupOpen, setIsDownloadPopupOpen] = useState(false);
 
-  const triggerDownload = useCallback(() => {
+  const triggerDownload = useCallback(/* Creates a callback that stays stable until its dependencies change. */ () => {
     if (pendingPdf) downloadRotatedPdf(pendingPdf, "rotated-pages.pdf");
   }, [pendingPdf]);
 
-  const closeDownloadPopup = useCallback(() => {
+  const closeDownloadPopup = useCallback(/* Creates a callback that stays stable until its dependencies change. */ () => {
     setIsDownloadPopupOpen(false);
     setPendingPdf(null);
   }, []);
 
-  const handleSelectionChange = async (files: File[]) => {
+  const handleSelectionChange = /* Handles selection change work. */ async (files: File[]) => {
     const file = files[0] ?? null;
     setSelectedFile(file);
     setPageImages([]);
@@ -173,13 +175,13 @@ export default function RotatePDF() {
         images.push(canvas.toDataURL("image/jpeg", 0.8));
       }
       setPageImages(images);
-      setRotations(Array.from({ length: pdf.numPages }, () => 0));
+      setRotations(Array.from({ length: pdf.numPages }, /* Handles selection change work. */ () => 0));
     } catch (error) {
       setRotateError(error instanceof Error ? error.message : "Could not read the PDF pages.");
     }
   };
 
-  const handleAction = async (file: File) => {
+  const handleAction = /* Handles action work. */ async (file: File) => {
     setIsRotating(true);
     setRotateMessage("");
     setRotateError("");
@@ -195,9 +197,9 @@ export default function RotatePDF() {
     }
   };
 
-  const rotatePage = (index: number) => {
-    setRotations((current) =>
-      current.map((rotation, pageIndex) =>
+  const rotatePage = /* Rotates page. */ (index: number) => {
+    setRotations(/* Rotates page. */ (current) =>
+      current.map(/* Builds a value for each item in the collection. */ (rotation, pageIndex) =>
         pageIndex === index ? (rotation + 90) % 360 : rotation,
       ),
     );

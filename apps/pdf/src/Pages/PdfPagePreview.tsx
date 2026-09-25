@@ -1,6 +1,8 @@
+// Previews pdf page pages.
 import { useEffect, useState } from "react";
 import * as pdfjsLib from "pdfjs-dist";
 
+// Renders the pdf page preview interface.
 export default function PdfPagePreview({
   file,
   pageCount,
@@ -19,11 +21,11 @@ export default function PdfPagePreview({
   const [pageImages, setPageImages] = useState<string[]>([]);
   const [rangeStartSelection, setRangeStartSelection] = useState<number | null>(null);
 
-  useEffect(() => {
+  useEffect(/* Runs side effects when its dependencies change. */ () => {
     let cancelled = false;
     const imageUrls: string[] = [];
 
-    const renderPages = async () => {
+    const renderPages = /* Renders pages. */ async () => {
       const pdf = await pdfjsLib.getDocument({ data: await file.arrayBuffer() }).promise;
       const images: string[] = [];
 
@@ -46,13 +48,13 @@ export default function PdfPagePreview({
     };
 
     void renderPages();
-    return () => {
+    return /* Runs side effects when its dependencies change. */ () => {
       cancelled = true;
-      imageUrls.forEach((url) => URL.revokeObjectURL(url));
+      imageUrls.forEach(/* Processes each item in the collection. */ (url) => URL.revokeObjectURL(url));
     };
   }, [file]);
 
-  const handlePageClick = (pageNumber: number) => {
+  const handlePageClick = /* Handles page click work. */ (pageNumber: number) => {
     if (rangeStartSelection === null) {
       const nextEndPage = Math.min(pageNumber + 1, pageCount);
       onStartPageChange(Math.min(pageNumber, pageCount - 1));
@@ -85,7 +87,7 @@ export default function PdfPagePreview({
         </span>
       </div>
       <div className="split-pdf-page-grid">
-        {pageImages.map((image, index) => {
+        {pageImages.map(/* Builds a value for each item in the collection. */ (image, index) => {
           const pageNumber = index + 1;
           const isSelected = pageNumber >= startPage && pageNumber <= endPage;
           return (
@@ -93,7 +95,7 @@ export default function PdfPagePreview({
               type="button"
               className={`split-pdf-page-thumbnail ${isSelected ? "selected" : ""}`}
               key={pageNumber}
-              onClick={() => handlePageClick(pageNumber)}
+              onClick={/* Runs when the user triggers click. */ () => handlePageClick(pageNumber)}
               aria-label={`Choose page ${pageNumber}`}
             >
               <img src={image} alt={`PDF page ${pageNumber}`} />
@@ -111,7 +113,7 @@ export default function PdfPagePreview({
             min={1}
             max={pageCount - 1}
             value={startPage}
-            onChange={(event) => onStartPageChange(Number(event.target.value))}
+            onChange={/* Runs when the user triggers change. */ (event) => onStartPageChange(Number(event.target.value))}
           />
         </label>
         <label>
@@ -121,7 +123,7 @@ export default function PdfPagePreview({
             min={startPage + 1}
             max={pageCount}
             value={endPage}
-            onChange={(event) => onEndPageChange(Number(event.target.value))}
+            onChange={/* Runs when the user triggers change. */ (event) => onEndPageChange(Number(event.target.value))}
           />
         </label>
       </div>

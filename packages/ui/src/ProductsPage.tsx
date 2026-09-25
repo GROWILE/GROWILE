@@ -1,3 +1,4 @@
+// Renders the shared product listing page.
 import './Products.css';
 import './ProductCard.css';
 import './ProductsPage.css';
@@ -19,6 +20,7 @@ export type ProductsPageProps = {
   products: ProductItem[];
 };
 
+// Renders the products page interface.
 export default function ProductsPage({ 
   heading = "Try Our Products", 
   products 
@@ -31,7 +33,7 @@ export default function ProductsPage({
       </div>
 
       <div className="products-grid">
-        {products.map((product) => (
+        {products.map(/* Builds a value for each item in the collection. */ (product) => (
           <ProductCard
             key={product.id}
             product={{

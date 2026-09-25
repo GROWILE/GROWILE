@@ -1,3 +1,4 @@
+// Renders an advertisement area and loads its ad when available.
 import { useEffect, useRef, useState } from "react";
 import "./AdSpace.css";
 
@@ -8,6 +9,7 @@ type AdSpaceProps = {
   variant?: "banner" | "vertical";
 };
 
+// Renders the ad space interface.
 export default function AdSpace({
   label = "",
   compact = false,
@@ -18,7 +20,7 @@ export default function AdSpace({
   const adContainerRef = useRef<HTMLDivElement>(null);
   const hasRequestedAd = useRef(false);
 
-  useEffect(() => {
+  useEffect(/* Runs side effects when its dependencies change. */ () => {
     const adContainer = adContainerRef.current;
     const hostname = typeof window !== "undefined" ? window.location.hostname : "";
     const isProductionHost = hostname === "growile.com" || hostname.endsWith(".growile.com");
@@ -27,7 +29,7 @@ export default function AdSpace({
       return;
     }
 
-    const requestAd = () => {
+    const requestAd = /* Handles request ad work. */ () => {
       if (hasRequestedAd.current || adContainer.getBoundingClientRect().width <= 0) {
         return;
       }
@@ -41,12 +43,12 @@ export default function AdSpace({
     observer.observe(adContainer);
     requestAd();
 
-    return () => observer.disconnect();
+    return /* Runs side effects when its dependencies change. */ () => observer.disconnect();
   }, []);
 
   if (!isVisible) return null;
 
-  // Unga AdSense dashboard-la irunthu vantha ad slot ID-a inga podunga
+  // Set this to the ad slot ID from the AdSense dashboard.
   const adSlotId = "8215012803"; 
 
   return (
@@ -63,7 +65,7 @@ export default function AdSpace({
     >
       <button 
         className="ad-space-close-btn" 
-        onClick={() => setIsVisible(false)}
+        onClick={/* Runs when the user triggers click. */ () => setIsVisible(false)}
         aria-label="Close Advertisement"
       >
         &times;
@@ -72,7 +74,7 @@ export default function AdSpace({
 
       {label ? <span className="ad-space-label">{label}</span> : null}
 
-      {/* 👇 AdSense Ins Tag Inga Irukkum */}
+      {/* AdSense ad code is rendered here. */}
       <div ref={adContainerRef} className="adsense-container">
         <ins className="adsbygoogle"
              style={{ display: "block", width: "100%" }}

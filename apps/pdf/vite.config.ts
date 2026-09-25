@@ -1,3 +1,4 @@
+// Configures Vite for the pdf app.
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import path from 'path'
@@ -10,7 +11,7 @@ export default defineConfig({
   base: '/pdf/',
   resolve: {
     alias: {
-      // 👇 packages/ui-ku kulla irukkura src-a point panrom
+      // Resolves shared UI source files from the workspace root.
       '@ui': path.resolve(__dirname, '../../../packages/ui/src')
     }
   }

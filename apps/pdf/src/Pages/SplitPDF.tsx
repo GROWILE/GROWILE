@@ -1,3 +1,4 @@
+// Renders the split pdf PDF tool page.
 import { useCallback, useRef, useState } from "react";
 import { Scissors } from "lucide-react";
 import * as pdfjsLib from "pdfjs-dist";
@@ -106,7 +107,7 @@ const faqs = [
 const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  mainEntity: faqs.map((faq) => ({
+  mainEntity: faqs.map(/* Builds a value for each item in the collection. */ (faq) => ({
     "@type": "Question",
     name: faq.question,
     acceptedAnswer: {
@@ -123,13 +124,14 @@ const contentSchema = {
   "@context": "https://schema.org",
   "@type": "WebPage",
   name: "Split PDF",
-  hasPart: seoBlocks.map((block) => ({
+  hasPart: seoBlocks.map(/* Builds a value for each item in the collection. */ (block) => ({
     "@type": "WebPageElement",
     name: block.heading,
     text: block.description,
   })),
 };
 
+// Renders the split pdf interface.
 export default function SplitPDF() {
   const [isSplitting, setIsSplitting] = useState(false);
   const [splitMessage, setSplitMessage] = useState("");
@@ -143,18 +145,18 @@ export default function SplitPDF() {
   const [pendingPart, setPendingPart] = useState<SplitPdfPart | null>(null);
   const resultsRef = useRef<HTMLDivElement>(null);
 
-  const triggerDownload = useCallback(() => {
+  const triggerDownload = useCallback(/* Creates a callback that stays stable until its dependencies change. */ () => {
     if (pendingPart) {
       downloadSplitPdf(pendingPart.bytes, `split-pages-${pendingPart.startPage}-${pendingPart.endPage}.pdf`);
     }
   }, [pendingPart]);
 
-  const closeDownloadPopup = useCallback(() => {
+  const closeDownloadPopup = useCallback(/* Creates a callback that stays stable until its dependencies change. */ () => {
     setIsDownloadPopupOpen(false);
     setPendingPart(null);
   }, []);
 
-  const handleAction = async (file: File) => {
+  const handleAction = /* Handles action work. */ async (file: File) => {
     setIsSplitting(true);
     setSplitMessage("");
     setSplitError("");
@@ -163,7 +165,7 @@ export default function SplitPDF() {
       const parts = await splitPdfByRange(file, startPage, endPage);
       setSplitParts(parts);
       setSplitMessage(`${parts.length} PDF sections created. Choose which one to download.`);
-      requestAnimationFrame(() => {
+      requestAnimationFrame(/* Handles action work. */ () => {
         resultsRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
       });
     } catch (error) {
@@ -173,7 +175,7 @@ export default function SplitPDF() {
     }
   };
 
-  const handleSelectionChange = async (files: File[]) => {
+  const handleSelectionChange = /* Handles selection change work. */ async (files: File[]) => {
     const file = files[0] ?? null;
     setSelectedFile(file);
     setSplitParts([]);
@@ -253,7 +255,7 @@ export default function SplitPDF() {
                   aria-label="Split PDF results"
                   tabIndex={-1}
                 >
-                  {splitParts.map((part) => (
+                  {splitParts.map(/* Builds a value for each item in the collection. */ (part) => (
                     <article className="split-pdf-result-card" key={`${part.startPage}-${part.endPage}`}>
                       <div>
                         <strong>Pages {part.startPage}ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“{part.endPage}</strong>
@@ -261,7 +263,7 @@ export default function SplitPDF() {
                       </div>
                       <button
                         type="button"
-                        onClick={() => {
+                        onClick={/* Runs when the user triggers click. */ () => {
                           setPendingPart(part);
                           setIsDownloadPopupOpen(true);
                         }}

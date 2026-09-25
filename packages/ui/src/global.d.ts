@@ -1,3 +1,4 @@
+// Defines the shared global.d UI component.
 declare module "*.css";
 declare module "*.png";
 declare module "*.jpg";

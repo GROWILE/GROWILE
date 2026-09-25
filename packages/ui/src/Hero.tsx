@@ -1,3 +1,4 @@
+// Renders a page hero section with its main call to action.
 
 import "./Hero.css";
 import type { MouseEvent } from "react";
@@ -11,6 +12,7 @@ type HeroProps = {
   onCtaClick?: (event: MouseEvent<HTMLAnchorElement>) => void;
 };
 
+// Renders the hero interface.
 export default function Hero({
   kicker,
   title,

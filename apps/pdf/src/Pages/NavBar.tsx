@@ -1,3 +1,4 @@
+// Renders the PDF app navigation bar.
 import { FileArchive, FileEdit, FileImage, FolderKanban, LockKeyhole } from "lucide-react";
 import Navbar from "../../../../packages/ui/src/Navbar";
 import DocumentIcon from "../../../../packages/ui/src/DocumentIcon";
@@ -21,7 +22,7 @@ const toolIconColors = [
   "var(--color-tool-teal)",
 ] as const;
 
-const pdfNavToolGroups = pdfToolCategories.map((category, categoryIndex) => {
+const pdfNavToolGroups = pdfToolCategories.map(/* Builds a value for each item in the collection. */ (category, categoryIndex) => {
   const CategoryIcon = pdfToolCategoryIcons[category];
 
   return {
@@ -34,8 +35,8 @@ const pdfNavToolGroups = pdfToolCategories.map((category, categoryIndex) => {
       />
     ),
     items: allPdfTools
-      .filter((tool) => tool.category === category)
-      .map((tool) => {
+      .filter(/* Keeps items that match the condition. */ (tool) => tool.category === category)
+      .map(/* Builds a value for each item in the collection. */ (tool) => {
         const ToolIcon = tool.icon;
         const toolIndex = allPdfTools.indexOf(tool);
 
@@ -54,6 +55,7 @@ const pdfNavToolGroups = pdfToolCategories.map((category, categoryIndex) => {
   };
 });
 
+// Renders the pdf nav bar interface.
 export default function PdfNavBar() {
   return (
     <Navbar

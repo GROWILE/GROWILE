@@ -1,9 +1,12 @@
+// Extracts selected pages from PDF files.
 import { PDFDocument } from "pdf-lib";
 
+// Checks pdf file.
 function isPdfFile(file: File) {
   return file.type.toLowerCase() === "application/pdf" || /\.pdf$/i.test(file.name);
 }
 
+// Extracts pdf pages.
 export async function extractPdfPages(
   file: File,
   pageNumbers: number[],
@@ -18,19 +21,20 @@ export async function extractPdfPages(
 
   const sourcePdf = await PDFDocument.load(await file.arrayBuffer());
   const pageIndices = [...new Set(pageNumbers)]
-    .sort((first, second) => first - second)
-    .map((pageNumber) => pageNumber - 1);
+    .sort(/* Compares items to determine their order. */ (first, second) => first - second)
+    .map(/* Builds a value for each item in the collection. */ (pageNumber) => pageNumber - 1);
 
-  if (pageIndices.some((pageIndex) => pageIndex < 0 || pageIndex >= sourcePdf.getPageCount())) {
+  if (pageIndices.some(/* Checks whether any item matches the condition. */ (pageIndex) => pageIndex < 0 || pageIndex >= sourcePdf.getPageCount())) {
     throw new Error("One or more selected pages are outside the PDF page range.");
   }
 
   const outputPdf = await PDFDocument.create();
   const pages = await outputPdf.copyPages(sourcePdf, pageIndices);
-  pages.forEach((page) => outputPdf.addPage(page));
+  pages.forEach(/* Processes each item in the collection. */ (page) => outputPdf.addPage(page));
   return outputPdf.save();
 }
 
+// Downloads extracted pdf.
 export function downloadExtractedPdf(bytes: Uint8Array, fileName: string) {
   const buffer = new ArrayBuffer(bytes.byteLength);
   new Uint8Array(buffer).set(bytes);

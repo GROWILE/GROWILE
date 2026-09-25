@@ -1,14 +1,18 @@
+/* Styles the products for spacing and layout. */
+/* Styles the products component. */
 .products {
   max-width: 1160px;
   margin: 0 auto;
   padding: 72px 24px 112px;
 }
 
+/* Styles the products heading for spacing and layout. */
 .products-heading {
   margin: 0 0 32px;
   text-align: left;
 }
 
+/* Styles the products heading for spacing and layout. */
 .products-heading h2 {
   color: var(--color-primary);
   font-size: clamp(28px, 4vw, 40px);
@@ -17,6 +21,7 @@
   margin: 8px 0 0;
 }
 
+/* Styles the products kicker for spacing and layout. */
 .products-kicker {
   color: var(--color-text-highlight);
   font-size: 16px;
@@ -25,27 +30,34 @@
   margin: 0;
 }
 
+/* Styles the products grid for grid layout and alignment. */
 .products-grid {
   display: grid;
   gap: 24px;
   grid-template-columns: repeat(2, 1fr);
 }
 
+/* Applies nested styles at (max-width: 900px). */
 @media (max-width: 900px) {
+  /* Styles the products for spacing and layout. */
   .products {
     padding: 56px 24px 80px;
   }
 
+  /* Styles the products grid for visual appearance. */
   .products-grid {
     gap: 18px;
   }
 }
 
+/* Applies nested styles at (max-width: 600px). */
 @media (max-width: 600px) {
+  /* Styles the products for spacing and layout. */
   .products {
     padding: 44px 20px 64px;
   }
 
+  /* Styles the products grid for visual appearance. */
   .products-grid {
     grid-template-columns: 1fr;
   }

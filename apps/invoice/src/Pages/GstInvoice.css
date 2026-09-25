@@ -1,18 +1,24 @@
+/* Styles the gst invoice section for spacing and layout. */
+/* Styles the gst invoice page. */
 .gst-invoice-section {
   padding: 76px 24px 84px;
 }
+/* Styles the gst invoice form for borders and visual depth. */
 .gst-invoice-form {
   border-color: color-mix(in srgb, var(--color-text-highlight) 20%, var(--color-secondary));
 }
 
+/* Styles the gst logo row for spacing and layout. */
 .gst-logo-row {
   margin-bottom: 28px;
 }
 
+/* Styles the gst logo row for interaction behavior. */
 .gst-logo-row .invoice-logo-field {
   cursor: pointer;
 }
 
+/* Styles the gst logo row for positioning and stacking. */
 .gst-logo-row .invoice-logo-field input[type="file"] {
   position: absolute;
   width: 1px;
@@ -21,6 +27,7 @@
   pointer-events: none;
 }
 
+/* Styles the gst logo row for flex layout and alignment. */
 .gst-logo-row .invoice-logo-card {
   width: 200px;
   min-height: 130px;
@@ -37,12 +44,14 @@
   font-weight: 600;
 }
 
+/* Styles the gst logo row for text appearance and alignment. */
 .gst-logo-row .invoice-logo-plus {
   font-size: 28px;
   font-weight: 300;
   line-height: 1;
 }
 
+/* Styles the gst logo row for spacing and layout. */
 .gst-logo-row .invoice-logo-preview {
   width: 100px;
   height: 100px;
@@ -52,18 +61,21 @@
   padding: 6px;
 }
 
+/* Styles the gst field section for spacing and layout. */
 .gst-field-section {
   margin-top: 20px;
   padding-top: 12px;
   border-top: 1px solid color-mix(in srgb, var(--color-primary) 8%, var(--color-secondary));
 }
 
+/* Styles the gst field section for spacing and layout. */
 .gst-field-section:first-child {
   margin-top: 0;
   padding-top: 0;
   border-top: 0;
 }
 
+/* Styles the gst field section for spacing and layout. */
 .gst-field-section  {
   margin: 0 0 18px;
   color: var(--color-primary);
@@ -72,6 +84,7 @@
   letter-spacing: 0.4px;
 }
 
+/* Styles the gst invoice section for spacing and layout. */
 .gst-invoice-section h3 {
   margin: 0 0 18px;
   color: var(--color-secondary);
@@ -81,6 +94,7 @@
   letter-spacing: 0.4px;
 }
 
+/* Styles the gst item row for grid layout and alignment. */
 .gst-item-row {
   display: grid;
   grid-template-columns: minmax(0, 2fr) minmax(90px, 0.7fr) minmax(120px, 0.9fr) minmax(140px, 1fr);
@@ -89,16 +103,19 @@
   border-top: 1px solid color-mix(in srgb, var(--color-primary) 8%, var(--color-secondary));
 }
 
+/* Styles the gst item row for colors and background. */
 .gst-item-row input[readonly] {
   background: var(--color-secondary);
   color: color-mix(in srgb, var(--color-primary) 65%, var(--color-secondary));
 }
 
+/* Styles the gst field section for colors and background. */
 .gst-field-section input[readonly] {
   background: var(--color-secondary);
   color: color-mix(in srgb, var(--color-primary) 65%, var(--color-secondary));
 }
 
+/* Styles the gst field section for spacing and layout. */
 .gst-field-section select {
   box-sizing: border-box;
   width: 100%;
@@ -112,10 +129,12 @@
   outline: none;
 }
 
+/* Styles the gst field section focus state for borders and visual depth. */
 .gst-field-section select:focus {
   border-color: var(--color-accent);
 }
 
+/* Styles the gst invoice form for spacing and layout. */
 .gst-invoice-form select {
   width: 100%;
   border: 1px solid #d8d1c8;
@@ -124,39 +143,49 @@
   color: var(--color-primary);
   background: var(--color-secondary);
 }
+/* Styles the gst invoice form focus state for visual appearance. */
 .gst-invoice-form select:focus {
   outline: 1px solid var(--color-accent);
 }
+/* Applies nested styles at (max-width: 900px). */
 @media (max-width: 900px) {
+  /* Styles the gst invoice section for spacing and layout. */
   .gst-invoice-section {
     padding: 64px 24px 72px;
   }
 
+  /* Styles the gst item row for visual appearance. */
   .gst-item-row {
     gap: 14px;
   }
 }
 
+/* Applies nested styles at (max-width: 600px). */
 @media (max-width: 600px) {
+  /* Styles the gst invoice section for spacing and layout. */
   .gst-invoice-section {
     padding: 56px 16px;
   }
 
+  /* Styles the gst logo row for visual appearance. */
   .gst-logo-row {
     align-items: flex-start;
     flex-direction: column;
     gap: 14px;
   }
 
+  /* Styles the gst logo row for element sizing. */
   .gst-logo-row .invoice-logo-card {
     width: 180px;
     min-height: 116px;
   }
 
+  /* Styles the gst item row for visual appearance. */
   .gst-item-row {
     grid-template-columns: 1fr 1fr;
   }
 
+  /* Styles the gst item row for visual appearance. */
   .gst-item-row label:first-child,
   .gst-item-row label:last-child {
     grid-column: 1 / -1;

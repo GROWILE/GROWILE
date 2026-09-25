@@ -1,3 +1,5 @@
+/* Styles the growile icon toolcard for flex layout and alignment. */
+/* Styles the icon tool card component. */
 .growile-icon-toolcard {
   display: flex;
   flex-direction: column;
@@ -15,12 +17,14 @@
   transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out, border-color 0.2s ease-in-out;
 }
 
+/* Styles the growile icon toolcard hover state for borders and visual depth. */
 .growile-icon-toolcard:hover {
   transform: translateY(-3px);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
   border-color: var(--color-text-highlight);
 }
 
+/* Styles the growile icon toolcard icon for flex layout and alignment. */
 .growile-icon-toolcard-icon {
   display: flex;
   align-items: center;
@@ -36,32 +40,39 @@
   border-radius: 10px;
 }
 
+/* Styles the growile icon toolcard icon for element sizing. */
 .growile-icon-toolcard-icon svg {
   width: 40px;
   height: 40px;
 }
 
+/* Styles the growile icon toolcard title for text appearance and alignment. */
 .growile-icon-toolcard-title {
   font-size: 18px;
   font-weight: 700;
 }
 
+/* Styles the growile icon toolcard for visual appearance. */
 .growile-icon-toolcard.theme-blue {
   --tool-card-color: var(--color-tool-blue);
 }
 
+/* Styles the growile icon toolcard for visual appearance. */
 .growile-icon-toolcard.theme-orange {
   --tool-card-color: var(--color-tool-orange);
 }
 
+/* Styles the growile icon toolcard for visual appearance. */
 .growile-icon-toolcard.theme-green {
   --tool-card-color: var(--color-tool-green);
 }
 
+/* Styles the growile icon toolcard for visual appearance. */
 .growile-icon-toolcard.theme-purple {
   --tool-card-color: var(--color-tool-purple);
 }
 
+/* Styles the growile icon toolcard for visual appearance. */
 .growile-icon-toolcard.theme-teal {
   --tool-card-color: var(--color-tool-teal);
 }

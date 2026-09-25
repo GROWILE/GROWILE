@@ -1,3 +1,5 @@
+/* Styles the loading screen for flex layout and alignment. */
+/* Styles the loading screen component. */
 .loading-screen {
   min-height: 100vh;
   display: flex;
@@ -8,12 +10,14 @@
   background: var(--color-background, #ffffff);
 }
 
+/* Styles the loading screen logo for element sizing. */
 .loading-screen-logo {
   width: 88px;
   height: 88px;
   object-fit: contain;
 }
 
+/* Styles the loading screen spinner for borders and visual depth. */
 .loading-screen-spinner {
   width: 30px;
   height: 30px;
@@ -23,7 +27,9 @@
   animation: loading-screen-spin 0.8s linear infinite;
 }
 
+/* Defines the loading-screen-spin animation. */
 @keyframes loading-screen-spin {
+  /* Sets the to animation state. */
   to {
     transform: rotate(360deg);
   }

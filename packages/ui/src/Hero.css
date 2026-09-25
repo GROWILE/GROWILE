@@ -1,9 +1,12 @@
+/* Styles the hero for spacing and layout. */
+/* Styles the hero component. */
 .hero {
   max-width: 1200px;
   margin: 0 auto;
   padding: 92px 24px 72px;
   text-align: center;
 }
+/* Styles the kicker for spacing and layout. */
 .kicker {
   color: var(--color-text-highlight);
   font-size: 16px;
@@ -11,6 +14,7 @@
   letter-spacing: 2px;
   margin: 0 0 18px;
 }
+/* Styles the hero title for spacing and layout. */
 .hero-title {
   color: var(--color-primary);
   font-size: 56px;
@@ -18,6 +22,7 @@
   margin: 0 auto 26px;
   max-width: 1200px;
 }
+/* Styles the hero subtitle for spacing and layout. */
 .hero-subtitle {
   color: var(--color-primary);
   opacity: 0.8;
@@ -27,6 +32,7 @@
   max-width: 950px;
   margin: 0 auto 36px;
 }
+/* Styles the hero cta for spacing and layout. */
 .hero-cta {
   display: inline-flex;
   align-items: center;
@@ -41,37 +47,48 @@
   border-radius: 1px;
   transition: background 0.2s ease;
 }
+/* Styles the hero cta hover state for colors and background. */
 .hero-cta:hover {
   color: var(--color-accent);
   background: var(--color-secondary);
 }
+/* Styles the hero cta for animation and transitions. */
 .hero-cta span {
   transition: transform 0.2s ease;
 }
+/* Styles the hero cta hover state for animation and transitions. */
 .hero-cta:hover span {
   transform: translateX(4px);
 }
+/* Applies nested styles at (max-width: 900px). */
 @media (max-width: 900px) {
+  /* Styles the hero for spacing and layout. */
   .hero {
     padding: 76px 24px 64px;
   }
 
+  /* Styles the hero title for text appearance and alignment. */
   .hero-title {
     font-size: 44px;
   }
 
+  /* Styles the hero subtitle for text appearance and alignment. */
   .hero-subtitle {
     font-size: 17px;
   }
 }
 
+/* Applies nested styles at (max-width: 600px). */
 @media (max-width: 600px) {
+  /* Styles the hero for spacing and layout. */
   .hero {
     padding: 64px 20px 52px;
   }
+  /* Styles the hero title for text appearance and alignment. */
   .hero-title {
     font-size: 36px;
   }
+  /* Styles the hero subtitle for text appearance and alignment. */
   .hero-subtitle {
     font-size: 16px;
     font-weight: 500;

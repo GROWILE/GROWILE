@@ -1,3 +1,4 @@
+// Renders a tool card with an icon.
 import type { ReactNode } from "react";
 import "./iconToolCard.css";
 
@@ -8,6 +9,7 @@ export type IconToolCardProps = {
   colorTheme?: "blue" | "orange" | "green" | "purple" | "teal" | "default";
 };
 
+// Renders the icon tool card interface.
 export default function IconToolCard({
   title,
   href,

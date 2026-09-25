@@ -1,3 +1,4 @@
+// Renders a navigation menu with grouped links.
 import type { ReactNode } from "react";
 import "./NavbarDropdown.css";
 
@@ -24,6 +25,7 @@ export type NavbarDropdownProps = {
   onItemSelect: () => void;
 };
 
+// Renders the navbar dropdown interface.
 export default function NavbarDropdown({
   label,
   items,
@@ -58,13 +60,13 @@ export default function NavbarDropdown({
       {isOpen && (
         <div className={menuClassName}>
           {hasGroups
-            ? groups?.map((group) => (
+            ? groups?.map(/* Builds a value for each item in the collection. */ (group) => (
                 <div className="navbar-dropdown-group" key={group.label}>
                   <h3 className="navbar-dropdown-group-title">
                     {group.icon}
                     {group.label}
                   </h3>
-                  {group.items.map((item) => (
+                  {group.items.map(/* Builds a value for each item in the collection. */ (item) => (
                     <a
                       key={item.label}
                       href={item.href}
@@ -77,7 +79,7 @@ export default function NavbarDropdown({
                   ))}
                 </div>
               ))
-            : items.map((item) => (
+            : items.map(/* Builds a value for each item in the collection. */ (item) => (
                 <a
                   key={item.label}
                   href={item.href}

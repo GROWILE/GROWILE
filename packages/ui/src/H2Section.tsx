@@ -1,3 +1,4 @@
+// Renders reusable heading and description sections.
 import "./H2Section.css";
 
 // ---------- Types ----------
@@ -21,7 +22,7 @@ type H2SectionProps = {
 export default function H2Section({ blocks }: H2SectionProps) {
   return (
     <section className="h2-section">
-      {blocks.map((block) => (
+      {blocks.map(/* Builds a value for each item in the collection. */ (block) => (
         <div key={block.heading} className="h2-block">
           <h2 className="h2-block-heading">{block.heading}</h2>
           <p className="h2-block-description">{block.description}</p>

@@ -1,3 +1,4 @@
+// Renders the page shown for unknown web routes.
 import Navbar from "../../../../packages/ui/src/Navbar";
 import Footer from "../../../../packages/ui/src/Footer";
 import PageMeta from "../../../../packages/ui/src/PageMeta";
@@ -5,6 +6,7 @@ import webLogo from "../../../../packages/ui/assets/growile-logo.svg";
 import { webFooter, webNavigation } from "../config/site";
 import "./NotFound.css";
 
+// Renders the not found interface.
 export default function NotFound() {
   return (
     <>

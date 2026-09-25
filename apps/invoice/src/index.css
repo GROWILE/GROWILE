@@ -1,6 +1,8 @@
+/* Defines global styles for the invoice app. */
 @import "../../../packages/ui/src/Colors.css";
 @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap");
 
+/* Styles the root for text appearance and alignment. */
 :root {
   font-family: "Manrope", sans-serif;
   color: var(--color-primary);
@@ -9,15 +11,18 @@
   text-rendering: optimizeLegibility;
 }
 
+/* Styles the * for spacing and layout. */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
+/* Styles the body for spacing and layout. */
 body {
   margin: 0;
   min-width: 320px;
 }
+/* Styles the button for text appearance and alignment. */
 button,
 input,
 select {

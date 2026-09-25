@@ -1,3 +1,4 @@
+// Renders the web app product list page.
 // File: src/pages/ProductsList.tsx (or your products page route file)
 import Navbar from "../../../../packages/ui/src/Navbar";
 import Footer from "../../../../packages/ui/src/Footer";
@@ -7,6 +8,7 @@ import BreadcrumbSchema from "../../../../packages/ui/src/BreadcrumbSchema";
 import { webFooter, webNavigation } from "../config/site";
 import { webProductList } from "../config/productCards";
 
+// Renders the products list interface.
 export default function ProductsList() {
   
   return (

@@ -1,8 +1,10 @@
+// Converts JPG images to PDF files.
 import { PDFDocument } from "pdf-lib";
 
 const JPEG_TYPES = new Set(["image/jpeg", "image/jpg"]);
 const PAGE_MARGIN = 50;
 
+// Checks jpeg file.
 function isJpegFile(file: File) {
   return (
     JPEG_TYPES.has(file.type.toLowerCase()) ||
@@ -10,6 +12,7 @@ function isJpegFile(file: File) {
   );
 }
 
+// Converts jpg files to pdf.
 export async function convertJpgFilesToPdf(files: File[]): Promise<Uint8Array> {
   if (files.length === 0) {
     throw new Error("Select at least one JPG image before converting.");
@@ -22,9 +25,9 @@ export async function convertJpgFilesToPdf(files: File[]): Promise<Uint8Array> {
   }
 
   const pdf = await PDFDocument.create();
-  const imageBytes = await Promise.all(files.map((file) => file.arrayBuffer()));
+  const imageBytes = await Promise.all(files.map(/* Builds a value for each item in the collection. */ (file) => file.arrayBuffer()));
   const images = await Promise.all(
-    imageBytes.map((bytes) => pdf.embedJpg(bytes)),
+    imageBytes.map(/* Builds a value for each item in the collection. */ (bytes) => pdf.embedJpg(bytes)),
   );
 
   for (const image of images) {
@@ -45,6 +48,7 @@ export async function convertJpgFilesToPdf(files: File[]): Promise<Uint8Array> {
   return pdf.save();
 }
 
+// Downloads pdf.
 export function downloadPdf(bytes: Uint8Array, fileName: string) {
   const pdfBuffer = new ArrayBuffer(bytes.byteLength);
   new Uint8Array(pdfBuffer).set(bytes);

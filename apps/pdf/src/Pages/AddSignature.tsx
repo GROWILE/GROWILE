@@ -1,3 +1,4 @@
+// Renders the add signature PDF tool page.
 import { useCallback, useEffect, useRef, useState } from "react";
 import { ChevronLeft, ChevronRight, Eraser, FileSignature, Trash2 } from "lucide-react";
 import * as pdfjsLib from "pdfjs-dist";
@@ -41,6 +42,7 @@ const faqs = [
   { question: "Does this electronic signer work on mobile devices?", answer: "Yes, Growile PDF is mobile-friendly. You can comfortably approve urgent business contracts on the go using any Android or iOS smartphone." },
 ];
 
+// Renders the add signature interface.
 export default function AddSignature() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [file, setFile] = useState<File | null>(null);
@@ -59,7 +61,7 @@ export default function AddSignature() {
   const [pending, setPending] = useState<Uint8Array | null>(null);
   const [popup, setPopup] = useState(false);
 
-  useEffect(() => {
+  useEffect(/* Runs side effects when its dependencies change. */ () => {
     const canvas = canvasRef.current;
     if (!canvas) return;
     const context = canvas.getContext("2d");
@@ -70,14 +72,14 @@ export default function AddSignature() {
     context.strokeStyle = "#111827";
   }, []);
 
-  const clearSignature = () => {
+  const clearSignature = /* Resets signature. */ () => {
     const canvas = canvasRef.current;
     const context = canvas?.getContext("2d");
     if (!canvas || !context) return;
     context.clearRect(0, 0, canvas.width, canvas.height);
     setSignature("");
   };
-  const startDrawing = (event: React.PointerEvent<HTMLCanvasElement>) => {
+  const startDrawing = /* Handles start drawing work. */ (event: React.PointerEvent<HTMLCanvasElement>) => {
     const canvas = event.currentTarget;
     const context = canvas.getContext("2d");
     if (!context) return;
@@ -92,7 +94,7 @@ export default function AddSignature() {
       y: (event.clientY - bounds.top) * (canvas.height / bounds.height),
     };
   };
-  const draw = (event: React.PointerEvent<HTMLCanvasElement>) => {
+  const draw = /* Handles draw work. */ (event: React.PointerEvent<HTMLCanvasElement>) => {
     if (!drawingRef.current) return;
     const canvas = event.currentTarget;
     const context = canvas.getContext("2d");
@@ -108,7 +110,7 @@ export default function AddSignature() {
     context.stroke();
     lastPointRef.current = nextPoint;
   };
-  const finishDrawing = (event: React.PointerEvent<HTMLCanvasElement>) => {
+  const finishDrawing = /* Handles finish drawing work. */ (event: React.PointerEvent<HTMLCanvasElement>) => {
     if (!drawingRef.current) return;
     if (event.currentTarget.hasPointerCapture(event.pointerId)) event.currentTarget.releasePointerCapture(event.pointerId);
     drawingRef.current = false;
@@ -116,7 +118,7 @@ export default function AddSignature() {
     setSignature(event.currentTarget.toDataURL("image/png"));
   };
 
-  const handleSelection = async (files: File[]) => {
+  const handleSelection = /* Handles selection work. */ async (files: File[]) => {
     const selected = files[0] ?? null;
     setFile(selected); setPages([]); setPlacements([]); setCurrentPage(0); setMessage(""); setError("");
     if (!selected) return;
@@ -137,12 +139,12 @@ export default function AddSignature() {
     } catch (reason) { setError(reason instanceof Error ? reason.message : "Could not read the PDF."); }
   };
 
-  const placeSignature = (event: React.MouseEvent<HTMLDivElement>) => {
+  const placeSignature = /* Handles place signature work. */ (event: React.MouseEvent<HTMLDivElement>) => {
     if (!signature || !pages[currentPage] || signatureDrag || draggedSignatureRef.current) {
       draggedSignatureRef.current = false;
       return;
     }
-    const hasPageSignature = placements.some((item) => item.pageIndex === currentPage);
+    const hasPageSignature = placements.some(/* Checks whether any item matches the condition. */ (item) => item.pageIndex === currentPage);
     const isMobile = window.matchMedia("(max-width: 600px)").matches;
     if (hasPageSignature && !isMobile && event.detail < 2) return;
     const bounds = event.currentTarget.getBoundingClientRect();
@@ -151,9 +153,9 @@ export default function AddSignature() {
     const height = Math.min(initialSize.height, page.height);
     const x = Math.max(0, Math.min(page.width - width, ((event.clientX - bounds.left) / bounds.width) * page.width - width / 2));
     const y = Math.max(0, Math.min(page.height - height, page.height - ((event.clientY - bounds.top) / bounds.height) * page.height - height / 2));
-    setPlacements((current) => [...current, { pageIndex: currentPage, imageDataUrl: signature, x, y, width, height }]);
+    setPlacements(/* Handles place signature work. */ (current) => [...current, { pageIndex: currentPage, imageDataUrl: signature, x, y, width, height }]);
   };
-  const handleSignaturePointerDown = (event: React.PointerEvent<HTMLDivElement>, placementToDrag: SignaturePlacement, placementIndex: number) => {
+  const handleSignaturePointerDown = /* Handles signature pointer down work. */ (event: React.PointerEvent<HTMLDivElement>, placementToDrag: SignaturePlacement, placementIndex: number) => {
     event.preventDefault();
     event.stopPropagation();
     event.currentTarget.setPointerCapture(event.pointerId);
@@ -171,7 +173,7 @@ export default function AddSignature() {
     signatureDragRef.current = nextDrag;
     setSignatureDrag(nextDrag);
   };
-  const handleSignaturePointerMove = (event: React.PointerEvent<HTMLDivElement>) => {
+  const handleSignaturePointerMove = /* Handles signature pointer move work. */ (event: React.PointerEvent<HTMLDivElement>) => {
     const activeDrag = signatureDragRef.current;
     if (!activeDrag || !page) return;
     event.preventDefault();
@@ -189,12 +191,12 @@ export default function AddSignature() {
     event.currentTarget.style.left = `${(nextX / page.width) * 100}%`;
     event.currentTarget.style.top = `${((page.height - nextY - activeDrag.placement.height) / page.height) * 100}%`;
   };
-  const handleSignaturePointerUp = (event: React.PointerEvent<HTMLDivElement>) => {
+  const handleSignaturePointerUp = /* Handles signature pointer up work. */ (event: React.PointerEvent<HTMLDivElement>) => {
     if (!signatureDragRef.current) return;
     event.preventDefault();
     event.stopPropagation();
     if (draggedSignatureRef.current) {
-      window.setTimeout(() => {
+      window.setTimeout(/* Handles signature pointer up work. */ () => {
         draggedSignatureRef.current = false;
       }, 250);
     }
@@ -210,30 +212,30 @@ export default function AddSignature() {
       if (activeDrag) {
         const nextX = Math.max(0, Math.min(page.width - activeDrag.placement.width, pointerX - activeDrag.offsetX));
         const nextY = Math.max(0, Math.min(page.height - activeDrag.placement.height, pointerY - activeDrag.offsetY));
-        setPlacements((current) => current.map((item, index) => index === activeDrag.placementIndex ? { ...item, x: nextX, y: nextY } : item));
+        setPlacements(/* Handles signature pointer up work. */ (current) => current.map(/* Builds a value for each item in the collection. */ (item, index) => index === activeDrag.placementIndex ? { ...item, x: nextX, y: nextY } : item));
       }
     }
     signatureDragRef.current = null;
     setSignatureDrag(null);
   };
-  const preventPageSelection = (event: React.MouseEvent<HTMLDivElement>) => {
+  const preventPageSelection = /* Handles prevent page selection work. */ (event: React.MouseEvent<HTMLDivElement>) => {
     event.preventDefault();
   };
-  const handlePageDoubleClick = (event: React.MouseEvent<HTMLDivElement>) => {
+  const handlePageDoubleClick = /* Handles page double click work. */ (event: React.MouseEvent<HTMLDivElement>) => {
     if (!window.matchMedia("(max-width: 600px)").matches) placeSignature(event);
     else preventPageSelection(event);
   };
-  const removePlacement = (placementIndex: number) => setPlacements((current) => current.filter((_, index) => index !== placementIndex));
-  const handleAction = async (selected: File) => {
+  const removePlacement = /* Removes placement. */ (placementIndex: number) => setPlacements(/* Removes placement. */ (current) => current.filter(/* Keeps items that match the condition. */ (_, index) => index !== placementIndex));
+  const handleAction = /* Handles action work. */ async (selected: File) => {
     if (!signature || !placements.length) { setError("Draw a signature and place it on at least one page."); return; }
     setBusy(true); setMessage(""); setError("");
     try { const bytes = await signPdf(selected, placements); setPending(bytes); setPopup(true); setMessage("Signature added to the PDF successfully."); }
     catch (reason) { setError(reason instanceof Error ? reason.message : "Could not sign the PDF."); }
     finally { setBusy(false); }
   };
-  const closePopup = useCallback(() => { setPopup(false); setPending(null); }, []);
+  const closePopup = useCallback(/* Creates a callback that stays stable until its dependencies change. */ () => { setPopup(false); setPending(null); }, []);
   const page = pages[currentPage];
-  const pagePlacements = placements.map((item, index) => ({ item, index })).filter(({ item }) => item.pageIndex === currentPage);
+  const pagePlacements = placements.map(/* Builds a value for each item in the collection. */ (item, index) => ({ item, index })).filter(/* Keeps items that match the condition. */ ({ item }) => item.pageIndex === currentPage);
 
   return (
     <>
@@ -248,11 +250,11 @@ export default function AddSignature() {
           <div className="pdf-edit-content pdf-sign-edit-content">
             <div className="pdf-signature-pad-wrap"><div className="pdf-signature-pad-heading"><strong>Draw signature</strong><button type="button" onClick={clearSignature}><Eraser size={15} /> Clear</button></div><canvas ref={canvasRef} width={600} height={180} className="pdf-signature-pad" onPointerDown={startDrawing} onPointerMove={draw} onPointerUp={finishDrawing} onPointerCancel={finishDrawing} /><p>Use your mouse or touch to draw.</p></div>
             <p className="pdf-editor-hint">{signature ? "Click to place on mobile. On desktop, double-click to add another signature. Clear the pad to draw a different signature." : "Draw your signature above first."}</p>
-            <div className="pdf-page-carousel" aria-label="PDF signature editor"><button type="button" className="pdf-page-arrow" aria-label="Previous PDF page" disabled={currentPage === 0} onClick={() => setCurrentPage((value) => value - 1)}><ChevronLeft size={24} /></button>{page && <div className="pdf-page-viewport"><div className="pdf-page-canvas selected pdf-signature-page-canvas" onClick={placeSignature} onDoubleClick={handlePageDoubleClick}><img src={page.image} alt={`PDF page ${currentPage + 1}`} />{pagePlacements.map(({ item, index }) => <div className="pdf-signature-preview" key={`${item.pageIndex}-${index}`} style={{ left: `${(item.x / page.width) * 100}%`, top: `${((page.height - item.y - item.height) / page.height) * 100}%`, width: `${(item.width / page.width) * 100}%`, height: `${(item.height / page.height) * 100}%` }} onPointerDown={(event) => handleSignaturePointerDown(event, item, index)} onPointerMove={handleSignaturePointerMove} onPointerUp={handleSignaturePointerUp} onPointerCancel={handleSignaturePointerUp} onClick={(event) => event.stopPropagation()}><img src={item.imageDataUrl} alt={`Signature ${index + 1}`} /><button type="button" className="pdf-signature-delete" aria-label={`Delete signature ${index + 1}`} onPointerDown={(event) => event.stopPropagation()} onClick={(event) => { event.stopPropagation(); removePlacement(index); }}><Trash2 size={14} /></button></div>)}<span className="pdf-page-label">Page {currentPage + 1} of {pages.length}</span></div></div>}<button type="button" className="pdf-page-arrow" aria-label="Next PDF page" disabled={currentPage === pages.length - 1} onClick={() => setCurrentPage((value) => value + 1)}><ChevronRight size={24} /></button></div>
+            <div className="pdf-page-carousel" aria-label="PDF signature editor"><button type="button" className="pdf-page-arrow" aria-label="Previous PDF page" disabled={currentPage === 0} onClick={/* Runs when the user triggers click. */ () => setCurrentPage(/* Runs when the user triggers click. */ (value) => value - 1)}><ChevronLeft size={24} /></button>{page && <div className="pdf-page-viewport"><div className="pdf-page-canvas selected pdf-signature-page-canvas" onClick={placeSignature} onDoubleClick={handlePageDoubleClick}><img src={page.image} alt={`PDF page ${currentPage + 1}`} />{pagePlacements.map(/* Builds a value for each item in the collection. */ ({ item, index }) => <div className="pdf-signature-preview" key={`${item.pageIndex}-${index}`} style={{ left: `${(item.x / page.width) * 100}%`, top: `${((page.height - item.y - item.height) / page.height) * 100}%`, width: `${(item.width / page.width) * 100}%`, height: `${(item.height / page.height) * 100}%` }} onPointerDown={/* Runs when the user triggers pointer down. */ (event) => handleSignaturePointerDown(event, item, index)} onPointerMove={handleSignaturePointerMove} onPointerUp={handleSignaturePointerUp} onPointerCancel={handleSignaturePointerUp} onClick={/* Runs when the user triggers click. */ (event) => event.stopPropagation()}><img src={item.imageDataUrl} alt={`Signature ${index + 1}`} /><button type="button" className="pdf-signature-delete" aria-label={`Delete signature ${index + 1}`} onPointerDown={/* Runs when the user triggers pointer down. */ (event) => event.stopPropagation()} onClick={/* Runs when the user triggers click. */ (event) => { event.stopPropagation(); removePlacement(index); }}><Trash2 size={14} /></button></div>)}<span className="pdf-page-label">Page {currentPage + 1} of {pages.length}</span></div></div>}<button type="button" className="pdf-page-arrow" aria-label="Next PDF page" disabled={currentPage === pages.length - 1} onClick={/* Runs when the user triggers click. */ () => setCurrentPage(/* Runs when the user triggers click. */ (value) => value + 1)}><ChevronRight size={24} /></button></div>
             <p className="pdf-signature-count">{placements.length} signature{placements.length === 1 ? "" : "s"} placed</p>
           </div>
         ) : null} dropHint="or drop one PDF file here" /><AdSpace variant="vertical" /></div>{message && <p className="jpg-to-pdf-status" role="status">{message}</p>}{error && <p className="jpg-to-pdf-error" role="alert">{error}</p>}</section><section className="pdf-related-tools" aria-labelledby="related-pdf-tools-title"><h2 id="related-pdf-tools-title">More PDF Tools</h2><div className="pdf-related-tools-grid pdf-related-tools-grid-five"><PdfIconToolCard toolId="add-text" /><PdfIconToolCard toolId="protect-pdf" /><PdfIconToolCard toolId="add-watermark" /><PdfIconToolCard toolId="compress-pdf" /><PdfIconToolCard toolId="highlight-pdf" /></div></section><HowToUse heading="How to Add a Signature to a PDF" steps={steps} /><Divider /><H2Section blocks={[{ heading: "Sign PDF Document Online Free", description: "It is incredibly simple to sign PDF document online free with Growile PDF. Just upload your paperwork, create your custom mark, and place it exactly on the dotted line for a professional finish." }, { heading: "Draw Signature on PDF Online Free", description: "Prefer a handwritten touch? You can easily draw signature on PDF online free using your mouse or touchscreen. Our tool accurately captures your unique handwriting, making your digital file official." }, { heading: "Insert Electronic Signature in PDF Free", description: "The approval process is highly efficient. You can insert electronic signature in PDF free by simply uploading your file. Growile PDF seamlessly embeds your mark, delivering your signed file fast." }]} /><Divider /><FAQ heading="Add Signature to PDF FAQs" faqs={faqs} /><Divider /></main>
-      <PdfToolsFooter /><Footer /><AdSpace className="footer-bottom-ad-space" /><DownloadPopup isOpen={popup} onClose={closePopup} onTriggerDownload={() => { if (pending) downloadSignedPdf(pending, "signed-pdf.pdf"); }} itemName="Signed PDF" />
+      <PdfToolsFooter /><Footer /><AdSpace className="footer-bottom-ad-space" /><DownloadPopup isOpen={popup} onClose={closePopup} onTriggerDownload={/* Runs when the user triggers trigger download. */ () => { if (pending) downloadSignedPdf(pending, "signed-pdf.pdf"); }} itemName="Signed PDF" />
     </>
   );
 }

@@ -1,3 +1,4 @@
+// Mounts the web React app in the page.
 import { StrictMode } from "react";
 import { Suspense } from "react";
 import { createRoot } from "react-dom/client";

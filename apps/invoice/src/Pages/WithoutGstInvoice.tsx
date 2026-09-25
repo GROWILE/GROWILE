@@ -1,3 +1,4 @@
+// Builds a non-GST invoice, validates its fields, and generates a PDF.
 import { useMemo, useState } from "react";
 import type { ChangeEvent, FormEvent } from "react";
 import jsPDF from "jspdf";
@@ -51,6 +52,7 @@ const initialItems: InvoiceItem[] = [
 
 // ---------- Small pure helpers ----------
 
+// Formats typed date digits as day/month/year.
 function formatDateInput(value: string) {
   const digits = value.replace(/\D/g, "").slice(0, 8);
   const day = digits.slice(0, 2);
@@ -59,6 +61,7 @@ function formatDateInput(value: string) {
   return [day, month, year].filter(Boolean).join("/");
 }
 
+// Validates date.
 function isValidDate(value: string) {
   const match = /^(\d{2})\/(\d{2})\/(\d{4})$/.exec(value);
   if (!match) return false;
@@ -79,6 +82,7 @@ function isValidDate(value: string) {
   );
 }
 
+// Handles wrap pdf text work.
 function wrapPdfText(pdf: jsPDF, text: string, maxWidth: number, maxCharsPerLine = 34) {
   if (!text) return [""];
 
@@ -86,7 +90,7 @@ function wrapPdfText(pdf: jsPDF, text: string, maxWidth: number, maxCharsPerLine
   const words = text.split(/\s+/);
   let current = "";
 
-  words.forEach((word) => {
+  words.forEach(/* Processes each item in the collection. */ (word) => {
     if (!word) return;
 
     if (word.length > maxCharsPerLine) {
@@ -112,11 +116,12 @@ function wrapPdfText(pdf: jsPDF, text: string, maxWidth: number, maxCharsPerLine
 
   if (current) chunks.push(current);
 
-  return chunks.flatMap((chunk) => pdf.splitTextToSize(chunk, maxWidth));
+  return chunks.flatMap(/* Handles the work for this callback. */ (chunk) => pdf.splitTextToSize(chunk, maxWidth));
 }
 
 // ---------- Component ----------
 
+// Collects invoice details and provides non-GST invoice actions.
 export default function WithoutGstInvoice() {
   const gstInvoiceHref = window.location.pathname.startsWith("/invoice")
     ? "/invoice/gst-invoice"
@@ -133,47 +138,49 @@ export default function WithoutGstInvoice() {
   const [items, setItems] = useState(initialItems);
   const [error, setError] = useState("");
   
-  // 1. Pudhusa Currency-kku State add panniyirukkom (Default INR)
+  // Stores the selected currency, defaulting to INR.
   const [currency, setCurrency] = useState("INR");
 
   const total = useMemo(
+    // Calculates the value cached by this memo.
     () =>
       items.reduce(
+        // Combines the collection into one value.
         (sum, item) => sum + Number(item.quantity || 0) * Number(item.amount || 0),
         0,
       ),
     [items],
   );
 
-  const handleLogoChange = (event: ChangeEvent<HTMLInputElement>) => {
+  const handleLogoChange = /* Handles logo change work. */ (event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (!file) return;
 
     const reader = new FileReader();
-    reader.onload = () => setLogoUrl(String(reader.result));
+    reader.onload = /* Handles logo change work. */ () => setLogoUrl(String(reader.result));
     reader.readAsDataURL(file);
   };
 
-  const updateItem = (id: number, field: keyof InvoiceItem, value: string) => {
-    setItems((currentItems) =>
-      currentItems.map((item) => (item.id === id ? { ...item, [field]: value } : item)),
+  const updateItem = /* Updates item. */ (id: number, field: keyof InvoiceItem, value: string) => {
+    setItems(/* Updates item. */ (currentItems) =>
+      currentItems.map(/* Builds a value for each item in the collection. */ (item) => (item.id === id ? { ...item, [field]: value } : item)),
     );
   };
 
-  const addItem = () => {
+  const addItem = /* Adds item. */ () => {
     if (items.length >= MAX_ITEMS) {
       setError(`You can add a maximum of ${MAX_ITEMS} items.`);
       return;
     }
 
-    setItems((currentItems) => [
+    setItems(/* Adds item. */ (currentItems) => [
       ...currentItems,
       { id: Date.now(), description: "", quantity: "1", amount: "" },
     ]);
     setError("");
   };
 
-  const handleDateChange = (value: string) => {
+  const handleDateChange = /* Handles date change work. */ (value: string) => {
     const formattedDate = formatDateInput(value);
     setDate(formattedDate);
 
@@ -185,6 +192,7 @@ export default function WithoutGstInvoice() {
     }
   };
 
+  // Validates form.
   function validateForm(): string | null {
     if (from.length > MAX_FROM_TO_LENGTH || to.length > MAX_FROM_TO_LENGTH) {
       return "From and To can contain a maximum of 60 characters.";
@@ -202,6 +210,7 @@ export default function WithoutGstInvoice() {
     }
 
     const invalidItemDescription = items.find(
+      // Checks items until it finds a match.
       (item) => item.description.length > MAX_ITEM_DESCRIPTION_LENGTH,
     );
     if (invalidItemDescription) {
@@ -209,6 +218,7 @@ export default function WithoutGstInvoice() {
     }
 
     const invalidItemNumbers = items.find(
+      // Checks items until it finds a match.
       (item) => Number(item.quantity) > MAX_QUANTITY || Number(item.amount) > MAX_AMOUNT,
     );
     if (invalidItemNumbers) {
@@ -218,6 +228,7 @@ export default function WithoutGstInvoice() {
     return null;
   }
 
+  // Generates pdf.
   function generatePdf() {
     const pdf = new jsPDF();
     const pageWidth = 210;
@@ -259,8 +270,8 @@ export default function WithoutGstInvoice() {
 
     const fromLines = wrapPdfText(pdf, from, contentWidth / 2 - 6, 30);
     const toLines = wrapPdfText(pdf, to, contentWidth / 2 - 6, 30);
-    fromLines.forEach((line: string, i: number) => pdf.text(line, margin, y + i * 6));
-    toLines.forEach((line: string, i: number) =>
+    fromLines.forEach(/* Processes each item in the collection. */ (line: string, i: number) => pdf.text(line, margin, y + i * 6));
+    toLines.forEach(/* Processes each item in the collection. */ (line: string, i: number) =>
       pdf.text(line, margin + contentWidth / 2, y + i * 6),
     );
 
@@ -308,14 +319,14 @@ export default function WithoutGstInvoice() {
     y += 16;
 
     pdf.setFont("helvetica", "normal");
-    items.forEach((item) => {
+    items.forEach(/* Processes each item in the collection. */ (item) => {
       if (!item.description && !item.amount) return;
 
       const descriptionLines = wrapPdfText(pdf, item.description || "-", contentWidth - 80, 46);
       const quantityText = item.quantity || "-";
       const amountValue = Number(item.amount || 0);
       
-      // 2. PDF-la "Rs." kku bathila dynamic currency pottaachu
+      // Formats PDF amounts with the selected currency.
       const amountText = `${currency} ${amountValue.toLocaleString("en-IN", {
         minimumFractionDigits: 2,
         maximumFractionDigits: 2,
@@ -324,7 +335,7 @@ export default function WithoutGstInvoice() {
 
       pdf.setFontSize(10);
       pdf.setTextColor(17, 17, 17);
-      descriptionLines.forEach((line: string, index: number) => {
+      descriptionLines.forEach(/* Processes each item in the collection. */ (line: string, index: number) => {
         pdf.text(line, margin + 4, y + index * 6);
       });
 
@@ -369,7 +380,7 @@ export default function WithoutGstInvoice() {
     pdf.save(`invoice-${invoiceNumber}.pdf`);
   }
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = /* Handles submit work. */ (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     const validationError = validateForm();
@@ -411,7 +422,7 @@ export default function WithoutGstInvoice() {
             <input
               type="text"
               value={from}
-              onChange={(event) => setFrom(event.target.value.slice(0, MAX_FROM_TO_LENGTH))}
+              onChange={/* Runs when the user triggers change. */ (event) => setFrom(event.target.value.slice(0, MAX_FROM_TO_LENGTH))}
               placeholder="Your business name"
               maxLength={MAX_FROM_TO_LENGTH}
             />
@@ -422,7 +433,7 @@ export default function WithoutGstInvoice() {
             <input
               type="text"
               value={to}
-              onChange={(event) => setTo(event.target.value.slice(0, MAX_FROM_TO_LENGTH))}
+              onChange={/* Runs when the user triggers change. */ (event) => setTo(event.target.value.slice(0, MAX_FROM_TO_LENGTH))}
               placeholder="Customer name"
               maxLength={MAX_FROM_TO_LENGTH}
             />
@@ -433,7 +444,7 @@ export default function WithoutGstInvoice() {
             <input
               type="text"
               value={invoiceNumber}
-              onChange={(event) => setInvoiceNumber(event.target.value)}
+              onChange={/* Runs when the user triggers change. */ (event) => setInvoiceNumber(event.target.value)}
               placeholder="INV-0001"
             />
           </label>
@@ -444,20 +455,20 @@ export default function WithoutGstInvoice() {
               type="text"
               inputMode="numeric"
               value={date}
-              onChange={(event) => handleDateChange(event.target.value)}
+              onChange={/* Runs when the user triggers change. */ (event) => handleDateChange(event.target.value)}
               placeholder="DD/MM/YYYY"
               maxLength={10}
               autoComplete="off"
             />
           </label>
 
-          {/* 4. Pudhu Currency Dropdown Inga Add Panni Irukkom */}
+          {/* Lets the user select a currency for the invoice. */}
           <label>
             Currency
             <input
               list="without-gst-currencies"
               value={currency}
-              onChange={(event) => setCurrency(event.target.value.toUpperCase())}
+              onChange={/* Runs when the user triggers change. */ (event) => setCurrency(event.target.value.toUpperCase())}
               placeholder="Type or choose currency"
               required
             />
@@ -466,7 +477,7 @@ export default function WithoutGstInvoice() {
 
         {/* Currency Datalist */}
         <datalist id="without-gst-currencies">
-          {currencies.map((option) => (
+          {currencies.map(/* Builds a value for each item in the collection. */ (option) => (
             <option key={option} value={option} />
           ))}
         </datalist>
@@ -475,7 +486,7 @@ export default function WithoutGstInvoice() {
           Payment Info
           <textarea
             value={paymentInfo}
-            onChange={(event) =>
+            onChange={/* Runs when the user triggers change. */ (event) =>
               setPaymentInfo(event.target.value.slice(0, MAX_PAYMENT_INFO_LENGTH))
             }
             placeholder="Add payment details, bank account, UPI, or payment terms"
@@ -490,7 +501,7 @@ export default function WithoutGstInvoice() {
             <span>Amount</span>
           </div>
 
-          {items.map((item, index) => (
+          {items.map(/* Builds a value for each item in the collection. */ (item, index) => (
             <div className="invoice-item-row" key={item.id}>
               <label>
                 Item {index + 1}
@@ -498,7 +509,7 @@ export default function WithoutGstInvoice() {
                   type="text"
                   value={item.description}
                   placeholder="Item or service description"
-                  onChange={(event) =>
+                  onChange={/* Runs when the user triggers change. */ (event) =>
                     updateItem(
                       item.id,
                       "description",
@@ -516,7 +527,7 @@ export default function WithoutGstInvoice() {
                   min="1"
                   max={MAX_QUANTITY}
                   value={item.quantity}
-                  onChange={(event) => updateItem(item.id, "quantity", event.target.value)}
+                  onChange={/* Runs when the user triggers change. */ (event) => updateItem(item.id, "quantity", event.target.value)}
                 />
               </label>
 
@@ -529,7 +540,7 @@ export default function WithoutGstInvoice() {
                   step="0.01"
                   value={item.amount}
                   placeholder="0.00"
-                  onChange={(event) => updateItem(item.id, "amount", event.target.value)}
+                  onChange={/* Runs when the user triggers change. */ (event) => updateItem(item.id, "amount", event.target.value)}
                 />
               </label>
             </div>
@@ -571,7 +582,7 @@ export default function WithoutGstInvoice() {
        {/* Download PopUp Component */}
             <DownloadPopup 
               isOpen={isPopupOpen} 
-              onClose={() => setIsPopupOpen(false)} 
+              onClose={/* Runs when the user triggers close. */ () => setIsPopupOpen(false)}
               onTriggerDownload={generatePdf} 
               itemName="Non-GST Invoice" 
             />

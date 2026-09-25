@@ -1,5 +1,7 @@
+// Renders a decorative section divider.
 import "./Divider.css";
 
+// Renders the divider interface.
 export default function Divider() {
   return (
     <div className="divider">

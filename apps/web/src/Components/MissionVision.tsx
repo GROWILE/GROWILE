@@ -1,3 +1,4 @@
+// Renders the mission and vision content.
 import "./MissionVision.css";
 
 const items = [
@@ -15,11 +16,12 @@ const items = [
   },
 ];
 
+// Renders the mission vision interface.
 export default function MissionVision() {
   return (
     <section className="mission-vision">
       <div className="mission-vision-grid">
-        {items.map((item) => (
+        {items.map(/* Builds a value for each item in the collection. */ (item) => (
           <div key={item.title} className="mission-vision-card">
             <h3 className="mission-vision-title">{item.title}</h3>
             <div className={`mission-vision-underline ${item.accentClass}`} />

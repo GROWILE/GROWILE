@@ -1,3 +1,4 @@
+// Renders expandable frequently asked questions.
 import { useState } from "react";
 import type { ReactNode } from "react";
 import "./FAQ.css";
@@ -12,11 +13,12 @@ type FAQProps = {
   faqs: FAQItem[];
 };
 
+// Renders the faq interface.
 export default function FAQ({ heading, faqs }: FAQProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
-  const toggle = (index: number) => {
-    setOpenIndex((prev) => (prev === index ? null : index));
+  const toggle = /* Toggles. */ (index: number) => {
+    setOpenIndex(/* Toggles. */ (prev) => (prev === index ? null : index));
   };
 
   return (
@@ -24,7 +26,7 @@ export default function FAQ({ heading, faqs }: FAQProps) {
       <h2 className="faq-heading">{heading}</h2>
 
       <div className="faq-list">
-        {faqs.map((faq, index) => {
+        {faqs.map(/* Builds a value for each item in the collection. */ (faq, index) => {
           const isOpen = openIndex === index;
           return (
             <div
@@ -33,7 +35,7 @@ export default function FAQ({ heading, faqs }: FAQProps) {
             >
               <button
                 className="faq-question"
-                onClick={() => toggle(index)}
+                onClick={/* Runs when the user triggers click. */ () => toggle(index)}
                 aria-expanded={isOpen}
               >
                 <span>{faq.question}</span>

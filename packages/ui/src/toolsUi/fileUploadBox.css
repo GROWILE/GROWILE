@@ -1,5 +1,7 @@
+/* Styles the file upload box component. */
 @import "../Colors.css";
 
+/* Styles the file upload wrapper for spacing and layout. */
 .file-upload-wrapper {
   box-sizing: border-box;
   width: min(100%, 1230px);
@@ -10,6 +12,7 @@
   text-align: center;
 }
 
+/* Styles the file upload box for flex layout and alignment. */
 .file-upload-box {
   box-sizing: border-box;
   min-height: 488px;
@@ -24,12 +27,14 @@
   transition: border-color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
 }
 
+/* Styles the file upload box for colors and background. */
 .file-upload-box.dragging {
   border-color: var(--color-accent);
   background: color-mix(in srgb, var(--color-accent) 5%, var(--color-secondary));
   box-shadow: 0 0 0 5px color-mix(in srgb, var(--color-accent) 10%, transparent);
 }
 
+/* Styles the file upload header for flex layout and alignment. */
 .file-upload-header {
   display: flex;
   align-items: center;
@@ -38,6 +43,7 @@
   margin-bottom: 20px;
 }
 
+/* Styles the file upload icon for colors and background. */
 .file-upload-icon {
   display: inline-flex;
   align-items: center;
@@ -49,31 +55,38 @@
   background: color-mix(in srgb, var(--upload-tool-color, var(--color-text-highlight)) 10%, var(--color-secondary));
 }
 
+/* Styles the file upload icon for element sizing. */
 .file-upload-icon svg {
   width: 30px;
   height: 30px;
 }
 
+/* Styles the file upload theme blue for visual appearance. */
 .file-upload-theme-blue {
   --upload-tool-color: var(--color-tool-blue);
 }
 
+/* Styles the file upload theme orange for visual appearance. */
 .file-upload-theme-orange {
   --upload-tool-color: var(--color-tool-orange);
 }
 
+/* Styles the file upload theme green for visual appearance. */
 .file-upload-theme-green {
   --upload-tool-color: var(--color-tool-green);
 }
 
+/* Styles the file upload theme purple for visual appearance. */
 .file-upload-theme-purple {
   --upload-tool-color: var(--color-tool-purple);
 }
 
+/* Styles the file upload theme teal for visual appearance. */
 .file-upload-theme-teal {
   --upload-tool-color: var(--color-tool-teal);
 }
 
+/* Styles the file upload title for spacing and layout. */
 .file-upload-title {
   font-size: clamp(21px, 2vw, 28px);
   font-weight: 700;
@@ -82,6 +95,7 @@
   margin: 0;
 }
 
+/* Styles the file upload description for spacing and layout. */
 .file-upload-description {
   max-width: 760px;
   font-size: clamp(15px, 1.5vw, 18px);
@@ -90,6 +104,7 @@
   margin: 0 0 46px;
 }
 
+/* Styles the file upload button for spacing and layout. */
 .file-upload-button {
   width: min(100%, 600px);
   min-height: 75px;
@@ -109,6 +124,7 @@
   transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
 
+/* Styles the file upload button hover state for colors and background. */
 .file-upload-button:hover , 
 .file-upload-button:focus-visible
  {
@@ -118,16 +134,19 @@
   
 }
 
+/* Styles the file upload button active state for animation and transitions. */
 .file-upload-button:active {
   transform: translateY(1px);
 }
 
+/* Styles the file upload plus for text appearance and alignment. */
 .file-upload-plus {
   font-size: 26px;
   line-height: 1;
   font-weight: 500;
 }
 
+/* Styles the file upload input for positioning and stacking. */
 .file-upload-input {
   position: absolute;
   width: 1px;
@@ -136,12 +155,14 @@
   pointer-events: none;
 }
 
+/* Styles the file upload hint for spacing and layout. */
 .file-upload-hint {
   margin: 14px 0 0;
   font-size: 16px;
   color: color-mix(in srgb, var(--color-primary) 62%, transparent);
 }
 
+/* Styles the file upload sources for flex layout and alignment. */
 .file-upload-sources {
   display: flex;
   align-items: center;
@@ -150,6 +171,7 @@
   margin-top: 36px;
 }
 
+/* Styles the file upload source for spacing and layout. */
 .file-upload-source {
   width: 45px;
   height: 45px;
@@ -165,6 +187,7 @@
   transition: border-color 0.2s ease, background-color 0.2s ease, transform 0.2s ease;
 }
 
+/* Styles the file upload source hover state for colors and background. */
 .file-upload-source:hover,
 .file-upload-source:focus-visible {
   border-color: var(--color-accent);
@@ -172,11 +195,13 @@
   transform: translateY(-2px);
 }
 
+/* Styles the file upload box selected for borders and visual depth. */
 .file-upload-box-selected {
   border-style: solid;
   border-color: color-mix(in srgb, var(--color-accent) 32%, transparent);
 }
 
+/* Styles the file selected header for flex layout and alignment. */
 .file-selected-header {
   display: flex;
   align-items: center;
@@ -184,6 +209,7 @@
   margin-bottom: 28px;
 }
 
+/* Styles the file selected icon for colors and background. */
 .file-selected-icon {
   display: inline-flex;
   align-items: center;
@@ -195,6 +221,7 @@
   background: color-mix(in srgb, var(--upload-tool-color, var(--color-accent)) 12%, var(--color-secondary));
 }
 
+/* Styles the file selected eyebrow for spacing and layout. */
 .file-selected-eyebrow {
   margin: 0 0 5px;
   color: var(--color-accent);
@@ -205,6 +232,7 @@
   text-align: left;
 }
 
+/* Styles the file selected grid for grid layout and alignment. */
 .file-selected-grid {
   width: min(100%, 600px);
   display: grid;
@@ -212,12 +240,14 @@
   gap: 10px;
 }
 
+/* Styles the file selected grid multiple for spacing and layout. */
 .file-selected-grid-multiple {
   max-height: 300px;
   overflow-y: auto;
   padding: 4px;
 }
 
+/* Styles the file selected card for flex layout and alignment. */
 .file-selected-card {
   position: relative;
   display: flex;
@@ -232,20 +262,24 @@
   transition: border-color 0.2s ease, background-color 0.2s ease, opacity 0.2s ease;
 }
 
+/* Styles the file selected card reorderable for interaction behavior. */
 .file-selected-card-reorderable {
   cursor: grab;
 }
 
+/* Styles the file selected card active state for interaction behavior. */
 .file-selected-card:active {
   cursor: grabbing;
 }
 
+/* Styles the file selected card dragging for colors and background. */
 .file-selected-card-dragging {
   opacity: 0.55;
   border-color: var(--color-accent);
   background: color-mix(in srgb, var(--color-accent) 10%, var(--color-secondary));
 }
 
+/* Styles the file drag handle for spacing and layout. */
 .file-drag-handle {
   display: inline-flex;
   flex: 0 0 auto;
@@ -258,10 +292,12 @@
   cursor: grab;
 }
 
+/* Styles the file drag handle hover state for colors and background. */
 .file-drag-handle:hover {
   color: var(--color-accent);
 }
 
+/* Styles the file selected thumbnail for colors and background. */
 .file-selected-thumbnail {
   flex: 0 0 auto;
   width: 56px;
@@ -271,6 +307,7 @@
   background: color-mix(in srgb, var(--color-primary) 8%, transparent);
 }
 
+/* Styles the file selected name for text appearance and alignment. */
 .file-selected-name {
   display: block;
   font-size: 16px;
@@ -279,6 +316,7 @@
   word-break: break-word;
 }
 
+/* Styles the file selected type for grid layout and alignment. */
 .file-selected-type {
   flex: 0 0 auto;
   display: grid;
@@ -292,17 +330,20 @@
   font-weight: 800;
 }
 
+/* Styles the file selected details for element sizing. */
 .file-selected-details {
   min-width: 0;
   flex: 1;
 }
 
+/* Styles the file reorder controls for flex layout and alignment. */
 .file-reorder-controls {
   display: flex;
   flex-direction: column;
   gap: 3px;
 }
 
+/* Styles the file reorder controls for spacing and layout. */
 .file-reorder-controls button {
   width: 26px;
   height: 24px;
@@ -315,17 +356,20 @@
   cursor: pointer;
 }
 
+/* Styles the file reorder controls hover state for colors and background. */
 .file-reorder-controls button:hover:not(:disabled),
 .file-reorder-controls button:focus-visible:not(:disabled) {
   border-color: var(--color-accent);
   color: var(--color-accent);
 }
 
+/* Styles the file reorder controls disabled state for interaction behavior. */
 .file-reorder-controls button:disabled {
   opacity: 0.3;
   cursor: not-allowed;
 }
 
+/* Styles the file selected remove for spacing and layout. */
 .file-selected-remove {
   display: inline-flex;
   flex: 0 0 auto;
@@ -342,6 +386,7 @@
   transition: border-color 0.2s ease, color 0.2s ease, background-color 0.2s ease;
 }
 
+/* Styles the file selected remove hover state for colors and background. */
 .file-selected-remove:hover,
 .file-selected-remove:focus-visible {
   border-color: var(--color-accent);
@@ -349,21 +394,25 @@
   background: color-mix(in srgb, var(--color-accent) 8%, var(--color-secondary));
 }
 
+/* Styles the file selected meta for text appearance and alignment. */
 .file-selected-meta,
 .file-selected-ready {
   color: color-mix(in srgb, var(--color-primary) 58%, transparent);
   font-size: 13px;
 }
 
+/* Styles the file selected meta for spacing and layout. */
 .file-selected-meta {
   display: block;
   margin-top: 5px;
 }
 
+/* Styles the file selected ready for spacing and layout. */
 .file-selected-ready {
   margin: 18px 0 24px;
 }
 
+/* Styles the file upload secondary actions for flex layout and alignment. */
 .file-upload-secondary-actions {
   display: flex;
   align-items: center;
@@ -373,6 +422,7 @@
   margin-top: 18px;
 }
 
+/* Styles the file upload secondary actions for spacing and layout. */
 .file-upload-secondary-actions > button {
   box-sizing: border-box;
   min-width: 224px;
@@ -381,6 +431,7 @@
   margin: 0;
 }
 
+/* Styles the file selected remove all for spacing and layout. */
 .file-selected-remove-all {
   display: inline-flex;
   align-items: center;
@@ -396,6 +447,7 @@
   transition: border-color 0.2s ease, color 0.2s ease, background-color 0.2s ease;
 }
 
+/* Styles the file selected remove all hover state for colors and background. */
 .file-selected-remove-all:hover,
 .file-selected-remove-all:focus-visible {
   border-color: var(--color-accent);
@@ -403,6 +455,7 @@
   background: color-mix(in srgb, var(--color-accent) 6%, var(--color-secondary));
 }
 
+/* Styles the file action button for spacing and layout. */
 /* ---- Action button (Compress / Convert / etc.) ---- */
 
 .file-action-button {
@@ -418,15 +471,18 @@
   transition: opacity 0.2s ease;
 }
 
+/* Styles the file action button hover state for colors and background. */
 .file-action-button:hover {
   background: color-mix(in srgb, var(--color-accent) 86%, var(--color-primary));
 }
 
+/* Styles the file action button disabled state for interaction behavior. */
 .file-action-button:disabled {
   opacity: 0.6;
   cursor: wait;
 }
 
+/* Styles the file add button for spacing and layout. */
 .file-add-button {
   display: inline-flex;
   align-items: center;
@@ -444,59 +500,72 @@
   transition: background-color 0.2s ease, border-color 0.2s ease;
 }
 
+/* Styles the file add button hover state for colors and background. */
 .file-add-button:hover,
 .file-add-button:focus-visible {
   border-color: var(--color-accent);
   background: color-mix(in srgb, var(--color-accent) 12%, var(--color-secondary));
 }
 
+/* Styles the file add button for text appearance and alignment. */
 .file-add-button .file-upload-plus {
   font-size: 18px;
 }
 
+/* Styles the file add limit for text appearance and alignment. */
 .file-add-limit {
   color: color-mix(in srgb, var(--color-primary) 52%, transparent);
   font-size: 12px;
   font-weight: 500;
 }
 
+/* Applies nested styles at (max-width: 480px). */
 @media (max-width: 480px) {
+  /* Styles the file upload wrapper for spacing and layout. */
   .file-upload-wrapper {
     padding: 10px;
     border-radius: 18px;
   }
 
+  /* Styles the file upload box for spacing and layout. */
   .file-upload-box {
     min-height: 390px;
     padding: 40px 18px;
   }
 
+  /* Styles the file upload description for spacing and layout. */
   .file-upload-description {
     margin-bottom: 32px;
   }
 
+  /* Styles the file upload button for text appearance and alignment. */
   .file-upload-button {
     min-height: 62px;
     font-size: 16px;
   }
 
+  /* Styles the file selected card for visual appearance. */
   .file-selected-card {
     align-items: flex-start;
   }
 
+  /* Styles the file upload secondary actions for visual appearance. */
   .file-upload-secondary-actions {
     flex-direction: column;
     gap: 10px;
   }
 
+  /* Styles the file upload secondary actions for element sizing. */
   .file-upload-secondary-actions > button {
     width: min(100%, 260px);
   }
 
+  /* Styles the file selected grid multiple for element sizing. */
   .file-selected-grid-multiple {
     max-height: 260px;
   }
 
+  /* Styles the file drag handle for visual appearance. */
   .file-drag-handle {
     display: none;
   }

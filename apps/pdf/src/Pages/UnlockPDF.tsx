@@ -1,3 +1,4 @@
+// Renders the unlock pdf PDF tool page.
 import { useCallback, useState } from "react";
 import { ShieldCheck } from "lucide-react";
 import AdSpace from "../../../../packages/ui/src/AdSpace";
@@ -44,6 +45,7 @@ const schemas = {
   content: { "@context": "https://schema.org", "@type": "WebPage", name: "Unlock PDF", hasPart: seoBlocks.map((block) => ({ "@type": "WebPageElement", name: block.heading, text: block.description })) },
 };
 
+// Renders the unlock pdf interface.
 export default function UnlockPDF() {
   const [isUnlocking, setIsUnlocking] = useState(false);
   const [message, setMessage] = useState("");
@@ -52,10 +54,10 @@ export default function UnlockPDF() {
   const [password, setPassword] = useState("");
   const [pendingPdf, setPendingPdf] = useState<Uint8Array | null>(null);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
-  const triggerDownload = useCallback(() => { if (pendingPdf) downloadUnlockedPdf(pendingPdf, "unlocked.pdf"); }, [pendingPdf]);
-  const closePopup = useCallback(() => { setIsPopupOpen(false); setPendingPdf(null); }, []);
+  const triggerDownload = useCallback(/* Creates a callback that stays stable until its dependencies change. */ () => { if (pendingPdf) downloadUnlockedPdf(pendingPdf, "unlocked.pdf"); }, [pendingPdf]);
+  const closePopup = useCallback(/* Creates a callback that stays stable until its dependencies change. */ () => { setIsPopupOpen(false); setPendingPdf(null); }, []);
 
-  const handleAction = async (file: File) => {
+  const handleAction = /* Handles action work. */ async (file: File) => {
     setIsUnlocking(true); setMessage(""); setError("");
     try {
       const bytes = await unlockPdf(file, password);
@@ -86,8 +88,8 @@ export default function UnlockPDF() {
               actionDisabled={isUnlocking || !selectedFile}
               accept=".pdf,application/pdf"
               onAction={handleAction}
-              onSelectionChange={(files) => { setSelectedFile(files[0] ?? null); setMessage(""); setError(""); }}
-              selectedContent={selectedFile ? <div className="security-pdf-fields"><label>PDF password<input type="password" value={password} onChange={(event) => setPassword(event.target.value)} autoComplete="current-password" /></label></div> : null}
+              onSelectionChange={/* Runs when the user triggers selection change. */ (files) => { setSelectedFile(files[0] ?? null); setMessage(""); setError(""); }}
+              selectedContent={selectedFile ? <div className="security-pdf-fields"><label>PDF password<input type="password" value={password} onChange={/* Runs when the user triggers change. */ (event) => setPassword(event.target.value)} autoComplete="current-password" /></label></div> : null}
               dropHint="or drop one PDF file here"
             />
             <AdSpace variant="vertical" />

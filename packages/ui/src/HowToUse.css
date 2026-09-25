@@ -1,9 +1,12 @@
+/* Styles the how to use for spacing and layout. */
+/* Styles the how to use component. */
 .how-to-use {
   max-width: 1300px;
   margin: 0 auto;
   padding: 40px 24px 100px;
 }
 
+/* Styles the how to use heading for spacing and layout. */
 .how-to-use-heading {
   font-size: 36px;
   font-weight: 700;
@@ -12,18 +15,21 @@
   margin: 0 0 48px;
 }
 
+/* Styles the how to use steps for grid layout and alignment. */
 .how-to-use-steps {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 28px;
 }
 
+/* Styles the how to use step for spacing and layout. */
 .how-to-use-step {
   background: var(--color-primary);
   border-radius: 1px;
   padding: 32px;
 }
 
+/* Styles the how to use number for spacing and layout. */
 .how-to-use-number {
   font-size: 18px;
   font-weight: 700;
@@ -32,6 +38,7 @@
   margin: 0 0 12px;
 }
 
+/* Styles the how to use title for spacing and layout. */
 .how-to-use-title {
   font-size: 28px;
   font-weight: 700;
@@ -39,6 +46,7 @@
   margin: 0 0 10px;
 }
 
+/* Styles the how to use description for spacing and layout. */
 .how-to-use-description {
   font-size: 16px;
   line-height: 1.6;
@@ -47,43 +55,54 @@
   margin: 0;
 }
 
+/* Applies nested styles at (max-width: 900px). */
 @media (max-width: 900px) {
+  /* Styles the how to use for spacing and layout. */
   .how-to-use {
     padding: 36px 24px 80px;
   }
 
+  /* Styles the how to use heading for spacing and layout. */
   .how-to-use-heading {
     font-size: 32px;
     margin-bottom: 36px;
   }
 
+  /* Styles the how to use steps for visual appearance. */
   .how-to-use-steps {
     gap: 20px;
   }
 
+  /* Styles the how to use step for spacing and layout. */
   .how-to-use-step {
     padding: 28px;
   }
 }
 
+/* Applies nested styles at (max-width: 600px). */
 @media (max-width: 600px) {
+  /* Styles the how to use for spacing and layout. */
   .how-to-use {
     padding: 32px 20px 64px;
   }
 
+  /* Styles the how to use heading for spacing and layout. */
   .how-to-use-heading {
     font-size: 28px;
     margin-bottom: 28px;
   }
 
+  /* Styles the how to use title for text appearance and alignment. */
   .how-to-use-title {
     font-size: 22px;
   }
 
+  /* Styles the how to use steps for visual appearance. */
   .how-to-use-steps {
     grid-template-columns: 1fr;
   }
 
+  /* Styles the how to use step for spacing and layout. */
   .how-to-use-step {
     padding: 22px;
   }

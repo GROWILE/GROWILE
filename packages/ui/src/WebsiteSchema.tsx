@@ -1,8 +1,10 @@
+// Adds website structured data for search engines.
 type WebsiteSchemaProps = {
   name?: string;
   url?: string;
 };
 
+// Renders the website schema interface.
 export default function WebsiteSchema({
   name = "Growile",
   url = "https://growile.com/",

@@ -1,9 +1,12 @@
+// Combines multiple PDF files into one.
 import { PDFDocument } from "pdf-lib";
 
+// Checks pdf file.
 function isPdfFile(file: File) {
   return file.type.toLowerCase() === "application/pdf" || /\.pdf$/i.test(file.name);
 }
 
+// Combines pdf files.
 export async function mergePdfFiles(files: File[]): Promise<Uint8Array> {
   if (files.length < 2) {
     throw new Error("Select at least two PDF files before merging.");
@@ -20,12 +23,13 @@ export async function mergePdfFiles(files: File[]): Promise<Uint8Array> {
   for (const file of files) {
     const sourcePdf = await PDFDocument.load(await file.arrayBuffer());
     const pages = await mergedPdf.copyPages(sourcePdf, sourcePdf.getPageIndices());
-    pages.forEach((page) => mergedPdf.addPage(page));
+    pages.forEach(/* Processes each item in the collection. */ (page) => mergedPdf.addPage(page));
   }
 
   return mergedPdf.save();
 }
 
+// Downloads merged pdf.
 export function downloadMergedPdf(bytes: Uint8Array, fileName: string) {
   const pdfBuffer = new ArrayBuffer(bytes.byteLength);
   new Uint8Array(pdfBuffer).set(bytes);

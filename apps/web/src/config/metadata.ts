@@ -1,3 +1,4 @@
+// Defines page metadata used by the web app.
 export const pageMetadata = {
   "/": {
     title: "Growile | Global Web Tools and Utilities",

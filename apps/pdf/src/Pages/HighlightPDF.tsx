@@ -1,3 +1,4 @@
+// Renders the highlight pdf PDF tool page.
 import { useCallback, useState } from "react";
 import { ChevronLeft, ChevronRight, FilePenLine, Trash2, Undo2 } from "lucide-react";
 import * as pdfjsLib from "pdfjs-dist";
@@ -46,6 +47,7 @@ const faqs = [
   { question: "Does this markup tool work well on smartphones?", answer: "Yes, Growile PDF is highly mobile-friendly. You can easily use your touchscreen to swipe and mark important text on your Android or iOS device." },
 ];
 
+// Renders the highlight pdf interface.
 export default function HighlightPDF() {
   const [file, setFile] = useState<File | null>(null);
   const [pages, setPages] = useState<PreviewPage[]>([]);
@@ -61,7 +63,7 @@ export default function HighlightPDF() {
   const [pending, setPending] = useState<Uint8Array | null>(null);
   const [popup, setPopup] = useState(false);
 
-  const renderPreview = async (selected: File) => {
+  const renderPreview = /* Renders preview. */ async (selected: File) => {
     const pdf = await pdfjsLib.getDocument({ data: await selected.arrayBuffer() }).promise;
     const rendered: PreviewPage[] = [];
     for (let number = 1; number <= pdf.numPages; number += 1) {
@@ -78,7 +80,7 @@ export default function HighlightPDF() {
     setPages(rendered);
   };
 
-  const handleSelection = async (files: File[]) => {
+  const handleSelection = /* Handles selection work. */ async (files: File[]) => {
     const selected = files[0] ?? null;
     setFile(selected);
     setPages([]);
@@ -95,7 +97,7 @@ export default function HighlightPDF() {
     }
   };
 
-  const handlePointerDown = (event: React.PointerEvent<HTMLDivElement>) => {
+  const handlePointerDown = /* Handles pointer down work. */ (event: React.PointerEvent<HTMLDivElement>) => {
     const page = pages[currentPage];
     if (!page) return;
     event.preventDefault();
@@ -104,7 +106,7 @@ export default function HighlightPDF() {
     event.currentTarget.setPointerCapture(event.pointerId);
   };
 
-  const finishDrawing = (event: React.PointerEvent<HTMLDivElement>) => {
+  const finishDrawing = /* Handles finish drawing work. */ (event: React.PointerEvent<HTMLDivElement>) => {
     if (!drag) return;
     event.preventDefault();
     const page = pages[currentPage];
@@ -116,7 +118,7 @@ export default function HighlightPDF() {
     const width = Math.min(page.width - x, Math.abs(endX - drag.startX));
     const height = Math.min(page.height - top, Math.abs(endY - drag.startY));
     if (width >= 8 && height >= 8) {
-      setHighlights((current) => {
+      setHighlights(/* Handles finish drawing work. */ (current) => {
         const next = [...current, { pageIndex: currentPage, x, y: page.height - top - height, width, height }];
         setSelectedHighlight(next.length - 1);
         return next;
@@ -125,21 +127,21 @@ export default function HighlightPDF() {
     setDrag(null);
   };
 
-  const preventPageSelection = (event: React.MouseEvent<HTMLDivElement>) => {
+  const preventPageSelection = /* Handles prevent page selection work. */ (event: React.MouseEvent<HTMLDivElement>) => {
     event.preventDefault();
   };
 
-  const removeSelected = () => {
+  const removeSelected = /* Removes selected. */ () => {
     if (selectedHighlight === null) return;
-    setHighlights((current) => current.filter((_, index) => index !== selectedHighlight));
+    setHighlights(/* Removes selected. */ (current) => current.filter(/* Keeps items that match the condition. */ (_, index) => index !== selectedHighlight));
     setSelectedHighlight(null);
   };
-  const undo = () => {
-    setHighlights((current) => current.slice(0, -1));
+  const undo = /* Handles undo work. */ () => {
+    setHighlights(/* Handles undo work. */ (current) => current.slice(0, -1));
     setSelectedHighlight(null);
   };
 
-  const handleAction = async (selected: File) => {
+  const handleAction = /* Handles action work. */ async (selected: File) => {
     if (!highlights.length) {
       setError("Draw at least one highlight before downloading.");
       return;
@@ -159,7 +161,7 @@ export default function HighlightPDF() {
     }
   };
 
-  const closePopup = useCallback(() => {
+  const closePopup = useCallback(/* Creates a callback that stays stable until its dependencies change. */ () => {
     setPopup(false);
     setPending(null);
   }, []);
@@ -190,19 +192,19 @@ export default function HighlightPDF() {
               selectedContent={file ? (
                 <div className="pdf-edit-content pdf-highlight-edit-content">
                   <div className="pdf-highlight-toolbar" aria-label="Highlight controls">
-                    <fieldset><legend>Highlight color</legend><div className="pdf-color-options">{colors.map((item) => <button type="button" key={item} className={`pdf-color-swatch ${color === item ? "selected" : ""}`} style={{ backgroundColor: item }} aria-label={`Choose ${item} highlight`} aria-pressed={color === item} onClick={() => setColor(item)} />)}</div></fieldset>
-                    <label>Opacity<input type="range" min="0.1" max="0.9" step="0.05" value={opacity} onChange={(event) => setOpacity(Number(event.target.value))} /><span>{Math.round(opacity * 100)}%</span></label>
+                    <fieldset><legend>Highlight color</legend><div className="pdf-color-options">{colors.map(/* Builds a value for each item in the collection. */ (item) => <button type="button" key={item} className={`pdf-color-swatch ${color === item ? "selected" : ""}`} style={{ backgroundColor: item }} aria-label={`Choose ${item} highlight`} aria-pressed={color === item} onClick={/* Runs when the user triggers click. */ () => setColor(item)} />)}</div></fieldset>
+                    <label>Opacity<input type="range" min="0.1" max="0.9" step="0.05" value={opacity} onChange={/* Runs when the user triggers change. */ (event) => setOpacity(Number(event.target.value))} /><span>{Math.round(opacity * 100)}%</span></label>
                     <div className="pdf-highlight-actions"><button type="button" onClick={undo} disabled={!highlights.length}><Undo2 size={16} /> Undo</button><button type="button" onClick={removeSelected} disabled={selectedHighlight === null}><Trash2 size={16} /> Delete selected</button></div>
                   </div>
                   <p className="pdf-editor-hint">Drag across text or any area to add a highlight. Click a highlight to select it for deletion.</p>
                   <div className="pdf-page-carousel" aria-label="PDF highlight editor">
-                    <button type="button" className="pdf-page-arrow" aria-label="Previous PDF page" disabled={currentPage === 0} onClick={() => { setCurrentPage((page) => page - 1); setSelectedHighlight(null); }}><ChevronLeft size={24} /></button>
+                    <button type="button" className="pdf-page-arrow" aria-label="Previous PDF page" disabled={currentPage === 0} onClick={/* Runs when the user triggers click. */ () => { setCurrentPage(/* Runs when the user triggers click. */ (page) => page - 1); setSelectedHighlight(null); }}><ChevronLeft size={24} /></button>
                     {selectedPage && <div className="pdf-page-viewport"><div className="pdf-page-canvas selected" onPointerDown={handlePointerDown} onPointerUp={finishDrawing} onDoubleClick={preventPageSelection}>
                       <img src={selectedPage.image} alt={`PDF page ${currentPage + 1}`} />
-                      {highlights.map((item, index) => item.pageIndex === currentPage ? <button type="button" key={`${item.pageIndex}-${index}`} className={`pdf-highlight-overlay ${selectedHighlight === index ? "active" : ""}`} style={{ left: `${(item.x / selectedPage.width) * 100}%`, top: `${((selectedPage.height - item.y - item.height) / selectedPage.height) * 100}%`, width: `${(item.width / selectedPage.width) * 100}%`, height: `${(item.height / selectedPage.height) * 100}%`, backgroundColor: color, opacity }} aria-label={`Highlight ${index + 1}`} onPointerDown={(event) => { event.stopPropagation(); setSelectedHighlight(index); }} /> : null)}
+                      {highlights.map(/* Builds a value for each item in the collection. */ (item, index) => item.pageIndex === currentPage ? <button type="button" key={`${item.pageIndex}-${index}`} className={`pdf-highlight-overlay ${selectedHighlight === index ? "active" : ""}`} style={{ left: `${(item.x / selectedPage.width) * 100}%`, top: `${((selectedPage.height - item.y - item.height) / selectedPage.height) * 100}%`, width: `${(item.width / selectedPage.width) * 100}%`, height: `${(item.height / selectedPage.height) * 100}%`, backgroundColor: color, opacity }} aria-label={`Highlight ${index + 1}`} onPointerDown={/* Runs when the user triggers pointer down. */ (event) => { event.stopPropagation(); setSelectedHighlight(index); }} /> : null)}
                       <span className="pdf-page-label">Page {currentPage + 1} of {pages.length}</span>
                     </div></div>}
-                    <button type="button" className="pdf-page-arrow" aria-label="Next PDF page" disabled={currentPage === pages.length - 1} onClick={() => { setCurrentPage((page) => page + 1); setSelectedHighlight(null); }}><ChevronRight size={24} /></button>
+                    <button type="button" className="pdf-page-arrow" aria-label="Next PDF page" disabled={currentPage === pages.length - 1} onClick={/* Runs when the user triggers click. */ () => { setCurrentPage(/* Runs when the user triggers click. */ (page) => page + 1); setSelectedHighlight(null); }}><ChevronRight size={24} /></button>
                   </div>
                   <p className="pdf-highlight-count">{highlights.length} highlight{highlights.length === 1 ? "" : "s"} added</p>
                 </div>
@@ -234,7 +236,7 @@ export default function HighlightPDF() {
       <PdfToolsFooter />
       <Footer />
       <AdSpace className="footer-bottom-ad-space" />
-      <DownloadPopup isOpen={popup} onClose={closePopup} onTriggerDownload={() => { if (pending) downloadHighlightPdf(pending, "highlighted-pdf.pdf"); }} itemName="Highlighted PDF" />
+      <DownloadPopup isOpen={popup} onClose={closePopup} onTriggerDownload={/* Runs when the user triggers trigger download. */ () => { if (pending) downloadHighlightPdf(pending, "highlighted-pdf.pdf"); }} itemName="Highlighted PDF" />
     </>
   );
 }

@@ -1,5 +1,7 @@
+/* Styles the confirm pop up component. */
 @import "./Colors.css";
 
+/* Styles the confirm popup overlay for flex layout and alignment. */
 .confirm-popup-overlay {
   position: fixed;
   inset: 0;
@@ -13,6 +15,7 @@
   animation: confirm-popup-fade-in 0.2s ease-out;
 }
 
+/* Styles the confirm popup container for spacing and layout. */
 .confirm-popup-container {
   width: min(100%, 440px);
   padding: 32px;
@@ -24,6 +27,7 @@
   animation: confirm-popup-slide-in 0.2s ease-out;
 }
 
+/* Styles the confirm popup icon for grid layout and alignment. */
 .confirm-popup-icon {
   display: grid;
   place-items: center;
@@ -37,6 +41,7 @@
   font-weight: 800;
 }
 
+/* Styles the confirm popup title for spacing and layout. */
 .confirm-popup-title {
   margin: 0;
   color: var(--color-primary);
@@ -44,6 +49,7 @@
   line-height: 1.25;
 }
 
+/* Styles the confirm popup description for spacing and layout. */
 .confirm-popup-description {
   margin: 12px 0 26px;
   color: color-mix(in srgb, var(--color-primary) 68%, transparent);
@@ -51,12 +57,14 @@
   line-height: 1.6;
 }
 
+/* Styles the confirm popup actions for flex layout and alignment. */
 .confirm-popup-actions {
   display: flex;
   justify-content: center;
   gap: 12px;
 }
 
+/* Styles the confirm popup actions for spacing and layout. */
 .confirm-popup-actions button {
   min-width: 120px;
   padding: 11px 18px;
@@ -68,48 +76,62 @@
   transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
 }
 
+/* Styles the confirm popup cancel for colors and background. */
 .confirm-popup-cancel {
   border: 1px solid color-mix(in srgb, var(--color-primary) 20%, transparent);
   background: var(--color-secondary);
   color: color-mix(in srgb, var(--color-primary) 70%, transparent);
 }
 
+/* Styles the confirm popup cancel hover state for colors and background. */
 .confirm-popup-cancel:hover,
 .confirm-popup-cancel:focus-visible {
   border-color: var(--color-primary);
   color: var(--color-primary);
 }
 
+/* Styles the confirm popup confirm for colors and background. */
 .confirm-popup-confirm {
   border: 1px solid var(--color-text-highlight);
   background: var(--color-text-highlight);
   color: var(--color-secondary);
 }
 
+/* Styles the confirm popup confirm hover state for colors and background. */
 .confirm-popup-confirm:hover,
 .confirm-popup-confirm:focus-visible {
   background: color-mix(in srgb, var(--color-text-highlight) 84%, var(--color-primary));
 }
 
+/* Defines the confirm-popup-fade-in animation. */
 @keyframes confirm-popup-fade-in {
+  /* Sets the from animation state. */
   from { opacity: 0; }
+  /* Sets the to animation state. */
   to { opacity: 1; }
 }
 
+/* Defines the confirm-popup-slide-in animation. */
 @keyframes confirm-popup-slide-in {
+  /* Sets the from animation state. */
   from { opacity: 0; transform: translateY(12px); }
+  /* Sets the to animation state. */
   to { opacity: 1; transform: translateY(0); }
 }
 
+/* Applies nested styles at (max-width: 480px). */
 @media (max-width: 480px) {
+  /* Styles the confirm popup container for spacing and layout. */
   .confirm-popup-container {
     padding: 26px 20px;
   }
 
+  /* Styles the confirm popup actions for visual appearance. */
   .confirm-popup-actions {
     flex-direction: column-reverse;
   }
 
+  /* Styles the confirm popup actions for element sizing. */
   .confirm-popup-actions button {
     width: 100%;
   }

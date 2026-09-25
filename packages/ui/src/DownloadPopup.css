@@ -1,3 +1,5 @@
+/* Styles the download popup overlay for flex layout and alignment. */
+/* Styles the download popup component. */
 /* Full screen background overlay */
 .download-popup-overlay {
   position: fixed;
@@ -10,6 +12,7 @@
   z-index: 1000; /* Ensures popup stays on top of everything */
 }
 
+/* Styles the download popup container for spacing and layout. */
 /* Main white popup box */
 .download-popup-container {
   background: var(--color-secondary);
@@ -23,6 +26,7 @@
   animation: popupFadeIn 0.3s ease-out;
 }
 
+/* Styles the download popup header for spacing and layout. */
 /* Header & Typography */
 .download-popup-header h3 {
   font-size: 22px;
@@ -31,6 +35,7 @@
   margin: 16px 0 8px;
 }
 
+/* Styles the download popup header for spacing and layout. */
 .download-popup-header p {
   font-size: 16px;
   color: var(--color-primary);
@@ -38,6 +43,7 @@
   margin: 0 0 24px;
 }
 
+/* Styles the download spinner for spacing and layout. */
 /* Loading Spinner Animation */
 .download-spinner {
   width: 48px;
@@ -49,6 +55,7 @@
   margin: 0 auto;
 }
 
+/* Styles the download success icon for flex layout and alignment. */
 /* Success Icon */
 .download-success-icon {
   width: 48px;
@@ -64,6 +71,7 @@
   margin: 0 auto;
 }
 
+/* Styles the download popup ad space for spacing and layout. */
 /* Ad Space Styling */
 .download-popup-ad-space {
   background: var(--color-secondary);
@@ -79,6 +87,7 @@
   overflow: hidden;
 }
 
+/* Styles the ad label for positioning and stacking. */
 .ad-label {
   font-size: 10px;
   text-transform: uppercase;
@@ -88,6 +97,7 @@
   right: 8px;
 }
 
+/* Styles the download popup close btn for spacing and layout. */
 /* Close Button */
 .download-popup-close-btn {
   background: transparent;
@@ -101,18 +111,25 @@
   width: 100%;
 }
 
+/* Styles the download popup close btn hover state for colors and background. */
 .download-popup-close-btn:hover {
   background: var(--color-secondary);
   color: var(--color-primary);
 }
 
+/* Defines the spin animation. */
 /* Keyframes for animations */
 @keyframes spin {
+  /* Sets the 0% animation state. */
   0% { transform: rotate(0deg); }
+  /* Sets the 100% animation state. */
   100% { transform: rotate(360deg); }
 }
 
+/* Defines the popupFadeIn animation. */
 @keyframes popupFadeIn {
+  /* Sets the from animation state. */
   from { opacity: 0; transform: translateY(20px); }
+  /* Sets the to animation state. */
   to { opacity: 1; transform: translateY(0); }
 }

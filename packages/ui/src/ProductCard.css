@@ -1,3 +1,5 @@
+/* Styles the product card for flex layout and alignment. */
+/* Styles the product card component. */
 .product-card {
   align-items: center;
   background: var(--color-secondary);
@@ -12,11 +14,13 @@
   transition: box-shadow 0.2s ease, transform 0.2s ease;
 }
 
+/* Styles the product card hover state for borders and visual depth. */
 .product-card:hover {
   box-shadow: 0 16px 36px rgba(32, 41, 56, 0.1);
   transform: translateY(-3px);
 }
 
+/* Styles the product icon wrap for flex layout and alignment. */
 .product-icon-wrap {
   align-items: center;
   display: flex;
@@ -27,6 +31,7 @@
   width: 104px;
 }
 
+/* Styles the product document label for flex layout and alignment. */
 .product-document-label {
   align-items: center;
   background: color-mix(in srgb, var(--color-text-highlight) 10%, var(--color-secondary));
@@ -41,6 +46,7 @@
   width: 68px;
 }
 
+/* Styles the product icon for element sizing. */
 .product-icon {
   fill: none;
   height: 68px;
@@ -51,10 +57,12 @@
   width: 68px;
 }
 
+/* Styles the product card content for element sizing. */
 .product-card-content {
   min-width: 0;
 }
 
+/* Styles the product title for spacing and layout. */
 .product-title {
   color: var(--color-primary);
   font-size: 27px;
@@ -63,6 +71,7 @@
   margin: 0 0 10px;
 }
 
+/* Styles the product description for spacing and layout. */
 .product-description {
   color: var(--color-primary);
   opacity: 0.8;
@@ -71,40 +80,49 @@
   margin: 0;
 }
 
+/* Applies nested styles at (prefers-reduced-motion: reduce). */
 @media (prefers-reduced-motion: reduce) {
+  /* Styles the product card for animation and transitions. */
   .product-card {
     transition: none;
   }
 }
 
+/* Applies nested styles at (max-width: 600px). */
 @media (max-width: 600px) {
+  /* Styles the product card for spacing and layout. */
   .product-card {
     gap: 16px;
     min-height: 128px;
     padding: 18px;
   }
 
+  /* Styles the product icon wrap for element sizing. */
   .product-icon-wrap {
     flex-basis: 80px;
     height: 80px;
     width: 80px;
   }
 
+  /* Styles the product icon for element sizing. */
   .product-icon {
     height: 52px;
     width: 52px;
   }
 
+  /* Styles the product document label for text appearance and alignment. */
   .product-document-label {
     font-size: 19px;
     height: 58px;
     width: 58px;
   }
 
+  /* Styles the product title for text appearance and alignment. */
   .product-title {
     font-size: 22px;
   }
 
+  /* Styles the product description for text appearance and alignment. */
   .product-description {
     font-size: 15px;
   }

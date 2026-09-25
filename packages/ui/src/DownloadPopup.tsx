@@ -1,3 +1,4 @@
+// Renders download status and completion details.
 import { useEffect, useState } from 'react';
 import AdSpace from './AdSpace'; 
 import './DownloadPopup.css';
@@ -9,6 +10,7 @@ export type DownloadPopupProps = {
   itemName?: string;
 };
 
+// Renders the download popup interface.
 export default function DownloadPopup({ 
   isOpen, 
   onClose, 
@@ -18,20 +20,20 @@ export default function DownloadPopup({
   
   const [status, setStatus] = useState<'downloading' | 'completed'>('downloading');
 
-  useEffect(() => {
+  useEffect(/* Runs side effects when its dependencies change. */ () => {
     if (isOpen) {
       setStatus('downloading');
 
-      const downloadTimer = setTimeout(() => {
+      const downloadTimer = setTimeout(/* Downloads timer. */ () => {
         setStatus('completed');
         onTriggerDownload();
       }, 3500);
 
-      const autoCloseTimer = setTimeout(() => {
+      const autoCloseTimer = setTimeout(/* Handles auto close timer work. */ () => {
         onClose();
       }, 6500);
 
-      return () => {
+      return /* Runs side effects when its dependencies change. */ () => {
         clearTimeout(downloadTimer);
         clearTimeout(autoCloseTimer);
       };

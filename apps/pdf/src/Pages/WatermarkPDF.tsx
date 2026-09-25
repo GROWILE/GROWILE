@@ -1,3 +1,4 @@
+// Renders the watermark pdf PDF tool page.
 import { useCallback, useState } from "react";
 import { ChevronLeft, ChevronRight, FileText, RotateCcw } from "lucide-react";
 import * as pdfjsLib from "pdfjs-dist";
@@ -40,6 +41,7 @@ const faqs = [
   { question: "Does this document stamping tool work on mobile?", answer: "Yes, Growile PDF is mobile-friendly. You can effortlessly brand your confidential drafts using your smartphone while traveling for business." },
 ];
 
+// Renders the watermark pdf interface.
 export default function WatermarkPDF() {
   const [file, setFile] = useState<File | null>(null);
   const [pages, setPages] = useState<PreviewPage[]>([]);
@@ -53,9 +55,9 @@ export default function WatermarkPDF() {
   const [pending, setPending] = useState<Uint8Array | null>(null);
   const [popup, setPopup] = useState(false);
   const [draggingWatermark, setDraggingWatermark] = useState(false);
-  const update = <K extends keyof WatermarkOptions>(key: K, value: WatermarkOptions[K]) => setOptions((current) => ({ ...current, [key]: value }));
+  const update = /* Updates. */ <K extends keyof WatermarkOptions>(key: K, value: WatermarkOptions[K]) => setOptions(/* Updates. */ (current) => ({ ...current, [key]: value }));
 
-  const handleSelection = async (files: File[]) => {
+  const handleSelection = /* Handles selection work. */ async (files: File[]) => {
     const selected = files[0] ?? null;
     setFile(selected); setPages([]); setPlacements([]); setDraftPosition({ xRatio: 0.5, yRatio: 0.5 }); setCurrentPage(0); setMessage(""); setError("");
     if (!selected) return;
@@ -77,23 +79,23 @@ export default function WatermarkPDF() {
     } catch (reason) { setError(reason instanceof Error ? reason.message : "Could not read the PDF."); }
   };
 
-  const handlePageClick = (event: React.MouseEvent<HTMLDivElement>) => {
+  const handlePageClick = /* Handles page click work. */ (event: React.MouseEvent<HTMLDivElement>) => {
     const page = pages[currentPage];
     if (!page) return;
     const bounds = event.currentTarget.getBoundingClientRect();
     const xRatio = Math.max(0, Math.min(1, (event.clientX - bounds.left) / bounds.width));
     const yRatio = Math.max(0, Math.min(1, 1 - (event.clientY - bounds.top) / bounds.height));
     setDraftPosition({ xRatio, yRatio });
-    if (placements.some((placement) => placement.pageIndex === currentPage)) {
-      setPlacements((current) => current.map((placement) => placement.pageIndex === currentPage ? { ...placement, xRatio, yRatio } : placement));
+    if (placements.some(/* Checks whether any item matches the condition. */ (placement) => placement.pageIndex === currentPage)) {
+      setPlacements(/* Handles page click work. */ (current) => current.map(/* Builds a value for each item in the collection. */ (placement) => placement.pageIndex === currentPage ? { ...placement, xRatio, yRatio } : placement));
     }
   };
-  const placeOnCurrentPage = () => {
-    const existing = placements.find((placement) => placement.pageIndex === currentPage);
+  const placeOnCurrentPage = /* Handles place on current page work. */ () => {
+    const existing = placements.find(/* Checks items until it finds a match. */ (placement) => placement.pageIndex === currentPage);
     if (existing) return;
-    setPlacements((current) => [...current, { pageIndex: currentPage, ...draftPosition }]);
+    setPlacements(/* Handles place on current page work. */ (current) => [...current, { pageIndex: currentPage, ...draftPosition }]);
   };
-  const getPointerPosition = (event: React.PointerEvent<HTMLSpanElement>) => {
+  const getPointerPosition = /* Gets pointer position. */ (event: React.PointerEvent<HTMLSpanElement>) => {
     const pageElement = event.currentTarget.closest(".pdf-page-canvas");
     const page = pages[currentPage];
     if (!(pageElement instanceof HTMLElement) || !page) return null;
@@ -103,7 +105,7 @@ export default function WatermarkPDF() {
       yRatio: Math.max(0, Math.min(1, 1 - (event.clientY - bounds.top) / bounds.height)),
     };
   };
-  const handleWatermarkPointerDown = (event: React.PointerEvent<HTMLSpanElement>) => {
+  const handleWatermarkPointerDown = /* Handles watermark pointer down work. */ (event: React.PointerEvent<HTMLSpanElement>) => {
     if ((event.target as HTMLElement).closest("button")) return;
     event.preventDefault();
     event.stopPropagation();
@@ -112,19 +114,19 @@ export default function WatermarkPDF() {
     const position = getPointerPosition(event);
     if (position) {
       setDraftPosition(position);
-      setPlacements((current) => current.map((item) => item.pageIndex === currentPage ? { ...item, ...position } : item));
+      setPlacements(/* Handles watermark pointer down work. */ (current) => current.map(/* Builds a value for each item in the collection. */ (item) => item.pageIndex === currentPage ? { ...item, ...position } : item));
     }
   };
-  const handleWatermarkPointerMove = (event: React.PointerEvent<HTMLSpanElement>) => {
+  const handleWatermarkPointerMove = /* Handles watermark pointer move work. */ (event: React.PointerEvent<HTMLSpanElement>) => {
     if (!draggingWatermark) return;
     event.preventDefault();
     event.stopPropagation();
     const position = getPointerPosition(event);
     if (!position) return;
     setDraftPosition(position);
-    setPlacements((current) => current.map((item) => item.pageIndex === currentPage ? { ...item, ...position } : item));
+    setPlacements(/* Handles watermark pointer move work. */ (current) => current.map(/* Builds a value for each item in the collection. */ (item) => item.pageIndex === currentPage ? { ...item, ...position } : item));
   };
-  const handleWatermarkPointerUp = (event: React.PointerEvent<HTMLSpanElement>) => {
+  const handleWatermarkPointerUp = /* Handles watermark pointer up work. */ (event: React.PointerEvent<HTMLSpanElement>) => {
     if (!draggingWatermark) return;
     event.preventDefault();
     event.stopPropagation();
@@ -132,18 +134,18 @@ export default function WatermarkPDF() {
     const position = getPointerPosition(event);
     if (position) {
       setDraftPosition(position);
-      setPlacements((current) => current.some((item) => item.pageIndex === currentPage)
-        ? current.map((item) => item.pageIndex === currentPage ? { ...item, ...position } : item)
+      setPlacements(/* Handles watermark pointer up work. */ (current) => current.some(/* Checks whether any item matches the condition. */ (item) => item.pageIndex === currentPage)
+        ? current.map(/* Builds a value for each item in the collection. */ (item) => item.pageIndex === currentPage ? { ...item, ...position } : item)
         : [...current, { pageIndex: currentPage, ...position }]);
     }
     setDraggingWatermark(false);
   };
-  const changePage = (pageIndex: number) => {
-    const target = placements.find((placement) => placement.pageIndex === pageIndex) ?? placements[0];
+  const changePage = /* Updates page. */ (pageIndex: number) => {
+    const target = placements.find(/* Checks items until it finds a match. */ (placement) => placement.pageIndex === pageIndex) ?? placements[0];
     if (target) setDraftPosition({ xRatio: target.xRatio, yRatio: target.yRatio });
     setCurrentPage(pageIndex);
   };
-  const handleAction = async (selected: File) => {
+  const handleAction = /* Handles action work. */ async (selected: File) => {
     setBusy(true); setMessage(""); setError("");
     try {
       const bytes = await addWatermarkToPdf(selected, options, placements);
@@ -151,9 +153,9 @@ export default function WatermarkPDF() {
     } catch (reason) { setError(reason instanceof Error ? reason.message : "Could not add the watermark."); }
     finally { setBusy(false); }
   };
-  const closePopup = useCallback(() => { setPopup(false); setPending(null); }, []);
+  const closePopup = useCallback(/* Creates a callback that stays stable until its dependencies change. */ () => { setPopup(false); setPending(null); }, []);
   const page = pages[currentPage];
-  const placement = placements.find((item) => item.pageIndex === currentPage);
+  const placement = placements.find(/* Checks items until it finds a match. */ (item) => item.pageIndex === currentPage);
   const previewPlacement = placement ?? { ...draftPosition, pageIndex: currentPage };
   const previewStyle = page ? { left: `${previewPlacement.xRatio * 100}%`, top: `${(1 - previewPlacement.yRatio) * 100}%`, color: options.color, opacity: options.opacity, fontSize: `${Math.max(12, options.fontSize * 0.72)}px`, transform: `translate(-50%, -50%) rotate(${options.angle}deg)` } : undefined;
 
@@ -169,19 +171,19 @@ export default function WatermarkPDF() {
         <FileUploadBox className="jpg-to-pdf-upload-box" icon={<FileText size={30} aria-hidden="true" />} title="Add Watermark to PDF" description="Create a text overlay without replacing the original PDF content." buttonLabel="Select PDF file" actionLabel={busy ? "Preparing PDF..." : "Download Watermarked PDF"} actionDisabled={busy || !file || !page || !options.text.trim() || !placements.length} accept=".pdf,application/pdf" onAction={handleAction} onSelectionChange={handleSelection} selectedContent={file ? (
           <div className="pdf-edit-content pdf-watermark-edit-content">
             <div className="pdf-watermark-toolbar" aria-label="Watermark controls">
-              <label className="pdf-watermark-text">Watermark text<input value={options.text} onChange={(event) => update("text", event.target.value)} placeholder="Enter watermark text" /></label>
-              <fieldset><legend>Color</legend><div className="pdf-color-options">{colors.map((item) => <button type="button" key={item} className={`pdf-color-swatch ${options.color === item ? "selected" : ""}`} style={{ backgroundColor: item }} aria-label={`Choose ${item}`} onClick={() => update("color", item)} />)}</div></fieldset>
-              <label>Opacity<input type="range" min="0.1" max="0.9" step="0.05" value={options.opacity} onChange={(event) => update("opacity", Number(event.target.value))} /><span>{Math.round(options.opacity * 100)}%</span></label>
-              <label>Size<input type="range" min="12" max="96" step="1" value={options.fontSize} onChange={(event) => update("fontSize", Number(event.target.value))} /><span>{options.fontSize}px</span></label>
-              <label>Angle<input type="range" min="-45" max="45" step="1" value={options.angle} onChange={(event) => update("angle", Number(event.target.value))} /><span>{options.angle}ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â°</span></label>
-              <label className="pdf-watermark-check"><input type="checkbox" checked={options.allPages} onChange={(event) => update("allPages", event.target.checked)} /> Apply to all pages</label>
-              <button type="button" className="pdf-watermark-reset" onClick={() => setOptions(initialOptions)}><RotateCcw size={15} /> Reset</button>
+              <label className="pdf-watermark-text">Watermark text<input value={options.text} onChange={/* Runs when the user triggers change. */ (event) => update("text", event.target.value)} placeholder="Enter watermark text" /></label>
+              <fieldset><legend>Color</legend><div className="pdf-color-options">{colors.map(/* Builds a value for each item in the collection. */ (item) => <button type="button" key={item} className={`pdf-color-swatch ${options.color === item ? "selected" : ""}`} style={{ backgroundColor: item }} aria-label={`Choose ${item}`} onClick={/* Runs when the user triggers click. */ () => update("color", item)} />)}</div></fieldset>
+              <label>Opacity<input type="range" min="0.1" max="0.9" step="0.05" value={options.opacity} onChange={/* Runs when the user triggers change. */ (event) => update("opacity", Number(event.target.value))} /><span>{Math.round(options.opacity * 100)}%</span></label>
+              <label>Size<input type="range" min="12" max="96" step="1" value={options.fontSize} onChange={/* Runs when the user triggers change. */ (event) => update("fontSize", Number(event.target.value))} /><span>{options.fontSize}px</span></label>
+              <label>Angle<input type="range" min="-45" max="45" step="1" value={options.angle} onChange={/* Runs when the user triggers change. */ (event) => update("angle", Number(event.target.value))} /><span>{options.angle}ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â°</span></label>
+              <label className="pdf-watermark-check"><input type="checkbox" checked={options.allPages} onChange={/* Runs when the user triggers change. */ (event) => update("allPages", event.target.checked)} /> Apply to all pages</label>
+              <button type="button" className="pdf-watermark-reset" onClick={/* Runs when the user triggers click. */ () => setOptions(initialOptions)}><RotateCcw size={15} /> Reset</button>
             </div>
             <p className="pdf-editor-hint">Click anywhere on the page to position the watermark. It will be added as a new overlay.</p>
             <div className="pdf-page-carousel" aria-label="PDF watermark editor">
-              <button type="button" className="pdf-page-arrow" aria-label="Previous PDF page" disabled={currentPage === 0} onClick={() => changePage(currentPage - 1)}><ChevronLeft size={24} /></button>
-              {page && <div className="pdf-page-viewport"><div className="pdf-page-canvas selected" onClick={handlePageClick} onDoubleClick={(event) => event.preventDefault()}><img src={page.image} alt={`PDF page ${currentPage + 1}`} /><span className={`pdf-watermark-preview ${placement ? "placed" : "pending"}`} style={previewStyle} onPointerDown={handleWatermarkPointerDown} onPointerMove={handleWatermarkPointerMove} onPointerUp={handleWatermarkPointerUp} onPointerCancel={handleWatermarkPointerUp}>{options.text || "Watermark"}{!placement && <button type="button" className="pdf-watermark-place" aria-label={`Place watermark on page ${currentPage + 1}`} onClick={(event) => { event.stopPropagation(); placeOnCurrentPage(); }}>ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã¢â‚¬Â¦ÃƒÂ¢Ã¢â€šÂ¬Ã…â€œÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“</button>}</span><span className="pdf-page-label">Page {currentPage + 1} of {pages.length}</span></div></div>}
-              <button type="button" className="pdf-page-arrow" aria-label="Next PDF page" disabled={currentPage === pages.length - 1} onClick={() => changePage(currentPage + 1)}><ChevronRight size={24} /></button>
+              <button type="button" className="pdf-page-arrow" aria-label="Previous PDF page" disabled={currentPage === 0} onClick={/* Runs when the user triggers click. */ () => changePage(currentPage - 1)}><ChevronLeft size={24} /></button>
+              {page && <div className="pdf-page-viewport"><div className="pdf-page-canvas selected" onClick={handlePageClick} onDoubleClick={/* Runs when the user triggers double click. */ (event) => event.preventDefault()}><img src={page.image} alt={`PDF page ${currentPage + 1}`} /><span className={`pdf-watermark-preview ${placement ? "placed" : "pending"}`} style={previewStyle} onPointerDown={handleWatermarkPointerDown} onPointerMove={handleWatermarkPointerMove} onPointerUp={handleWatermarkPointerUp} onPointerCancel={handleWatermarkPointerUp}>{options.text || "Watermark"}{!placement && <button type="button" className="pdf-watermark-place" aria-label={`Place watermark on page ${currentPage + 1}`} onClick={/* Runs when the user triggers click. */ (event) => { event.stopPropagation(); placeOnCurrentPage(); }}>ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã¢â‚¬Â¦ÃƒÂ¢Ã¢â€šÂ¬Ã…â€œÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“</button>}</span><span className="pdf-page-label">Page {currentPage + 1} of {pages.length}</span></div></div>}
+              <button type="button" className="pdf-page-arrow" aria-label="Next PDF page" disabled={currentPage === pages.length - 1} onClick={/* Runs when the user triggers click. */ () => changePage(currentPage + 1)}><ChevronRight size={24} /></button>
             </div>
           </div>
         ) : null} dropHint="or drop one PDF file here" />
@@ -189,7 +191,7 @@ export default function WatermarkPDF() {
         {message && <p className="jpg-to-pdf-status" role="status">{message}</p>}{error && <p className="jpg-to-pdf-error" role="alert">{error}</p>}
       </section><section className="pdf-related-tools" aria-labelledby="related-pdf-tools-title"><h2 id="related-pdf-tools-title">More PDF Tools</h2><div className="pdf-related-tools-grid pdf-related-tools-grid-five"><PdfIconToolCard toolId="protect-pdf" /><PdfIconToolCard toolId="add-signature" /><PdfIconToolCard toolId="add-image" /><PdfIconToolCard toolId="compress-pdf" /><PdfIconToolCard toolId="merge-pdf" /></div></section><HowToUse heading="How to Add a Watermark to a PDF" steps={steps} /><Divider /><H2Section blocks={[{ heading: "Insert Transparent Watermark in PDF Free", description: "It is very simple to insert transparent watermark in PDF free using Growile PDF. Upload your file, type your text, and adjust the fading level so it protects your work without blocking the content." }, { heading: "Add Logo Watermark to PDF Online Free", description: "Building brand awareness? You can easily add logo watermark to PDF online free. Our intuitive platform lets you upload your company badge and place it elegantly across all your document pages quickly." }, { heading: "Stamp PDF Document Online Free", description: "The branding process is completely hassle-free. You can stamp PDF document online free by simply dropping your file here. Growile PDF rapidly applies your secure marks and prepares your new file." }]} /><Divider /><FAQ heading="Add Watermark to PDF FAQs" faqs={faqs} /><Divider /></main>
       <PdfToolsFooter /><Footer /><AdSpace className="footer-bottom-ad-space" />
-      <DownloadPopup isOpen={popup} onClose={closePopup} onTriggerDownload={() => { if (pending) downloadWatermarkPdf(pending, "watermarked-pdf.pdf"); }} itemName="Watermarked PDF" />
+      <DownloadPopup isOpen={popup} onClose={closePopup} onTriggerDownload={/* Runs when the user triggers trigger download. */ () => { if (pending) downloadWatermarkPdf(pending, "watermarked-pdf.pdf"); }} itemName="Watermarked PDF" />
     </>
   );
 }

@@ -1,3 +1,5 @@
+/* Styles the reorder pdf page item for grid layout and alignment. */
+/* Styles the reorder pdfpages page. */
 .reorder-pdf-page-item {
   display: grid;
   gap: 6px;
@@ -13,10 +15,12 @@
   text-align: center;
 }
 
+/* Styles the reorder pdf page item active state for interaction behavior. */
 .reorder-pdf-page-item:active {
   cursor: grabbing;
 }
 
+/* Styles the reorder pdf page item for colors and background. */
 .reorder-pdf-page-item img {
   display: block;
   width: 100%;
@@ -25,12 +29,14 @@
   background: var(--color-secondary);
 }
 
+/* Styles the reorder pdf page item for text appearance and alignment. */
 .reorder-pdf-page-item > span {
   color: var(--color-primary);
   font-size: 12px;
   font-weight: 700;
 }
 
+/* Styles the reorder pdf page controls for flex layout and alignment. */
 .reorder-pdf-page-controls {
   display: flex;
   align-items: center;
@@ -39,6 +45,7 @@
   min-width: 0;
 }
 
+/* Styles the reorder pdf page controls for text appearance and alignment. */
 .reorder-pdf-page-controls span {
   min-width: 0;
   overflow: hidden;
@@ -50,6 +57,7 @@
   white-space: nowrap;
 }
 
+/* Styles the reorder pdf page controls for spacing and layout. */
 .reorder-pdf-page-controls button {
   width: 24px;
   height: 24px;
@@ -63,33 +71,40 @@
   line-height: 1;
 }
 
+/* Styles the reorder pdf page controls hover state for colors and background. */
 .reorder-pdf-page-controls button:hover:not(:disabled),
 .reorder-pdf-page-controls button:focus-visible:not(:disabled) {
   color: var(--color-secondary);
   background: var(--color-text-highlight);
 }
 
+/* Styles the reorder pdf page controls disabled state for interaction behavior. */
 .reorder-pdf-page-controls button:disabled {
   opacity: 0.35;
   cursor: not-allowed;
 }
 
+/* Applies nested styles at (max-width: 600px). */
 @media (max-width: 600px) {
+  /* Styles the reorder pdf preview for spacing and layout. */
   .reorder-pdf-preview .split-pdf-page-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 12px;
     padding: 6px;
   }
 
+  /* Styles the reorder pdf page item for spacing and layout. */
   .reorder-pdf-page-item {
     gap: 8px;
     padding: 8px;
   }
 
+  /* Styles the reorder pdf page controls for visual appearance. */
   .reorder-pdf-page-controls {
     gap: 6px;
   }
 
+  /* Styles the reorder pdf page controls for text appearance and alignment. */
   .reorder-pdf-page-controls button {
     flex: 0 0 30px;
     width: 30px;
@@ -97,11 +112,13 @@
     font-size: 18px;
   }
 
+  /* Styles the reorder pdf page controls for text appearance and alignment. */
   .reorder-pdf-page-controls span {
     flex: 1;
     font-size: 12px;
   }
 
+  /* Styles the reorder pdf page item for element sizing. */
   .reorder-pdf-page-item img {
     height: 150px;
   }

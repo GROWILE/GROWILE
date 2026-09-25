@@ -1,6 +1,7 @@
+// Renders the terms of service page for the web app.
 import TermsLayout from "../../../../packages/ui/src/TermsLayout";
 import Divider from "../../../../packages/ui/src/Divider";
-import { webNavigation } from "../config/site";
+import { webFooter, webNavigation } from "../config/site";
 import "./TermsOfService.css";
 
 const acceptableUseItems = [
@@ -9,6 +10,7 @@ const acceptableUseItems = [
   "Attempting to gain unauthorized access to our systems",
 ];
 
+// Renders the terms of service interface.
 export default function TermsOfService() {
   return (
     <TermsLayout
@@ -17,6 +19,7 @@ export default function TermsOfService() {
       heroTitle="Terms of Service"
       lastUpdated="14/09/2026"
       {...webNavigation}
+      reserveBottomAdSpace={webFooter.reserveBottomAdSpace}
     >
       <section className="about-section">
         <p className="about-text">
@@ -99,7 +102,7 @@ export default function TermsOfService() {
           not limited to:
         </p>
         <ul className="approach-list">
-          {acceptableUseItems.map((item) => (
+          {acceptableUseItems.map(/* Builds a value for each item in the collection. */ (item) => (
             <li key={item} className="approach-item">{item}</li>
           ))}
         </ul>

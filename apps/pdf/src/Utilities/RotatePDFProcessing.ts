@@ -1,9 +1,12 @@
+// Rotates pages in PDF files.
 import { PDFDocument, degrees } from "pdf-lib";
 
+// Checks pdf file.
 function isPdfFile(file: File) {
   return file.type.toLowerCase() === "application/pdf" || /\.pdf$/i.test(file.name);
 }
 
+// Rotates pdf pages.
 export async function rotatePdfPages(file: File, rotations: number[]): Promise<Uint8Array> {
   if (!isPdfFile(file)) {
     throw new Error(`${file.name} is not a PDF file.`);
@@ -14,13 +17,14 @@ export async function rotatePdfPages(file: File, rotations: number[]): Promise<U
     throw new Error("Every PDF page must have a rotation value.");
   }
 
-  sourcePdf.getPages().forEach((page, index) => {
+  sourcePdf.getPages().forEach(/* Processes each item in the collection. */ (page, index) => {
     page.setRotation(degrees(rotations[index]));
   });
 
   return sourcePdf.save();
 }
 
+// Downloads rotated pdf.
 export function downloadRotatedPdf(bytes: Uint8Array, fileName: string) {
   const buffer = new ArrayBuffer(bytes.byteLength);
   new Uint8Array(buffer).set(bytes);

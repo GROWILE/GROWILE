@@ -1,3 +1,4 @@
+// Renders a product card with its details and link.
 import DocumentIcon from "./DocumentIcon";
 import "./ProductCard.css";
 
@@ -15,6 +16,7 @@ export type ProductCardProps = {
   contextLabel?: string;
 };
 
+// Renders the product card interface.
 export default function ProductCard({
   product,
 }: ProductCardProps) {

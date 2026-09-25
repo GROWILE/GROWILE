@@ -1,3 +1,5 @@
+/* Styles the ad space for grid layout and alignment. */
+/* Styles the ad space component. */
 .ad-space {
   display: grid;
   place-items: center;
@@ -6,6 +8,7 @@
   position: relative;
 }
 
+/* Styles the ad space decorative pseudo-element for positioning and stacking. */
 .ad-space::before {
   content: "";
   position: absolute;
@@ -13,6 +16,7 @@
   border: 1px solid color-mix(in srgb, var(--color-primary) 10%, transparent);
 }
 
+/* Styles the adsense container for element sizing. */
 .adsense-container {
   position: relative;
   z-index: 1;
@@ -21,11 +25,13 @@
   min-width: 1px;
 }
 
+/* Styles the adsense container for element sizing. */
 .adsense-container .adsbygoogle {
   display: block;
   width: 100%;
 }
 
+/* Styles the ad space label for text appearance and alignment. */
 .ad-space-label {
   color: color-mix(in srgb, var(--color-primary) 48%, transparent);
   font-size: 11px;
@@ -36,6 +42,7 @@
   z-index: 1;
 }
 
+/* Styles the ad space banner for positioning and stacking. */
 .ad-space-banner {
   position: fixed;
   left: 50%;
@@ -48,12 +55,14 @@
   pointer-events: none;
 }
 
+/* Styles the ad space banner for element sizing. */
 .ad-space-banner.ad-space-compact {
   min-height: 100px;
   height: 100px;
   max-height: 100px;
 }
 
+/* Styles the ad space banner for spacing and layout. */
 .ad-space-banner.footer-bottom-ad-space {
   min-height: 120px;
   height: 120px;
@@ -63,12 +72,14 @@
   transition: min-height 0.25s ease;
 }
 
+/* Styles the ad space collapsible decorative pseudo-element for visual appearance. */
 .ad-space-collapsible.ad-space-collapsed::before,
 .ad-space-collapsible.ad-space-collapsed .adsense-container,
 .ad-space-collapsible.ad-space-collapsed .ad-space-label {
   display: none;
 }
 
+/* Styles the ad space vertical for spacing and layout. */
 .ad-space-vertical {
   width: 220px;
   min-height: 520px;
@@ -78,12 +89,13 @@
   pointer-events: none;
 }
 
-/* --- NEW: Close Button Default Styles (Hidden on Desktop) --- */
+/* Styles the ad space close btn for text appearance and alignment. */
+/* Hides the close button on desktop. */
 .ad-space-close-btn {
-  display: none; /* Desktop-la theriya koodathu */
+  display: none; /* Keep this hidden on desktop. */
   position: absolute;
-  top: -12px; /* Ad box-kku konjam mela */
-  right: 0px; /* Right side-la */
+  top: -12px; /* Positions the button just above the ad. */
+  right: 0px; /* Aligns the button to the right. */
   width: 24px;
   height: 24px;
   background-color: var(--color-primary);
@@ -95,46 +107,55 @@
   cursor: pointer;
   z-index: 10;
   box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-  /* MUKKIYAM: Parent-la pointer-events: none irukka thala, ithukku auto poodanum */
+  /* Re-enable pointer events because the parent disables them. */
   pointer-events: auto; 
 }
 
+/* Applies nested styles at (max-width: 900px). */
 @media (max-width: 900px) {
+  /* Styles the ad space banner for element sizing. */
   .ad-space-banner {
     width: min(100% - 24px, 1100px);
     min-height: 72px;
   }
 
+  /* Styles the ad space banner for element sizing. */
   .ad-space-banner.footer-bottom-ad-space {
     min-height: 105px;
     height: 105px;
     max-height: 105px;
   }
 
+  /* Styles the ad space vertical for element sizing. */
   .ad-space-vertical {
     width: 180px;
     min-height: 420px;
   }
 }
 
+/* Applies nested styles at (max-width: 600px). */
 @media (max-width: 600px) {
+  /* Styles the ad space banner for element sizing. */
   .ad-space-banner {
     width: min(100% - 16px, 1100px);
     min-height: 66px;
   }
 
+  /* Styles the ad space banner for element sizing. */
   .ad-space-banner.footer-bottom-ad-space {
     min-height: 95px;
     height: 95px;
     max-height: 95px;
   }
 
+  /* Styles the ad space vertical for element sizing. */
   .ad-space-vertical {
     width: 140px;
     min-height: 320px;
   }
 
-  /* --- NEW: Mobile-la mattum Close button-a theiyavaikkirom --- */
+  /* Styles the ad space close btn for flex layout and alignment. */
+  /* Shows the close button on mobile. */
   .ad-space-close-btn {
     display: flex;
     align-items: center;

@@ -1,3 +1,4 @@
+// Converts Office documents to PDF files.
 import mammoth from "mammoth";
 import JSZip from "jszip";
 import ExcelJS from "exceljs";
@@ -5,10 +6,12 @@ import { PDFDocument, StandardFonts, rgb } from "pdf-lib";
 
 type OfficeFormat = "word" | "excel" | "powerpoint";
 
+// Handles extension matches work.
 function extensionMatches(file: File, extensions: string[]) {
-  return extensions.some((extension) => file.name.toLowerCase().endsWith(extension));
+  return extensions.some(/* Checks whether any item matches the condition. */ (extension) => file.name.toLowerCase().endsWith(extension));
 }
 
+// Handles wrap text work.
 function wrapText(text: string, maxCharacters = 88) {
   const words = text.replace(/\s+/g, " ").trim().split(" ");
   const lines: string[] = [];
@@ -25,11 +28,12 @@ function wrapText(text: string, maxCharacters = 88) {
   return lines;
 }
 
+// Extracts word text.
 async function extractWordText(file: File) {
   const result = await mammoth.convertToHtml({
     arrayBuffer: await file.arrayBuffer(),
-    convertImage: mammoth.images.imgElement((image) =>
-      image.read("base64").then((data) =>
+    convertImage: mammoth.images.imgElement(/* Converts image. */ (image) =>
+      image.read("base64").then(/* Converts image. */ (data) =>
         ({ src: `data:${image.contentType};base64,${data}` }),
       ),
     ),
@@ -39,38 +43,41 @@ async function extractWordText(file: File) {
   return result.value;
 }
 
+// Extracts excel text.
 async function extractExcelText(file: File) {
   const workbook = new ExcelJS.Workbook();
   await workbook.xlsx.load(await file.arrayBuffer());
   return workbook.worksheets
-    .map((sheet) => {
+    .map(/* Builds a value for each item in the collection. */ (sheet) => {
       const rows: string[] = [];
-      sheet.eachRow((row) => {
+      sheet.eachRow(/* Builds a value for each item in the collection. */ (row) => {
         const values = row.values as unknown[];
-        rows.push(values.slice(1).map((value) => String(value ?? "")).join(" | "));
+        rows.push(values.slice(1).map(/* Builds a value for each item in the collection. */ (value) => String(value ?? "")).join(" | "));
       });
       return `Sheet: ${sheet.name}\n${rows.join("\n")}`;
     })
     .join("\n\n");
 }
 
+// Extracts power point text.
 async function extractPowerPointText(file: File) {
   const zip = await JSZip.loadAsync(await file.arrayBuffer());
   const slidePaths = Object.keys(zip.files)
-    .filter((path) => /^ppt\/slides\/slide\d+\.xml$/i.test(path))
-    .sort((a, b) => Number(a.match(/\d+/)?.[0]) - Number(b.match(/\d+/)?.[0]));
+    .filter(/* Keeps items that match the condition. */ (path) => /^ppt\/slides\/slide\d+\.xml$/i.test(path))
+    .sort(/* Compares items to determine their order. */ (a, b) => Number(a.match(/\d+/)?.[0]) - Number(b.match(/\d+/)?.[0]));
   const slides: string[] = [];
   for (const path of slidePaths) {
     const xml = await zip.file(path)?.async("text");
     if (!xml) continue;
     const text = [...xml.matchAll(/<a:t>([\s\S]*?)<\/a:t>/g)]
-      .map((match) => match[1].replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">"))
+      .map(/* Builds a value for each item in the collection. */ (match) => match[1].replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">"))
       .join(" ");
     slides.push(`Slide ${slides.length + 1}\n${text}`);
   }
   return slides.join("\n\n");
 }
 
+// Converts office to pdf.
 export async function convertOfficeToPdf(file: File, format: OfficeFormat) {
   const validExtensions = {
     word: [".docx"],
@@ -100,13 +107,13 @@ export async function convertOfficeToPdf(file: File, format: OfficeFormat) {
     const root = parser.parseFromString(content || "<p>No readable content found.</p>", "text/html").body;
     let page = pdf.addPage([595, 842]);
     let y = 790;
-    const ensureSpace = (height: number) => {
+    const ensureSpace = /* Handles ensure space work. */ (height: number) => {
       if (y - height < 45) {
         page = pdf.addPage([595, 842]);
         y = 790;
       }
     };
-    const drawLines = (
+    const drawLines = /* Handles draw lines work. */ (
       text: string,
       size = 11,
       options: { bold?: boolean; before?: number; after?: number; lineHeight?: number } = {},
@@ -149,7 +156,7 @@ export async function convertOfficeToPdf(file: File, format: OfficeFormat) {
         if (image?.getAttribute("src")?.startsWith("data:image/")) {
           const source = image.getAttribute("src") || "";
           const [header, encoded] = source.split(",");
-          const bytes = Uint8Array.from(atob(encoded), (character) => character.charCodeAt(0));
+          const bytes = Uint8Array.from(atob(encoded), /* Handles bytes work. */ (character) => character.charCodeAt(0));
           const embedded = header.includes("image/jpeg")
             ? await pdf.embedJpg(bytes)
             : await pdf.embedPng(bytes);
@@ -167,7 +174,7 @@ export async function convertOfficeToPdf(file: File, format: OfficeFormat) {
       } else if (element.tagName === "TABLE") {
         const rows = Array.from(element.querySelectorAll("tr"));
         for (const row of rows) {
-          const cells = Array.from(row.querySelectorAll("th,td")).map((cell) => cell.textContent?.trim() || "");
+          const cells = Array.from(row.querySelectorAll("th,td")).map(/* Builds a value for each item in the collection. */ (cell) => cell.textContent?.trim() || "");
           drawLines(cells.join(" | "), 10, {
             before: 2,
             after: 2,
@@ -197,6 +204,7 @@ export async function convertOfficeToPdf(file: File, format: OfficeFormat) {
   return pdf.save();
 }
 
+// Downloads office pdf.
 export function downloadOfficePdf(bytes: Uint8Array, fileName: string) {
   const buffer = new ArrayBuffer(bytes.byteLength);
   new Uint8Array(buffer).set(bytes);

@@ -1,3 +1,4 @@
+// Renders the pdfto png PDF tool page.
 import { useCallback, useState } from "react";
 import { FileOutput } from "lucide-react";
 import AdSpace from "../../../../packages/ui/src/AdSpace";
@@ -88,7 +89,7 @@ const faqs = [
 const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  mainEntity: faqs.map((faq) => ({
+  mainEntity: faqs.map(/* Builds a value for each item in the collection. */ (faq) => ({
     "@type": "Question",
     name: faq.question,
     acceptedAnswer: { "@type": "Answer", text: faq.answer },
@@ -99,13 +100,14 @@ const contentSchema = {
   "@context": "https://schema.org",
   "@type": "WebPage",
   name: "PDF to PNG Converter",
-  hasPart: seoBlocks.map((block) => ({
+  hasPart: seoBlocks.map(/* Builds a value for each item in the collection. */ (block) => ({
     "@type": "WebPageElement",
     name: block.heading,
     text: block.description,
   })),
 };
 
+// Renders the pdfto png interface.
 export default function PDFtoPNG() {
   const [isConverting, setIsConverting] = useState(false);
   const [conversionMessage, setConversionMessage] = useState("");
@@ -113,16 +115,16 @@ export default function PDFtoPNG() {
   const [isDownloadPopupOpen, setIsDownloadPopupOpen] = useState(false);
   const [pendingZip, setPendingZip] = useState<Uint8Array | null>(null);
 
-  const triggerDownload = useCallback(() => {
+  const triggerDownload = useCallback(/* Creates a callback that stays stable until its dependencies change. */ () => {
     if (pendingZip) downloadPngZip(pendingZip, "pdf-to-png.zip");
   }, [pendingZip]);
 
-  const closeDownloadPopup = useCallback(() => {
+  const closeDownloadPopup = useCallback(/* Creates a callback that stays stable until its dependencies change. */ () => {
     setIsDownloadPopupOpen(false);
     setPendingZip(null);
   }, []);
 
-  const handleAction = async (file: File) => {
+  const handleAction = /* Handles action work. */ async (file: File) => {
     setIsConverting(true);
     setConversionMessage("");
     setConversionError("");

@@ -1,3 +1,4 @@
+// Adds a signature to PDF files.
 import { PDFDocument } from "pdf-lib";
 
 export type SignaturePlacement = {
@@ -9,6 +10,7 @@ export type SignaturePlacement = {
   height: number;
 };
 
+// Signs pdf.
 export async function signPdf(file: File, placements: SignaturePlacement[]) {
   const pdf = await PDFDocument.load(await file.arrayBuffer());
   const imageCache = new Map<string, Awaited<ReturnType<PDFDocument["embedPng"]>>>();
@@ -30,6 +32,7 @@ export async function signPdf(file: File, placements: SignaturePlacement[]) {
   return pdf.save();
 }
 
+// Downloads signed pdf.
 export function downloadSignedPdf(bytes: Uint8Array, fileName: string) {
   const buffer = new ArrayBuffer(bytes.byteLength);
   new Uint8Array(buffer).set(bytes);

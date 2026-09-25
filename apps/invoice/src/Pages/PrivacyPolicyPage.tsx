@@ -1,7 +1,9 @@
+// Configures the privacy policy page for the invoice app.
 import PrivacyPolicy from "../../../../packages/ui/src/PrivacyPolicy";
 import invoiceLogo from "../../../../packages/ui/assets/growile-InvoiceGenerator-logo.svg";
 
 
+// Renders the privacy policy page interface.
 export default function PrivacyPolicyPage() {
   const isEmbeddedInvoice = window.location.pathname.startsWith("/invoice");
   const invoiceBaseHref = isEmbeddedInvoice ? "/invoice" : "";
@@ -29,6 +31,7 @@ export default function PrivacyPolicyPage() {
       footerInvoiceHref={invoiceHomeHref}
       footerTermsHref={`${invoiceBaseHref}/terms-and-conditions`}
       footerPrivacyHref={`${invoiceBaseHref}/privacy-policy`}
+      reserveBottomAdSpace={false}
     />
   );
 }

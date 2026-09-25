@@ -1,3 +1,5 @@
+/* Styles the security pdf fields for grid layout and alignment. */
+/* Styles the security pdf page. */
 .security-pdf-fields {
   display: grid;
   gap: 14px;
@@ -10,6 +12,7 @@
   box-sizing: border-box;
 }
 
+/* Styles the security pdf fields for grid layout and alignment. */
 .security-pdf-fields label {
   display: grid;
   gap: 6px;
@@ -19,6 +22,7 @@
   text-align: left;
 }
 
+/* Styles the security pdf fields for spacing and layout. */
 .security-pdf-fields input {
   width: 100%;
   box-sizing: border-box;
@@ -30,6 +34,7 @@
   font: inherit;
 }
 
+/* Styles the security pdf fields focus state for borders and visual depth. */
 .security-pdf-fields input:focus {
   outline: 2px solid color-mix(in srgb, var(--color-text-highlight) 45%, transparent);
   border-color: var(--color-text-highlight);

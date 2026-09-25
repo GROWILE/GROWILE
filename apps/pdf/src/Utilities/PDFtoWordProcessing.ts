@@ -1,3 +1,4 @@
+// Converts PDF content to Word documents.
 import { Document, ImageRun, Packer, Paragraph } from "docx";
 import * as pdfjsLib from "pdfjs-dist";
 
@@ -6,10 +7,12 @@ pdfjsLib.GlobalWorkerOptions.workerSrc = new URL(
   import.meta.url,
 ).toString();
 
+// Checks pdf file.
 function isPdfFile(file: File) {
   return file.type === "application/pdf" || /\.pdf$/i.test(file.name);
 }
 
+// Converts pdf to word.
 export async function convertPdfToWord(file: File): Promise<Blob> {
   if (!isPdfFile(file)) {
     throw new Error(`${file.name} is not a PDF file.`);
@@ -32,7 +35,7 @@ export async function convertPdfToWord(file: File): Promise<Blob> {
     canvas.height = Math.ceil(viewport.height);
     await page.render({ canvas, canvasContext: context, viewport }).promise;
 
-    const imageBlob = await new Promise<Blob | null>((resolve) =>
+    const imageBlob = await new Promise<Blob | null>(/* Handles image blob work. */ (resolve) =>
       canvas.toBlob(resolve, "image/png"),
     );
 
@@ -73,6 +76,7 @@ export async function convertPdfToWord(file: File): Promise<Blob> {
   return Packer.toBlob(wordDocument);
 }
 
+// Downloads word file.
 export function downloadWordFile(blob: Blob, fileName: string) {
   const url = URL.createObjectURL(blob);
   const link = document.createElement("a");

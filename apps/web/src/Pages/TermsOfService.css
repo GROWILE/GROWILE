@@ -1,9 +1,12 @@
+/* Styles the about section for spacing and layout. */
+/* Styles the terms of service page. */
 .about-section {
   max-width: 1000px;
   margin: 0 auto;
   padding: 60px 24px;
 }
 
+/* Styles the about heading for spacing and layout. */
 .about-heading {
   font-size: 36px;
   font-weight: 700;
@@ -12,6 +15,7 @@
   margin: 0 0 20px;
 }
 
+/* Styles the about text for text appearance and alignment. */
 .about-text {
   font-size: 17px;
   font-weight: 400;
@@ -20,6 +24,7 @@
   opacity: 0.8;
 }
 
+/* Styles the approach list for flex layout and alignment. */
 .approach-list {
   list-style: none;
   margin: 0;
@@ -29,6 +34,7 @@
   gap: 16px;
 }
 
+/* Styles the approach item for spacing and layout. */
 .approach-item {
   font-size: 15px;
   line-height: 1.6;
@@ -38,6 +44,7 @@
   position: relative;
 }
 
+/* Styles the approach item decorative pseudo-element for positioning and stacking. */
 .approach-item::before {
   content: ">";
   position: absolute;
@@ -46,21 +53,27 @@
   font-weight: 700;
 }
 
+/* Applies nested styles at (max-width: 900px). */
 @media (max-width: 900px) {
+  /* Styles the about heading for text appearance and alignment. */
   .about-heading {
     font-size: 32px;
   }
 
+  /* Styles the about section for spacing and layout. */
   .about-section {
     padding: 52px 24px;
   }
 }
 
+/* Applies nested styles at (max-width: 600px). */
 @media (max-width: 600px) {
+  /* Styles the about heading for text appearance and alignment. */
   .about-heading {
     font-size: 28px;
   }
 
+  /* Styles the about section for spacing and layout. */
   .about-section {
     padding: 44px 20px;
   }

@@ -1,9 +1,12 @@
+// Deletes selected pages from PDF files.
 import { PDFDocument } from "pdf-lib";
 
+// Checks pdf file.
 function isPdfFile(file: File) {
   return file.type.toLowerCase() === "application/pdf" || /\.pdf$/i.test(file.name);
 }
 
+// Removes pdf pages.
 export async function deletePdfPages(
   file: File,
   pageNumbersToDelete: number[],
@@ -15,8 +18,8 @@ export async function deletePdfPages(
   const sourcePdf = await PDFDocument.load(await file.arrayBuffer());
   const pageCount = sourcePdf.getPageCount();
   const pagesToDelete = new Set(pageNumbersToDelete);
-  const remainingPageIndices = Array.from({ length: pageCount }, (_, index) => index)
-    .filter((pageIndex) => !pagesToDelete.has(pageIndex + 1));
+  const remainingPageIndices = Array.from({ length: pageCount }, /* Handles remaining page indices work. */ (_, index) => index)
+    .filter(/* Keeps items that match the condition. */ (pageIndex) => !pagesToDelete.has(pageIndex + 1));
 
   if (remainingPageIndices.length === 0) {
     throw new Error("Keep at least one page in the PDF before deleting.");
@@ -24,10 +27,11 @@ export async function deletePdfPages(
 
   const outputPdf = await PDFDocument.create();
   const pages = await outputPdf.copyPages(sourcePdf, remainingPageIndices);
-  pages.forEach((page) => outputPdf.addPage(page));
+  pages.forEach(/* Processes each item in the collection. */ (page) => outputPdf.addPage(page));
   return outputPdf.save();
 }
 
+// Downloads deleted pages pdf.
 export function downloadDeletedPagesPdf(bytes: Uint8Array, fileName: string) {
   const buffer = new ArrayBuffer(bytes.byteLength);
   new Uint8Array(buffer).set(bytes);

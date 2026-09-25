@@ -1,3 +1,4 @@
+// Renders the add page numbers PDF tool page.
 import { useCallback, useState } from "react";
 import { FileText } from "lucide-react";
 import * as pdfjsLib from "pdfjs-dist";
@@ -39,6 +40,7 @@ const faqs = [
   { question: "Does this pagination tool work on mobile devices?", answer: "Yes, Growile PDF is mobile-friendly. You can easily organize and format large business reports using your Android or iOS smartphone anywhere." },
 ];
 
+// Renders the add page numbers interface.
 export default function AddPageNumbers() {
   const [file, setFile] = useState<File | null>(null);
   const [pages, setPages] = useState<PreviewPage[]>([]);
@@ -48,7 +50,7 @@ export default function AddPageNumbers() {
   const [pending, setPending] = useState<Uint8Array | null>(null);
   const [popup, setPopup] = useState(false);
 
-  const handleSelection = async (files: File[]) => {
+  const handleSelection = /* Handles selection work. */ async (files: File[]) => {
     const selected = files[0] ?? null;
     setFile(selected);
     setPages([]);
@@ -79,7 +81,7 @@ export default function AddPageNumbers() {
     }
   };
 
-  const handleAction = async (selected: File) => {
+  const handleAction = /* Handles action work. */ async (selected: File) => {
     setBusy(true);
     setMessage("");
     setError("");
@@ -95,7 +97,7 @@ export default function AddPageNumbers() {
     }
   };
 
-  const closePopup = useCallback(() => {
+  const closePopup = useCallback(/* Creates a callback that stays stable until its dependencies change. */ () => {
     setPopup(false);
     setPending(null);
   }, []);
@@ -126,7 +128,7 @@ export default function AddPageNumbers() {
                 <div className="pdf-edit-content pdf-page-number-content">
                   <p className="pdf-editor-hint">Preview: page numbers are centered in the added bottom margin.</p>
                   <div className="pdf-page-number-grid" aria-label="Numbered PDF preview">
-                    {pages.map((page, index) => (
+                    {pages.map(/* Builds a value for each item in the collection. */ (page, index) => (
                       <div className="pdf-page-number-preview" key={index}>
                         <div className="pdf-page-number-sheet">
                           <img src={page.image} alt={`PDF page ${index + 1}`} />
@@ -165,7 +167,7 @@ export default function AddPageNumbers() {
       <PdfToolsFooter />
       <Footer />
       <AdSpace className="footer-bottom-ad-space" />
-      <DownloadPopup isOpen={popup} onClose={closePopup} onTriggerDownload={() => { if (pending) downloadPageNumbersPdf(pending, "numbered-pdf.pdf"); }} itemName="Numbered PDF" />
+      <DownloadPopup isOpen={popup} onClose={closePopup} onTriggerDownload={/* Runs when the user triggers trigger download. */ () => { if (pending) downloadPageNumbersPdf(pending, "numbered-pdf.pdf"); }} itemName="Numbered PDF" />
     </>
   );
 }

@@ -1,3 +1,5 @@
+/* Styles the root for visual appearance. */
+/* Styles the colors component. */
 :root {
   --color-primary: #000000;
   --color-secondary: #ffffff;
@@ -10,6 +12,7 @@
   --color-tool-teal: #0D9488;
 }
 
+/* Styles the body for text appearance and alignment. */
 body {
   font-family: 'Manrope', sans-serif;
 }

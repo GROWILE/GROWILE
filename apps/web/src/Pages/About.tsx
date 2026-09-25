@@ -1,3 +1,4 @@
+// Renders the Growile about page.
 import "./About.css";
 import Navbar from "../../../../packages/ui/src/Navbar";
 import Footer from "../../../../packages/ui/src/Footer";
@@ -36,6 +37,7 @@ const approach = [
   "Stay honest — clear pricing, no tricks, no surprises.",
 ];
 
+// Renders the about interface.
 export default function About() {
   return (
     <>
@@ -99,7 +101,7 @@ export default function About() {
       <section className="about-section">
         <h2 className="about-heading">Our Values</h2>
         <div className="values-grid">
-          {values.map((value) => (
+          {values.map(/* Builds a value for each item in the collection. */ (value) => (
             <div key={value.title} className="value-card">
               <h3 className="value-title">{value.title}</h3>
               <p className="value-description">{value.description}</p>
@@ -126,7 +128,7 @@ export default function About() {
       <section className="about-section">
         <h2 className="about-heading">Our Approach</h2>
         <ul className="approach-list">
-          {approach.map((point) => (
+          {approach.map(/* Builds a value for each item in the collection. */ (point) => (
             <li key={point} className="approach-item">
               {point}
             </li>
@@ -134,7 +136,7 @@ export default function About() {
         </ul>
       </section>
 
-      <Footer termsHref="/terms-of-service" />
+      <Footer termsHref="/terms-of-service" reserveBottomAdSpace={false} />
     </>
   );
 }

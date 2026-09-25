@@ -1,3 +1,4 @@
+// Renders a preview of an uploaded file.
 import { useEffect, useState } from "react";
 import type { DragEvent } from "react";
 import CloseIcon from "./CloseIcon";
@@ -19,6 +20,7 @@ export type FilePreviewProps = {
   isReorderable: boolean;
 };
 
+// Renders the file preview interface.
 export default function FilePreview({
   file,
   index,
@@ -36,7 +38,7 @@ export default function FilePreview({
   const [previewUrl, setPreviewUrl] = useState("");
   const [hasPreviewError, setHasPreviewError] = useState(false);
 
-  useEffect(() => {
+  useEffect(/* Runs side effects when its dependencies change. */ () => {
     if (!isImageFile(file)) {
       setPreviewUrl("");
       return;
@@ -45,7 +47,7 @@ export default function FilePreview({
     setHasPreviewError(false);
     const url = URL.createObjectURL(file);
     setPreviewUrl(url);
-    return () => URL.revokeObjectURL(url);
+    return /* Runs side effects when its dependencies change. */ () => URL.revokeObjectURL(url);
   }, [file]);
 
   return (
@@ -63,7 +65,7 @@ export default function FilePreview({
         </button>
       )}
       {previewUrl && !hasPreviewError ? (
-        <img className="file-selected-thumbnail" src={previewUrl} alt="" onError={() => setHasPreviewError(true)} />
+        <img className="file-selected-thumbnail" src={previewUrl} alt="" onError={/* Runs when the user triggers error. */ () => setHasPreviewError(true)} />
       ) : (
         <div className="file-selected-type" aria-hidden="true">.{getFileExtension(file.name).toLowerCase()}</div>
       )}

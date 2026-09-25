@@ -1,3 +1,4 @@
+// Renders the delete pdfpages PDF tool page.
 import { useCallback, useState } from "react";
 import { FileText } from "lucide-react";
 import * as pdfjsLib from "pdfjs-dist";
@@ -105,7 +106,7 @@ const faqs = [
 const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  mainEntity: faqs.map((faq) => ({
+  mainEntity: faqs.map(/* Builds a value for each item in the collection. */ (faq) => ({
     "@type": "Question",
     name: faq.question,
     acceptedAnswer: {
@@ -122,13 +123,14 @@ const contentSchema = {
   "@context": "https://schema.org",
   "@type": "WebPage",
   name: "Delete PDF Pages",
-  hasPart: seoBlocks.map((block) => ({
+  hasPart: seoBlocks.map(/* Builds a value for each item in the collection. */ (block) => ({
     "@type": "WebPageElement",
     name: block.heading,
     text: block.description,
   })),
 };
 
+// Renders the delete pdfpages interface.
 export default function DeletePDFPages() {
   const [isDeleting, setIsDeleting] = useState(false);
   const [deleteMessage, setDeleteMessage] = useState("");
@@ -139,16 +141,16 @@ export default function DeletePDFPages() {
   const [pendingPdf, setPendingPdf] = useState<Uint8Array | null>(null);
   const [isDownloadPopupOpen, setIsDownloadPopupOpen] = useState(false);
 
-  const triggerDownload = useCallback(() => {
+  const triggerDownload = useCallback(/* Creates a callback that stays stable until its dependencies change. */ () => {
     if (pendingPdf) downloadDeletedPagesPdf(pendingPdf, "pages-deleted.pdf");
   }, [pendingPdf]);
 
-  const closeDownloadPopup = useCallback(() => {
+  const closeDownloadPopup = useCallback(/* Creates a callback that stays stable until its dependencies change. */ () => {
     setIsDownloadPopupOpen(false);
     setPendingPdf(null);
   }, []);
 
-  const handleSelectionChange = async (files: File[]) => {
+  const handleSelectionChange = /* Handles selection change work. */ async (files: File[]) => {
     const file = files[0] ?? null;
     setSelectedFile(file);
     setSelectedPages([]);
@@ -165,7 +167,7 @@ export default function DeletePDFPages() {
     }
   };
 
-  const handleAction = async (file: File) => {
+  const handleAction = /* Handles action work. */ async (file: File) => {
     setIsDeleting(true);
     setDeleteMessage("");
     setDeleteError("");

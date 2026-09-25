@@ -1,34 +1,44 @@
+/* Styles the products kicker for colors and background. */
+/* Styles the products page component. */
 /* ProductsPage keeps its original page-specific accent and compact mobile treatment. */
 .products-kicker {
   color: var(--color-text-highlight);
 }
 
+/* Applies nested styles at (max-width: 900px). */
 @media (max-width: 900px) {
+  /* Styles the products for spacing and layout. */
   .products {
     padding: 72px 24px 112px;
   }
 
+  /* Styles the products grid for visual appearance. */
   .products-grid {
     gap: 24px;
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
+/* Applies nested styles at (max-width: 768px). */
 @media (max-width: 768px) {
+  /* Styles the products for spacing and layout. */
   .products {
     padding: 48px 16px 64px;
   }
 
+  /* Styles the products grid for visual appearance. */
   .products-grid {
     grid-template-columns: 1fr;
     gap: 16px;
   }
 
+  /* Styles the product card for spacing and layout. */
   .product-card {
     padding: 24px;
     min-height: auto;
   }
 
+  /* Styles the product title for text appearance and alignment. */
   .product-title {
     font-size: 24px;
   }

@@ -1,3 +1,4 @@
+// Renders the compress pdf PDF tool page.
 import { useCallback, useState } from "react";
 import { FileArchive } from "lucide-react";
 import AdSpace from "../../../../packages/ui/src/AdSpace";
@@ -101,7 +102,7 @@ const faqs = [
 const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  mainEntity: faqs.map((faq) => ({
+  mainEntity: faqs.map(/* Builds a value for each item in the collection. */ (faq) => ({
     "@type": "Question",
     name: faq.question,
     acceptedAnswer: {
@@ -118,25 +119,28 @@ const contentSchema = {
   "@context": "https://schema.org",
   "@type": "WebPage",
   name: "Compress PDF",
-  hasPart: seoBlocks.map((block) => ({
+  hasPart: seoBlocks.map(/* Builds a value for each item in the collection. */ (block) => ({
     "@type": "WebPageElement",
     name: block.heading,
     text: block.description,
   })),
 };
 
+// Formats file size.
 function formatFileSize(bytes: number) {
   if (bytes < 1024) return `${bytes} B`;
   if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(1)} KB`;
   return `${(bytes / (1024 * 1024)).toFixed(2)} MB`;
 }
 
+// Gets compression options.
 function getCompressionOptions(fileSize: number): CompressionTarget[] {
   if (fileSize > 1024 * 1024) return ["default", "1mb", "500kb", "200kb", "100kb"];
   if (fileSize > 500 * 1024) return ["default", "200kb", "100kb"];
   return ["default"];
 }
 
+// Checks large pdf.
 function isLargePdf(fileSize: number) {
   return fileSize > 20 * 1024 * 1024;
 }
@@ -149,6 +153,7 @@ const optionLabels: Record<CompressionTarget, string> = {
   "100kb": "Compress to 100 KB or less",
 };
 
+// Renders the compress pdf interface.
 export default function CompressPDF() {
   const [isCompressing, setIsCompressing] = useState(false);
   const [compressMessage, setCompressMessage] = useState("");
@@ -158,16 +163,16 @@ export default function CompressPDF() {
   const [pendingPdf, setPendingPdf] = useState<Uint8Array | null>(null);
   const [isDownloadPopupOpen, setIsDownloadPopupOpen] = useState(false);
 
-  const triggerDownload = useCallback(() => {
+  const triggerDownload = useCallback(/* Creates a callback that stays stable until its dependencies change. */ () => {
     if (pendingPdf) downloadCompressedPdf(pendingPdf, "compressed.pdf");
   }, [pendingPdf]);
 
-  const closeDownloadPopup = useCallback(() => {
+  const closeDownloadPopup = useCallback(/* Creates a callback that stays stable until its dependencies change. */ () => {
     setIsDownloadPopupOpen(false);
     setPendingPdf(null);
   }, []);
 
-  const handleSelectionChange = (files: File[]) => {
+  const handleSelectionChange = /* Handles selection change work. */ (files: File[]) => {
     const file = files[0] ?? null;
     setSelectedFile(file);
     setCompressMessage("");
@@ -175,7 +180,7 @@ export default function CompressPDF() {
     if (file) setTarget(getCompressionOptions(file.size)[0]);
   };
 
-  const handleAction = async (file: File) => {
+  const handleAction = /* Handles action work. */ async (file: File) => {
     setIsCompressing(true);
     setCompressMessage("");
     setCompressError("");
@@ -238,14 +243,14 @@ export default function CompressPDF() {
                       </div>
                     )}
                     <div className="compress-pdf-options-list" role="radiogroup" aria-label="Compression options">
-                      {availableOptions.map((option) => (
+                      {availableOptions.map(/* Builds a value for each item in the collection. */ (option) => (
                         <label className={`compress-pdf-option ${target === option ? "selected" : ""}`} key={option}>
                           <input
                             type="radio"
                             name="compression-target"
                             value={option}
                             checked={target === option}
-                            onChange={() => setTarget(option)}
+                            onChange={/* Runs when the user triggers change. */ () => setTarget(option)}
                           />
                           <span>{optionLabels[option]}</span>
                           {isLargePdf(selectedFile.size) && (option === "default" || option === "1mb") && (

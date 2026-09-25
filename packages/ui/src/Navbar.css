@@ -1,3 +1,5 @@
+/* Styles the navbar for colors and background. */
+/* Styles the navbar component. */
 .navbar {
   position: relative;
   top: auto;
@@ -8,6 +10,7 @@
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.12);
 }
 
+/* Styles the navbar container for flex layout and alignment. */
 .navbar-container {
   max-width: 1300px;
   margin: 0 auto;
@@ -17,6 +20,7 @@
   padding: 24px 32px;
 }
 
+/* Styles the navbar logo for flex layout and alignment. */
 .navbar-logo {
   text-decoration: none;
   display: flex;
@@ -24,12 +28,14 @@
   flex-shrink: 0;
 }
 
+/* Styles the navbar logo for element sizing. */
 .navbar-logo img {
   display: block;
   width: 120px;
   height: 40px;
 }
 
+/* Styles the navbar links for flex layout and alignment. */
 .navbar-links {
   display: flex;
   align-items: center;
@@ -37,10 +43,12 @@
   gap: 92px;
 }
 
+/* Styles the navbar menu toggle for visual appearance. */
 .navbar-menu-toggle {
   display: none;
 }
 
+/* Styles the navbar link for flex layout and alignment. */
 .navbar-link {
   color: var(--color-secondary);
   text-decoration: none;
@@ -53,38 +61,48 @@
   gap: 4px;
 }
 
+/* Styles the navbar link hover state for colors and background. */
 .navbar-link:hover {
   color: var(--color-text-highlight);
 }
 
+/* Applies nested styles at (max-width: 900px). */
 @media (max-width: 900px) {
+  /* Styles the navbar container for spacing and layout. */
   .navbar-container {
     padding: 20px 24px;
   }
 
+  /* Styles the navbar logo for element sizing. */
   .navbar-logo img {
     width: 105px;
   }
 
+  /* Styles the navbar links for visual appearance. */
   .navbar-links {
     gap: 32px;
   }
 
+  /* Styles the navbar link for text appearance and alignment. */
   .navbar-link {
     font-size: 20px;
   }
 }
 
+/* Applies nested styles at (max-width: 600px). */
 @media (max-width: 600px) {
+  /* Styles the navbar container for spacing and layout. */
   .navbar-container {
     position: relative;
     padding: 16px;
   }
 
+  /* Styles the navbar logo for element sizing. */
   .navbar-logo img {
     width: 90px;
   }
 
+  /* Styles the navbar menu toggle for flex layout and alignment. */
   .navbar-menu-toggle {
     width: 36px;
     height: 32px;
@@ -97,6 +115,7 @@
     justify-content: space-between;
   }
 
+  /* Styles the navbar menu toggle for colors and background. */
   .navbar-menu-toggle span {
     display: block;
     width: 28px;
@@ -105,18 +124,22 @@
     transition: transform 0.2s ease, opacity 0.2s ease;
   }
 
+  /* Styles the navbar menu toggle for animation and transitions. */
   .navbar-menu-toggle.open span:nth-child(1) {
     transform: translateY(9px) rotate(45deg);
   }
 
+  /* Styles the navbar menu toggle for visual appearance. */
   .navbar-menu-toggle.open span:nth-child(2) {
     opacity: 0;
   }
 
+  /* Styles the navbar menu toggle for animation and transitions. */
   .navbar-menu-toggle.open span:nth-child(3) {
     transform: translateY(-9px) rotate(-45deg);
   }
 
+  /* Styles the navbar links for positioning and stacking. */
   .navbar-links {
     display: none;
     position: absolute;
@@ -131,10 +154,12 @@
     background: var(--color-primary);
   }
 
+  /* Styles the navbar links for flex layout and alignment. */
   .navbar-links.open {
     display: flex;
   }
 
+  /* Styles the navbar link for spacing and layout. */
   .navbar-link {
     justify-content: center;
     padding: 12px 8px;

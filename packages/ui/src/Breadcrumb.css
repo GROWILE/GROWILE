@@ -1,9 +1,12 @@
+/* Styles the breadcrumb for colors and background. */
+/* Styles the breadcrumb component. */
 .breadcrumb {
   position: relative;
   width: 100%;
   background: transparent;
 }
 
+/* Styles the breadcrumb list for flex layout and alignment. */
 .breadcrumb-list {
   display: flex;
   align-items: center;
@@ -16,12 +19,14 @@
   font-size: 14px;
 }
 
+/* Styles the breadcrumb item for flex layout and alignment. */
 .breadcrumb-item {
   display: flex;
   align-items: center;
   min-width: 0;
 }
 
+/* Styles the breadcrumb link for visual appearance. */
 .breadcrumb-link,
 .breadcrumb-current {
   overflow: hidden;
@@ -29,27 +34,33 @@
   white-space: nowrap;
 }
 
+/* Styles the breadcrumb link for text appearance and alignment. */
 .breadcrumb-link {
   color: var(--color-text-highlight);
   font-weight: 500;
   text-decoration: none;
 }
 
+/* Styles the breadcrumb link hover state for visual appearance. */
 .breadcrumb-link:hover {
   text-decoration: underline;
 }
 
+/* Styles the breadcrumb current for text appearance and alignment. */
 .breadcrumb-current {
   color: var(--color-primary);
   font-weight: 600;
 }
 
+/* Styles the breadcrumb separator for spacing and layout. */
 .breadcrumb-separator {
   margin-left: 8px;
   color: color-mix(in srgb, var(--color-primary) 55%, transparent);
 }
 
+/* Applies nested styles at (max-width: 600px). */
 @media (max-width: 600px) {
+  /* Styles the breadcrumb list for spacing and layout. */
   .breadcrumb-list {
     padding: 10px 16px;
     font-size: 13px;

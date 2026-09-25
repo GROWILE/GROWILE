@@ -1,3 +1,4 @@
+// Converts PDF content to Excel workbooks.
 import ExcelJS from "exceljs";
 import * as pdfjsLib from "pdfjs-dist";
 
@@ -6,10 +7,12 @@ pdfjsLib.GlobalWorkerOptions.workerSrc = new URL(
   import.meta.url,
 ).toString();
 
+// Checks pdf file.
 function isPdfFile(file: File) {
   return file.type === "application/pdf" || /\.pdf$/i.test(file.name);
 }
 
+// Handles bytes to base64 work.
 function bytesToBase64(bytes: Uint8Array) {
   let binary = "";
   const chunkSize = 0x8000;
@@ -21,6 +24,7 @@ function bytesToBase64(bytes: Uint8Array) {
   return globalThis.btoa(binary);
 }
 
+// Converts pdf to excel.
 export async function convertPdfToExcel(file: File): Promise<Blob> {
   if (!isPdfFile(file)) {
     throw new Error(`${file.name} is not a PDF file.`);
@@ -46,7 +50,7 @@ export async function convertPdfToExcel(file: File): Promise<Blob> {
     const page = await pdf.getPage(pageNumber);
     const content = await page.getTextContent();
     const textItems = content.items
-      .map((item) => ("str" in item ? item.str : ""))
+      .map(/* Builds a value for each item in the collection. */ (item) => ("str" in item ? item.str : ""))
       .filter(Boolean);
     const pageText = textItems.join(" ").replace(/\s+/g, " ").trim();
 
@@ -69,7 +73,7 @@ export async function convertPdfToExcel(file: File): Promise<Blob> {
     canvas.width = Math.ceil(viewport.width);
     canvas.height = Math.ceil(viewport.height);
     await page.render({ canvas, canvasContext: context, viewport }).promise;
-    const previewBlob = await new Promise<Blob | null>((resolve) =>
+    const previewBlob = await new Promise<Blob | null>(/* Handles preview blob work. */ (resolve) =>
       canvas.toBlob(resolve, "image/png"),
     );
 
@@ -98,6 +102,7 @@ export async function convertPdfToExcel(file: File): Promise<Blob> {
   });
 }
 
+// Downloads excel file.
 export function downloadExcelFile(blob: Blob, fileName: string) {
   const url = URL.createObjectURL(blob);
   const link = document.createElement("a");

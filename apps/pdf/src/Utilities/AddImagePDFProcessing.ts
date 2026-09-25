@@ -1,3 +1,4 @@
+// Processes add image pdf for PDF files.
 import { PDFDocument, degrees } from "pdf-lib";
 
 export type ImagePlacement = {
@@ -9,6 +10,7 @@ export type ImagePlacement = {
   rotation: number;
 };
 
+// Adds image to pdf.
 export async function addImageToPdf(pdfFile: File, imageFiles: File[], placements: ImagePlacement[]): Promise<Uint8Array> {
   const pdf = await PDFDocument.load(await pdfFile.arrayBuffer());
   for (const [index, imageFile] of imageFiles.entries()) {
@@ -30,6 +32,7 @@ export async function addImageToPdf(pdfFile: File, imageFiles: File[], placement
   return pdf.save();
 }
 
+// Converts image to png.
 async function convertImageToPng(file: File): Promise<ArrayBuffer> {
   const image = await createImageBitmap(file);
   const canvas = document.createElement("canvas");
@@ -39,11 +42,12 @@ async function convertImageToPng(file: File): Promise<ArrayBuffer> {
   if (!context) throw new Error("Could not prepare the WebP image.");
   context.drawImage(image, 0, 0);
   image.close();
-  const blob = await new Promise<Blob | null>((resolve) => canvas.toBlob(resolve, "image/png"));
+  const blob = await new Promise<Blob | null>(/* Handles blob work. */ (resolve) => canvas.toBlob(resolve, "image/png"));
   if (!blob) throw new Error("Could not convert the WebP image.");
   return blob.arrayBuffer();
 }
 
+// Downloads add image pdf.
 export function downloadAddImagePdf(bytes: Uint8Array, fileName: string) {
   const buffer = new ArrayBuffer(bytes.byteLength);
   new Uint8Array(buffer).set(bytes);

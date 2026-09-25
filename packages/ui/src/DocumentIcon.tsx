@@ -1,7 +1,9 @@
+// Renders a document icon with an optional label.
 type DocumentIconProps = {
   label?: string;
 };
 
+// Renders the document icon interface.
 export default function DocumentIcon({ label }: DocumentIconProps) {
   if (label) {
     return <span className="product-document-label">{label}</span>;

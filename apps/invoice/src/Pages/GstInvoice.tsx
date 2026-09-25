@@ -1,3 +1,4 @@
+// Builds a GST invoice, validates its fields, and generates a PDF.
 import { useMemo, useState } from "react";
 import type { ChangeEvent, FormEvent } from "react";
 import jsPDF from "jspdf";
@@ -39,6 +40,7 @@ const initialItems: GstItem[] = [{ id: 1, item: "", quantity: "1", rate: "" }];
 
 // ---------- Small pure helpers ----------
 
+// Formats an amount with the selected currency.
 function formatMoney(value: number, currency: string) {
   const code = currency.split(" ")[0];
   return `${code} ${value.toLocaleString("en-IN", {
@@ -47,12 +49,13 @@ function formatMoney(value: number, currency: string) {
   })}`;
 }
 
+// Handles wrap pdf text work.
 function wrapPdfText(pdf: jsPDF, text: string, maxWidth: number, maxChars = 42) {
   if (!text) return [""];
   const chunks: string[] = [];
   let current = "";
 
-  text.split(/\s+/).forEach((word) => {
+  text.split(/\s+/).forEach(/* Processes each item in the collection. */ (word) => {
     if (word.length > maxChars) {
       if (current) chunks.push(current);
       current = "";
@@ -71,21 +74,23 @@ function wrapPdfText(pdf: jsPDF, text: string, maxWidth: number, maxChars = 42) 
   });
 
   if (current) chunks.push(current);
-  return chunks.flatMap((chunk) => pdf.splitTextToSize(chunk, maxWidth));
+  return chunks.flatMap(/* Handles the work for this callback. */ (chunk) => pdf.splitTextToSize(chunk, maxWidth));
 }
 
+// Validates email.
 function isValidEmail(value: string) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
 }
 
 // ---------- Component ----------
 
+// Collects invoice details and provides GST invoice actions.
 export default function GstInvoice() {
   const withoutGstInvoiceHref = window.location.pathname.startsWith("/invoice")
     ? "/invoice/without-gst-invoice"
     : "/without-gst-invoice";
 
-  // 2. Popup open/close state-a track panna pudhu useState
+  // Tracks whether the download popup is open.
   const [isPopupOpen, setIsPopupOpen] = useState(false);
 
   // ---- Logo ----
@@ -122,42 +127,43 @@ export default function GstInvoice() {
 
   // ---- Derived values ----
   const itemAmounts = useMemo(
-    () => items.map((item) => Number(item.quantity || 0) * Number(item.rate || 0)),
+    // Calculates the value cached by this memo.
+    () => items.map(/* Builds a value for each item in the collection. */ (item) => Number(item.quantity || 0) * Number(item.rate || 0)),
     [items],
   );
 
-  const subtotal = itemAmounts.reduce((sum, amount) => sum + amount, 0);
+  const subtotal = itemAmounts.reduce(/* Combines the collection into one value. */ (sum, amount) => sum + amount, 0);
   const taxAmount = (subtotal * Number(tax || 0)) / 100;
   const discountAmount = (subtotal * Number(discount || 0)) / 100;
   const totalAmount = Math.max(0, subtotal + taxAmount - discountAmount);
   const balanceAmount = Math.max(0, totalAmount - Number(paidAmount || 0));
 
   // ---- Handlers: logo ----
-  const handleLogoChange = (event: ChangeEvent<HTMLInputElement>) => {
+  const handleLogoChange = /* Handles logo change work. */ (event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (!file) return;
 
     const reader = new FileReader();
-    reader.onload = () => setLogoUrl(String(reader.result));
+    reader.onload = /* Handles logo change work. */ () => setLogoUrl(String(reader.result));
     reader.readAsDataURL(file);
   };
 
   // ---- Handlers: items table ----
-  const updateItem = (id: number, field: keyof GstItem, value: string) => {
-    setItems((current) =>
-      current.map((entry) => (entry.id === id ? { ...entry, [field]: value } : entry)),
+  const updateItem = /* Updates item. */ (id: number, field: keyof GstItem, value: string) => {
+    setItems(/* Updates item. */ (current) =>
+      current.map(/* Builds a value for each item in the collection. */ (entry) => (entry.id === id ? { ...entry, [field]: value } : entry)),
     );
   };
 
-  const addItem = () => {
-    setItems((current) => [
+  const addItem = /* Adds item. */ () => {
+    setItems(/* Adds item. */ (current) => [
       ...current,
       { id: Date.now(), item: "", quantity: "1", rate: "" },
     ]);
   };
 
   // ---- Validation ----
-  const validateForm = () => {
+  const validateForm = /* Validates form. */ () => {
     const requiredValues = [
       businessName,
       businessAddress,
@@ -178,13 +184,13 @@ export default function GstInvoice() {
       items[0]?.rate,
     ];
 
-    if (requiredValues.some((value) => !value)) {
+    if (requiredValues.some(/* Checks whether any item matches the condition. */ (value) => !value)) {
       return "Please complete all GST invoice fields.";
     }
     if (!isValidEmail(businessEmail) || !isValidEmail(customerEmail)) {
       return "Please enter valid email addresses.";
     }
-    if (items.some((item) => Number(item.quantity) <= 0 || Number(item.rate) < 0)) {
+    if (items.some(/* Checks whether any item matches the condition. */ (item) => Number(item.quantity) <= 0 || Number(item.rate) < 0)) {
       return "Quantity must be greater than 0 and rate cannot be negative.";
     }
     if (Number(tax) < 0 || Number(discount) < 0 || Number(discount) > 100) {
@@ -197,6 +203,7 @@ export default function GstInvoice() {
   };
 
   // ---- PDF generation ----
+  // Creates a downloadable PDF from the current invoice details.
   function generatePdf() {
     const pdf = new jsPDF();
     const pageWidth = 210;
@@ -277,7 +284,7 @@ export default function GstInvoice() {
     y += 16;
 
     pdf.setFont("helvetica", "normal");
-    items.forEach((item, index) => {
+    items.forEach(/* Processes each item in the collection. */ (item, index) => {
       const lines = wrapPdfText(pdf, item.item || "-", contentWidth - 94, 40);
 
       pdf.setFontSize(9);
@@ -335,7 +342,7 @@ export default function GstInvoice() {
 
   // ---- Form submit ----
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = /* Handles submit work. */ (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const validationError = validateForm();
     if (validationError) {
@@ -380,7 +387,7 @@ export default function GstInvoice() {
                 Business Name
                 <input
                   value={businessName}
-                  onChange={(event) => setBusinessName(event.target.value)}
+                  onChange={/* Runs when the user triggers change. */ (event) => setBusinessName(event.target.value)}
                   required
                 />
               </label>
@@ -388,7 +395,7 @@ export default function GstInvoice() {
                 Business Address
                 <textarea
                   value={businessAddress}
-                  onChange={(event) => setBusinessAddress(event.target.value)}
+                  onChange={/* Runs when the user triggers change. */ (event) => setBusinessAddress(event.target.value)}
                   rows={2}
                   required
                 />
@@ -397,7 +404,7 @@ export default function GstInvoice() {
                 Tax Registration Number
                 <input
                   value={businessTaxNumber}
-                  onChange={(event) => setBusinessTaxNumber(event.target.value)}
+                  onChange={/* Runs when the user triggers change. */ (event) => setBusinessTaxNumber(event.target.value)}
                   required
                 />
               </label>
@@ -407,7 +414,7 @@ export default function GstInvoice() {
                   type="tel"
                   inputMode="numeric"
                   value={businessPhone}
-                  onChange={(event) => setBusinessPhone(event.target.value.replace(/\D/g, ""))}
+                  onChange={/* Runs when the user triggers change. */ (event) => setBusinessPhone(event.target.value.replace(/\D/g, ""))}
                   required
                 />
               </label>
@@ -416,7 +423,7 @@ export default function GstInvoice() {
                 <input
                   type="email"
                   value={businessEmail}
-                  onChange={(event) => setBusinessEmail(event.target.value)}
+                  onChange={/* Runs when the user triggers change. */ (event) => setBusinessEmail(event.target.value)}
                   pattern="[^\s@]+@[^\s@]+\.[^\s@]+"
                   required
                 />
@@ -432,7 +439,7 @@ export default function GstInvoice() {
                 Invoice Number
                 <input
                   value={invoiceNumber}
-                  onChange={(event) => setInvoiceNumber(event.target.value)}
+                  onChange={/* Runs when the user triggers change. */ (event) => setInvoiceNumber(event.target.value)}
                   required
                 />
               </label>
@@ -441,7 +448,7 @@ export default function GstInvoice() {
                 <input
                   type="date"
                   value={invoiceDate}
-                  onChange={(event) => setInvoiceDate(event.target.value)}
+                  onChange={/* Runs when the user triggers change. */ (event) => setInvoiceDate(event.target.value)}
                   required
                 />
               </label>
@@ -450,7 +457,7 @@ export default function GstInvoice() {
                 <input
                   type="date"
                   value={dueDate}
-                  onChange={(event) => setDueDate(event.target.value)}
+                  onChange={/* Runs when the user triggers change. */ (event) => setDueDate(event.target.value)}
                   required
                 />
               </label>
@@ -459,14 +466,14 @@ export default function GstInvoice() {
                 <input
                   list="gst-currencies"
                   value={currency}
-                  onChange={(event) => setCurrency(event.target.value.toUpperCase())}
+                  onChange={/* Runs when the user triggers change. */ (event) => setCurrency(event.target.value.toUpperCase())}
                   placeholder="Type or choose currency"
                   required
                 />
               </label>
             </div>
             <datalist id="gst-currencies">
-              {currencies.map((option) => (
+              {currencies.map(/* Builds a value for each item in the collection. */ (option) => (
                 <option key={option} value={option} />
               ))}
             </datalist>
@@ -480,7 +487,7 @@ export default function GstInvoice() {
                 Customer Name / Business Name
                 <input
                   value={customerName}
-                  onChange={(event) => setCustomerName(event.target.value)}
+                  onChange={/* Runs when the user triggers change. */ (event) => setCustomerName(event.target.value)}
                   required
                 />
               </label>
@@ -488,7 +495,7 @@ export default function GstInvoice() {
                 Billing Address
                 <textarea
                   value={billingAddress}
-                  onChange={(event) => setBillingAddress(event.target.value)}
+                  onChange={/* Runs when the user triggers change. */ (event) => setBillingAddress(event.target.value)}
                   rows={2}
                   required
                 />
@@ -497,7 +504,7 @@ export default function GstInvoice() {
                 Tax Registration Number
                 <input
                   value={customerTaxNumber}
-                  onChange={(event) => setCustomerTaxNumber(event.target.value)}
+                  onChange={/* Runs when the user triggers change. */ (event) => setCustomerTaxNumber(event.target.value)}
                   required
                 />
               </label>
@@ -505,7 +512,7 @@ export default function GstInvoice() {
                 Payment Terms
                 <input
                   value={paymentTerms}
-                  onChange={(event) => setPaymentTerms(event.target.value)}
+                  onChange={/* Runs when the user triggers change. */ (event) => setPaymentTerms(event.target.value)}
                   placeholder="Due on receipt"
                   required
                 />
@@ -515,7 +522,7 @@ export default function GstInvoice() {
                 <input
                   type="email"
                   value={customerEmail}
-                  onChange={(event) => setCustomerEmail(event.target.value)}
+                  onChange={/* Runs when the user triggers change. */ (event) => setCustomerEmail(event.target.value)}
                   pattern="[^\s@]+@[^\s@]+\.[^\s@]+"
                   required
                 />
@@ -526,7 +533,7 @@ export default function GstInvoice() {
                   type="tel"
                   inputMode="numeric"
                   value={customerPhone}
-                  onChange={(event) => setCustomerPhone(event.target.value.replace(/\D/g, ""))}
+                  onChange={/* Runs when the user triggers change. */ (event) => setCustomerPhone(event.target.value.replace(/\D/g, ""))}
                   required
                 />
               </label>
@@ -536,13 +543,13 @@ export default function GstInvoice() {
           {/* Items table */}
           <div className="gst-field-section">
             <h3>Items</h3>
-            {items.map((entry, index) => (
+            {items.map(/* Builds a value for each item in the collection. */ (entry, index) => (
               <div className="gst-item-row" key={entry.id}>
                 <label>
                   Item {index + 1}
                   <input
                     value={entry.item}
-                    onChange={(event) => updateItem(entry.id, "item", event.target.value)}
+                    onChange={/* Runs when the user triggers change. */ (event) => updateItem(entry.id, "item", event.target.value)}
                     required={index === 0}
                   />
                 </label>
@@ -552,7 +559,7 @@ export default function GstInvoice() {
                     type="number"
                     min="1"
                     value={entry.quantity}
-                    onChange={(event) => updateItem(entry.id, "quantity", event.target.value)}
+                    onChange={/* Runs when the user triggers change. */ (event) => updateItem(entry.id, "quantity", event.target.value)}
                     required={index === 0}
                   />
                 </label>
@@ -563,7 +570,7 @@ export default function GstInvoice() {
                     min="0"
                     step="0.01"
                     value={entry.rate}
-                    onChange={(event) => updateItem(entry.id, "rate", event.target.value)}
+                    onChange={/* Runs when the user triggers change. */ (event) => updateItem(entry.id, "rate", event.target.value)}
                     required={index === 0}
                   />
                 </label>
@@ -589,7 +596,7 @@ export default function GstInvoice() {
                   min="0"
                   step="0.01"
                   value={tax}
-                  onChange={(event) => setTax(event.target.value)}
+                  onChange={/* Runs when the user triggers change. */ (event) => setTax(event.target.value)}
                   placeholder="0"
                 />
               </label>
@@ -601,7 +608,7 @@ export default function GstInvoice() {
                   max="100"
                   step="0.01"
                   value={discount}
-                  onChange={(event) => setDiscount(event.target.value)}
+                  onChange={/* Runs when the user triggers change. */ (event) => setDiscount(event.target.value)}
                   placeholder="0"
                 />
               </label>
@@ -616,7 +623,7 @@ export default function GstInvoice() {
                   min="0"
                   step="0.01"
                   value={paidAmount}
-                  onChange={(event) => setPaidAmount(event.target.value)}
+                  onChange={/* Runs when the user triggers change. */ (event) => setPaidAmount(event.target.value)}
                   placeholder="0.00"
                 />
               </label>
@@ -648,7 +655,7 @@ export default function GstInvoice() {
       {/* Download PopUp Component */}
       <DownloadPopup 
         isOpen={isPopupOpen} 
-        onClose={() => setIsPopupOpen(false)} 
+        onClose={/* Runs when the user triggers close. */ () => setIsPopupOpen(false)}
         onTriggerDownload={generatePdf} 
         itemName="GST Invoice" 
       />

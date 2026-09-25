@@ -1,3 +1,4 @@
+// Renders a grid of product cards.
 import ProductCard from "./ProductCard";
 import type { Product } from "./ProductCard";
 import "./Products.css";
@@ -26,6 +27,7 @@ const defaultProducts: Product[] = [
   },
 ];
 
+// Renders the products interface.
 export default function Products({
   products = defaultProducts,
   contextLabel = "GROWILE SUITE",
@@ -37,7 +39,7 @@ export default function Products({
         <h2>Try Our Products &gt;</h2>
       </div>
       <div className="products-grid">
-        {products.map((product) => (
+        {products.map(/* Builds a value for each item in the collection. */ (product) => (
           <ProductCard
             key={product.title}
             product={product}

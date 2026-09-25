@@ -1,3 +1,4 @@
+// Renders the invoice editor and its supporting content.
 import { useEffect, useState } from "react";
 import type { MouseEvent } from "react";
 import Divider from "../../../../packages/ui/src/Divider";
@@ -19,6 +20,7 @@ import "./InvoicePage.css";
 
 type InvoicePageVariant = "without-gst" | "gst";
 
+// Gets page variant.
 function getPageVariant(): InvoicePageVariant {
   const pathname = window.location.pathname;
 
@@ -44,6 +46,7 @@ function getPageVariant(): InvoicePageVariant {
   return "without-gst";
 }
 
+// Renders the invoice page interface.
 export default function InvoicePage() {
   const [variant, setVariant] = useState<InvoicePageVariant>(getPageVariant);
   const isEmbeddedInvoice = window.location.pathname.startsWith("/invoice");
@@ -54,20 +57,20 @@ export default function InvoicePage() {
   const termsHref = `${invoiceBaseHref}/terms-and-conditions`;
   const privacyHref = `${invoiceBaseHref}/privacy-policy`;
 
-  useEffect(() => {
-    const handleHashChange = () => setVariant(getPageVariant());
+  useEffect(/* Runs side effects when its dependencies change. */ () => {
+    const handleHashChange = /* Handles hash change work. */ () => setVariant(getPageVariant());
     window.addEventListener("hashchange", handleHashChange);
-    return () => window.removeEventListener("hashchange", handleHashChange);
+    return /* Runs side effects when its dependencies change. */ () => window.removeEventListener("hashchange", handleHashChange);
   }, []);
 
-  useEffect(() => {
+  useEffect(/* Runs side effects when its dependencies change. */ () => {
     const targetId = window.location.hash.slice(1);
 
     if (!targetId) {
       return;
     }
 
-    requestAnimationFrame(() => {
+    requestAnimationFrame(/* Runs side effects when its dependencies change. */ () => {
       document.getElementById(targetId)?.scrollIntoView({
         behavior: "smooth",
         block: "start",
@@ -198,7 +201,7 @@ export default function InvoicePage() {
   const nonGstFaqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    "mainEntity": nonGstFaqs.map(faq => ({
+    "mainEntity": nonGstFaqs.map(/* Builds a value for each item in the collection. */ faq => ({
       "@type": "Question",
       "name": faq.question,
       "acceptedAnswer": {
@@ -211,7 +214,7 @@ export default function InvoicePage() {
   const gstFaqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    "mainEntity": gstFaqs.map(faq => ({
+    "mainEntity": gstFaqs.map(/* Builds a value for each item in the collection. */ faq => ({
       "@type": "Question",
       "name": faq.question,
       "acceptedAnswer": {
@@ -226,7 +229,7 @@ export default function InvoicePage() {
     "@type": "HowTo",
     "name": nonGstHowToHeading,
     "description": "Step-by-step guide to creating a non-GST bill quickly using Growile's free online invoice tool.",
-    "step": nonGstSteps.map((step, index) => ({
+    "step": nonGstSteps.map(/* Builds a value for each item in the collection. */ (step, index) => ({
       "@type": "HowToStep",
       "name": step.title,
       "text": step.description,
@@ -239,7 +242,7 @@ export default function InvoicePage() {
     "@type": "HowTo",
     "name": gstHowToHeading,
     "description": "Step-by-step guide to generating a tax-compliant GST invoice online with Growile.",
-    "step": gstSteps.map((step, index) => ({
+    "step": gstSteps.map(/* Builds a value for each item in the collection. */ (step, index) => ({
       "@type": "HowToStep",
       "name": step.title,
       "text": step.description,
@@ -247,7 +250,7 @@ export default function InvoicePage() {
     }))
   };
 
-  const scrollToInvoiceForm = (event: MouseEvent<HTMLAnchorElement>) => {
+  const scrollToInvoiceForm = /* Handles scroll to invoice form work. */ (event: MouseEvent<HTMLAnchorElement>) => {
     event.preventDefault();
     document.getElementById(invoiceFormId)?.scrollIntoView({
       behavior: "smooth",
@@ -356,7 +359,7 @@ export default function InvoicePage() {
         invoiceHref={invoiceHomeHref}
         termsHref={termsHref}
         privacyHref={privacyHref}
-        showAdSpace
+        reserveBottomAdSpace={false}
       />
     </div>
   );

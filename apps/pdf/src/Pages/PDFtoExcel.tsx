@@ -1,3 +1,4 @@
+// Renders the pdfto excel PDF tool page.
 import { useCallback, useState } from "react";
 import { FileSpreadsheet } from "lucide-react";
 import AdSpace from "../../../../packages/ui/src/AdSpace";
@@ -42,7 +43,7 @@ const faqs = [
 const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  mainEntity: faqs.map((faq) => ({
+  mainEntity: faqs.map(/* Builds a value for each item in the collection. */ (faq) => ({
     "@type": "Question",
     name: faq.question,
     acceptedAnswer: { "@type": "Answer", text: faq.answer },
@@ -53,13 +54,14 @@ const contentSchema = {
   "@context": "https://schema.org",
   "@type": "WebPage",
   name: "PDF to Excel Converter",
-  hasPart: seoBlocks.map((block) => ({
+  hasPart: seoBlocks.map(/* Builds a value for each item in the collection. */ (block) => ({
     "@type": "WebPageElement",
     name: block.heading,
     text: block.description,
   })),
 };
 
+// Renders the pdfto excel interface.
 export default function PDFtoExcel() {
   const [isConverting, setIsConverting] = useState(false);
   const [conversionMessage, setConversionMessage] = useState("");
@@ -67,16 +69,16 @@ export default function PDFtoExcel() {
   const [isDownloadPopupOpen, setIsDownloadPopupOpen] = useState(false);
   const [pendingWorkbook, setPendingWorkbook] = useState<Blob | null>(null);
 
-  const triggerDownload = useCallback(() => {
+  const triggerDownload = useCallback(/* Creates a callback that stays stable until its dependencies change. */ () => {
     if (pendingWorkbook) downloadExcelFile(pendingWorkbook, "pdf-to-excel.xlsx");
   }, [pendingWorkbook]);
 
-  const closeDownloadPopup = useCallback(() => {
+  const closeDownloadPopup = useCallback(/* Creates a callback that stays stable until its dependencies change. */ () => {
     setIsDownloadPopupOpen(false);
     setPendingWorkbook(null);
   }, []);
 
-  const handleAction = async (file: File) => {
+  const handleAction = /* Handles action work. */ async (file: File) => {
     setIsConverting(true);
     setConversionMessage("");
     setConversionError("");

@@ -1,3 +1,4 @@
+// Lists PDF tools and filters them by category or search text.
 import { useMemo, useState } from "react";
 import {
   Search,
@@ -11,13 +12,14 @@ type AllPdfToolsProps = {
   tools?: PdfTool[];
 };
 
+// Renders the all pdf tools interface.
 export default function AllPdfTools({ tools = allPdfTools }: AllPdfToolsProps) {
   const [activeCategory, setActiveCategory] = useState<(typeof pdfToolCategories)[number]>("All");
   const [searchTerm, setSearchTerm] = useState("");
 
-  const filteredTools = useMemo(() => {
+  const filteredTools = useMemo(/* Calculates the value cached by this memo. */ () => {
     const query = searchTerm.trim().toLowerCase();
-    return tools.filter((tool) => {
+    return tools.filter(/* Keeps items that match the condition. */ (tool) => {
       const matchesCategory = activeCategory === "All" || tool.category === activeCategory;
       const matchesSearch =
         !query ||
@@ -44,19 +46,19 @@ export default function AllPdfTools({ tools = allPdfTools }: AllPdfToolsProps) {
             name="search"
             type="search"
             value={searchTerm}
-            onChange={(event) => setSearchTerm(event.target.value)}
+            onChange={/* Runs when the user triggers change. */ (event) => setSearchTerm(event.target.value)}
             placeholder="Search tools"
           />
         </label>
       </div>
 
       <div className="all-pdf-tools-filters" aria-label="Tool categories">
-        {pdfToolCategories.map((category) => (
+        {pdfToolCategories.map(/* Builds a value for each item in the collection. */ (category) => (
           <button
             key={category}
             type="button"
             className={activeCategory === category ? "active" : ""}
-            onClick={() => setActiveCategory(category)}
+            onClick={/* Runs when the user triggers click. */ () => setActiveCategory(category)}
             aria-pressed={activeCategory === category}
           >
             {category}
@@ -66,7 +68,7 @@ export default function AllPdfTools({ tools = allPdfTools }: AllPdfToolsProps) {
 
       {filteredTools.length > 0 ? (
         <div className="all-pdf-tools-grid">
-          {filteredTools.map((tool, index) => {
+          {filteredTools.map(/* Builds a value for each item in the collection. */ (tool, index) => {
             const Icon = tool.icon;
             return (
               <ToolCard

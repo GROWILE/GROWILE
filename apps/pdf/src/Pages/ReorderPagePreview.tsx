@@ -1,5 +1,7 @@
+// Previews reorder page pages.
 import { useState } from "react";
 
+// Renders the reorder page preview interface.
 export default function ReorderPagePreview({
   pageOrder,
   pageImages,
@@ -11,7 +13,7 @@ export default function ReorderPagePreview({
 }) {
   const [draggedPage, setDraggedPage] = useState<number | null>(null);
 
-  const movePage = (index: number, direction: -1 | 1) => {
+  const movePage = /* Moves page. */ (index: number, direction: -1 | 1) => {
     const targetIndex = index + direction;
     if (targetIndex < 0 || targetIndex >= pageOrder.length) return;
     const nextOrder = [...pageOrder];
@@ -19,7 +21,7 @@ export default function ReorderPagePreview({
     onPageOrderChange(nextOrder);
   };
 
-  const dropPage = (targetIndex: number) => {
+  const dropPage = /* Handles drop page work. */ (targetIndex: number) => {
     if (draggedPage === null || draggedPage === targetIndex) return;
     const nextOrder = [...pageOrder];
     const [movedPage] = nextOrder.splice(draggedPage, 1);
@@ -39,19 +41,19 @@ export default function ReorderPagePreview({
         <span>Drag a page or use the left and right arrows above each thumbnail.</span>
       </div>
       <div className="split-pdf-page-grid">
-        {pageOrder.map((pageNumber, index) => (
+        {pageOrder.map(/* Builds a value for each item in the collection. */ (pageNumber, index) => (
           <div
             className="reorder-pdf-page-item"
             key={pageNumber}
             draggable
-            onDragStart={() => setDraggedPage(index)}
-            onDragOver={(event) => event.preventDefault()}
-            onDrop={() => dropPage(index)}
+            onDragStart={/* Runs when the user triggers drag start. */ () => setDraggedPage(index)}
+            onDragOver={/* Runs when the user triggers drag over. */ (event) => event.preventDefault()}
+            onDrop={/* Runs when the user triggers drop. */ () => dropPage(index)}
           >
             <div className="reorder-pdf-page-controls">
-              <button type="button" onClick={() => movePage(index, -1)} disabled={index === 0} aria-label={`Move page ${pageNumber} left`}>-</button>
+              <button type="button" onClick={/* Runs when the user triggers click. */ () => movePage(index, -1)} disabled={index === 0} aria-label={`Move page ${pageNumber} left`}>-</button>
               <span>Order {index + 1}</span>
-              <button type="button" onClick={() => movePage(index, 1)} disabled={index === pageOrder.length - 1} aria-label={`Move page ${pageNumber} right`}>+</button>
+              <button type="button" onClick={/* Runs when the user triggers click. */ () => movePage(index, 1)} disabled={index === pageOrder.length - 1} aria-label={`Move page ${pageNumber} right`}>+</button>
             </div>
             <img src={pageImages[pageNumber - 1]} alt={`PDF page ${pageNumber}`} />
             <span>Page {pageNumber}</span>

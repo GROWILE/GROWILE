@@ -1,11 +1,14 @@
+/* Defines global styles for the web app. */
 @import "../../../packages/ui/src/Colors.css";
 
+/* Styles the * for spacing and layout. */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
+/* Styles the body for text appearance and alignment. */
 body {
   font-family: 'Manrope', sans-serif;
 }

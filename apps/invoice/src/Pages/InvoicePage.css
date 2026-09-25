@@ -1,8 +1,11 @@
+/* Styles the invoice app for colors and background. */
+/* Styles the invoice page page. */
 .invoice-app {
 	min-height: 100vh;
 	background: var(--color-secondary);
 }
 
+/* Styles the invoice options for spacing and layout. */
 .invoice-options {
 	max-width: 760px;
 	margin: 0 auto;
@@ -10,6 +13,7 @@
 	text-align: center;
 }
 
+/* Styles the invoice options kicker for spacing and layout. */
 .invoice-options-kicker {
 	color: var(--color-text-highlight);
 	font-size: 13px;
@@ -18,18 +22,21 @@
 	margin: 0 0 10px;
 }
 
+/* Styles the invoice options for spacing and layout. */
 .invoice-options h2 {
 	color: var(--color-primary);
 	font-size: 36px;
 	margin: 0 0 12px;
 }
 
+/* Styles the invoice options for spacing and layout. */
 .invoice-options > p:last-child {
 	color: color-mix(in srgb, var(--color-primary) 65%, var(--color-secondary));
 	font-size: 17px;
 	margin: 0;
 }
 
+/* Styles the invoice switch button for spacing and layout. */
 .invoice-switch-button {
 	display: inline-flex;
 	align-items: center;
@@ -44,23 +51,28 @@
 	text-decoration: none;
 }
 
+/* Styles the invoice switch button hover state for colors and background. */
 .invoice-switch-button:hover {
 	background: var(--color-primary);
 }
 
+/* Styles the invoice switch button for animation and transitions. */
 .invoice-switch-button span {
 	transition: transform 0.2s ease;
 }
 
+/* Styles the invoice switch button hover state for animation and transitions. */
 .invoice-switch-button:hover span {
 	transform: translateX(3px);
 }
 
+/* Styles the invoice form section for text appearance and alignment. */
 .invoice-form-section,
 .gst-invoice-section {
 	text-align: left;
 }
 
+/* Styles the invoice form with ad for grid layout and alignment. */
 .invoice-form-with-ad {
 	display: grid;
 	grid-template-columns: minmax(0, 1fr) 260px;
@@ -70,54 +82,67 @@
 	margin: 0 auto;
 }
 
+/* Styles the invoice form with ad for element sizing. */
 .invoice-form-with-ad .invoice-form {
 	width: 100%;
 	max-width: none;
 }
 
+/* Styles the invoice form with ad for spacing and layout. */
 .invoice-form-with-ad > .ad-space {
 	width: 100%;
 	min-height: 650px;
 	margin: 100px 0 0;
 }
 
+/* Styles the invoice form section for flex layout and alignment. */
 .invoice-form-section .invoice-switch-button,
 .gst-invoice-section .invoice-switch-button {
 	display: flex;
 	width: fit-content;
 }
 
+/* Applies nested styles at (max-width: 900px). */
 @media (max-width: 900px) {
+	/* Styles the invoice form with ad for visual appearance. */
 	.invoice-form-with-ad {
 		grid-template-columns: 1fr;
 	}
 
+	/* Styles the invoice form with ad for element sizing. */
 	.invoice-form-with-ad > .ad-space {
 		min-height: 112px;
 	}
 
+	/* Styles the invoice options for spacing and layout. */
 	.invoice-options {
 		padding: 16px 24px 64px;
 	}
 
+	/* Styles the invoice options for text appearance and alignment. */
 	.invoice-options h2 {
 		font-size: 32px;
 	}
 }
 
+/* Applies nested styles at (max-width: 600px). */
 @media (max-width: 600px) {
+	/* Styles the invoice options for spacing and layout. */
 	.invoice-options {
 		padding: 4px 20px 56px;
 	}
 
+	/* Styles the invoice options for text appearance and alignment. */
 	.invoice-options h2 {
 		font-size: 30px;
 	}
 
+	/* Styles the invoice options for text appearance and alignment. */
 	.invoice-options > p:last-child {
 		font-size: 16px;
 	}
 
+	/* Styles the invoice switch button for text appearance and alignment. */
 	.invoice-switch-button {
 		width: 100%;
 		justify-content: center;

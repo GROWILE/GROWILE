@@ -1,3 +1,5 @@
+/* Styles the rotate pdf page item for grid layout and alignment. */
+/* Styles the rotate pdf page. */
 .rotate-pdf-page-item {
   display: grid;
   gap: 6px;
@@ -9,6 +11,7 @@
   text-align: center;
 }
 
+/* Styles the rotate pdf button for spacing and layout. */
 .rotate-pdf-button {
   display: inline-flex;
   align-items: center;
@@ -25,12 +28,14 @@
   font-weight: 700;
 }
 
+/* Styles the rotate pdf button hover state for colors and background. */
 .rotate-pdf-button:hover,
 .rotate-pdf-button:focus-visible {
   color: var(--color-secondary);
   background: var(--color-text-highlight);
 }
 
+/* Styles the rotate pdf page item for colors and background. */
 .rotate-pdf-page-item img {
   display: block;
   width: 100%;
@@ -40,22 +45,27 @@
   transition: transform 0.2s ease;
 }
 
+/* Styles the rotate pdf page item for text appearance and alignment. */
 .rotate-pdf-page-item > span {
   color: var(--color-primary);
   font-size: 12px;
   font-weight: 700;
 }
 
+/* Applies nested styles at (max-width: 600px). */
 @media (max-width: 600px) {
+  /* Styles the rotate pdf preview for visual appearance. */
   .rotate-pdf-preview .split-pdf-page-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 12px;
   }
 
+  /* Styles the rotate pdf page item for element sizing. */
   .rotate-pdf-page-item img {
     height: 150px;
   }
 
+  /* Styles the rotate pdf button for text appearance and alignment. */
   .rotate-pdf-button {
     min-height: 34px;
     font-size: 12px;

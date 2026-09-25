@@ -1,9 +1,12 @@
+// Protects PDF files with a password.
 import { PDFDocument } from "@cantoo/pdf-lib";
 
+// Checks pdf file.
 function isPdfFile(file: File) {
   return file.type.toLowerCase() === "application/pdf" || /\.pdf$/i.test(file.name);
 }
 
+// Protects pdf.
 export async function protectPdf(file: File, password: string): Promise<Uint8Array> {
   if (!isPdfFile(file)) throw new Error(`${file.name} is not a PDF file.`);
   if (password.length < 4) throw new Error("Use a password with at least 4 characters.");
@@ -17,6 +20,7 @@ export async function protectPdf(file: File, password: string): Promise<Uint8Arr
   return pdf.save();
 }
 
+// Downloads protected pdf.
 export function downloadProtectedPdf(bytes: Uint8Array, fileName: string) {
   const buffer = new ArrayBuffer(bytes.byteLength);
   new Uint8Array(buffer).set(bytes);

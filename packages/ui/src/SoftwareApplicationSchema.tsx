@@ -1,3 +1,4 @@
+// Adds software application structured data for search engines.
 export type SoftwareApplicationSchemaProps = {
   name: string;
   description: string;
@@ -5,6 +6,7 @@ export type SoftwareApplicationSchemaProps = {
   applicationCategory?: string;
 };
 
+// Renders the software application schema interface.
 export default function SoftwareApplicationSchema({
   name,
   description,

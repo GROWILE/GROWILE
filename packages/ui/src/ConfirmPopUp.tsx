@@ -1,3 +1,4 @@
+// Renders a confirmation dialog.
 import { useId } from "react";
 import type { ReactNode } from "react";
 import "./ConfirmPopUp.css";
@@ -12,6 +13,7 @@ export type ConfirmPopUpProps = {
   onCancel: () => void;
 };
 
+// Renders the confirm pop up interface.
 export default function ConfirmPopUp({
   isOpen,
   title,
@@ -32,7 +34,7 @@ export default function ConfirmPopUp({
         role="alertdialog"
         aria-modal="true"
         aria-labelledby={titleId}
-        onClick={(event) => event.stopPropagation()}
+        onClick={/* Runs when the user triggers click. */ (event) => event.stopPropagation()}
       >
         <div className="confirm-popup-icon" aria-hidden="true">!</div>
         <h2 id={titleId} className="confirm-popup-title">{title}</h2>

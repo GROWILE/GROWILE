@@ -1,3 +1,4 @@
+// Adds a watermark to PDF files.
 import { PDFDocument, degrees, rgb, StandardFonts } from "pdf-lib";
 
 export type WatermarkOptions = {
@@ -15,6 +16,7 @@ export type WatermarkPlacement = {
   yRatio: number;
 };
 
+// Adds watermark to pdf.
 export async function addWatermarkToPdf(file: File, options: WatermarkOptions, placements: WatermarkPlacement[]) {
   const pdf = await PDFDocument.load(await file.arrayBuffer());
   const font = await pdf.embedFont(StandardFonts.HelveticaBold);
@@ -23,7 +25,7 @@ export async function addWatermarkToPdf(file: File, options: WatermarkOptions, p
   if (!text) throw new Error("Enter watermark text before downloading.");
   const pages = pdf.getPages();
   const targets = options.allPages
-    ? pages.map((_, pageIndex) => ({ pageIndex, xRatio: placements[0]?.xRatio ?? 0.5, yRatio: placements[0]?.yRatio ?? 0.5 }))
+    ? pages.map(/* Builds a value for each item in the collection. */ (_, pageIndex) => ({ pageIndex, xRatio: placements[0]?.xRatio ?? 0.5, yRatio: placements[0]?.yRatio ?? 0.5 }))
     : placements;
   for (const placement of targets) {
     const page = pages[placement.pageIndex];
@@ -44,6 +46,7 @@ export async function addWatermarkToPdf(file: File, options: WatermarkOptions, p
   return pdf.save();
 }
 
+// Parses hex color.
 function parseHexColor(value: string) {
   const normalized = value.replace("#", "");
   if (!/^[0-9a-f]{6}$/i.test(normalized)) return rgb(0.5, 0.5, 0.5);
@@ -54,6 +57,7 @@ function parseHexColor(value: string) {
   );
 }
 
+// Downloads watermark pdf.
 export function downloadWatermarkPdf(bytes: Uint8Array, fileName: string) {
   const buffer = new ArrayBuffer(bytes.byteLength);
   new Uint8Array(buffer).set(bytes);

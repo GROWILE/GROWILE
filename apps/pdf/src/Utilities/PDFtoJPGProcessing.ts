@@ -1,3 +1,4 @@
+// Converts PDF pages to JPG images.
 import JSZip from "jszip";
 import * as pdfjsLib from "pdfjs-dist";
 
@@ -6,10 +7,12 @@ pdfjsLib.GlobalWorkerOptions.workerSrc = new URL(
   import.meta.url,
 ).toString();
 
+// Checks pdf file.
 function isPdfFile(file: File) {
   return file.type === "application/pdf" || /\.pdf$/i.test(file.name);
 }
 
+// Converts pdf to jpg zip.
 export async function convertPdfToJpgZip(file: File): Promise<Uint8Array> {
   if (!isPdfFile(file)) {
     throw new Error(`${file.name} is not a PDF file.`);
@@ -34,7 +37,7 @@ export async function convertPdfToJpgZip(file: File): Promise<Uint8Array> {
     canvas.height = Math.ceil(viewport.height);
     await page.render({ canvas, canvasContext: context, viewport }).promise;
 
-    const blob = await new Promise<Blob | null>((resolve) =>
+    const blob = await new Promise<Blob | null>(/* Handles blob work. */ (resolve) =>
       canvas.toBlob(resolve, "image/jpeg", 0.92),
     );
 
@@ -48,6 +51,7 @@ export async function convertPdfToJpgZip(file: File): Promise<Uint8Array> {
   return zip.generateAsync({ type: "uint8array" });
 }
 
+// Downloads jpg zip.
 export function downloadJpgZip(bytes: Uint8Array, fileName: string) {
   const buffer = new ArrayBuffer(bytes.byteLength);
   new Uint8Array(buffer).set(bytes);

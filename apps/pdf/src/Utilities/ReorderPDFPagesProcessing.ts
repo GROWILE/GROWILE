@@ -1,9 +1,12 @@
+// Reorders pages in PDF files.
 import { PDFDocument } from "pdf-lib";
 
+// Checks pdf file.
 function isPdfFile(file: File) {
   return file.type.toLowerCase() === "application/pdf" || /\.pdf$/i.test(file.name);
 }
 
+// Moves pdf pages.
 export async function reorderPdfPages(file: File, pageOrder: number[]): Promise<Uint8Array> {
   if (!isPdfFile(file)) {
     throw new Error(`${file.name} is not a PDF file.`);
@@ -15,17 +18,18 @@ export async function reorderPdfPages(file: File, pageOrder: number[]): Promise<
     throw new Error("Every PDF page must be included exactly once.");
   }
 
-  const pageIndices = pageOrder.map((pageNumber) => pageNumber - 1);
-  if (pageIndices.some((pageIndex) => pageIndex < 0 || pageIndex >= pageCount)) {
+  const pageIndices = pageOrder.map(/* Builds a value for each item in the collection. */ (pageNumber) => pageNumber - 1);
+  if (pageIndices.some(/* Checks whether any item matches the condition. */ (pageIndex) => pageIndex < 0 || pageIndex >= pageCount)) {
     throw new Error("The selected page order is invalid.");
   }
 
   const outputPdf = await PDFDocument.create();
   const pages = await outputPdf.copyPages(sourcePdf, pageIndices);
-  pages.forEach((page) => outputPdf.addPage(page));
+  pages.forEach(/* Processes each item in the collection. */ (page) => outputPdf.addPage(page));
   return outputPdf.save();
 }
 
+// Downloads reordered pdf.
 export function downloadReorderedPdf(bytes: Uint8Array, fileName: string) {
   const buffer = new ArrayBuffer(bytes.byteLength);
   new Uint8Array(buffer).set(bytes);

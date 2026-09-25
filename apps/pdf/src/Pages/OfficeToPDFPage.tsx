@@ -1,3 +1,4 @@
+// Renders the shared interface for converting Office documents to PDF.
 import { useCallback, useState } from "react";
 import type { ReactNode } from "react";
 import AdSpace from "../../../../packages/ui/src/AdSpace";
@@ -44,6 +45,7 @@ const config = {
   },
 } as const;
 
+// Renders the office to pdfpage interface.
 export default function OfficeToPDFPage({ format, icon }: { format: OfficeFormat; icon: ReactNode }) {
   const current = config[format];
   const [isConverting, setIsConverting] = useState(false);
@@ -51,14 +53,14 @@ export default function OfficeToPDFPage({ format, icon }: { format: OfficeFormat
   const [error, setError] = useState("");
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [pendingPdf, setPendingPdf] = useState<Uint8Array | null>(null);
-  const triggerDownload = useCallback(() => {
+  const triggerDownload = useCallback(/* Creates a callback that stays stable until its dependencies change. */ () => {
     if (pendingPdf) downloadOfficePdf(pendingPdf, `${format}-to-pdf.pdf`);
   }, [format, pendingPdf]);
-  const closePopup = useCallback(() => {
+  const closePopup = useCallback(/* Creates a callback that stays stable until its dependencies change. */ () => {
     setIsPopupOpen(false);
     setPendingPdf(null);
   }, []);
-  const handleAction = async (file: File) => {
+  const handleAction = /* Handles action work. */ async (file: File) => {
     setIsConverting(true);
     setMessage("");
     setError("");

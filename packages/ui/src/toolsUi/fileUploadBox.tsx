@@ -1,3 +1,4 @@
+// Renders a file upload control and its selected-file actions.
 import { useId, useRef, useState } from "react";
 import type { ChangeEvent, DragEvent, ReactNode } from "react";
 import ConfirmPopUp from "../ConfirmPopUp";
@@ -31,6 +32,7 @@ export type FileUploadBoxProps = {
   className?: string;
 };
 
+// Gets tool theme.
 function getToolTheme(title: string) {
   const themeByTitle: Record<string, "blue" | "orange" | "green" | "purple" | "teal"> = {
     "JPG to PDF": "blue",
@@ -57,6 +59,7 @@ function getToolTheme(title: string) {
   return themeByTitle[title] ?? "default";
 }
 
+// Renders the file upload box interface.
 export default function FileUploadBox({
   icon,
   title,
@@ -84,12 +87,13 @@ export default function FileUploadBox({
   const selectedFile = selectedFiles[0] ?? null;
   const toolTheme = getToolTheme(title);
 
-  const selectFiles = (files: File[], append = false) => {
+  const selectFiles = /* Selects files. */ (files: File[], append = false) => {
     const existingFiles = append && multiple ? selectedFiles : [];
     const existingKeys = new Set(
-      existingFiles.map((file) => `${file.name}-${file.size}-${file.lastModified}`),
+      existingFiles.map(/* Builds a value for each item in the collection. */ (file) => `${file.name}-${file.size}-${file.lastModified}`),
     );
     const newFiles = files.filter(
+      // Keeps items that match the condition.
       (file) => !existingKeys.has(`${file.name}-${file.size}-${file.lastModified}`),
     );
     const nextFiles = [...existingFiles, ...newFiles].slice(0, multiple ? maxFiles : 1);
@@ -99,12 +103,12 @@ export default function FileUploadBox({
     }
   };
 
-  const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
+  const handleFileChange = /* Handles file change work. */ (event: ChangeEvent<HTMLInputElement>) => {
     selectFiles(Array.from(event.target.files ?? []), selectedFiles.length > 0);
     event.target.value = "";
   };
 
-  const handleDrop = (event: DragEvent<HTMLDivElement>) => {
+  const handleDrop = /* Handles drop work. */ (event: DragEvent<HTMLDivElement>) => {
     event.preventDefault();
     setIsDragging(false);
     const files = Array.from(event.dataTransfer.files ?? []);
@@ -114,25 +118,25 @@ export default function FileUploadBox({
     }
   };
 
-  const handleRemove = () => {
+  const handleRemove = /* Removes. */ () => {
     setSelectedFiles([]);
     onSelectionChange?.([]);
     if (fileInputRef.current) fileInputRef.current.value = "";
     setIsRemoveAllConfirmationOpen(false);
   };
 
-  const handleRemoveFile = (fileToRemove: File) => {
-    setSelectedFiles((files) => {
-      const nextFiles = files.filter((file) => file !== fileToRemove);
+  const handleRemoveFile = /* Removes file. */ (fileToRemove: File) => {
+    setSelectedFiles(/* Removes file. */ (files) => {
+      const nextFiles = files.filter(/* Keeps items that match the condition. */ (file) => file !== fileToRemove);
       onSelectionChange?.(nextFiles);
       return nextFiles;
     });
     if (fileInputRef.current) fileInputRef.current.value = "";
   };
 
-  const moveFile = (fromIndex: number, toIndex: number) => {
+  const moveFile = /* Moves file. */ (fromIndex: number, toIndex: number) => {
     if (toIndex < 0 || toIndex >= selectedFiles.length || fromIndex === toIndex) return;
-    setSelectedFiles((files) => {
+    setSelectedFiles(/* Moves file. */ (files) => {
       const nextFiles = [...files];
       const [movedFile] = nextFiles.splice(fromIndex, 1);
       nextFiles.splice(toIndex, 0, movedFile);
@@ -140,7 +144,7 @@ export default function FileUploadBox({
     });
   };
 
-  const handleFileReorder = (targetIndex: number) => {
+  const handleFileReorder = /* Handles file reorder work. */ (targetIndex: number) => {
     if (draggedIndex === null) return;
     moveFile(draggedIndex, targetIndex);
     setDraggedIndex(null);
@@ -162,11 +166,11 @@ export default function FileUploadBox({
       {!selectedFile && (
         <div
           className={`file-upload-box ${isDragging ? "dragging" : ""}`}
-          onDragOver={(event) => {
+          onDragOver={/* Runs when the user triggers drag over. */ (event) => {
             event.preventDefault();
             setIsDragging(true);
           }}
-          onDragLeave={() => setIsDragging(false)}
+          onDragLeave={/* Runs when the user triggers drag leave. */ () => setIsDragging(false)}
           onDrop={handleDrop}
         >
           <div className="file-upload-header">
@@ -179,14 +183,14 @@ export default function FileUploadBox({
           <button
             type="button"
             className="file-upload-button"
-            onClick={() => fileInputRef.current?.click()}
+            onClick={/* Runs when the user triggers click. */ () => fileInputRef.current?.click()}
           >
             <span className="file-upload-plus">+</span> {buttonLabel}
           </button>
 
           {sources.length > 0 && (
             <div className="file-upload-sources" aria-label="Other upload sources">
-              {sources.map((source) => (
+              {sources.map(/* Builds a value for each item in the collection. */ (source) => (
                 <button
                   key={source.label}
                   type="button"
@@ -221,20 +225,20 @@ export default function FileUploadBox({
           {selectedContent}
 
           <div className={`file-selected-grid ${multiple ? "file-selected-grid-multiple" : ""}`}>
-            {selectedFiles.map((file) => (
+            {selectedFiles.map(/* Builds a value for each item in the collection. */ (file) => (
               <FilePreview
                 key={`${file.name}-${file.lastModified}`}
                 file={file}
                 index={selectedFiles.indexOf(file)}
                 isDragging={draggedIndex === selectedFiles.indexOf(file)}
-                onDragStart={() => setDraggedIndex(selectedFiles.indexOf(file))}
-                onDragOver={(event) => event.preventDefault()}
-                onDrop={() => handleFileReorder(selectedFiles.indexOf(file))}
-                onMoveUp={() => moveFile(selectedFiles.indexOf(file), selectedFiles.indexOf(file) - 1)}
-                onMoveDown={() => moveFile(selectedFiles.indexOf(file), selectedFiles.indexOf(file) + 1)}
+                onDragStart={/* Runs when the user triggers drag start. */ () => setDraggedIndex(selectedFiles.indexOf(file))}
+                onDragOver={/* Runs when the user triggers drag over. */ (event) => event.preventDefault()}
+                onDrop={/* Runs when the user triggers drop. */ () => handleFileReorder(selectedFiles.indexOf(file))}
+                onMoveUp={/* Runs when the user triggers move up. */ () => moveFile(selectedFiles.indexOf(file), selectedFiles.indexOf(file) - 1)}
+                onMoveDown={/* Runs when the user triggers move down. */ () => moveFile(selectedFiles.indexOf(file), selectedFiles.indexOf(file) + 1)}
                 canMoveUp={selectedFiles.indexOf(file) > 0}
                 canMoveDown={selectedFiles.indexOf(file) < selectedFiles.length - 1}
-                onRemove={() => handleRemoveFile(file)}
+                onRemove={/* Runs when the user triggers remove. */ () => handleRemoveFile(file)}
                 isReorderable={multiple}
               />
             ))}
@@ -250,7 +254,7 @@ export default function FileUploadBox({
             type="button"
             className="file-action-button"
             disabled={actionDisabled}
-            onClick={() => {
+            onClick={/* Runs when the user triggers click. */ () => {
               if (multiple && onFilesAction) {
                 onFilesAction(selectedFiles);
               } else {
@@ -266,7 +270,7 @@ export default function FileUploadBox({
               <button
                 type="button"
                 className="file-add-button"
-                onClick={() => fileInputRef.current?.click()}
+                onClick={/* Runs when the user triggers click. */ () => fileInputRef.current?.click()}
               >
                 <span className="file-upload-plus">+</span>
                 Add more files
@@ -279,7 +283,7 @@ export default function FileUploadBox({
             <button
               type="button"
               className="file-selected-remove-all"
-              onClick={() => setIsRemoveAllConfirmationOpen(true)}
+              onClick={/* Runs when the user triggers click. */ () => setIsRemoveAllConfirmationOpen(true)}
             >
               <CloseIcon width={15} height={15} aria-hidden="true" />
               Remove all files
@@ -294,7 +298,7 @@ export default function FileUploadBox({
         confirmLabel="Remove all"
         cancelLabel="Keep files"
         onConfirm={handleRemove}
-        onCancel={() => setIsRemoveAllConfirmationOpen(false)}
+        onCancel={/* Runs when the user triggers cancel. */ () => setIsRemoveAllConfirmationOpen(false)}
       />
     </div>
   );

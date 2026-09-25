@@ -1,14 +1,18 @@
+/* Styles the * for visual appearance. */
+/* Defines global styles for the pdf app. */
 
 * {
   box-sizing: border-box;
 }
 
+/* Styles the html for element sizing. */
 html,
 body,
 #root {
   min-height: 100%;
 }
 
+/* Styles the body for spacing and layout. */
 body {
   margin: 0;
   background: var(--color-secondary);
