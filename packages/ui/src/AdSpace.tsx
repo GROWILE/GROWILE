@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./AdSpace.css";
 
 type AdSpaceProps = {
@@ -15,15 +15,31 @@ export default function AdSpace({
   variant = "banner",
 }: AdSpaceProps) {
   const [isVisible, setIsVisible] = useState(true);
+  const adContainerRef = useRef<HTMLDivElement>(null);
+  const hasRequestedAd = useRef(false);
 
-  // AdSense render aagura script push itha run pannum
   useEffect(() => {
-    try {
-      // @ts-ignore
-      (window.adsbygoogle = window.adsbygoogle || []).push({});
-    } catch (e) {
-      console.error(e);
+    const adContainer = adContainerRef.current;
+
+    if (!adContainer || typeof ResizeObserver === "undefined") {
+      return;
     }
+
+    const requestAd = () => {
+      if (hasRequestedAd.current || adContainer.getBoundingClientRect().width <= 0) {
+        return;
+      }
+
+      hasRequestedAd.current = true;
+      // @ts-expect-error AdSense adds adsbygoogle to the window at runtime.
+      (window.adsbygoogle = window.adsbygoogle || []).push({});
+    };
+
+    const observer = new ResizeObserver(requestAd);
+    observer.observe(adContainer);
+    requestAd();
+
+    return () => observer.disconnect();
   }, []);
 
   if (!isVisible) return null;
@@ -55,9 +71,9 @@ export default function AdSpace({
       {label ? <span className="ad-space-label">{label}</span> : null}
 
       {/* 👇 AdSense Ins Tag Inga Irukkum */}
-      <div className="adsense-container">
+      <div ref={adContainerRef} className="adsense-container">
         <ins className="adsbygoogle"
-             style={{ display: "block" }}
+             style={{ display: "block", width: "100%" }}
              data-ad-client="ca-pub-5065634748295086"
              data-ad-slot={adSlotId} 
              data-ad-format="auto"

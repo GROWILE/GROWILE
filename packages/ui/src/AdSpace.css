@@ -13,6 +13,19 @@
   border: 1px solid color-mix(in srgb, var(--color-primary) 10%, transparent);
 }
 
+.adsense-container {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  min-width: 1px;
+}
+
+.adsense-container .adsbygoogle {
+  display: block;
+  width: 100%;
+}
+
 .ad-space-label {
   color: color-mix(in srgb, var(--color-primary) 48%, transparent);
   font-size: 11px;
