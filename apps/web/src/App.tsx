@@ -59,24 +59,7 @@ function ScrollToTop() {
   return null;
 }
 
-function PdfDeploymentRedirect() {
-  const { pathname, search, hash } = useLocation();
-
-  useEffect(() => {
-    const pdfPath = pathname === "/pdf" ? "/pdf/" : pathname;
-    window.location.replace(`https://growile-pdf.vercel.app${pdfPath}${search}${hash}`);
-  }, [hash, pathname, search]);
-
-  return null;
-}
-
 function App() {
-  const { pathname } = useLocation();
-
-  if (pathname === "/pdf" || pathname.startsWith("/pdf/")) {
-    return <PdfDeploymentRedirect />;
-  }
-
   return (
     <>
       <ScrollToTop />

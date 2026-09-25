@@ -10,9 +10,9 @@ export default function PdfBreadcrumb({ label, path }: PdfBreadcrumbProps) {
   const currentPath = path ? `/pdf/${path}` : "/pdf/";
   const siteUrl = "https://growile.com";
   const items = [
-    { label: "Home", href: `${siteUrl}/` },
-    { label: "PDF Tools", href: `${siteUrl}/pdf/` },
-    ...(label ? [{ label, href: `${siteUrl}${currentPath}` }] : []),
+    { label: "Home", href: "/" },
+    { label: "PDF Tools", href: "/pdf/" },
+    ...(label ? [{ label, href: currentPath }] : []),
   ];
 
   return (
