@@ -4,6 +4,13 @@
   "buildCommand": "pnpm build",
   "installCommand": "pnpm install --frozen-lockfile --ignore-scripts",
   "outputDirectory": "dist",
+  "redirects": [
+    {
+      "source": "/pdf/",
+      "destination": "/pdf",
+      "permanent": true
+    }
+  ],
   "rewrites": [
     {
       "source": "/pdf/assets/:path*",

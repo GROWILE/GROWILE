@@ -13,14 +13,14 @@
 }
 
 .footer-cta-title {
-  font-size: 36px;
+  font-size: 38px;
   font-weight: 700;
   color: var(--color-primary);
   margin: 0 0 8px;
 }
 
 .footer-cta-subtitle {
-  font-size: 20px;
+  font-size: 21px;
   color: var(--color-primary);
   opacity: 0.8;
   margin: 0 0 24px;
@@ -30,7 +30,7 @@
   display: inline-block;
   background: var(--color-accent);
   color: var(--color-secondary);
-  font-size: 16px;
+  font-size: 17px;
   font-weight: 700;
   letter-spacing: 0.5px;
   text-transform: uppercase;
@@ -62,7 +62,7 @@
 }
 
 .footer-column-title {
-  font-size: 18px;
+  font-size: 19px;
   font-weight: 700;
   color: var(--color-primary);
   word-spacing: 0.5px;
@@ -88,7 +88,7 @@
   color: var(--color-primary);
   opacity: 0.8;
   text-decoration: none;
-  font-size: 16px;
+  font-size: 18px;
 }
 
 .footer-column-links a:hover,
@@ -97,7 +97,7 @@
 }
 
 .footer-contact-label {
-  font-size: 16px;
+  font-size: 17px;
   font-weight: 700;
   color: var(--color-primary);
   margin: 0 0 6px;
@@ -111,14 +111,14 @@
 }
 
 .footer-social-icon {
-  width: 38px;
-  height: 38px;
+  width: 40px;
+  height: 40px;
   border: 1px solid var(--color-text-highlight);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 700;
   color: var(--color-primary);
   text-decoration: none;
@@ -141,7 +141,7 @@
 .footer-legal a {
   color: var(--color-primary);
   text-decoration: none;
-  font-size: 16px;
+  font-size: 17px;
 }
 
 .footer-legal a:hover {

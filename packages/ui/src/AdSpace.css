@@ -50,6 +50,8 @@
 
 .ad-space-banner.ad-space-compact {
   min-height: 100px;
+  height: 100px;
+  max-height: 100px;
 }
 
 .ad-space-banner.footer-bottom-ad-space {

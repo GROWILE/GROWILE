@@ -20,8 +20,10 @@ export default function AdSpace({
 
   useEffect(() => {
     const adContainer = adContainerRef.current;
+    const hostname = typeof window !== "undefined" ? window.location.hostname : "";
+    const isProductionHost = hostname === "growile.com" || hostname.endsWith(".growile.com");
 
-    if (!adContainer || typeof ResizeObserver === "undefined") {
+    if (!adContainer || typeof ResizeObserver === "undefined" || !isProductionHost) {
       return;
     }
 

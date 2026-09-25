@@ -1,11 +1,25 @@
 import { useMemo, useState } from "react";
 import {
+  FileArchive,
+  FileEdit,
+  FileImage,
+  FolderKanban,
+  LockKeyhole,
   Search,
 } from "lucide-react";
 import ToolCard from "../../../../packages/ui/src/toolsUi/toolCard";
 import "./Home.css";
 
 import { allPdfTools, pdfToolCategories, toolCardThemes, type PdfTool } from "../config/pdfTools";
+
+const categoryIcons = {
+  All: Search,
+  Conversion: FileImage,
+  Organize: FolderKanban,
+  Compression: FileArchive,
+  Edit: FileEdit,
+  Security: LockKeyhole,
+} as const;
 
 type AllPdfToolsProps = {
   tools?: PdfTool[];
@@ -83,6 +97,37 @@ export default function AllPdfTools({ tools = allPdfTools }: AllPdfToolsProps) {
       ) : (
         <p className="all-pdf-tools-empty">No PDF tools found.</p>
       )}
+
+      <div className="all-pdf-tools-category-list" aria-label="PDF tool categories">
+        {pdfToolCategories
+          .filter((category) => category !== "All")
+          .map((category) => {
+            const Icon = categoryIcons[category];
+            return (
+              <div key={category} className="all-pdf-tools-category-group">
+                <div className="all-pdf-tools-category-header">
+                  <span className="all-pdf-tools-category-icon"><Icon size={16} aria-hidden="true" /></span>
+                  <span>{category}</span>
+                </div>
+                <ul className="all-pdf-tools-category-list-items">
+                  {allPdfTools
+                    .filter((tool) => tool.category === category)
+                    .map((tool) => {
+                      const ToolIcon = tool.icon;
+                      return (
+                        <li key={tool.id}>
+                          <a href={tool.href}>
+                            <span className="all-pdf-tools-item-icon"><ToolIcon size={15} aria-hidden="true" /></span>
+                            {tool.title}
+                          </a>
+                        </li>
+                      );
+                    })}
+                </ul>
+              </div>
+            );
+          })}
+      </div>
     </section>
   );
 }

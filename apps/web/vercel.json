@@ -4,6 +4,13 @@
   "installCommand": "pnpm install --frozen-lockfile --ignore-scripts",
   "buildCommand": "pnpm build",
   "outputDirectory": "dist",
+  "redirects": [
+    {
+      "source": "/pdf/",
+      "destination": "/pdf",
+      "permanent": true
+    }
+  ],
   "rewrites": [
     {
       "source": "/about",
@@ -23,7 +30,7 @@
     },
     {
       "source": "/pdf",
-      "destination": "https://growile-pdf.vercel.app/pdf/"
+      "destination": "https://growile-pdf.vercel.app/pdf"
     },
     {
       "source": "/pdf/sitemap.xml",

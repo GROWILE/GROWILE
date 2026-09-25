@@ -76,9 +76,30 @@
   font-size: 15px;
 }
 
+.navbar-product-icon {
+  align-items: center;
+  background: color-mix(in srgb, var(--color-text-highlight) 10%, var(--color-secondary));
+  border-radius: 6px;
+  color: var(--color-text-highlight);
+  display: inline-flex;
+  font-size: 10px;
+  font-weight: 800;
+  height: 22px;
+  justify-content: center;
+  letter-spacing: 0.04em;
+  min-width: 32px;
+  padding: 0 6px;
+  text-transform: uppercase;
+}
+
 .navbar-dropdown-item:hover {
   color: var(--color-secondary);
   background: var(--color-text-highlight);
+}
+
+.navbar-dropdown-item:hover .navbar-product-icon {
+  background: rgba(255, 255, 255, 0.18);
+  color: var(--color-secondary);
 }
 
 @media (max-width: 600px) {

@@ -8,6 +8,7 @@ import PageMeta from "../../../../packages/ui/src/PageMeta";
 import PdfToolsFooter from "./toolsFooter";
 import PdfNavBar from "./NavBar";
 import PdfBreadcrumb from "./PdfBreadcrumb";
+import Divider from "../../../../packages/ui/src/Divider";
 
 const pdfSeoBlocks = [
   {
@@ -96,7 +97,7 @@ export default function Home() {
       <PageMeta
         title="All in One Free Online PDF Tools - Secure | Growile PDF"
         description="Use Growile PDF for all in one free online PDF tools. Edit, convert, and merge PDF files online free with no download. Safe, fast, and 100% secure!"
-        canonicalPath="/pdf/"
+        canonicalPath="/pdf"
       />
       <PdfNavBar />
       <PdfBreadcrumb />
@@ -108,8 +109,11 @@ export default function Home() {
         ctaHref="#all-pdf-tools-title"
       />
       <AllPdfTools />
+      <Divider />
       <H2Section blocks={pdfSeoBlocks} />
+      <Divider />
       <FAQ heading="Frequently Asked Questions" faqs={pdfFaqs} />
+      <Divider />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(pdfContentSchema) }}
