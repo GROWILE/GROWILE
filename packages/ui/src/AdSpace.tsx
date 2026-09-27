@@ -80,7 +80,7 @@ export default function AdSpace({
              style={{ display: "block", width: "100%" }}
              data-ad-client="ca-pub-5065634748295086"
              data-ad-slot={adSlotId} 
-             data-ad-format="auto"
+             data-ad-format={variant === "banner" ? "horizontal" : "auto"}
              data-full-width-responsive="true"></ins>
       </div>
     </section>

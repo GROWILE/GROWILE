@@ -56,19 +56,17 @@
 }
 
 /* Styles the ad space banner for element sizing. */
-.ad-space-banner.ad-space-compact {
+.ad-space-banner.ad-space-compact,
+.ad-space-banner.footer-bottom-ad-space {
   min-height: 100px;
   height: 100px;
   max-height: 100px;
+  margin-top: 0;
 }
 
-/* Styles the ad space banner for spacing and layout. */
-.ad-space-banner.footer-bottom-ad-space {
-  min-height: 120px;
-  height: 120px;
-  max-height: 120px;
-  margin-top: 0;
-  transition: min-height 0.25s ease;
+.ad-space-banner.ad-space-compact .adsbygoogle,
+.ad-space-banner.footer-bottom-ad-space .adsbygoogle {
+  height: 98px !important;
 }
 
 /* Styles the ad space collapsible decorative pseudo-element for visual appearance. */
@@ -118,13 +116,6 @@
     min-height: 72px;
   }
 
-  /* Styles the ad space banner for element sizing. */
-  .ad-space-banner.footer-bottom-ad-space {
-    min-height: 105px;
-    height: 105px;
-    max-height: 105px;
-  }
-
   /* Styles the ad space vertical for element sizing. */
   .ad-space-vertical {
     width: 180px;
@@ -163,13 +154,6 @@
   .ad-space-banner {
     width: min(100% - 16px, 1100px);
     min-height: 66px;
-  }
-
-  /* Styles the ad space banner for element sizing. */
-  .ad-space-banner.footer-bottom-ad-space {
-    min-height: 95px;
-    height: 95px;
-    max-height: 95px;
   }
 
   /* Styles the ad space vertical for element sizing. */

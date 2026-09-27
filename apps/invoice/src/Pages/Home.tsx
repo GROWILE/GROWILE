@@ -10,7 +10,7 @@ import InvoiceBreadcrumb from "./InvoiceBreadcrumb";
 import InvoiceNavBar from "./InvoiceNavBar";
 import InvoiceTools from "./allInvoiceTools";
 import InvoiceToolsFooter from "./toolsFooter";
-import "./InvoiceAdSpace.css";
+import "./InvoiceFooter.css";
 
 const invoiceSeoBlocks = [
   {

@@ -17,7 +17,7 @@ import H2Section from "../../../../packages/ui/src/H2Section";
 import Breadcrumb from "../../../../packages/ui/src/Breadcrumb";
 import BreadcrumbSchema from "../../../../packages/ui/src/BreadcrumbSchema";
 import { invoiceHero, invoiceNavigation, invoiceVariantHero } from "../config/site";
-import "./InvoiceAdSpace.css";
+import "./InvoiceFooter.css";
 import "./InvoicePage.css";
 
 type InvoicePageVariant = "without-gst" | "gst";
