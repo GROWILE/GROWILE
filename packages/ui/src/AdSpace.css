@@ -68,7 +68,6 @@
   height: 120px;
   max-height: 120px;
   margin-top: 0;
-  overflow: hidden;
   transition: min-height 0.25s ease;
 }
 
@@ -131,6 +130,31 @@
     width: 180px;
     min-height: 420px;
   }
+
+}
+
+@media (max-width: 1024px), (pointer: coarse) {
+  .ad-space-close-btn {
+    top: -52px;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border: 2px solid var(--color-secondary);
+    font-size: 22px;
+  }
+
+  .ad-space-vertical {
+    padding-top: 52px;
+    box-sizing: border-box;
+  }
+
+  .ad-space-vertical .ad-space-close-btn {
+    top: 4px;
+    right: 8px;
+  }
 }
 
 /* Applies nested styles at (max-width: 600px). */
@@ -154,11 +178,4 @@
     min-height: 320px;
   }
 
-  /* Styles the ad space close btn for flex layout and alignment. */
-  /* Shows the close button on mobile. */
-  .ad-space-close-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
 }

@@ -30,7 +30,7 @@ function createFooterColumns(invoiceHref: string) {
 // Renders the footer interface.
 export default function Footer({
   invoiceHref = "/invoice",
-  termsHref = "#",
+  termsHref = "https://growile.com/terms-of-service",
   privacyHref = "/privacy-policy",
   showAdSpace = false,
   reserveBottomAdSpace = true,

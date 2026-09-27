@@ -1,7 +1,8 @@
 // Renders the invoice editor and its supporting content.
 import { useEffect, useState } from "react";
-import type { MouseEvent } from "react";
+import type { MouseEvent, ReactNode } from "react";
 import Divider from "../../../../packages/ui/src/Divider";
+import AdSpace from "../../../../packages/ui/src/AdSpace";
 import FAQ from "@growile/ui/src/FAQ";
 import Footer from "../../../../packages/ui/src/Footer";
 import Hero from "../../../../packages/ui/src/Hero";
@@ -16,9 +17,15 @@ import H2Section from "../../../../packages/ui/src/H2Section";
 import Breadcrumb from "../../../../packages/ui/src/Breadcrumb";
 import BreadcrumbSchema from "../../../../packages/ui/src/BreadcrumbSchema";
 import { invoiceHero, invoiceNavigation, invoiceVariantHero } from "../config/site";
+import "./InvoiceAdSpace.css";
 import "./InvoicePage.css";
 
 type InvoicePageVariant = "without-gst" | "gst";
+type InvoiceFaq = {
+  question: string;
+  answer: ReactNode;
+  schemaAnswer?: string;
+};
 
 // Gets page variant.
 function getPageVariant(): InvoicePageVariant {
@@ -172,25 +179,25 @@ export default function InvoicePage() {
   const currentHowToSteps = isGstPage ? gstSteps : nonGstSteps;
 
   // --- FAQs Data ---
-  const nonGstFaqs = [
+  const nonGstFaqs: InvoiceFaq[] = [
     { question: "Is this non-tax billing tool completely free?", answer: "Yes, our platform is 100% free. You can create unlimited standard receipts and bills of supply without paying any hidden subscription fees." },
     { question: "Can I download the final bill as a PDF?", answer: "Absolutely! Once you enter your details, Growile PDF will instantly generate a clean, professional PDF document that you can download easily." },
-    { question: "What is the difference between this and a tax bill?", answer: <>This tool removes tax columns. If you are a registered business needing tax breakdowns, please use our <a href="/invoice/gst-invoice">GST Invoice</a> generator tool instead.</> },
-    { question: "Can I add my company logo to the receipt?", answer: <>Yes, our billing form lets you upload your logo. If you need to add a faded background logo later, try using our <a href="/pdf/add-watermark">Add Watermark</a> tool.</> },
+    { question: "What is the difference between this and a tax bill?", answer: <>This tool removes tax columns. If you are a registered business needing tax breakdowns, please use our <a href={gstInvoiceHref}>GST Invoice</a> generator tool instead.</>, schemaAnswer: "This tool removes tax columns. If you are a registered business needing tax breakdowns, please use our GST Invoice generator tool instead." },
+    { question: "Can I add my company logo to the receipt?", answer: <>Yes, our billing form lets you upload your logo. If you need to add a faded background logo later, try using our <a href="/pdf/add-watermark">Add Watermark</a> tool.</>, schemaAnswer: "Yes, our billing form lets you upload your logo. If you need to add a faded background logo later, try using our Add Watermark tool." },
     { question: "Do I need an app to create my business receipts?", answer: "No software is needed. You can quickly make your standard customer receipts directly from your web browser using our secure online platform." },
     { question: "Are my financial details safe on this website?", answer: "Your privacy is completely secure. Growile PDF automatically deletes your entered data and the generated document from our servers instantly." },
-    { question: "Can I sign the document after creating it?", answer: <>Yes! After downloading your final document, you can easily use our <a href="/pdf/add-signature">Add Signature</a> tool to insert your electronic signature professionally.</> },
+    { question: "Can I sign the document after creating it?", answer: <>Yes! After downloading your final document, you can easily use our <a href="/pdf/add-signature">Add Signature</a> tool to insert your electronic signature professionally.</>, schemaAnswer: "Yes! After downloading your final document, you can easily use our Add Signature tool to insert your electronic signature professionally." },
     { question: "Does this receipt maker work on mobile phones?", answer: "Yes, Growile PDF is mobile-friendly. You can easily generate a professional bill of supply for your clients using your Android or iOS device." }
   ];
 
-  const gstFaqs = [
+  const gstFaqs: InvoiceFaq[] = [
     { question: "Is this tax billing generator completely free?", answer: "Yes, our tool is 100% free to use. You can calculate taxes and create unlimited professional business bills without paying any hidden fees." },
     { question: "Does it calculate CGST, SGST, and IGST automatically?", answer: "Absolutely! Just enter your product prices and the correct tax percentage. Our smart platform will handle all the complex math automatically." },
-    { question: "What if I am not a registered business?", answer: <>If you do not have a registration number and do not charge tax, we highly recommend using our <a href="/invoice/without-gst-invoice">Without GST Invoice</a> generator tool instead.</> },
+    { question: "What if I am not a registered business?", answer: <>If you do not have a registration number and do not charge tax, we highly recommend using our <a href={withoutGstInvoiceHref}>Without GST Invoice</a> generator tool instead.</>, schemaAnswer: "If you do not have a registration number and do not charge tax, we highly recommend using our Without GST Invoice generator tool instead." },
     { question: "Do I need an app to create my tax documents?", answer: "No installation is required. You can quickly generate professional tax bills directly from your web browser using our secure online platform." },
     { question: "Are my client details and financial data safe?", answer: "Your privacy is strictly protected. Growile PDF automatically deletes your entered information and the generated file from our secure servers." },
-    { question: "Can I lock this document so nobody changes the price?", answer: <>Yes! After downloading your final tax bill, you can upload it to our <a href="/pdf/protect-pdf">Protect PDF</a> tool to securely lock it with a strong secret password.</> },
-    { question: "How do I add my digital stamp to the final bill?", answer: <>Once your document is ready, you can easily use our <a href="/pdf/add-image">Add Image</a> tool to place your official company stamp perfectly on the final invoice file.</> },
+    { question: "Can I lock this document so nobody changes the price?", answer: <>Yes! After downloading your final tax bill, you can upload it to our <a href="/pdf/protect-pdf">Protect PDF</a> tool to securely lock it with a strong secret password.</>, schemaAnswer: "Yes! After downloading your final tax bill, you can upload it to our Protect PDF tool to securely lock it with a strong secret password." },
+    { question: "How do I add my digital stamp to the final bill?", answer: <>Once your document is ready, you can easily use our <a href="/pdf/add-image">Add Image</a> tool to place your official company stamp perfectly on the final invoice file.</>, schemaAnswer: "Once your document is ready, you can easily use our Add Image tool to place your official company stamp perfectly on the final invoice file." },
     { question: "Does this tax bill creator work on smartphones?", answer: "Yes, Growile PDF is highly mobile-friendly. You can comfortably calculate taxes and issue professional bills using your Android or iOS device." }
   ];
 
@@ -206,7 +213,7 @@ export default function InvoicePage() {
       "name": faq.question,
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": typeof faq.answer === "string" ? faq.answer : "Use the linked invoice or PDF tool for this billing task."
+        "text": faq.schemaAnswer ?? (typeof faq.answer === "string" ? faq.answer : "")
       }
     }))
   };
@@ -219,7 +226,7 @@ export default function InvoicePage() {
       "name": faq.question,
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": typeof faq.answer === "string" ? faq.answer : "Use the linked invoice or PDF tool for this billing task."
+        "text": faq.schemaAnswer ?? (typeof faq.answer === "string" ? faq.answer : "")
       }
     }))
   };
@@ -359,8 +366,8 @@ export default function InvoicePage() {
         invoiceHref={invoiceHomeHref}
         termsHref={termsHref}
         privacyHref={privacyHref}
-        reserveBottomAdSpace={false}
       />
+      <AdSpace className="footer-bottom-ad-space" />
     </div>
   );
 }

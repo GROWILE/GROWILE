@@ -37,6 +37,7 @@
   align-items: center;
   gap: 10px;
   width: min(100%, 380px);
+  min-width: 0;
   padding: 12px 14px;
   border: 2px solid var(--color-text-highlight);
   border-radius: 10px;
@@ -45,6 +46,7 @@
 
 .all-invoice-tools-search input {
   width: 100%;
+  min-width: 0;
   border: 0;
   outline: 0;
   font: inherit;
@@ -105,7 +107,7 @@
   }
 
   .all-invoice-tools-search {
-    width: auto;
+    width: 100%;
   }
 
   .all-invoice-tools-grid {

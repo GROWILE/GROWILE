@@ -6,6 +6,7 @@ import Navbar from "./Navbar";
 import PageMeta from "./PageMeta";
 import Breadcrumb from "./Breadcrumb";
 import BreadcrumbSchema from "./BreadcrumbSchema";
+import "./TermsLayout.css";
 
 export type NavbarLink = {
   label: string;
@@ -59,7 +60,7 @@ export default function TermsLayout({
 }: TermsLayoutProps) {
   
   return (
-    <>
+    <div className="terms-page">
       <PageMeta
         title={pageTitle}
         description={pageDescription}
@@ -88,9 +89,9 @@ export default function TermsLayout({
       ]}
       />
 
-      <section className="about-hero">
-        <h1 className="about-title">{heroTitle}</h1>
-        <p className="about-description">Last Updated: {lastUpdated}</p>
+      <section className="terms-page-hero">
+        <h1 className="terms-page-title">{heroTitle}</h1>
+        <p className="terms-page-description">Last Updated: {lastUpdated}</p>
       </section>
 
       <Divider />
@@ -106,6 +107,6 @@ export default function TermsLayout({
         privacyHref={footerPrivacyHref}
         reserveBottomAdSpace={reserveBottomAdSpace}
       />
-    </>
+    </div>
   );
 }

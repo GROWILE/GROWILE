@@ -1,0 +1,45 @@
+.terms-page-hero {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 100px 24px 60px;
+  text-align: center;
+}
+
+.terms-page-title {
+  display: block;
+  width: 100%;
+  margin: 0 0 24px;
+  color: var(--color-primary);
+  font-size: 56px;
+  font-weight: 700;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.terms-page-description {
+  color: var(--color-primary);
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.6;
+  opacity: 0.8;
+}
+
+@media (max-width: 900px) {
+  .terms-page-title {
+    font-size: 44px;
+  }
+
+  .terms-page-description {
+    font-size: 17px;
+  }
+}
+
+@media (max-width: 600px) {
+  .terms-page-title {
+    font-size: 36px;
+  }
+
+  .terms-page-description {
+    font-size: 16px;
+  }
+}

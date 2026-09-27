@@ -10,6 +10,7 @@ import InvoiceBreadcrumb from "./InvoiceBreadcrumb";
 import InvoiceNavBar from "./InvoiceNavBar";
 import InvoiceTools from "./allInvoiceTools";
 import InvoiceToolsFooter from "./toolsFooter";
+import "./InvoiceAdSpace.css";
 
 const invoiceSeoBlocks = [
   {
@@ -126,8 +127,7 @@ export default function Home() {
       <Footer
         invoiceHref={invoiceHomeHref}
         termsHref={`${invoiceBaseHref}/terms-and-conditions`}
-        privacyHref={`${invoiceBaseHref}/privacy-policy`}
-        reserveBottomAdSpace={false}
+        privacyHref="/privacy-policy"
       />
       <AdSpace className="footer-bottom-ad-space" />
     </div>

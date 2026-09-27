@@ -30,7 +30,7 @@ export default function PrivacyPolicyPage() {
       }}
       footerInvoiceHref={invoiceHomeHref}
       footerTermsHref={`${invoiceBaseHref}/terms-and-conditions`}
-      footerPrivacyHref={`${invoiceBaseHref}/privacy-policy`}
+      footerPrivacyHref="/privacy-policy"
       reserveBottomAdSpace={false}
     />
   );
