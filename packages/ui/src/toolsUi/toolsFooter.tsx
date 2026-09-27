@@ -14,12 +14,17 @@ export type ToolsFooterCategory = {
 export type ToolsFooterProps = {
   categories: ToolsFooterCategory[];
   className?: string;
+  ariaLabel?: string;
 };
 
 // Renders the tools footer interface.
-export default function ToolsFooter({ categories, className = "" }: ToolsFooterProps) {
+export default function ToolsFooter({
+  categories,
+  className = "",
+  ariaLabel = "PDF tools",
+}: ToolsFooterProps) {
   return (
-    <section className={`tools-footer ${className}`.trim()} aria-label="PDF tools">
+    <section className={`tools-footer ${className}`.trim()} aria-label={ariaLabel}>
       <div className="tools-footer-inner">
         {categories.map(/* Builds a value for each item in the collection. */ (category) => (
           <div className="tools-footer-category" key={category.title}>
