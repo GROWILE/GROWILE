@@ -2,6 +2,7 @@
 import TermsLayout from "../../../../packages/ui/src/TermsLayout";
 import Divider from "../../../../packages/ui/src/Divider";
 import invoiceLogo from "../../../../packages/ui/assets/growile-InvoiceGenerator-logo.svg";
+import { getProductNavigationLinks } from "../../../../packages/ui/src/productNavigation";
 import "./TermsOfService.css";
 
 // Renders the terms and conditions interface.
@@ -22,10 +23,7 @@ export default function TermsAndConditions() {
       home={{ label: "Home", href: invoiceHomeHref }}
       products={{
         label: "Products",
-        items: [
-          { label: "PDF", href: "/pdf" },
-          { label: "Invoice", href: invoiceHomeHref },
-        ],
+        items: getProductNavigationLinks(invoiceHomeHref),
       }}
       tools={{
         label: "All Tools",

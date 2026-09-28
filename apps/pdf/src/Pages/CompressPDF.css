@@ -10,97 +10,17 @@
   box-sizing: border-box;
 }
 
-/* Styles the compress pdf file size for spacing and layout. */
 .compress-pdf-file-size {
-  margin-bottom: 14px;
+  margin: 6px 0;
   color: var(--color-primary);
   font-size: 15px;
   text-align: center;
 }
 
-/* Styles the compress pdf options list for grid layout and alignment. */
-.compress-pdf-options-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
-  gap: 10px;
-}
-
-/* Styles the compress pdf recommendation for grid layout and alignment. */
-.compress-pdf-recommendation {
-  display: grid;
-  gap: 3px;
-  margin-bottom: 14px;
-  padding: 11px 13px;
-  border-left: 4px solid var(--color-text-highlight);
-  border-radius: 6px;
-  background: color-mix(in srgb, var(--color-text-highlight) 10%, var(--color-secondary));
-  color: var(--color-primary);
-  font-size: 13px;
-  text-align: left;
-}
-
-/* Styles the compress pdf recommendation for text appearance and alignment. */
-.compress-pdf-recommendation strong {
-  color: var(--color-text-highlight);
-  font-size: 14px;
-}
-
-/* Styles the compress pdf option for flex layout and alignment. */
-.compress-pdf-option {
-  display: flex;
-  align-items: center;
-  gap: 9px;
-  min-height: 48px;
-  padding: 10px 12px;
-  border: 1px solid color-mix(in srgb, var(--color-text-highlight) 35%, transparent);
-  border-radius: 7px;
-  color: var(--color-primary);
-  background: var(--color-secondary);
-  cursor: pointer;
-  font-size: 14px;
-  font-weight: 700;
-}
-
-/* Styles the compress pdf option for spacing and layout. */
-.compress-pdf-option em {
-  margin-left: auto;
-  color: var(--color-text-highlight);
-  font-size: 11px;
-  font-style: normal;
-  white-space: nowrap;
-}
-
-/* Styles the compress pdf option for colors and background. */
-.compress-pdf-option.selected {
-  border-color: var(--color-text-highlight);
-  background: color-mix(in srgb, var(--color-text-highlight) 10%, var(--color-secondary));
-}
-
-/* Styles the compress pdf option for visual appearance. */
-.compress-pdf-option input {
-  accent-color: var(--color-text-highlight);
-}
-
-/* Styles the compress pdf quality note for spacing and layout. */
-.compress-pdf-quality-note {
+.compress-pdf-compression-note {
   margin: 12px 0 0;
   color: color-mix(in srgb, var(--color-primary) 65%, transparent);
   font-size: 12px;
   line-height: 1.4;
-  text-align: left;
-}
-
-/* Applies nested styles at (max-width: 600px). */
-@media (max-width: 600px) {
-  /* Styles the compress pdf option for visual appearance. */
-  .compress-pdf-option {
-    align-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  /* Styles the compress pdf option for spacing and layout. */
-  .compress-pdf-option em {
-    width: 100%;
-    margin-left: 28px;
-  }
+  text-align: center;
 }

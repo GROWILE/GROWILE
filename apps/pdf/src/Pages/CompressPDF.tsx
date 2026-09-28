@@ -19,32 +19,26 @@ import Divider from "../../../../packages/ui/src/Divider";
 import {
   compressPdf,
   downloadCompressedPdf,
-  type CompressionTarget,
 } from "../Utilities/CompressPDFProcessing";
 import "./PdfUploadLayout.css";
 import "./CompressPDF.css";
 
 const steps = [
   { number: "1", title: "Upload a PDF", description: "Select one PDF file or drag it into the upload area." },
-  { number: "2", title: "Choose a compression size", description: "Select the target size that fits your needs." },
-  { number: "3", title: "Compress and download", description: "Create and download your smaller PDF." },
+  { number: "2", title: "Compress your PDF", description: "Adjust image quality to target a 50% size reduction." },
+  { number: "3", title: "Compare and download", description: "Check the original and compressed sizes, then download." },
 ];
 
 const seoBlocks = [
   {
-    heading: "Compress PDF to 100kb Online Free",
+    heading: "Reduce PDF File Size Online Free",
     description:
-      "Need a tiny file for a web upload? It is simple to compress PDF to 100kb online free with Growile PDF. Just upload your heavy document, and our smart tool will aggressively shrink the size quickly.",
+      "Upload a PDF and compress it toward half its original size. The tool adjusts image quality and shows the resulting file size before download.",
   },
   {
-    heading: "Compress PDF to 200kb Online Free",
+    heading: "Compress PDF While Keeping Pages Readable",
     description:
-      "If government portals require specific sizes, you can easily compress PDF to 200kb online free. Growile PDF optimizes your bulky files instantly, making them perfectly sized for quick email sharing.",
-  },
-  {
-    heading: "Compress PDF Without Losing Quality Online Free",
-    description:
-      "Worried about blurry text? Our tool ensures you can compress PDF without losing quality online free. We carefully reduce the file weight while keeping your text sharp and images perfectly readable.",
+      "PDF pages are converted into high-quality images to reduce file size. This can slightly affect image quality, and text, links, and forms may no longer be selectable or interactive.",
   },
 ];
 
@@ -62,7 +56,7 @@ const faqs = [
   {
     question: "Will the text become unreadable after shrinking?",
     answer:
-      "Not at all. Growile PDF uses smart optimization to ensure your text and images remain sharp and clear even after massive size reduction.",
+      "The compressor renders pages as high-quality images and adjusts image quality to target a 50% reduction. Text, links, and forms in the output may no longer be selectable or interactive.",
   },
   {
     question: "Do I need an app to reduce my file size?",
@@ -133,33 +127,12 @@ function formatFileSize(bytes: number) {
   return `${(bytes / (1024 * 1024)).toFixed(2)} MB`;
 }
 
-// Gets compression options.
-function getCompressionOptions(fileSize: number): CompressionTarget[] {
-  if (fileSize > 1024 * 1024) return ["default", "1mb", "500kb", "200kb", "100kb"];
-  if (fileSize > 500 * 1024) return ["default", "200kb", "100kb"];
-  return ["default"];
-}
-
-// Checks large pdf.
-function isLargePdf(fileSize: number) {
-  return fileSize > 20 * 1024 * 1024;
-}
-
-const optionLabels: Record<CompressionTarget, string> = {
-  default: "Compress PDF (75% smaller)",
-  "1mb": "Compress to 1 MB or less",
-  "500kb": "Compress to 500 KB or less",
-  "200kb": "Compress to 200 KB or less",
-  "100kb": "Compress to 100 KB or less",
-};
-
 // Renders the compress pdf interface.
 export default function CompressPDF() {
   const [isCompressing, setIsCompressing] = useState(false);
-  const [compressMessage, setCompressMessage] = useState("");
   const [compressError, setCompressError] = useState("");
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
-  const [target, setTarget] = useState<CompressionTarget>("default");
+  const [compressionResult, setCompressionResult] = useState<{ compressedSize: number; targetMet: boolean } | null>(null);
   const [pendingPdf, setPendingPdf] = useState<Uint8Array | null>(null);
   const [isDownloadPopupOpen, setIsDownloadPopupOpen] = useState(false);
 
@@ -175,20 +148,19 @@ export default function CompressPDF() {
   const handleSelectionChange = /* Handles selection change work. */ (files: File[]) => {
     const file = files[0] ?? null;
     setSelectedFile(file);
-    setCompressMessage("");
     setCompressError("");
-    if (file) setTarget(getCompressionOptions(file.size)[0]);
+    setCompressionResult(null);
   };
 
   const handleAction = /* Handles action work. */ async (file: File) => {
     setIsCompressing(true);
-    setCompressMessage("");
     setCompressError("");
+    setCompressionResult(null);
     try {
-      const pdfBytes = await compressPdf(file, target);
-      setPendingPdf(pdfBytes);
+      const result = await compressPdf(file);
+      setPendingPdf(result.bytes);
       setIsDownloadPopupOpen(true);
-      setCompressMessage(`PDF compressed to ${formatFileSize(pdfBytes.byteLength)}.`);
+      setCompressionResult({ compressedSize: result.bytes.byteLength, targetMet: result.targetMet });
     } catch (error) {
       setCompressError(error instanceof Error ? error.message : "PDF compression failed.");
     } finally {
@@ -196,13 +168,11 @@ export default function CompressPDF() {
     }
   };
 
-  const availableOptions = selectedFile ? getCompressionOptions(selectedFile.size) : [];
-
   return (
     <>
       <PageMeta
         title="Compress PDF File Size Online Free - Fast | Growile PDF"
-        description="Use Growile PDF to compress PDF file size online free. Shrink documents to 100KB or 200KB easily without losing quality. Safe, fast, and 100% free tool!"
+        description="Compress PDF files online for free toward 45% smaller. Compare original and compressed sizes with image compression."
         canonicalPath="/pdf/compress-pdf"
       />
       <PdfNavBar />
@@ -211,7 +181,7 @@ export default function CompressPDF() {
       <Hero
         kicker="PDF Compression"
         title="Compress PDF File Size Online Free"
-        subtitle="Do you need to email a heavy document but the attachment is too large? Growile PDF helps you compress PDF file size online free in just a few clicks. Whether it is a bulky report or a scanned ebook, our tool shrinks your files instantly. You do not need to install software or pay hidden fees. Enjoy fast, secure, and unlimited document size reduction directly from your web browser today easily."
+        subtitle="Aim to reduce your PDF by at least 45% with image compression. Compare the original and compressed file sizes before downloading."
         ctaText="Upload PDF"
         ctaHref="#compress-pdf-upload"
       />
@@ -223,7 +193,7 @@ export default function CompressPDF() {
               className="jpg-to-pdf-upload-box"
               icon={<FileArchive size={30} aria-hidden="true" />}
               title="Compress PDF"
-              description="Choose a target size after selecting your PDF."
+              description="Aim to reduce PDF size by 50%. Pages are converted to images, so text, links, and forms may no longer be selectable or interactive."
               buttonLabel="Select PDF file"
               actionLabel={isCompressing ? "Compressing..." : "Compress PDF"}
               actionDisabled={isCompressing || !selectedFile}
@@ -234,34 +204,16 @@ export default function CompressPDF() {
                 selectedFile ? (
                   <div className="compress-pdf-options">
                     <div className="compress-pdf-file-size">
-                      Original file size: <strong>{formatFileSize(selectedFile.size)}</strong>
+                      Original size: <strong>{formatFileSize(selectedFile.size)}</strong>
                     </div>
-                    {isLargePdf(selectedFile.size) && (
-                      <div className="compress-pdf-recommendation" role="note">
-                        <strong>Recommended for this large PDF</strong>
-                        <span>Default compression or 1 MB keeps a better balance between size and quality.</span>
+                    {compressionResult && (
+                      <div className="compress-pdf-file-size" role="status">
+                        Compressed size: <strong>{formatFileSize(compressionResult.compressedSize)}</strong>
                       </div>
                     )}
-                    <div className="compress-pdf-options-list" role="radiogroup" aria-label="Compression options">
-                      {availableOptions.map(/* Builds a value for each item in the collection. */ (option) => (
-                        <label className={`compress-pdf-option ${target === option ? "selected" : ""}`} key={option}>
-                          <input
-                            type="radio"
-                            name="compression-target"
-                            value={option}
-                            checked={target === option}
-                            onChange={/* Runs when the user triggers change. */ () => setTarget(option)}
-                          />
-                          <span>{optionLabels[option]}</span>
-                          {isLargePdf(selectedFile.size) && (option === "default" || option === "1mb") && (
-                            <em>Recommended</em>
-                          )}
-                        </label>
-                      ))}
-                    </div>
-                    {isLargePdf(selectedFile.size) && (
-                      <p className="compress-pdf-quality-note">
-                        500 KB, 200 KB, and 100 KB can reduce quality, but may produce a smaller file.
+                    {compressionResult && !compressionResult.targetMet && (
+                      <p className="compress-pdf-compression-note" role="status">
+                        A 45% reduction was not achievable at the selected quality limit. The output is still smaller than the original.
                       </p>
                     )}
                   </div>
@@ -271,7 +223,6 @@ export default function CompressPDF() {
             />
             <AdSpace variant="vertical" />
           </div>
-          {compressMessage && <p className="jpg-to-pdf-status" role="status">{compressMessage}</p>}
           {compressError && <p className="jpg-to-pdf-error" role="alert">{compressError}</p>}
         </section>
         <section className="pdf-related-tools" aria-labelledby="related-pdf-tools-title">

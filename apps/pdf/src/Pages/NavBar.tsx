@@ -1,7 +1,7 @@
 // Renders the PDF app navigation bar.
 import { FileArchive, FileEdit, FileImage, FolderKanban, LockKeyhole } from "lucide-react";
 import Navbar from "../../../../packages/ui/src/Navbar";
-import DocumentIcon from "../../../../packages/ui/src/DocumentIcon";
+import { getProductNavigationLinks } from "../../../../packages/ui/src/productNavigation";
 import { allPdfTools } from "../config/pdfTools";
 
 const pdfToolCategories = ["Conversion", "Organize", "Compression", "Edit", "Security"] as const;
@@ -63,10 +63,7 @@ export default function PdfNavBar() {
       logoSrc="/pdf/Growile-pdf-logo.svg"
       products={{
         label: "Products",
-        items: [
-          { label: "Invoice", href: "/invoice", icon: <DocumentIcon /> },
-          { label: "PDF", href: "/pdf", icon: <DocumentIcon label="PDF" /> },
-        ],
+        items: getProductNavigationLinks("/invoice"),
       }}
       tools={{ label: "All Tools", items: [], groups: pdfNavToolGroups }}
     />

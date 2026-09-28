@@ -1,6 +1,7 @@
 // Configures the privacy policy page for the invoice app.
 import PrivacyPolicy from "../../../../packages/ui/src/PrivacyPolicy";
 import invoiceLogo from "../../../../packages/ui/assets/growile-InvoiceGenerator-logo.svg";
+import { getProductNavigationLinks } from "../../../../packages/ui/src/productNavigation";
 
 
 // Renders the privacy policy page interface.
@@ -16,10 +17,7 @@ export default function PrivacyPolicyPage() {
       home={{ label: "Home", href: invoiceHomeHref }}
       products={{
         label: "Products",
-        items: [
-          { label: "PDF", href: "/pdf" },
-          { label: "Invoice", href: invoiceHomeHref },
-        ],
+        items: getProductNavigationLinks(invoiceHomeHref),
       }}
       tools={{
         label: "All Tools",

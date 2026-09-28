@@ -6,6 +6,7 @@ export type NavbarLink = {
   label: string;
   href: string;
   icon?: ReactNode;
+  colorTheme?: "blue" | "orange" | "green" | "purple" | "teal";
 };
 
 export type NavbarLinkGroup = {
@@ -70,10 +71,12 @@ export default function NavbarDropdown({
                     <a
                       key={item.label}
                       href={item.href}
-                      className="navbar-dropdown-item"
+                      className={`navbar-dropdown-item ${item.colorTheme ? `theme-${item.colorTheme}` : ""}`.trim()}
                       onClick={onItemSelect}
                     >
-                      {item.icon}
+                      {item.colorTheme ? (
+                        <span className="navbar-dropdown-product-icon">{item.icon}</span>
+                      ) : item.icon}
                       {item.label}
                     </a>
                   ))}
@@ -83,10 +86,12 @@ export default function NavbarDropdown({
                 <a
                   key={item.label}
                   href={item.href}
-                  className="navbar-dropdown-item"
+                  className={`navbar-dropdown-item ${item.colorTheme ? `theme-${item.colorTheme}` : ""}`.trim()}
                   onClick={onItemSelect}
                 >
-                  {item.icon}
+                  {item.colorTheme ? (
+                    <span className="navbar-dropdown-product-icon">{item.icon}</span>
+                  ) : item.icon}
                   {item.label}
                 </a>
               ))}

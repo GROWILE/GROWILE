@@ -1,10 +1,6 @@
 // Defines shared navigation and footer settings for the web app.
-import { createElement } from "react";
 import webLogo from "../../../../packages/ui/assets/growile-logo.svg";
-import DocumentIcon from "../../../../packages/ui/src/DocumentIcon";
-
-const productIcon = /* Handles product icon work. */ (label?: string) =>
-  createElement(DocumentIcon, label ? { label } : {});
+import { getProductNavigationLinks } from "../../../../packages/ui/src/productNavigation";
 
 export const webNavigation = {
   logoAlt: "Growile",
@@ -12,10 +8,7 @@ export const webNavigation = {
   home: { label: "Home", href: "/" },
   products: {
     label: "Products",
-    items: [
-      { label: "PDF", href: "/pdf", icon: productIcon("PDF") },
-      { label: "Invoice", href: "/invoice", icon: productIcon() },
-    ],
+    items: getProductNavigationLinks("/invoice"),
   },
   about: { label: "About", href: "/about" },
 };

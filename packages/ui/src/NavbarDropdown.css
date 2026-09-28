@@ -84,17 +84,19 @@
   align-items: center;
   gap: 8px;
   padding: 12px 18px;
+  border-radius: 6px;
   color: var(--color-primary);
   text-decoration: none;
   font-size: 15px;
+  transition: background-color 0.18s ease, color 0.18s ease;
 }
 
 /* Styles the navbar dropdown item for spacing and layout. */
 .navbar-dropdown-item .product-document-label {
   align-items: center;
-  background: color-mix(in srgb, var(--color-text-highlight) 10%, var(--color-secondary));
+  background: color-mix(in srgb, var(--navbar-product-color, var(--color-text-highlight)) 10%, var(--color-secondary));
   border-radius: 6px;
-  color: var(--color-text-highlight);
+  color: var(--navbar-product-color, var(--color-text-highlight));
   display: inline-flex;
   font-size: 10px;
   font-weight: 800;
@@ -106,12 +108,48 @@
   text-transform: uppercase;
 }
 
+.navbar-dropdown-product-icon {
+  display: inline-flex;
+  flex: 0 0 68px;
+  align-items: center;
+  justify-content: center;
+}
+
+.navbar-dropdown-item.theme-blue {
+  --navbar-product-color: var(--color-tool-blue);
+}
+
+.navbar-dropdown-item.theme-orange {
+  --navbar-product-color: var(--color-tool-orange);
+}
+
+.navbar-dropdown-item.theme-green {
+  --navbar-product-color: var(--color-tool-green);
+}
+
+.navbar-dropdown-item.theme-purple {
+  --navbar-product-color: var(--color-tool-purple);
+}
+
+.navbar-dropdown-item.theme-teal {
+  --navbar-product-color: var(--color-tool-teal);
+}
+
 /* Styles the navbar dropdown item for element sizing. */
 .navbar-dropdown-item .product-icon {
+  fill: none;
   flex: 0 0 auto;
   height: 24px;
-  stroke: var(--color-text-highlight);
+  stroke: var(--navbar-product-color, var(--color-text-highlight));
   width: 24px;
+}
+
+.navbar-dropdown-item.theme-blue .product-icon,
+.navbar-dropdown-item.theme-orange .product-icon {
+  background: color-mix(in srgb, var(--navbar-product-color) 10%, var(--color-secondary));
+  border-radius: 6px;
+  box-sizing: content-box;
+  padding: 4px;
 }
 
 /* Styles the navbar dropdown item hover state for colors and background. */
@@ -129,6 +167,21 @@
 /* Styles the navbar dropdown item hover state for visual appearance. */
 .navbar-dropdown-item:hover .product-icon {
   stroke: var(--color-secondary);
+}
+
+.navbar-dropdown-item[class*="theme-"]:hover {
+  color: var(--color-primary);
+  background: color-mix(in srgb, var(--navbar-product-color) 16%, var(--color-secondary));
+}
+
+.navbar-dropdown-item[class*="theme-"]:hover .product-document-label {
+  color: var(--navbar-product-color);
+  background: color-mix(in srgb, var(--navbar-product-color) 18%, var(--color-secondary));
+}
+
+.navbar-dropdown-item[class*="theme-"]:hover .product-icon {
+  stroke: var(--navbar-product-color);
+  background: color-mix(in srgb, var(--navbar-product-color) 18%, var(--color-secondary));
 }
 
 /* Applies nested styles at (max-width: 600px). */

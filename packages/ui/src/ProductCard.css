@@ -31,12 +31,20 @@
   width: 104px;
 }
 
+.product-card-pdf {
+  --product-icon-color: var(--color-tool-blue);
+}
+
+.product-card-invoice {
+  --product-icon-color: var(--color-tool-orange);
+}
+
 /* Styles the product document label for flex layout and alignment. */
 .product-document-label {
   align-items: center;
-  background: color-mix(in srgb, var(--color-text-highlight) 10%, var(--color-secondary));
+  background: color-mix(in srgb, var(--product-icon-color, var(--color-text-highlight)) 10%, var(--color-secondary));
   border-radius: 8px;
-  color: var(--color-text-highlight);
+  color: var(--product-icon-color, var(--color-text-highlight));
   display: flex;
   font-size: 22px;
   font-weight: 700;
@@ -50,10 +58,19 @@
 .product-icon {
   fill: none;
   height: 68px;
-  stroke: var(--color-text-highlight);
+  stroke: var(--product-icon-color, var(--color-text-highlight));
   stroke-linecap: round;
   stroke-linejoin: round;
   stroke-width: 1.8;
+  width: 68px;
+}
+
+.product-card-invoice .product-icon {
+  background: color-mix(in srgb, var(--product-icon-color) 10%, var(--color-secondary));
+  border-radius: 8px;
+  box-sizing: content-box;
+  height: 68px;
+  padding: 0;
   width: 68px;
 }
 

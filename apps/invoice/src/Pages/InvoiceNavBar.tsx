@@ -1,6 +1,6 @@
 // Renders the invoice app navigation bar.
-import DocumentIcon from "../../../../packages/ui/src/DocumentIcon";
 import Navbar from "../../../../packages/ui/src/Navbar";
+import { getProductNavigationLinks } from "../../../../packages/ui/src/productNavigation";
 import { invoiceNavigation } from "../config/site";
 
 type InvoiceNavBarProps = {
@@ -22,14 +22,7 @@ export default function InvoiceNavBar({
       )}
       products={{
         label: "Products",
-        items: [
-          { label: "PDF", href: "/pdf", icon: <DocumentIcon label="PDF" /> },
-          {
-            label: "Invoice",
-            href: invoiceHomeHref,
-            icon: <DocumentIcon />,
-          },
-        ],
+        items: getProductNavigationLinks(invoiceHomeHref),
       }}
     />
   );

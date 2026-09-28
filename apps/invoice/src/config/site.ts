@@ -1,10 +1,6 @@
 // Defines shared navigation and footer settings for the invoice app.
-import { createElement } from "react";
 import invoiceLogo from "../../../../packages/ui/assets/growile-InvoiceGenerator-logo.svg";
-import DocumentIcon from "../../../../packages/ui/src/DocumentIcon";
-
-const productIcon = /* Handles product icon work. */ (label?: string) =>
-  createElement(DocumentIcon, label ? { label } : {});
+import { getProductNavigationLinks } from "../../../../packages/ui/src/productNavigation";
 
 export const invoiceNavigation = /* Handles invoice navigation work. */ (invoiceHomeHref: string, withoutGstInvoiceHref: string, gstInvoiceHref: string) => ({
   logoAlt: "Growile",
@@ -12,10 +8,7 @@ export const invoiceNavigation = /* Handles invoice navigation work. */ (invoice
   home: { label: "Home", href: invoiceHomeHref },
   products: {
     label: "Products",
-    items: [
-      { label: "PDF", href: "/pdf", icon: productIcon("PDF") },
-      { label: "Invoice", href: invoiceHomeHref, icon: productIcon() },
-    ],
+    items: getProductNavigationLinks(invoiceHomeHref),
   },
   tools: {
     label: "All Tools",

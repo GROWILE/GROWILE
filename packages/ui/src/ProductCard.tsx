@@ -20,8 +20,10 @@ export type ProductCardProps = {
 export default function ProductCard({
   product,
 }: ProductCardProps) {
+  const productClass = product.id ? `product-card-${product.id}` : "";
+
   return (
-    <a href={product.href} className="product-card">
+    <a href={product.href} className={`product-card ${productClass}`.trim()}>
       <div className="product-icon-wrap">
         <DocumentIcon label={product.title === "PDF Tools" ? "PDF" : undefined} />
       </div>
