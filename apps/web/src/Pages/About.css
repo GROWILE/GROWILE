@@ -17,11 +17,15 @@
 
 /* Styles the about description for text appearance and alignment. */
 .about-description {
-  font-size: 18px;
+  font-size: 22px;
   font-weight: 600;
   line-height: 1.6;
   color: var(--color-primary);
-  opacity: 0.8;
+  opacity: 0.7;
+}
+
+.about-description + .about-description {
+  margin-top: 16px;
 }
 
 /* Styles the about section for spacing and layout. */
@@ -42,11 +46,47 @@
 
 /* Styles the about text for text appearance and alignment. */
 .about-text {
-  font-size: 17px;
-  font-weight: 400;
+  font-size: 22px;
+  font-weight: 600;
   line-height: 1.6;
   color: var(--color-primary);
-  opacity: 0.8;
+  opacity: 0.7;
+}
+
+.about-text + .about-text {
+  margin-top: 16px;
+}
+
+.about-vision-statement strong {
+  display: block;
+  margin-top: 8px;
+  color: var(--color-primary);
+  opacity: 1;
+}
+
+.about-founder-name {
+  margin-bottom: 8px;
+  font-size: 22px;
+  color: var(--color-primary);
+}
+
+.about-founder-quote {
+  margin-top: 24px;
+  padding-left: 20px;
+  border-left: 3px solid var(--color-accent);
+  color: var(--color-primary);
+  font-size: 22px;
+  font-weight: 600;
+  font-style: italic;
+  line-height: 1.6;
+}
+
+.about-founder-quote cite {
+  display: block;
+  margin-top: 10px;
+  font-size: 15px;
+  font-style: normal;
+  opacity: 0.7;
 }
 
 /* Styles the values grid for grid layout and alignment. */
@@ -66,7 +106,7 @@
 
 /* Styles the value title for spacing and layout. */
 .value-title {
-  font-size: 15px;
+  font-size: 20px;
   font-weight: 700;
   letter-spacing: 1px;
   text-transform: uppercase;
@@ -76,10 +116,11 @@
 
 /* Styles the value description for spacing and layout. */
 .value-description {
-  font-size: 14px;
+  font-size: 16px;
+  font-weight: 600;
   line-height: 1.6;
   color: var(--color-secondary);
-  opacity: 0.8;
+  opacity: 0.7;
   margin: 0;
 }
 

@@ -7,34 +7,32 @@ import { webNavigation } from "../config/site";
 import Breadcrumb from "../../../../packages/ui/src/Breadcrumb";
 import BreadcrumbSchema from "../../../../packages/ui/src/BreadcrumbSchema";
 
-const values = [
+const principles = [
   {
-    title: "Simplicity",
+    title: "Purpose over complexity",
     description:
-      "We keep things simple. No confusing menus, no unnecessary steps — just tools that work.",
+      "We focus on solving meaningful problems rather than adding complexity for the sake of features.",
   },
   {
-    title: "Honesty",
+    title: "Our own technology",
     description:
-      "We build what we promise. No hidden charges, no fake claims — just honest, useful software.",
+      "We build the underlying technology alongside the products, giving us greater control over performance, reliability, and future possibilities.",
   },
   {
-    title: "Speed",
+    title: "Simple experiences",
     description:
-      "Your time matters. We build tools that load fast and get the job done without delay.",
+      "Complex technology should result in simple experiences. Our users should not need to understand what's happening underneath to get things done.",
   },
   {
-    title: "Trust",
+    title: "Built to evolve",
     description:
-      "We respect your data and your time. Every tool is built to be safe, private, and reliable.",
+      "Growile is designed for the long term. Products, systems, and technology will continue to evolve as we learn and grow.",
   },
-];
-
-const approach = [
-  "Build what people actually need — not extra features nobody uses.",
-  "Keep it simple — every tool should be easy from the first click.",
-  "Improve constantly — we listen and keep making things better.",
-  "Stay honest — clear pricing, no tricks, no surprises.",
+  {
+    title: "Trust by design",
+    description:
+      "We believe privacy, transparency, reliability, and responsible technology should be fundamental—not afterthoughts.",
+  },
 ];
 
 // Renders the about interface.
@@ -60,51 +58,55 @@ export default function About() {
       <section className="about-hero">
         <h1 className="about-title">About Growile</h1>
         <p className="about-description">
-          We build simple software tools that help you get everyday work
-          done — faster, easier, and without the clutter. From PDF tools to
-          invoices, Growile brings everything you need into one place, so
-          you can spend less time struggling with tools and more time doing
-          what matters.
+          Growile is a technology company building a growing ecosystem of digital products, platforms, and technology.
+        </p>
+        <p className="about-description">
+          We design products that simplify how people and businesses work, while building the systems behind them.
+        </p>
+        <p className="about-description">
+          Our focus is not on building one product for one problem. We are building a foundation that can support many products, technologies, and experiences as Growile evolves.
         </p>
       </section>
 
       <Divider />
 
       <section className="about-section">
-        <h2 className="about-heading">Why We Started Growile</h2>
+        <h2 className="about-heading">Why We Started</h2>
         <p className="about-text">
-          We got tired of using ten different apps just to finish one simple
-          task. Most software today feels bloated, expensive, or built for
-          someone else's problem — not yours. So we decided to build
-          something different. Tools that are easy to open, easy to use, and
-          don't ask you to learn a whole new system just to get one thing
-          done. That's the whole idea behind Growile.
+          Technology should make progress easier, not add another layer of complexity.
         </p>
-      </section>
-
-      <Divider />
-
-      <section className="about-section">
-        <h2 className="about-heading">Our Story</h2>
         <p className="about-text">
-          Growile didn't start with a big plan. It started with a simple
-          question — why is everyday software so complicated? We began by
-          building one tool that actually worked well. Then another.
-          Slowly, it turned into something bigger — a place where all your
-          everyday tools live together, built by people who just wanted
-          things to work properly.
+          Yet much of today's digital experience is fragmented across disconnected products, platforms, and services. We believe there is an opportunity to build technology that feels more connected, accessible, and purposeful.
+        </p>
+        <p className="about-text">
+          That belief is what started Growile.
         </p>
       </section>
 
       <Divider />
 
       <section className="about-section">
-        <h2 className="about-heading">Our Values</h2>
+        <h2 className="about-heading">What We're Building</h2>
+        <p className="about-text">
+          Growile is building a portfolio of technology products designed around real-world needs, for students, small businesses, and enterprises.
+        </p>
+        <p className="about-text">
+          Each product is built to stand on its own, while contributing to a broader ecosystem that can grow over time.
+        </p>
+        <p className="about-text">
+          Beyond the products themselves, we are investing in the technology behind them — developing purpose-built processing engines, infrastructure, and systems that allow us to build faster, improve continuously, and scale with the needs of our users.
+        </p>
+      </section>
+
+      <Divider />
+
+      <section className="about-section">
+        <h2 className="about-heading">How We Build</h2>
         <div className="values-grid">
-          {values.map(/* Builds a value for each item in the collection. */ (value) => (
-            <div key={value.title} className="value-card">
-              <h3 className="value-title">{value.title}</h3>
-              <p className="value-description">{value.description}</p>
+          {principles.map((principle) => (
+            <div key={principle.title} className="value-card">
+              <h3 className="value-title">{principle.title}</h3>
+              <p className="value-description">{principle.description}</p>
             </div>
           ))}
         </div>
@@ -113,27 +115,29 @@ export default function About() {
       <Divider />
 
       <section className="about-section">
-        <h2 className="about-heading">What We're Building</h2>
+        <h2 className="about-heading">Our Vision</h2>
         <p className="about-text">
-          Growile is growing into a full set of everyday tools — starting
-          with PDF, image, and invoice tools, all connected under
-          one platform. Instead of jumping between apps, you'll soon be
-          able to handle everything you need in one simple place, built to
-          grow with you.
+          We are building toward a technology ecosystem where products, platforms, and underlying technology work together to create better digital experiences at scale.
+        </p>
+        <p className="about-text">
+          Growile's future is not limited to a single category or type of product. As our technology evolves, so will the products and possibilities built on top of it.
+        </p>
+        <p className="about-text about-vision-statement">
+          Our ambition is simple:
+          <strong>Build technology that can grow into something much bigger than where it starts.</strong>
         </p>
       </section>
 
       <Divider />
 
-      <section className="about-section">
-        <h2 className="about-heading">Our Approach</h2>
-        <ul className="approach-list">
-          {approach.map(/* Builds a value for each item in the collection. */ (point) => (
-            <li key={point} className="approach-item">
-              {point}
-            </li>
-          ))}
-        </ul>
+      <section className="about-section about-founder">
+        <h2 className="about-heading">Founder &amp; CEO</h2>
+        <h3 className="about-founder-name">Jegadeeshwaran S</h3>
+        <p className="about-text">Founder &amp; CEO, Growile</p>
+        <blockquote className="about-founder-quote">
+          <p>"What starts as a product can evolve into a platform. What starts as an idea can grow into an ecosystem."</p>
+          <cite>— Jegadeeshwaran S</cite>
+        </blockquote>
       </section>
 
       <Footer termsHref="/terms-of-service" reserveBottomAdSpace={false} />

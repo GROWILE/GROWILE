@@ -4,14 +4,20 @@ import "./MissionVision.css";
 const items = [
   {
     title: "Mission",
-    description:
-      "Our mission is to build simple, browser-based software that solves everyday work problems — without the complexity, cost, or privacy trade-offs that come with most tools today. We build for people who just want to get their work done, not learn another platform.",
+    paragraphs: [
+      "To build simple, reliable products that make everyday digital work easier for people and businesses, while developing the systems that power them.",
+      "We do this by solving real problems, keeping every experience simple, and building trust into everything we make.",
+    ],
     accentClass: "accent-orange",
   },
   {
     title: "Vision",
-    description:
-      "We envision a future where every everyday tool — documents, images, PDF, invoicing — works together on one connected platform, processed locally, built with the same simplicity and care. A place people return to not because they have to, but because it just works.",
+    paragraphs: [
+      "We are building toward a technology ecosystem where products, platforms, and underlying technology work together to create better digital experiences at scale.",
+      "Growile's future is not limited to a single category or type of product. As our technology evolves, so will the products and possibilities built on top of it.",
+      "Our ambition is simple:",
+      "Build technology that can grow into something much bigger than where it starts.",
+    ],
     accentClass: "accent-blue",
   },
 ];
@@ -25,7 +31,11 @@ export default function MissionVision() {
           <div key={item.title} className="mission-vision-card">
             <h3 className="mission-vision-title">{item.title}</h3>
             <div className={`mission-vision-underline ${item.accentClass}`} />
-            <p className="mission-vision-description">{item.description}</p>
+            <div className="mission-vision-description">
+              {item.paragraphs.map((paragraph) => (
+                <p key={paragraph}>{paragraph}</p>
+              ))}
+            </div>
           </div>
         ))}
       </div>

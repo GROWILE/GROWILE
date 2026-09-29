@@ -5,8 +5,8 @@ export const pageMetadata = {
     description: "Discover fast, private web tools built for modern global workflows. No sign-up required, zero data tracking, and 100% browser-secure.",
   },
   "/about": {
-    title: "About Growile - Building a Free Digital Tool Ecosystem",
-    description: "Discover the vision behind Growile. We are dedicated to simplifying your daily tasks by building a completely free ecosystem of essential digital tools.",
+    title: "About Growile - Building a Technology Ecosystem",
+    description: "Learn about Growile, a technology company building digital products, platforms, and purpose-built technology for better digital experiences.",
   },
   "/terms-of-service": {
     title: "Terms of Service",

@@ -22,7 +22,7 @@
 
 /* Styles the mission vision title for spacing and layout. */
 .mission-vision-title {
-  font-size: 16px;
+  font-size: 20px;
   font-weight: 700;
   letter-spacing: 1.5px;
   text-transform: uppercase;
@@ -32,7 +32,7 @@
 
 /* Styles the mission vision underline for spacing and layout. */
 .mission-vision-underline {
-  width: 68px;
+  width: 70px;
   height: 3px;
   border-radius: 1px;
   margin-bottom: 20px;
@@ -50,11 +50,15 @@
 
 /* Styles the mission vision description for spacing and layout. */
 .mission-vision-description {
-  font-size: 14px;
+  font-size: 18px;
   line-height: 1.7;
   color: var(--color-secondary);
   opacity: 0.8;
   margin: 0;
+}
+
+.mission-vision-description p + p {
+  margin-top: 12px;
 }
 
 /* Applies nested styles at (max-width: 900px). */
